@@ -26,26 +26,39 @@ interface Provider {
   lastChecked: string;
 }
 
-export function WatchProviders({ titleId }: { titleId: string }) {
-  const [data, setData] = useState<Record<string, any[]>>({});
-  const [loading, setLoading] = useState(true);
+export function WatchProviders({
+  titleId,
+  initialProviders,
+}: {
+  titleId: string;
+  initialProviders?: Record<string, any[]> | null;
+}) {
+  const [data, setData] = useState<Record<string, any[]>>(
+    initialProviders ?? {}
+  );
+  const [loading, setLoading] = useState(!initialProviders);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (initialProviders) return;
+    let cancelled = false;
     async function fetchData() {
       try {
         const res = await fetch(`/api/titles/${titleId}/watch-providers`);
         if (!res.ok) throw new Error("Failed to fetch");
         const json = await res.json();
-        setData(json);
+        if (!cancelled) setData(json);
       } catch (e: any) {
-        setError(e.message);
+        if (!cancelled) setError(e.message);
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     }
     fetchData();
-  }, [titleId]);
+    return () => {
+      cancelled = true;
+    };
+  }, [titleId, initialProviders]);
 
   if (loading) {
     return (
@@ -85,31 +98,27 @@ export function WatchProviders({ titleId }: { titleId: string }) {
 
   return (
     <div className="surface p-4">
-      <h3 className="section-title mb-4 flex items-center gap-2">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" />
-          <path d="M8 21h8M12 17v4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-        </svg>
-        Yayın Platformları (Türkiye)
-      </h3>
-      <p className="text-xs text-mist-500 mb-4">
-        Birden fazla platformda varsa seçiminize bırakın. Kalite ve link bilgisi platformdan alınmıştır.
+      <h2 className="section-title">Yayın Platformları (Türkiye)</h2>
+      <p className="mt-1 text-[0.7rem] text-mist-500">
+        Birden fazla platformda varsa seçiminize bırakın.
       </p>
-      <div className="space-y-4">
+      <div className="mt-3 space-y-3">
         {MONETIZATION_ORDER.map((mType) => {
           const providers = data[mType];
           if (!providers || providers.length === 0) return null;
           const { label, icon, color } = LABELS[mType];
           return (
-            <section key={mType} className="space-y-2">
+            <section key={mType} className="space-y-1.5">
               <div className="flex items-center gap-2">
                 <span className={color} role="img" aria-label={label}>
                   {icon}
                 </span>
-                <h4 className="font-semibold text-mist-100">{label}</h4>
-                <span className="text-xs text-mist-500">{providers.length} platform</span>
+                <h3 className="text-sm font-semibold text-mist-100">{label}</h3>
+                <span className="text-[0.65rem] text-mist-500">
+                  {providers.length} platform
+                </span>
               </div>
-              <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-1.5">
                 {providers
                   .sort((a, b) => a.displayPriority - b.displayPriority)
                   .map((p) => (

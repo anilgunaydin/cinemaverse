@@ -242,7 +242,7 @@ export function LibraryEditor({
   ].filter(Boolean).length;
 
   return (
-    <div className="surface p-4">
+    <section className="surface p-4">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <h2 className="section-title">Kişisel hafızanız</h2>
@@ -582,6 +582,6 @@ export function LibraryEditor({
           {titleName} · yalnızca size görünür
         </span>
       </div>
-    </div>
+    </section>
   );
 }

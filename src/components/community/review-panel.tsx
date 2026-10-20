@@ -201,7 +201,7 @@ export function ReviewPanel({
           Bu yapım için henüz inceleme yok. İlk incelemeyi siz yazabilirsiniz.
         </p>
       ) : (
-        <ul className="mt-4 flex flex-col divide-y divide-ink-700">
+        <ul className="mt-4 flex max-h-[420px] flex-col divide-y divide-ink-700 overflow-y-auto pr-1">
           {reviews.map((review) => {
             const state = spoilerState(viewer, {
               containsSpoiler: review.containsSpoiler,

@@ -15,16 +15,10 @@ test.describe("AI Sohbet", () => {
 
     await expect(page.locator("h1")).toBeVisible({ timeout: 15000 });
 
-    // AI bolumu ayri sekmede - once sekmeye gec
-    const aiTab = page
-      .locator('nav[aria-label="Yapım sayfası bölümleri"] button:has-text("AI")')
-      .first();
-    await expect(aiTab).toBeVisible({ timeout: 10000 });
-    await aiTab.click();
-    await page.waitForTimeout(500);
-
-    // AI tartışma bölümü görünmeli
-    await expect(page.locator('h2:has-text("AI ile tartış")')).toBeVisible({ timeout: 10000 });
+    // AI tartisma bolumu her zaman gorunur (sekme yok)
+    await expect(page.locator('h2:has-text("AI ile tartış")')).toBeVisible({
+      timeout: 15000,
+    });
 
     // Durum rozeti: AI aciksa saglayici adi, kapaliysa "Kapali" yazmali.
     const status = await page.request.get("/api/ai/status");

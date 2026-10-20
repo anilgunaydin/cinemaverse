@@ -57,31 +57,34 @@ export default function ExternalCommentsSection({
         </p>
       </div>
 
-      {local.length > 0 ? (
-        <div className="mb-4">
-          <h3 className="mb-1 text-sm font-medium text-gold-300">
-            Yerli yorumlar <span className="text-mist-500">({local.length})</span>
-          </h3>
-          <ul>
-            {local.map((item) => (
-              <Chip key={item.id} item={item} />
-            ))}
-          </ul>
-        </div>
-      ) : null}
+      {/* Uzun listeler sayfayi domine etmesin - kart ici kaydirilir */}
+      <div className="max-h-[420px] space-y-4 overflow-y-auto pr-1">
+        {local.length > 0 ? (
+          <div>
+            <h3 className="mb-1 text-sm font-medium text-gold-300">
+              Yerli yorumlar <span className="text-mist-500">({local.length})</span>
+            </h3>
+            <ul>
+              {local.map((item) => (
+                <Chip key={item.id} item={item} />
+              ))}
+            </ul>
+          </div>
+        ) : null}
 
-      {foreign.length > 0 ? (
-        <div>
-          <h3 className="mb-1 text-sm font-medium text-gold-300">
-            Yabancı yorumlar <span className="text-mist-500">({foreign.length})</span>
-          </h3>
-          <ul>
-            {foreign.map((item) => (
-              <Chip key={item.id} item={item} />
-            ))}
-          </ul>
-        </div>
-      ) : null}
+        {foreign.length > 0 ? (
+          <div>
+            <h3 className="mb-1 text-sm font-medium text-gold-300">
+              Yabancı yorumlar <span className="text-mist-500">({foreign.length})</span>
+            </h3>
+            <ul>
+              {foreign.map((item) => (
+                <Chip key={item.id} item={item} />
+              ))}
+            </ul>
+          </div>
+        ) : null}
+      </div>
     </section>
   );
 }

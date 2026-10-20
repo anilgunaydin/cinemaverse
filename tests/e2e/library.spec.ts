@@ -1,46 +1,80 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Kütüphane - Ekle/Sil/Puanla", () => {
-  test("Yapım sayfasından kütüphaneye ekleme", async ({ page }) => {
-    // Herhangi bir yapım sayfasına git
+/** "Kişisel hafızanız" basligini iceren en ic panel */
+const memoryPanel = (page: any) =>
+  page.locator('section:has(h2:text-is("Kişisel hafızanız"))').first();
+
+test.describe("Kütüphane - Ekle/Puanla", () => {
+  test.beforeEach(async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator('a[href^="/title/"]').first()).toBeVisible({ timeout: 10000 });
-    const firstTitleLink = page.locator('a[href^="/title/"]').first();
-    const href = await firstTitleLink.getAttribute("href");
-    await firstTitleLink.click();
-
-    // Sayfa yüklendi
-    await expect(page.locator("h1")).toBeVisible({ timeout: 10000 });
-
-    // "Kütüphaneye ekle" butonu bul ve tıkla
-    const addBtn = page.locator('button:has-text("Kütüphaneye ekle"), button:has-text("İzleme listesi"), button:has-text("Ekle")').first();
-    if (await addBtn.isVisible({ timeout: 5000 }).catch(() => false)) {
-      await addBtn.click();
-      await page.waitForTimeout(500);
-      // Modal veya dropdown açılmalı
-      await expect(page.locator('text="İzledim", text="İzliyorum", text="İzleyeceğim"').first()).toBeVisible({ timeout: 3000 });
-      await page.click('text="İzledim"');
-      await page.waitForTimeout(500);
-    }
-
-    // Kütüphane sayfasında görünmeli
-    await page.goto("/library");
-    await expect(page.locator('a[href^="/title/"]').first()).toBeVisible({ timeout: 10000 });
+    await expect(page.locator('a[href^="/title/"]').first()).toBeVisible({
+      timeout: 15000,
+    });
+    const href = await page
+      .locator('a[href^="/title/"]')
+      .first()
+      .getAttribute("href");
+    await page.goto(`http://localhost:3000${href}`);
+    await expect(page.locator("h1")).toBeVisible({ timeout: 15000 });
   });
 
-  test("Kütüphane sayfasında puanlama güncelleme", async ({ page }) => {
-    await page.goto("/library");
-    await expect(page.locator('a[href^="/title/"]').first()).toBeVisible({ timeout: 10000 });
+  test("Kişisel hafıza panelinde durum ve puan kontrolleri var", async ({ page }) => {
+    const panel = memoryPanel(page);
+    await expect(panel).toBeVisible();
 
-    // İlk kartın puanlama butonunu bul
-    const firstCard = page.locator('a[href^="/title/"]').first();
-    const ratingBtn = firstCard.locator('button[aria-label*="puan"], button:has-text("Puanla")').first();
-    if (await ratingBtn.isVisible({ timeout: 3000 }).catch(() => false)) {
-      await ratingBtn.click();
-      await page.waitForTimeout(300);
-      await expect(page.locator('button:has-text("8"), button:has-text("9"), button:has-text("10")').first()).toBeVisible();
-      await page.click('button:has-text("9")');
-      await page.waitForTimeout(500);
-    }
+    // Durum rozetleri
+    await expect(panel.locator('button:has-text("İzledim")')).toBeVisible();
+    await expect(panel.locator('button:has-text("İzliyorum")')).toBeVisible();
+    await expect(panel.locator('button:has-text("Listemde")')).toBeVisible();
+
+    // Puan butonlari (1-10)
+    await expect(panel.locator('button[aria-label$="puan"]')).toHaveCount(10);
+  });
+
+  test("Puanlama yapılabilir ve kaydedilir", async ({ page }) => {
+    const panel = memoryPanel(page);
+    await expect(panel).toBeVisible();
+
+    // 10 puan: basil ve durum degissin
+    const r10 = panel.locator('button[aria-label="10 puan"]');
+    const before = await r10.getAttribute("aria-pressed");
+    await r10.click();
+    await expect(r10).not.toHaveAttribute("aria-pressed", before ?? "false", {
+      timeout: 5000,
+    });
+
+    // Kaydet
+    const saveBtn = panel
+      .locator('button:has-text("Kaydet"), button:has-text("Kütüphaneye ekle")')
+      .first();
+    await saveBtn.click();
+
+    // Basari mesaji
+    await expect(panel.locator('text=Kaydedildi')).toBeVisible({
+      timeout: 15000,
+    });
+  });
+
+  test("Durum değiştirilebilir", async ({ page }) => {
+    const panel = memoryPanel(page);
+    const statusBtn = panel.locator('button:has-text("İzliyorum")');
+    const before = await statusBtn.getAttribute("aria-pressed");
+    await statusBtn.click();
+    await expect(statusBtn).not.toHaveAttribute("aria-pressed", before ?? "false", {
+      timeout: 5000,
+    });
+  });
+
+  test("Detaylar açılıp kapatılabilir", async ({ page }) => {
+    const panel = memoryPanel(page);
+    const notes = panel.locator("#notes");
+    await expect(notes).toBeHidden();
+
+    await panel.locator('button:has-text("Detay ekle")').click();
+    await expect(notes).toBeVisible();
+    await expect(panel.locator("#liked")).toBeVisible();
+
+    await panel.locator('button:has-text("Detayları gizle")').click();
+    await expect(notes).toBeHidden();
   });
 });

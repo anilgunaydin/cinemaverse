@@ -120,7 +120,7 @@ export function useOfflineQueue() {
   );
 
   const updateLibraryEntry = useCallback(
-    async (entryId: string, updates: { status?: string; rating?: number; notes?: string }) => {
+    async (entryId: string, updates: Record<string, any>) => {
       const { queueLibraryUpdate } = await import("@/lib/offline/queue");
       await queueLibraryUpdate(entryId, updates);
       triggerSync();

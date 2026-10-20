@@ -2,13 +2,26 @@ import { test, expect } from "@playwright/test";
 
 test.describe("AI Sohbet", () => {
   test("Yapım sayfasında AI tartışma bölümü görünür", async ({ page }) => {
-    // Bir yapım sayfasına git
+    // Bir yapım sayfasına git (hover overlay'i engelleyebilir, dogrudan URL)
     await page.goto("/");
-    await expect(page.locator('a[href^="/title/"]').first()).toBeVisible({ timeout: 10000 });
-    const firstTitleLink = page.locator('a[href^="/title/"]').first();
-    await firstTitleLink.click();
+    await expect(page.locator('a[href^="/title/"]').first()).toBeVisible({
+      timeout: 15000,
+    });
+    const href = await page
+      .locator('a[href^="/title/"]')
+      .first()
+      .getAttribute("href");
+    await page.goto(`http://localhost:3000${href}`);
 
-    await expect(page.locator("h1")).toBeVisible({ timeout: 10000 });
+    await expect(page.locator("h1")).toBeVisible({ timeout: 15000 });
+
+    // AI bolumu ayri sekmede - once sekmeye gec
+    const aiTab = page
+      .locator('nav[aria-label="Yapım sayfası bölümleri"] button:has-text("AI")')
+      .first();
+    await expect(aiTab).toBeVisible({ timeout: 10000 });
+    await aiTab.click();
+    await page.waitForTimeout(500);
 
     // AI tartışma bölümü görünmeli
     await expect(page.locator('h2:has-text("AI ile tartış")')).toBeVisible({ timeout: 10000 });

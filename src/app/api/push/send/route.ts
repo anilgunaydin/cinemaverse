@@ -5,11 +5,26 @@ import { pushSubscriptions } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import webPush from "web-push";
 
-const VAPID_PUBLIC_KEY = process.env.VAPID_PUBLIC_KEY!;
-const VAPID_PRIVATE_KEY = process.env.VAPID_PRIVATE_KEY!;
-const VAPID_SUBJECT = process.env.VAPID_SUBJECT!;
+/**
+ * VAPID ayarlari build-time'da degil, istek aninda yapilir.
+ * Boylece CI/build ortaminda VAPID_KEY olmasa da build kirilmaz.
+ */
+function configureVapid(): { ok: true } | { ok: false; error: string } {
+  const publicKey = process.env.VAPID_PUBLIC_KEY;
+  const privateKey = process.env.VAPID_PRIVATE_KEY;
+  const subject = process.env.VAPID_SUBJECT;
 
-webPush.setVapidDetails(VAPID_SUBJECT, VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY);
+  if (!publicKey || !privateKey || !subject) {
+    return { ok: false, error: "VAPID keys yapılandırılmamış." };
+  }
+
+  try {
+    webPush.setVapidDetails(subject, publicKey, privateKey);
+    return { ok: true };
+  } catch (e: any) {
+    return { ok: false, error: e.message };
+  }
+}
 
 export async function POST(req: NextRequest) {
   const user = await getCurrentUser();
@@ -18,6 +33,11 @@ export async function POST(req: NextRequest) {
   // Only admin can send notifications
   if (user.role !== "admin" && user.role !== "moderator") {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
+  const vapid = configureVapid();
+  if (!vapid.ok) {
+    return NextResponse.json({ error: vapid.error }, { status: 503 });
   }
 
   try {

@@ -82,6 +82,11 @@ jobs:
         run: npx next build
         env:
           NEXT_TELEMETRY_DISABLED: 1
+          # CI ortaminda gizli anahtar olmasa da build kirilmamali.
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET || 'ci-build-only-not-a-real-secret' }}
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY || '' }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY || '' }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT || '' }}
 
   e2e-tests:
     name: E2E Tests (Playwright)
@@ -108,14 +113,23 @@ jobs:
         run: npx next build
         env:
           NEXT_TELEMETRY_DISABLED: 1
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET || 'ci-build-only-not-a-real-secret' }}
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY || '' }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY || '' }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT || '' }}
+
+      - name: Prepare test database
+        run: |
+          npx tsx scripts/apply-migrations.ts
+          npx tsx scripts/seed-ci.ts
 
       - name: Start dev server
         run: |
           nohup npm run dev > dev.log 2>&1 &
           echo $! > dev.pid
-          sleep 10
-          curl -f http://localhost:3000/api/health || sleep 5
-          curl -f http://localhost:3000/api/health || exit 1
+          sleep 15
+          curl -f http://localhost:3000/api/health || sleep 10
+          curl -f http://localhost:3000/api/health || { cat dev.log; exit 1; }
 
       - name: Run Playwright tests
         run: npx playwright test --reporter=github
@@ -157,14 +171,23 @@ jobs:
         run: npx next build
         env:
           NEXT_TELEMETRY_DISABLED: 1
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET || 'ci-build-only-not-a-real-secret' }}
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY || '' }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY || '' }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT || '' }}
+
+      - name: Prepare test database
+        run: |
+          npx tsx scripts/apply-migrations.ts
+          npx tsx scripts/seed-ci.ts
 
       - name: Start dev server
         run: |
           nohup npm run dev > dev.log 2>&1 &
           echo $! > dev.pid
-          sleep 10
-          curl -f http://localhost:3000/api/health || sleep 5
-          curl -f http://localhost:3000/api/health || exit 1
+          sleep 15
+          curl -f http://localhost:3000/api/health || sleep 10
+          curl -f http://localhost:3000/api/health || { cat dev.log; exit 1; }
 
       - name: Run verify-modules
         run: node scripts/verify-modules.mjs http://localhost:3000

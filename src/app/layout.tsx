@@ -8,6 +8,9 @@ export const metadata: Metadata = {
     default: "CinemaVerse — Kişisel Sinema Hafızası",
     template: "%s · CinemaVerse",
   },
+  metadataBase: new URL(
+    process.env.APP_URL?.trim() || "http://localhost:3000"
+  ),
   description:
     "İzlediğiniz filmleri ve dizileri kaydedin, zevkinize göre açıklanabilir öneriler alın, kaynaklı eleştiri araştırması yapın.",
   manifest: "/manifest.json",

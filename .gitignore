@@ -48,6 +48,7 @@ next-env.d.ts
 /data/backups/
 /data/exports/
 /data/uploads/
+/data/*.log
 
 # test ciktlari
 /test-results/

@@ -64,8 +64,8 @@ record("Kayit olusturma", register.status === 201, `HTTP ${register.status}`);
 const aiStatus = await call("/api/ai/status");
 record(
   "AI durumu okundu ve Ollama etkin",
-  aiStatus.status === 200 && aiStatus.json?.enabled === false,
-  `provider=${aiStatus.json?.provider}`,
+  aiStatus.status === 200 && aiStatus.json?.enabled === true && aiStatus.json?.provider === "ollama",
+  `provider=${aiStatus.json?.provider}, enabled=${aiStatus.json?.enabled}`,
 );
 
 // Arama + ice aktarma (gercek Wikidata)
@@ -119,7 +119,7 @@ if (titleId) {
   record("Topluluk akisi calisiyor", publicList.status === 200, `${publicList.json?.items?.length ?? 0} kayit`);
 }
 
-// AI tartismasi: kapali oldugu icin mesaj 409 donmeli
+// AI tartismasi: acik oldugu icin mesaj calismali (200/201)
 const conversation = await call("/api/ai/conversations", {
   method: "POST",
   body: JSON.stringify({ titleId, heading: "Test tartisma", spoilerMode: "none" }),
@@ -133,8 +133,8 @@ if (conversationId) {
     body: JSON.stringify({ content: "Merhaba, filmi anlat." }),
   });
   record(
-    "AI kapaliyken mesaj reddedildi (ai_disabled)",
-    message.status === 409 && message.json?.code === "ai_disabled",
+    "AI acikken mesaj kabul edildi",
+    message.status === 200 || message.status === 201,
     `HTTP ${message.status}`,
   );
 }

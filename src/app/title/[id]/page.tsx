@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { WatchProviders } from "@/components/catalog/watch-providers";
 import { AppHeader } from "@/components/layout/app-header";
 import { LibraryEditor } from "@/components/library/library-editor";
 import { ResearchPanel } from "@/components/research/research-panel";
@@ -431,6 +432,9 @@ export default async function TitlePage({
               <TrailerSection trailerUrl={title.trailerUrl} />
             </div>
           ) : null}
+          <div className="mb-8">
+            <WatchProviders titleId={title.id} />
+          </div>
           {externalComments.total > 0 ? (
             <div className="mb-8">
               <ExternalCommentsSection

@@ -805,6 +805,50 @@ export const pushSubscriptions = sqliteTable(
   ],
 );
 
+/* -------------------------------------------------------------------------- */
+/* Yayın platformları (Türkiye)                                               */
+/* -------------------------------------------------------------------------- */
+
+export const watchProviders = sqliteTable(
+  "watch_providers",
+  {
+    id: integer("id").primaryKey(), // TMDb provider ID
+    name: text("name").notNull(),
+    logoPath: text("logo_path"), // TMDb logo path
+    displayPriority: integer("display_priority"),
+    /** flatrate | rent | buy | free | ads */
+    monetizationTypes: text("monetization_types").notNull().default("[]"), // JSON array
+    createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+    updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  },
+  (t) => [index("watch_providers_name_idx").on(t.name)],
+);
+
+export const titleWatchProviders = sqliteTable(
+  "title_watch_providers",
+  {
+    id: text("id").primaryKey(),
+    titleId: text("title_id").notNull(),
+    providerId: integer("provider_id").notNull(),
+    /** flatrate | rent | buy | free | ads */
+    monetizationType: text("monetization_type", {
+      enum: ["flatrate", "rent", "buy", "free", "ads"],
+    }).notNull(),
+    /** Platformdaki link (deep link veya web URL) */
+    link: text("link"),
+    /** Kalite: 4k | hd | sd */
+    quality: text("quality"),
+    /** Bölge kodu (TR) */
+    region: text("region").notNull().default("TR"),
+    lastChecked: text("last_checked").notNull().default(sql`CURRENT_TIMESTAMP`),
+  },
+  (t) => [
+    uniqueIndex("title_watch_providers_unique").on(t.titleId, t.providerId, t.monetizationType),
+    index("title_watch_providers_title_idx").on(t.titleId),
+    index("title_watch_providers_provider_idx").on(t.providerId),
+  ],
+);
+
 export const schemaMeta = sqliteTable("schema_meta", {
   key: text("key").primaryKey(),
   value: text("value").notNull(),

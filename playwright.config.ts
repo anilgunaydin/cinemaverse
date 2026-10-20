@@ -4,14 +4,16 @@ export default defineConfig({
   testDir: "./tests/e2e",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  retries: process.env.CI ? 2 : 1,
+  workers: process.env.CI ? 1 : 2,
   reporter: "html",
   use: {
     baseURL: "http://localhost:3000",
     trace: "on-first-retry",
     screenshot: "only-on-failure",
     video: "retain-on-failure",
+    actionTimeout: 15000,
+    navigationTimeout: 30000,
   },
   projects: [
     {
@@ -19,7 +21,7 @@ export default defineConfig({
       testMatch: /auth\.setup\.ts/,
       use: {
         baseURL: "http://localhost:3000",
-        storageState: undefined, // No storage state for setup
+        storageState: undefined,
       },
     },
     {

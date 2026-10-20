@@ -1,0 +1,17 @@
+import Database from "better-sqlite3";
+const db = new Database("data/cinemaverse.db", { readonly: true });
+const c = (sql) => db.prepare(sql).get().c;
+console.log("== credits =="); 
+console.log("credits toplam:", c("SELECT COUNT(*) c FROM credits"));
+console.log("credits'li title:", c("SELECT COUNT(DISTINCT title_id) c FROM credits"));
+console.log("role dagilimi:", JSON.stringify(db.prepare("SELECT role, COUNT(*) c FROM credits GROUP BY role").all()));
+console.log("== externalRating ==");
+console.log("puanli:", c("SELECT COUNT(*) c FROM titles WHERE kind IN ('movie','series') AND external_rating IS NOT NULL"), "/ ", c("SELECT COUNT(*) c FROM titles WHERE kind IN ('movie','series')"));
+console.log("kaynak dagilimi:", JSON.stringify(db.prepare("SELECT external_rating_source s, COUNT(*) c FROM titles GROUP BY s").all()));
+console.log("== genres ==");
+console.log(JSON.stringify(db.prepare("SELECT id, slug, name_tr FROM genres ORDER BY slug").all()));
+console.log("title_genres satir:", c("SELECT COUNT(*) c FROM title_genres"));
+console.log("genre'siz title:", c("SELECT COUNT(*) c FROM titles t WHERE t.kind IN ('movie','series') AND NOT EXISTS (SELECT 1 FROM title_genres g WHERE g.title_id = t.id)"));
+console.log("== people ==");
+console.log("people toplam:", c("SELECT COUNT(*) c FROM people"));
+db.close();

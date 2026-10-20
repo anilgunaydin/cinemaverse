@@ -62,10 +62,19 @@ const register = await call("/api/auth/register", {
 record("Kayit olusturma", register.status === 201, `HTTP ${register.status}`);
 
 const aiStatus = await call("/api/ai/status");
+const aiEnabled = aiStatus.json?.enabled === true;
 record(
-  "AI durumu okundu ve Ollama etkin",
-  aiStatus.status === 200 && aiStatus.json?.enabled === true && aiStatus.json?.provider === "ollama",
+  "AI durumu okundu",
+  aiStatus.status === 200 && typeof aiStatus.json?.enabled === "boolean",
   `provider=${aiStatus.json?.provider}, enabled=${aiStatus.json?.enabled}`,
+);
+// Ollama ortamda yoksa AI kapalı olmalı; varsa etkin ve ollama olmalı.
+record(
+  "AI saglayici durumu tutarli",
+  aiEnabled
+    ? aiStatus.json?.provider === "ollama"
+    : aiStatus.json?.provider === "none",
+  `provider=${aiStatus.json?.provider}`,
 );
 
 // Arama + ice aktarma (gercek Wikidata)
@@ -132,11 +141,20 @@ if (conversationId) {
     method: "POST",
     body: JSON.stringify({ content: "Merhaba, filmi anlat." }),
   });
-  record(
-    "AI acikken mesaj kabul edildi",
-    message.status === 200 || message.status === 201,
-    `HTTP ${message.status}`,
-  );
+  if (aiEnabled) {
+    record(
+      "AI acikken mesaj kabul edildi",
+      message.status === 200 || message.status === 201,
+      `HTTP ${message.status}`,
+    );
+  } else {
+    // AI kapaliyken mesaj reddedilmeli ve hicbir veri gonderilmemeli.
+    record(
+      "AI kapaliyken mesaj reddedildi (ai_disabled)",
+      message.status === 409 && message.json?.code === "ai_disabled",
+      `HTTP ${message.status}`,
+    );
+  }
 }
 
 // Arastirma (Wikipedia; gercek ag istegi)

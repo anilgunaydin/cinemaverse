@@ -1,5 +1,4 @@
-/* Service Worker - Workbox (auto-generated at build time via next-pwa or manual) */
-/* This is a minimal manual SW for offline-first static assets + network-first API */
+/* Service Worker - CinemaVerse PWA with Offline Sync */
 
 const CACHE_NAME = "cinemaverse-v1";
 const STATIC_ASSETS = [
@@ -14,7 +13,10 @@ const STATIC_ASSETS = [
   "/manifest.json",
 ];
 
-// Install: precache static assets
+const API_BASE = "/api";
+
+/* ---------- Install / Activate ---------- */
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -24,7 +26,6 @@ self.addEventListener("install", (event) => {
   self.skipWaiting();
 });
 
-// Activate: clean old caches
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
@@ -36,15 +37,13 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
-// Fetch: network-first for API, cache-first for static
+/* ---------- Fetch ---------- */
+
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Skip non-GET
   if (request.method !== "GET") return;
-
-  // Skip chrome-extension, etc.
   if (!url.protocol.startsWith("http")) return;
 
   // API routes: network-first, fallback to cache
@@ -76,7 +75,6 @@ self.addEventListener("fetch", (event) => {
           return response;
         })
         .catch(() => {
-          // Offline fallback for navigation
           if (request.mode === "navigate") {
             return caches.match("/");
           }
@@ -85,7 +83,8 @@ self.addEventListener("fetch", (event) => {
   );
 });
 
-// Background sync for offline actions (optional)
+/* ---------- Background Sync ---------- */
+
 self.addEventListener("sync", (event) => {
   if (event.tag === "sync-library") {
     event.waitUntil(syncLibrary());
@@ -93,11 +92,141 @@ self.addEventListener("sync", (event) => {
 });
 
 async function syncLibrary() {
-  // Implement offline library sync if needed
-  console.log("Background sync: library");
+  console.log("[SW] Background sync: sync-library started");
+
+  // Get all clients to send messages
+  const clients = await self.clients.matchAll({ type: "window", includeUncontrolled: true });
+
+  // Send start message
+  clients.forEach((client) => {
+    client.postMessage({ type: "sync:start" });
+  });
+
+  try {
+    // In a real implementation, we would read from IndexedDB here
+    // Since SW can't directly access client's IndexedDB, we use postMessage
+    // The client will respond with queued actions
+    clients.forEach((client) => {
+      client.postMessage({ type: "sync:getActions" });
+    });
+
+    // Wait for responses (with timeout)
+    await new Promise<void>((resolve) => {
+      let resolved = false;
+      const timeout = setTimeout(() => {
+        if (!resolved) {
+          resolved = true;
+          resolve();
+        }
+      }, 10000);
+
+      const messageHandler = async (messageEvent: ExtendableMessageEvent) => {
+        if (messageEvent.data?.type === "sync:actions") {
+          const actions = messageEvent.data.actions;
+          if (actions && actions.length > 0) {
+            await processActions(actions);
+          }
+          if (!resolved) {
+            resolved = true;
+            clearTimeout(timeout);
+            self.removeEventListener("message", messageHandler);
+            resolve();
+          }
+        }
+      };
+
+      self.addEventListener("message", messageHandler);
+    });
+
+    // Send completion message
+    clients.forEach((client) => {
+      client.postMessage({ type: "sync:complete" });
+    });
+
+    console.log("[SW] Background sync: completed");
+  } catch (error) {
+    console.error("[SW] Background sync failed:", error);
+    clients.forEach((client) => {
+      client.postMessage({ type: "sync:error", error: String(error) });
+    });
+  }
 }
 
-// Push notifications (requires VAPID keys)
+async function processActions(actions: any[]) {
+  for (const action of actions) {
+    try {
+      await sendActionToAPI(action);
+      // Notify client to remove from queue
+      const clients = await self.clients.matchAll({ type: "window" });
+      clients.forEach((client) => {
+        client.postMessage({ type: "sync:removeAction", id: action.id });
+      });
+    } catch (error) {
+      console.error(`[SW] Failed to process action ${action.id}:`, error);
+      // Increment retry count via client
+      const clients = await self.clients.matchAll({ type: "window" });
+      clients.forEach((client) => {
+        client.postMessage({ type: "sync:retryAction", id: action.id });
+      });
+    }
+  }
+}
+
+async function sendActionToAPI(action: any): Promise<Response> {
+  const baseUrl = self.location.origin;
+  let url: string;
+  let method: string;
+  let body: any;
+
+  switch (action.type) {
+    case "library_add":
+      url = `${API_BASE}/library`;
+      method = "POST";
+      body = action.payload;
+      break;
+    case "library_update":
+      url = `${API_BASE}/library/${action.payload.entryId}`;
+      method = "PATCH";
+      body = action.payload.updates;
+      break;
+    case "library_delete":
+      url = `${API_BASE}/library/${action.payload.entryId}`;
+      method = "DELETE";
+      body = null;
+      break;
+    case "rating":
+      url = `${API_BASE}/library/rating`;
+      method = "POST";
+      body = action.payload;
+      break;
+    case "status":
+      url = `${API_BASE}/library/status`;
+      method = "POST";
+      body = action.payload;
+      break;
+    default:
+      throw new Error(`Unknown action type: ${action.type}`);
+  }
+
+  const response = await fetch(url, {
+    method,
+    headers: {
+      "Content-Type": "application/json",
+      // Include credentials for session
+    },
+    credentials: "include",
+    body: body ? JSON.stringify(body) : undefined,
+  });
+
+  if (!response.ok) {
+    throw new Error(`API error: ${response.status} ${response.statusText}`);
+  }
+
+  return response;
+}
+
+/* ---------- Push Notifications ---------- */
+
 self.addEventListener("push", (event) => {
   if (!event.data) return;
   const data = event.data.json();
@@ -107,7 +236,7 @@ self.addEventListener("push", (event) => {
     badge: "/icons/icon-72.png",
     vibrate: [100, 50, 100],
     data: { url: data.url || "/" },
-    actions: data.actions || [],
+    actions: data.actions || [{ action: "open", title: "Aç" }],
   };
   event.waitUntil(self.registration.showNotification(data.title, options));
 });

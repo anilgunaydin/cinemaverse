@@ -1,10 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 import { WATCH_STATUS_LABELS } from "@/lib/library/labels";
 import type { WatchStatus } from "@/lib/db/schema";
+import { useOfflineQueue } from "@/hooks/useBackgroundSync";
+import { isOnline } from "@/lib/offline/online";
 
 type Entry = {
   id: string;
@@ -70,6 +72,22 @@ export function LibraryEditor({
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [online, setOnline] = useState(true);
+
+  const { addLibraryEntry, updateLibraryEntry, deleteLibraryEntry } =
+    useOfflineQueue();
+
+  useEffect(() => {
+    setOnline(navigator.onLine);
+    const handleOnline = () => setOnline(true);
+    const handleOffline = () => setOnline(false);
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
 
   async function handleSave() {
     if (!isLoggedIn) {
@@ -81,24 +99,40 @@ export function LibraryEditor({
     setMessage(null);
     setError(null);
 
+    const payload = {
+      titleId,
+      status,
+      rating,
+      notes: notes.trim() || undefined,
+      likedAspects: likedAspects.trim() || undefined,
+      dislikedAspects: dislikedAspects.trim() || undefined,
+      memorableScenes: memorableScenes.trim() || undefined,
+      watchedPeriod: watchedPeriod.trim() || undefined,
+      rewatchIntent: rewatchIntent || undefined,
+      progressSeason: progressSeason === "" ? undefined : Number(progressSeason),
+      progressEpisode: progressEpisode === "" ? undefined : Number(progressEpisode),
+      isFavorite,
+    };
+
     try {
+      if (!online) {
+        // Queue for later sync
+        if (entry) {
+          await updateLibraryEntry(entry.id, {
+            ...payload,
+            rating: payload.rating ?? undefined,
+          });
+        } else {
+          await addLibraryEntry(titleId, status, rating ?? undefined);
+        }
+        setMessage("Çevrimdışı — online olduğunda senklenecek.");
+        return;
+      }
+
       const response = await fetch("/api/library", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          titleId,
-          status,
-          rating,
-          notes: notes.trim() ? notes : null,
-          likedAspects: likedAspects.trim() ? likedAspects : null,
-          dislikedAspects: dislikedAspects.trim() ? dislikedAspects : null,
-          memorableScenes: memorableScenes.trim() ? memorableScenes : null,
-          watchedPeriod: watchedPeriod.trim() ? watchedPeriod : null,
-          rewatchIntent: rewatchIntent || null,
-          progressSeason: progressSeason === "" ? null : Number(progressSeason),
-          progressEpisode: progressEpisode === "" ? null : Number(progressEpisode),
-          isFavorite,
-        }),
+        body: JSON.stringify(payload),
       });
 
       const data = (await response.json()) as { error?: string };
@@ -110,7 +144,16 @@ export function LibraryEditor({
       setMessage("Kaydedildi.");
       router.refresh();
     } catch {
-      setError("Sunucuya ulaşılamadı.");
+      // If network error, queue for later
+      if (entry) {
+        await updateLibraryEntry(entry.id, {
+          ...payload,
+          rating: payload.rating ?? undefined,
+        });
+      } else {
+        await addLibraryEntry(titleId, status, rating ?? undefined);
+      }
+      setMessage("Kaydedildi (offline kuyruğa alındı).");
     } finally {
       setSaving(false);
     }
@@ -121,6 +164,12 @@ export function LibraryEditor({
     setSaving(true);
     setError(null);
     try {
+      if (!online) {
+        await deleteLibraryEntry(entry.id);
+        setMessage("Çevrimdışı — online olduğunda silinecek.");
+        return;
+      }
+
       const response = await fetch(`/api/library?entryId=${entry.id}`, {
         method: "DELETE",
       });
@@ -132,7 +181,8 @@ export function LibraryEditor({
       setMessage("Kütüphaneden çıkarıldı.");
       router.refresh();
     } catch {
-      setError("Sunucuya ulaşılamadı.");
+      await deleteLibraryEntry(entry.id);
+      setMessage("Silme işlemi kuyruğa alındı.");
     } finally {
       setSaving(false);
     }
@@ -182,6 +232,17 @@ export function LibraryEditor({
           </svg>
         </button>
       </div>
+
+      {/* Online/Offline indicator */}
+      {!online && (
+        <div className="mt-3 p-3 rounded-lg bg-amber-500/20 border border-amber-500/40 flex items-center gap-2 text-amber-300 text-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <line x1="1" y1="1" x2="23" y2="23" />
+            <path d="M16.72 11.06A10.94 10.94 0 0 1 12 18.79a10.94 10.94 0 0 1-4.72-7.73" />
+          </svg>
+          <span>Çevrimdışı — değişiklikler online olduğunda senklenecek</span>
+        </div>
+      )}
 
       <div className="mt-4">
         <span className="label">İzleme durumu</span>

@@ -33,7 +33,12 @@ test.describe("Yapım Sayfası - Bento Grid", () => {
     ).toHaveCount(0);
 
     // Ana bölümler görünür olmalı
-    for (const heading of ["Konu", "Kişisel hafızanız", "Ekip", "Fragman"]) {
+    for (const heading of [
+      "Konu",
+      "Ekip",
+      "Değerlendirmen",
+      "Fragman",
+    ]) {
       await expect(
         page.locator(`h2:has-text("${heading}"), h3:has-text("${heading}")`).first()
       ).toBeVisible({ timeout: 10000 });
@@ -82,14 +87,17 @@ test.describe("Yapım Sayfası - Bento Grid", () => {
 
   test("Kişisel hafıza kompakt - detaylar gizli başlar", async ({ page }) => {
     const panel = page
-      .locator('section:has(h2:text-is("Kişisel hafızanız"))')
+      .locator('section:has(h2:text-is("Değerlendirmen"))')
       .first();
     await expect(panel).toBeVisible();
 
     const notes = panel.locator("#notes");
-    await expect(notes).toBeHidden();
+    await expect(notes).toBeVisible();
+
+    // Detay alanlari gizli baslamali
+    await expect(panel.locator("#liked")).toBeHidden();
 
     await panel.locator('button:has-text("Detay ekle")').click();
-    await expect(notes).toBeVisible({ timeout: 3000 });
+    await expect(panel.locator("#liked")).toBeVisible({ timeout: 3000 });
   });
 });

@@ -3,10 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { AppHeader } from "@/components/layout/app-header";
-import { LibraryEditor } from "@/components/library/library-editor";
+import { EvaluationCard } from "@/components/catalog/evaluation-card";
 import { ResearchPanel } from "@/components/research/research-panel";
 import { AiDiscussion } from "@/components/ai/ai-discussion";
-import { ReviewPanel } from "@/components/community/review-panel";
 import { ThreadList } from "@/components/community/thread-list";
 import { loadTitlePageData } from "@/lib/catalog/page-data";
 import { getCurrentUser } from "@/lib/auth/current-user";
@@ -226,52 +225,38 @@ export default async function TitlePage({
             </div>
           </section>
 
-          {/* Kişisel hafıza + İncelemeler - tek kart (kullanicinin katkisi) */}
-          <section className="surface p-4 lg:col-span-2">
-            <div className="grid gap-5 md:grid-cols-2 md:divide-x md:divide-ink-700">
-              <LibraryEditor
-                inline
-                titleId={title.id}
-                titleName={displayTitle}
-                isSeries={title.kind === "series"}
-                isLoggedIn={Boolean(user)}
-                entry={
-                  userEntry
-                    ? {
-                        id: userEntry.id,
-                        status: userEntry.status,
-                        rating: userEntry.rating,
-                        watchedAt: userEntry.watchedAt,
-                        watchedPeriod: userEntry.watchedPeriod,
-                        notes: userEntry.notes,
-                        likedAspects: userEntry.likedAspects,
-                        dislikedAspects: userEntry.dislikedAspects,
-                        memorableScenes: userEntry.memorableScenes,
-                        rewatchIntent: userEntry.rewatchIntent,
-                        progressSeason: userEntry.progressSeason,
-                        progressEpisode: userEntry.progressEpisode,
-                        isFavorite: userEntry.isFavorite,
-                      }
-                    : null
-                }
-              />
-
-              <ReviewPanel
-                inline
-                titleId={title.id}
-                titleName={displayTitle}
-                isSeries={title.kind === "series"}
-                isLoggedIn={Boolean(user)}
-                viewerId={user?.id ?? null}
-                viewer={{
-                  status: userEntry?.status ?? null,
-                  season: userEntry?.progressSeason ?? null,
-                  episode: userEntry?.progressEpisode ?? null,
-                }}
-                initialReviews={reviews}
-              />
-            </div>
-          </section>
+          {/* Değerlendirmen: kişisel hafıza + incelemen + topluluk incelemeleri */}
+          <EvaluationCard
+            titleId={title.id}
+            titleName={displayTitle}
+            isSeries={title.kind === "series"}
+            entry={
+              userEntry
+                ? {
+                    id: userEntry.id,
+                    status: userEntry.status,
+                    rating: userEntry.rating,
+                    watchedAt: userEntry.watchedAt,
+                    watchedPeriod: userEntry.watchedPeriod,
+                    notes: userEntry.notes,
+                    likedAspects: userEntry.likedAspects,
+                    dislikedAspects: userEntry.dislikedAspects,
+                    memorableScenes: userEntry.memorableScenes,
+                    rewatchIntent: userEntry.rewatchIntent,
+                    progressSeason: userEntry.progressSeason,
+                    progressEpisode: userEntry.progressEpisode,
+                    isFavorite: userEntry.isFavorite,
+                  }
+                : null
+            }
+            viewer={{
+              userId: user?.id ?? "",
+              status: userEntry?.status ?? null,
+              season: userEntry?.progressSeason ?? null,
+              episode: userEntry?.progressEpisode ?? null,
+            }}
+            initialReviews={reviews}
+          />
 
           {/* Fragman */}
           {title.trailerUrl ? (

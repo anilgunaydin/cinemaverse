@@ -47,6 +47,18 @@ export default async function ProfilePage() {
         </div>
 
         <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <Link href="/wrapped" className="surface-flat px-3 py-3 group hover:border-gold-500/40 transition-colors">
+            <p className="text-[0.65rem] uppercase tracking-wider text-mist-500">Sinema Wrapped</p>
+            <p className="text-xl font-semibold text-mist-100 group-hover:text-gold-300 transition-colors">
+              Yıl özeti
+            </p>
+          </Link>
+          <Link href="/karakter" className="surface-flat px-3 py-3 group hover:border-gold-500/40 transition-colors">
+            <p className="text-[0.65rem] uppercase tracking-wider text-mist-500">Sinema Karakterin</p>
+            <p className="text-xl font-semibold text-mist-100 group-hover:text-gold-300 transition-colors">
+              AI profili
+            </p>
+          </Link>
           <div className="surface-flat px-3 py-3">
             <p className="text-[0.65rem] uppercase tracking-wider text-mist-500">
               Kütüphane

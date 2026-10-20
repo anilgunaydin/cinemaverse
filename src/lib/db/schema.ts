@@ -784,6 +784,27 @@ export const auditLog = sqliteTable(
   (t) => [index("audit_log_user_idx").on(t.userId)],
 );
 
+/* -------------------------------------------------------------------------- */
+/* Web Push bildirim abonelikleri                                             */
+/* -------------------------------------------------------------------------- */
+
+export const pushSubscriptions = sqliteTable(
+  "push_subscriptions",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id").notNull(),
+    /** JSON: { endpoint, keys: { p256dh, auth } } */
+    subscriptionJson: text("subscription_json").notNull(),
+    /** Kullanici tarayici/cihaz bilgisi (opsiyonel). */
+    userAgent: text("user_agent"),
+    createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  },
+  (t) => [
+    index("push_subscriptions_user_idx").on(t.userId),
+    uniqueIndex("push_subscriptions_endpoint_unique").on(t.userId, t.subscriptionJson),
+  ],
+);
+
 export const schemaMeta = sqliteTable("schema_meta", {
   key: text("key").primaryKey(),
   value: text("value").notNull(),

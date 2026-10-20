@@ -66,8 +66,6 @@ export function TitleHero({
     if (d !== 0) return d;
     return a.displayPriority - b.displayPriority;
   });
-  const primaryProviders = sortedProviders.slice(0, 5);
-  const extraProviders = sortedProviders.length - primaryProviders.length;
 
   return (
     <section className="relative overflow-hidden rounded-2xl border border-ink-700 bg-ink-900">
@@ -201,64 +199,55 @@ export function TitleHero({
             />
           </div>
 
-          {/* Platformlar + aksiyonlar */}
-          <div className="mt-3 flex flex-wrap items-center gap-2">
-            {primaryProviders.map((provider) => {
-              const meta = MONETIZATION_LABELS[provider.monetizationType];
-              return (
-                <a
-                  key={`${provider.providerId}-${provider.monetizationType}`}
-                  href={provider.link ?? "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={`${provider.name} - ${meta.label}`}
-                  className="group flex items-center gap-1.5 rounded-lg border border-ink-600 bg-ink-800/80 py-1 pl-1 pr-2 transition-colors hover:border-gold-500/50"
-                >
-                  {provider.logoPath ? (
-                    <Image
-                      src={`https://image.tmdb.org/t/p/w92${provider.logoPath}`}
-                      alt=""
-                      width={20}
-                      height={20}
-                      className="h-5 w-5 rounded object-contain"
-                      unoptimized
-                    />
-                  ) : (
-                    <span className="grid h-5 w-5 place-items-center text-[0.6rem] text-mist-400">
-                      {provider.name.slice(0, 1)}
-                    </span>
-                  )}
-                  <span className="text-[0.7rem] text-mist-300 group-hover:text-mist-100">
-                    {provider.name}
-                  </span>
-                  <span className="text-[0.62rem] text-mist-500">
-                    {meta.short}
-                  </span>
-                </a>
-              );
-            })}
-            {extraProviders > 0 && (
-              <span
-                className="rounded-lg border border-ink-700 bg-ink-800/60 px-2 py-1 text-[0.7rem] text-mist-400"
-                title={sortedProviders
-                  .slice(5)
-                  .map((p) => `${p.name} (${MONETIZATION_LABELS[p.monetizationType].short})`)
-                  .join(", ")}
-              >
-                +{extraProviders} platform
-              </span>
-            )}
+          {/* Yayin platformlari - hepsi burada, tek yerde */}
+          {sortedProviders.length > 0 ? (
+            <div className="mt-3">
+              <p className="label">Türkiye'de nerede izlenir</p>
+              <div className="mt-1 flex flex-wrap gap-1.5">
+                {sortedProviders.map((provider) => {
+                  const meta = MONETIZATION_LABELS[provider.monetizationType];
+                  return (
+                    <a
+                      key={`${provider.providerId}-${provider.monetizationType}`}
+                      href={provider.link ?? "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`${provider.name} — ${meta.label}${
+                        provider.quality ? ` (${provider.quality.toUpperCase()})` : ""
+                      }`}
+                      className="group flex items-center gap-1.5 rounded-lg border border-ink-600 bg-ink-800/80 py-1 pl-1 pr-2 transition-colors hover:border-gold-500/50"
+                    >
+                      {provider.logoPath ? (
+                        <Image
+                          src={`https://image.tmdb.org/t/p/w92${provider.logoPath}`}
+                          alt=""
+                          width={20}
+                          height={20}
+                          className="h-5 w-5 rounded object-contain"
+                          unoptimized
+                        />
+                      ) : (
+                        <span className="grid h-5 w-5 place-items-center text-[0.6rem] text-mist-400">
+                          {provider.name.slice(0, 1)}
+                        </span>
+                      )}
+                      <span className="text-[0.7rem] leading-none text-mist-300 group-hover:text-mist-100">
+                        {provider.name}
+                      </span>
+                      <span className="text-[0.62rem] leading-none text-mist-500">
+                        {meta.short}
+                      </span>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          ) : null}
 
-            <span className="mx-1 hidden h-6 w-px bg-ink-700 sm:block" />
+          {/* Aksiyonlar + kaynak linkleri */}
+          <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[0.68rem] text-mist-500">
+            <AddToListButton titleId={title.id} userId={userId} />
 
-            <AddToListButton
-              titleId={title.id}
-              userId={userId}
-            />
-          </div>
-
-          {/* Kaynak linkleri */}
-          <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.68rem] text-mist-500">
             {title.metadataProvider && (
               <span>
                 Kaynak:{" "}

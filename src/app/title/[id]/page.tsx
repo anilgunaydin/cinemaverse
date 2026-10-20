@@ -8,7 +8,6 @@ import { ResearchPanel } from "@/components/research/research-panel";
 import { AiDiscussion } from "@/components/ai/ai-discussion";
 import { ReviewPanel } from "@/components/community/review-panel";
 import { ThreadList } from "@/components/community/thread-list";
-import { WatchProviders } from "@/components/catalog/watch-providers";
 import { loadTitlePageData } from "@/lib/catalog/page-data";
 import { getCurrentUser } from "@/lib/auth/current-user";
 import { getAiStatus } from "@/lib/ai/provider";
@@ -18,7 +17,7 @@ import { listReviewsForTitle } from "@/lib/community/reviews";
 import { listExternalComments } from "@/lib/community/external-comments";
 import { listThreads } from "@/lib/community/discussions";
 import { getFranchisesForTitle } from "@/lib/community/franchises";
-import { getWatchProviders, groupWatchProviders } from "@/lib/watch-providers/service";
+import { getWatchProviders } from "@/lib/watch-providers/service";
 import { TitleHero } from "./title-hero";
 import ExternalCommentsSection from "./external-comments-section";
 import TrailerSection from "./trailer-section";
@@ -250,12 +249,6 @@ export default async function TitlePage({
               </div>
             </section>
           ) : null}
-
-          {/* Yayın platformları */}
-          <WatchProviders
-            titleId={title.id}
-            initialProviders={groupWatchProviders(providers)}
-          />
 
           {/* Fragman */}
           {title.trailerUrl ? (

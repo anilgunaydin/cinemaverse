@@ -33,11 +33,7 @@ test.describe("Yapım Sayfası - Bento Grid", () => {
     ).toHaveCount(0);
 
     // Ana bölümler görünür olmalı
-    for (const heading of [
-      "Konu",
-      "Kişisel hafızanız",
-      "Yayın Platformları (Türkiye)",
-    ]) {
+    for (const heading of ["Konu", "Kişisel hafızanız", "Ekip", "Fragman"]) {
       await expect(
         page.locator(`h2:has-text("${heading}"), h3:has-text("${heading}")`).first()
       ).toBeVisible({ timeout: 10000 });
@@ -68,17 +64,20 @@ test.describe("Yapım Sayfası - Bento Grid", () => {
     }
   });
 
-  test("Yayın platformları hero'da ve kartta görünür", async ({ page }) => {
+  test("Yayın platformları sadece hero'da, tekrar yok", async ({ page }) => {
     const hero = page.locator("main > section").first();
     const heroText = await hero.innerText();
-    const hasPlatformHint =
-      /Netflix|Disney|Amazon|HBO Max|Apple TV|Exxen|Blutv/i.test(heroText) ||
-      /\+\d+\s*platform/i.test(heroText);
-    expect(hasPlatformHint).toBeTruthy();
+    expect(heroText.toLocaleLowerCase("tr")).toContain("nerede izlenir");
 
-    await expect(
-      page.locator('h2:has-text("Yayın Platformları")').first()
-    ).toBeVisible({ timeout: 10000 });
+    // Grid icinde ayri bir platform karti OLMAMALI (tekrar yok)
+    const gridCards = await page.evaluate(() => {
+      return [...document.querySelectorAll("main .surface")].map(
+        (el) => el.querySelector("h2, h3")?.textContent?.trim() ?? ""
+      );
+    });
+    expect(
+      gridCards.some((t) => t.includes("Yayın Platformları"))
+    ).toBeFalsy();
   });
 
   test("Kişisel hafıza kompakt - detaylar gizli başlar", async ({ page }) => {

@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "preferences:update": "tsx scripts/update-preferences.ts"
+    "preferences:update": "tsx scripts/update-preferences.ts",
+    "db:migrate": "tsx scripts/apply-migrations.ts",
+    "seed:ci": "tsx scripts/seed-ci.ts",
+    "seed:demo": "node scripts/seed-demo.mjs --apply"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

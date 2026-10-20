@@ -43,10 +43,24 @@
 
 ## 🚀 Kurulum
 
+### Windows (en kolay)
+
+Projeyi çift tıklayarak **`start.bat`** çalıştırın. Script sırasıyla:
+1. Node.js kurulu mu kontrol eder
+2. Eksik bağımlılıkları kurar (`npm install`)
+3. `.env` yoksa `.env.example`'dan kopyalar
+4. Ollama'yı arar (AI özellikleri için)
+5. Veritabanı migration'larını uygular
+6. Tarayıcıyı açar ve geliştirme sunucusunu başlatır
+
+Sunucuyu durdurmak için: **`stop.bat`** çalıştırın (veya konsolda `Ctrl+C`).
+
+### Manuel
+
 ```bash
 npm install
 cp .env.example .env      # .env'i düzenle
-npx tsx scripts/apply-migrations.ts   # veritabanı tabloları
+npm run db:migrate         # veritabanı tabloları
 npm run dev
 ```
 
@@ -88,10 +102,14 @@ node scripts/verify-modules.mjs   # Entegrasyon doğrulama (23)
 |---|---|
 | `npm run dev` | Geliştirme sunucusu |
 | `npm run build` | Production build |
+| `npm run db:migrate` | Drizzle migration uygula |
 | `npm run preferences:update` | Haftalık tercih profili yenileme (cron) |
-| `npx tsx scripts/apply-migrations.ts` | Drizzle migration uygula |
-| `node scripts/seed-demo.mjs --apply` | Demo verisi yükle |
-| `npx tsx scripts/seed-ci.ts` | CI test verisi yükle |
+| `npm run seed:demo` | Demo verisi yükle |
+| `npm run seed:ci` | CI test verisi yükle |
+| `npx tsc --noEmit` | Tip kontrolü |
+| `npx vitest run` | Birim testler |
+| `npx playwright test` | E2E testler |
+| `node scripts/verify-modules.mjs` | Entegrasyon doğrulaması |
 
 ---
 

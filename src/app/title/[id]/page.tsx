@@ -159,41 +159,71 @@ export default async function TitlePage({
 
         {/* Bento grid: tum bolumler ayni anda gorunur */}
         <div className="mt-4 grid content-start items-start gap-4 lg:grid-cols-2 xl:grid-cols-3">
-          {/* Konu */}
+          {/* Konu + Ekip - ayni kartta, iki kolon */}
           <section className="surface p-4 lg:col-span-2">
-            <h2 className="section-title">Konu</h2>
-            {title.overview ? (
-              <p className="mt-2 text-sm leading-relaxed text-mist-300">
-                {title.overview}
-              </p>
-            ) : (
-              <p className="muted mt-2 text-sm italic">
-                Kaynakta açıklama bulunmuyor.
-              </p>
-            )}
+            <div className="grid gap-5 md:grid-cols-[1.4fr_1fr]">
+              <div>
+                <h2 className="section-title">Konu</h2>
+                {title.overview ? (
+                  <p className="mt-2 text-sm leading-relaxed text-mist-300">
+                    {title.overview}
+                  </p>
+                ) : (
+                  <p className="muted mt-2 text-sm italic">
+                    Kaynakta açıklama bulunmuyor.
+                  </p>
+                )}
 
-            {seasons.length > 0 ? (
-              <div className="mt-4 border-t border-ink-700 pt-3">
-                <h3 className="label">Sezonlar</h3>
-                <ul className="mt-2 flex flex-wrap gap-1.5">
-                  {seasons.map((season) => (
-                    <li key={season.id}>
-                      <Link
-                        href={`/title/${season.id}`}
-                        className="flex items-center gap-1.5 rounded-lg border border-ink-700 bg-ink-900 px-2.5 py-1 text-xs text-mist-300 transition-colors hover:border-gold-500/40 hover:text-gold-300"
-                      >
-                        <span className="font-semibold">
-                          {season.seasonNumber}. Sezon
-                        </span>
-                        <span className="text-mist-500">
-                          {season.releaseYear ?? "—"}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                {seasons.length > 0 ? (
+                  <div className="mt-4 border-t border-ink-700 pt-3">
+                    <h3 className="label">Sezonlar</h3>
+                    <ul className="mt-2 flex flex-wrap gap-1.5">
+                      {seasons.map((season) => (
+                        <li key={season.id}>
+                          <Link
+                            href={`/title/${season.id}`}
+                            className="flex items-center gap-1.5 rounded-lg border border-ink-700 bg-ink-900 px-2.5 py-1 text-xs text-mist-300 transition-colors hover:border-gold-500/40 hover:text-gold-300"
+                          >
+                            <span className="font-semibold">
+                              {season.seasonNumber}. Sezon
+                            </span>
+                            <span className="text-mist-500">
+                              {season.releaseYear ?? "—"}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
               </div>
-            ) : null}
+
+              {credits.length > 0 ? (
+                <div className="border-t border-ink-700 pt-4 md:border-l md:border-t-0 md:pl-5 md:pt-0">
+                  <h2 className="section-title">Ekip</h2>
+                  <div className="mt-2.5 flex flex-col gap-2.5">
+                    {(
+                      ["director", "creator", "writer", "actor", "composer"] as const
+                    ).map((role) =>
+                      groupedCredits[role]?.length ? (
+                        <div key={role}>
+                          <p className="label">{ROLE_LABELS[role]}</p>
+                          <p className="text-sm leading-snug text-mist-300">
+                            {groupedCredits[role]
+                              .slice(0, 8)
+                              .map((credit) => credit.personName)
+                              .join(", ")}
+                            {groupedCredits[role].length > 8
+                              ? ` ve ${groupedCredits[role].length - 8} kişi daha`
+                              : ""}
+                          </p>
+                        </div>
+                      ) : null
+                    )}
+                  </div>
+                </div>
+              ) : null}
+            </div>
           </section>
 
           {/* Kişisel hafıza */}
@@ -222,33 +252,6 @@ export default async function TitlePage({
                 : null
             }
           />
-
-          {/* Ekip */}
-          {credits.length > 0 ? (
-            <section className="surface p-4">
-              <h2 className="section-title">Ekip</h2>
-              <div className="mt-3 flex flex-col gap-2.5">
-                {(
-                  ["director", "creator", "writer", "actor", "composer"] as const
-                ).map((role) =>
-                  groupedCredits[role]?.length ? (
-                    <div key={role}>
-                      <p className="label">{ROLE_LABELS[role]}</p>
-                      <p className="text-sm leading-snug text-mist-300">
-                        {groupedCredits[role]
-                          .slice(0, 10)
-                          .map((credit) => credit.personName)
-                          .join(", ")}
-                        {groupedCredits[role].length > 10
-                          ? ` ve ${groupedCredits[role].length - 10} kişi daha`
-                          : ""}
-                      </p>
-                    </div>
-                  ) : null
-                )}
-              </div>
-            </section>
-          ) : null}
 
           {/* Fragman */}
           {title.trailerUrl ? (
@@ -299,7 +302,7 @@ export default async function TitlePage({
           />
 
           {/* AI & Araştırma */}
-          <div className="grid gap-4 lg:col-span-2 lg:grid-cols-2">
+          <div className="flex flex-col gap-4">
             <ResearchPanel
               titleId={title.id}
               isLoggedIn={Boolean(user)}

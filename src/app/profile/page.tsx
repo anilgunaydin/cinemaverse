@@ -7,6 +7,7 @@ import { LogoutButton } from "@/components/auth/logout-button";
 import { UserList } from "@/components/community/user-card";
 import { UserSearch } from "@/components/community/user-search";
 import { PushToggle } from "@/components/pwa/push-toggle";
+import { PersonalityBadge } from "@/components/profile/PersonalityBadge";
 import { getCurrentUser } from "@/lib/auth/current-user";
 import { getUserProfileSummary, listUserReviews } from "@/lib/community/reviews";
 import { getFollowCounts } from "@/lib/community/social";
@@ -101,6 +102,10 @@ export default async function ProfilePage() {
                 : "Gizli"}
             </p>
           </div>
+        </div>
+
+        <div className="mt-5">
+          <PersonalityBadge />
         </div>
 
         <div className="mt-5">

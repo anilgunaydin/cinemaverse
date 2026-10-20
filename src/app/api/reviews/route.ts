@@ -9,6 +9,11 @@ import {
 } from "@/lib/community/reviews";
 import { getTitleById } from "@/lib/catalog/service";
 import { jsonError, jsonOk, parseJsonBody, rateLimit } from "@/lib/http";
+import { createNotification } from "@/lib/notifications/service";
+import { getFollowers } from "@/lib/community/social";
+import { getDb } from "@/lib/db";
+import { users } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
 
 export async function GET(request: Request) {
   const user = await getCurrentUser();
@@ -60,6 +65,37 @@ export async function POST(request: Request) {
   }
 
   const result = await upsertReview(user.id, parsed.data);
+
+  // Bildirim: takipcilere "X <title> icin inceleme yazdi"
+  if (result.created && parsed.data.visibility !== "private") {
+    try {
+      const db = getDb();
+      const titleName = title.localizedTitle ?? title.originalTitle;
+      const actorRows = await db
+        .select({ displayName: users.displayName })
+        .from(users)
+        .where(eq(users.id, user.id))
+        .limit(1);
+      const actorName = actorRows[0]?.displayName ?? "Bir kullanıcı";
+      const followers = await getFollowers(user.id, 100);
+      await Promise.all(
+        followers.map((f: any) =>
+          createNotification({
+            userId: f.id ?? f.userId,
+            type: "review",
+            message: `${actorName} "${titleName}" için inceleme yazdı.`,
+            actorId: user.id,
+            targetId: result.id,
+            targetType: "review",
+            deepLink: `/title/${title.id}`,
+          })
+        )
+      );
+    } catch (e) {
+      console.error("Review notification failed:", e);
+    }
+  }
+
   return jsonOk({ reviewId: result.id, created: result.created }, result.created ? 201 : 200);
 }
 

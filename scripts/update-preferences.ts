@@ -12,10 +12,11 @@
 import { getScriptDatabase } from "./lib/script-db";
 import { preferenceProfiles } from "../src/lib/db/schema";
 import { eq } from "drizzle-orm";
-import { libraryEntries, titles, titleGenres, genres } from "../src/lib/db/schema";
-import { eq as eq_, and, sql } from "drizzle-orm";
+import { libraryEntries, titles, titleGenres, genres, credits, people } from "../src/lib/db/schema";
+import { eq as eq_, and, sql, inArray } from "drizzle-orm";
 
 interface WatchedMovie {
+  titleId: string;
   rating: number | null;
   isFavorite: boolean;
   genreSlug: string | null;
@@ -112,6 +113,9 @@ async function calculateImplicitForUser(db: any, userId: string) {
     dimensionWeights[dim] = score;
   }
 
+  // Kadro ağırlıkları (oyuncu/yonetmen)
+  const peopleWeights = await calculatePeopleWeights(db, watched);
+
   // Tempo/Realism tahmini
   const tempoGenres = ["action", "thriller", "adventure", "heist", "action-thriller"];
   const slowGenres = ["drama", "mystery", "arthouse", "slow-cinema", "character-study"];
@@ -146,7 +150,7 @@ async function calculateImplicitForUser(db: any, userId: string) {
 
   return {
     genres: normalize(genreWeights),
-    people: {},
+    people: peopleWeights,
     decades: normalize(decadeWeights),
     dimensions: normalize(dimensionWeights),
     tempoPreference: tempoPref,
@@ -163,6 +167,68 @@ interface PreferenceProfileRow {
   confidence: number;
   ratedTitleCount: number;
   updatedAt: string;
+}
+
+/**
+ * Kadro (oyuncu/yönetmen) ağırlıklarını hesaplar.
+ * Yönetmenler 1.6x, yazarlar 0.8x, oyuncular 1.0x çarpan alır.
+ * Oyuncularda ilk 3 isim daha değerli (billing order).
+ */
+async function calculatePeopleWeights(
+  db: any,
+  watched: WatchedMovie[]
+): Promise<Record<string, number>> {
+  if (watched.length === 0) return {};
+
+  const titleIds = [...new Set(watched.map((w) => w.titleId))];
+  if (titleIds.length === 0) return {};
+
+  const rows = await db
+    .select({
+      titleId: credits.titleId,
+      role: credits.role,
+      billingOrder: credits.billingOrder,
+      personName: people.name,
+    })
+    .from(credits)
+    .innerJoin(people, eq_(credits.personId, people.id))
+    .where(inArray(credits.titleId, titleIds));
+
+  const titleWeight = new Map<string, number>();
+  for (const w of watched) {
+    const base = (w.rating ?? 5) / 10;
+    const favBoost = w.isFavorite ? 1.8 : 1.0;
+    titleWeight.set(w.titleId, base * favBoost);
+  }
+
+  const ROLE_MULTIPLIER: Record<string, number> = {
+    director: 1.6,
+    creator: 1.5,
+    writer: 0.8,
+    actor: 1.0,
+    composer: 0.6,
+  };
+
+  const weights: Record<string, number> = {};
+  for (const row of rows) {
+    const tw = titleWeight.get(row.titleId) ?? 0.5;
+    if (tw <= 0) continue;
+
+    // Kaynakta isim yoksa Wikidata ID (Q...) yazilmis olabilir; bunlari atla.
+    const name = row.personName?.trim();
+    if (!name || /^Q\d+$/i.test(name)) continue;
+
+    let roleMult = ROLE_MULTIPLIER[row.role] ?? 1.0;
+    if (row.role === "actor") {
+      const order = row.billingOrder ?? 99;
+      if (order > 5) roleMult *= 0.35;
+      else if (order > 2) roleMult *= 0.7;
+    }
+
+    weights[name] = (weights[name] ?? 0) + tw * roleMult;
+  }
+
+  return normalizeWeights(weights);
 }
 
 async function main() {

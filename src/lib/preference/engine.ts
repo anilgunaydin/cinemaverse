@@ -119,13 +119,15 @@ export async function calculateImplicitProfile(userId: string) {
     if (w.isFavorite) favoriteCount++;
   }
 
-  // Kadro ağırlıkları (favori filmlerdeki oyuncular/yonetmenler)
-  const peopleWeights: Record<string, number> = {};
-  const favTitles = watched.filter((w) => w.isFavorite || (w.rating ?? 0) >= 8);
-  for (const w of favTitles) {
-    const boost = w.isFavorite ? 2 : 1;
-    // Basit: tür ismini "people" gibi kullanıyoruz, gerçek implementasyonda credits tablosundan çekilir
-  }
+  // Kadro ağırlıkları: favori/yüksek puanlı filmlerdeki oyuncu ve yönetmenler
+  const peopleWeights = await calculatePeopleWeights(
+    userId,
+    watched.map((w) => ({
+      titleId: w.titleId,
+      rating: w.rating,
+      isFavorite: w.isFavorite,
+    }))
+  );
 
   // Boyut tahmini (türlerden yola çıkarak)
   const dimensionMap: Record<string, string[]> = {
@@ -181,6 +183,77 @@ export async function calculateImplicitProfile(userId: string) {
   };
 }
 
+/**
+ * Kadro (oyuncu/yönetmen) ağırlıklarını hesaplar.
+ * Yüksek puanlı ve favori filmler daha fazla ağırlık taşır.
+ * Yönetmenler 1.6x, oyuncular 1.0x, yazarlar 0.8x ile çarpan alır.
+ */
+async function calculatePeopleWeights(
+  userId: string,
+  watchedTitles: { titleId: string; rating: number | null; isFavorite: boolean }[]
+): Promise<Record<string, number>> {
+  if (watchedTitles.length === 0) return {};
+
+  const { db } = getDatabase();
+  const { credits, people } = await import("@/lib/db/schema");
+  const { inArray, and, eq } = await import("drizzle-orm");
+
+  const titleIds = watchedTitles.map((w) => w.titleId);
+  if (titleIds.length === 0) return {};
+
+  const rows = await db
+    .select({
+      titleId: credits.titleId,
+      role: credits.role,
+      characterName: credits.characterName,
+      billingOrder: credits.billingOrder,
+      personId: people.id,
+      personName: people.name,
+    })
+    .from(credits)
+    .innerJoin(people, eq(credits.personId, people.id))
+    .where(inArray(credits.titleId, titleIds));
+
+  // Film bazlı ağırlık haritası
+  const titleWeight = new Map<string, number>();
+  for (const w of watchedTitles) {
+    const base = (w.rating ?? 5) / 10;
+    const favBoost = w.isFavorite ? 1.8 : 1.0;
+    titleWeight.set(w.titleId, base * favBoost);
+  }
+
+  const ROLE_MULTIPLIER: Record<string, number> = {
+    director: 1.6,
+    creator: 1.5,
+    writer: 0.8,
+    actor: 1.0,
+    composer: 0.6,
+  };
+
+  const peopleWeights: Record<string, number> = {};
+
+  for (const row of rows) {
+    const tw = titleWeight.get(row.titleId) ?? 0.5;
+    if (tw <= 0) continue;
+
+    // Kaynakta isim yoksa Wikidata ID (Q...) yazilmis olabilir; bunlari atla.
+    const name = row.personName?.trim();
+    if (!name || /^Q\d+$/i.test(name)) continue;
+
+    // Oyuncular icin ilk 3 oyuncu daha degerli (billing order)
+    let roleMult = ROLE_MULTIPLIER[row.role] ?? 1.0;
+    if (row.role === "actor") {
+      const order = row.billingOrder ?? 99;
+      if (order > 5) roleMult *= 0.35;
+      else if (order > 2) roleMult *= 0.7;
+    }
+
+    peopleWeights[name] = (peopleWeights[name] ?? 0) + tw * roleMult;
+  }
+
+  return normalizeWeights(peopleWeights);
+}
+
 export async function getFullProfile(userId: string) {
   const { db } = getDatabase();
 
@@ -201,9 +274,6 @@ export async function getFullProfile(userId: string) {
   // Combined weights: explicit + implicit blend
   const blend = (explicitWeight: number, implicitWeight: number, alpha = 0.3) =>
     Math.round((explicitWeight * alpha + implicitWeight * (1 - alpha)) * 10) / 10;
-
-  const genreWeights: Record<string, number> = {};
-  // Implicit zaten normalize edilmiş
 
   return {
     userId,

@@ -3,6 +3,22 @@ import { z } from "zod";
 import { getCurrentUser, requireUser, UnauthorizedError } from "@/lib/auth/current-user";
 import { createReport, listReports } from "@/lib/community/reports";
 import { jsonError, jsonOk, parseJsonBody, rateLimit } from "@/lib/http";
+import { createNotification } from "@/lib/notifications/service";
+import { getDb } from "@/lib/db";
+import { users } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
+
+const REASON_LABELS: Record<string, string> = {
+  spam: "Spam / İlgisiz",
+  harassment: "Taciz / Rahatsız edici",
+  hate_speech: "Nefret söylemi",
+  sexual_content: "Cinsel içerik",
+  violence: "Şiddet / Zarar verme",
+  spoiler: "Spoiler (uyarısız)",
+  misinformation: "Yanlış bilgi",
+  copyright: "Telif hakkı ihlali",
+  other: "Diğer",
+};
 
 const createReportSchema = z.object({
   targetType: z.enum(["review", "reply", "thread", "post", "user"]),
@@ -63,5 +79,37 @@ export async function POST(request: Request) {
   }
 
   const result = await createReport(user.id, parsed.data);
+
+  // Bildirim: moderatorlere ve adminlere "Yeni rapor"
+  try {
+    const db = getDb();
+    const moderators = await db
+      .select({ id: users.id })
+      .from(users)
+      .where(eq(users.role, "admin"));
+    const adminRows = await db
+      .select({ id: users.id })
+      .from(users)
+      .where(eq(users.role, "moderator"));
+
+    const reasonLabel = REASON_LABELS[parsed.data.reason] ?? parsed.data.reason;
+    const targets = [...moderators, ...adminRows];
+    await Promise.all(
+      targets.map((m) =>
+        createNotification({
+          userId: m.id,
+          type: "report",
+          message: `Yeni rapor açıldı: ${reasonLabel}`,
+          actorId: user.id,
+          targetId: result.id,
+          targetType: "report",
+          deepLink: "/moderation",
+        })
+      )
+    );
+  } catch (e) {
+    console.error("Report notification failed:", e);
+  }
+
   return jsonOk({ reportId: result.id }, 201);
 }

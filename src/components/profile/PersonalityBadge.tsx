@@ -65,6 +65,11 @@ export function PersonalityBadge() {
     .sort((a, b) => b[1] - a[1])
     .slice(0, 3);
 
+  // En sevilen 5 kişi (oyuncu/yönetmen)
+  const topPeople = Object.entries(profile.implicit.people)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5);
+
   const DIM_LABELS: Record<string, string> = {
     atmosfer: "Atmosfer",
     karakter: "Karakter Derinliği",
@@ -122,6 +127,21 @@ export function PersonalityBadge() {
             ))}
           </div>
         </Section>
+
+        {topPeople.length > 0 && (
+          <Section title="Favori Kadro" icon="🎬">
+            <div className="flex flex-wrap gap-2">
+              {topPeople.map(([name, score]) => (
+                <span key={name} className="chip">
+                  {name} <span className="text-gold-300">{Math.round(score * 100)}%</span>
+                </span>
+              ))}
+            </div>
+            <p className="mt-2 text-[0.68rem] text-mist-500">
+              Yüksek puanlı ve favori filmlerindeki yönetmen/oyuncu ağırlıklarından hesaplandı.
+            </p>
+          </Section>
+        )}
 
         {profile.explicit && (
           <Section title="Açık Tercihlerin" icon="📝">

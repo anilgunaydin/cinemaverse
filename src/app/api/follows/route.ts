@@ -3,6 +3,10 @@ import { z } from "zod";
 import { requireUser, UnauthorizedError } from "@/lib/auth/current-user";
 import { followUser, getFollowers, getFollowing, unfollowUser } from "@/lib/community/social";
 import { jsonError, jsonOk, parseJsonBody, rateLimit } from "@/lib/http";
+import { createNotification } from "@/lib/notifications/service";
+import { getDb } from "@/lib/db";
+import { users } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
 
 export async function GET(request: Request) {
   const user = await requireUser();
@@ -54,6 +58,29 @@ export async function POST(request: Request) {
       { code: result.reason },
     );
   }
+
+  // Bildirim: hedef kullaniciya "X seni takip etti"
+  try {
+    const db = getDb();
+    const actorRows = await db
+      .select({ displayName: users.displayName })
+      .from(users)
+      .where(eq(users.id, user.id))
+      .limit(1);
+    const actorName = actorRows[0]?.displayName ?? "Bir kullanıcı";
+    await createNotification({
+      userId: parsed.data.targetUserId,
+      type: "follow",
+      message: `${actorName} seni takip etmeye başladı.`,
+      actorId: user.id,
+      targetId: user.id,
+      targetType: "user",
+      deepLink: `/users/${user.id}`,
+    });
+  } catch (e) {
+    console.error("Follow notification failed:", e);
+  }
+
   return jsonOk({ ok: true }, 201);
 }
 

@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { getCurrentUser } from "@/lib/auth/current-user";
 import { LogoutButton } from "@/components/auth/logout-button";
 import { MobileNav } from "@/components/layout/mobile-nav";
+import { NotificationBell } from "@/components/notifications/NotificationBell";
 
 // Sade menu: benzer isler tek menude. Tartismalar/Lisiteler Topluluk,
 // Franchise'ler Keshfet sayfasindan kisayolarla acilir.
@@ -73,6 +74,7 @@ export async function AppHeader() {
           <Suspense fallback={<div className="h-9 w-24" />}>
             <HeaderUser />
           </Suspense>
+          {user ? <NotificationBell /> : null}
           <MobileNav items={navItems} />
         </div>
       </div>

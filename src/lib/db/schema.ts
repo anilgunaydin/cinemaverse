@@ -804,7 +804,43 @@ export const pushSubscriptions = sqliteTable(
     uniqueIndex("push_subscriptions_endpoint_unique").on(t.userId, t.subscriptionJson),
   ],
 );
-
+ 
+/* -------------------------------------------------------------------------- */
+/* Bildirimler                                                                 */
+/* -------------------------------------------------------------------------- */
+ 
+export const notifications = sqliteTable(
+  "notifications",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id").notNull(),
+    /** follow | review | review_reply | report | mention | system */
+    type: text("type", {
+      enum: ["follow", "review", "review_reply", "report", "mention", "system"],
+    }).notNull(),
+    /** Bildirimin konusu (kullanıcı, inceleme, rapor, vb.) */
+    actorId: text("actor_id"),
+    /** Hedef ID (inceleme ID, rapor ID, vb.) */
+    targetId: text("target_id"),
+    /** Hedef türü */
+    targetType: text("target_type", {
+      enum: ["user", "review", "reply", "report", "title", "thread", "post"],
+    }),
+    /** Bildirim metni */
+    message: text("message").notNull(),
+    /** Derin bağlantı (bildirime tıklandığında gidilecek URL) */
+    deepLink: text("deep_link"),
+    /** Okunma durumu */
+    isRead: integer("is_read", { mode: "boolean" }).notNull().default(false),
+    createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  },
+  (t) => [
+    index("notifications_user_idx").on(t.userId),
+    index("notifications_user_read_idx").on(t.userId, t.isRead),
+    index("notifications_created_idx").on(t.createdAt),
+  ],
+);
+ 
 /* -------------------------------------------------------------------------- */
 /* Yayın platformları (Türkiye)                                               */
 /* -------------------------------------------------------------------------- */

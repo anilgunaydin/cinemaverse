@@ -43,6 +43,13 @@
       "when": 1792511267288,
       "tag": "0005_conscious_gideon",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1792515890991,
+      "tag": "0006_lucky_betty_brant",
+      "breakpoints": true
     }
   ]
 }

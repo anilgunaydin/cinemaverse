@@ -3,16 +3,31 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
+interface EnrichedItem {
+  text: string;
+  oran: number | null;
+}
+
 interface Profile {
   arketip: string;
   ozet: string;
-  gucluYonler: string[];
-  tercihEdilenUnsurlar: string[];
-  kaaciklanmamisAlanlar: string[];
+  gucluYonler: EnrichedItem[];
+  tercihEdilenUnsurlar: EnrichedItem[];
+  kaaciklanmamisAlanlar: EnrichedItem[];
   oneriler: { baslik: string; aciklama: string }[];
   sinemaMottosu: string;
   hata?: string;
   ham?: string;
+}
+
+/** Eski (düz metin) ve yeni (zenginleştirilmiş) formatlari destekler */
+function toItems(value: any): EnrichedItem[] {
+  if (!Array.isArray(value)) return [];
+  return value.map((item) =>
+    typeof item === "string"
+      ? { text: item, oran: null }
+      : { text: String(item?.text ?? ""), oran: item?.oran ?? null }
+  );
 }
 
 export default function KarakterPage() {
@@ -124,16 +139,22 @@ export default function KarakterPage() {
           <p className="text-mist-300 leading-relaxed">{profile.ozet ?? "—"}</p>
         </section>
 
-        /* Güçlü yönler & Tercih edilen unsurlari */
+        {/* Güçlü yönler & Tercih edilen unsurlari */}
         <div className="grid gap-4 sm:grid-cols-2">
           <section className="rounded-2xl border border-ink-700 bg-ink-850/80 p-5">
             <h3 className="font-semibold text-mist-100 mb-3 flex items-center gap-2">
               <span className="text-gold-300">💪</span> Güçlü Yönlerin
             </h3>
             <ul className="space-y-2">
-              {(profile.gucluYonler ?? []).map((item: string, i: number) => (
+              {toItems(profile.gucluYonler).map((item, i) => (
                 <li key={i} className="flex items-center gap-2 text-mist-300">
-                  <span className="text-gold-300">→</span> {item}
+                  <span className="text-gold-300">→</span>
+                  <span>{item.text}</span>
+                  {item.oran != null ? (
+                    <span className="chip chip-gold ml-auto text-[0.65rem]">
+                      %{item.oran}
+                    </span>
+                  ) : null}
                 </li>
               ))}
             </ul>
@@ -144,9 +165,15 @@ export default function KarakterPage() {
               <span className="text-gold-300">🎯</span> Tercih Edilen Unsurlar
             </h3>
             <ul className="space-y-2">
-              {(profile.tercihEdilenUnsurlar ?? []).map((item: string, i: number) => (
+              {toItems(profile.tercihEdilenUnsurlar).map((item, i) => (
                 <li key={i} className="flex items-center gap-2 text-mist-300">
-                  <span className="text-gold-300">→</span> {item}
+                  <span className="text-gold-300">→</span>
+                  <span>{item.text}</span>
+                  {item.oran != null ? (
+                    <span className="chip chip-gold ml-auto text-[0.65rem]">
+                      %{item.oran}
+                    </span>
+                  ) : null}
                 </li>
               ))}
             </ul>
@@ -159,27 +186,36 @@ export default function KarakterPage() {
             <span className="text-gold-300">🕳️</span> Keşfedilmemiş Alanlar
           </h3>
           <ul className="space-y-2">
-            {(profile.kaaciklanmamisAlanlar ?? []).map((item: string, i: number) => (
+            {toItems(profile.kaaciklanmamisAlanlar).map((item, i) => (
               <li key={i} className="flex items-center gap-2 text-mist-400">
-                <span className="text-gold-500/70">○</span> {item}
+                <span className="text-gold-500/70">○</span>
+                <span>{item.text}</span>
+                {item.oran != null ? (
+                  <span className="chip ml-auto text-[0.65rem]">%{item.oran}</span>
+                ) : null}
               </li>
             ))}
           </ul>
         </section>
 
-        {/* AI Önerileri */}
+        {/* AI Önerileri - ustteki tahminlerle ayni form */}
         <section className="rounded-2xl border border-ink-700 bg-ink-850/80 p-5">
-          <h3 className="font-semibold text-mist-100 mb-4 flex items-center gap-2">
+          <h3 className="font-semibold text-mist-100 mb-3 flex items-center gap-2">
             <span className="text-gold-300">🤖</span> Sana Özel Öneriler
           </h3>
-          <div className="space-y-3">
+          <ul className="space-y-2">
             {(profile.oneriler ?? []).map((rec: any, i: number) => (
-              <div key={i} className="rounded-xl border border-ink-600 bg-ink-900/60 p-4">
-                <p className="font-medium text-mist-100">{rec.baslik}</p>
-                <p className="text-sm text-mist-400 mt-1">{rec.aciklama}</p>
-              </div>
+              <li key={i} className="flex items-start gap-2 text-mist-300">
+                <span className="mt-0.5 text-gold-300">→</span>
+                <span className="min-w-0">
+                  <span className="font-medium text-mist-100">{rec.baslik}</span>
+                  <span className="block text-sm text-mist-400">
+                    {rec.aciklama}
+                  </span>
+                </span>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
       </div>
     </main>

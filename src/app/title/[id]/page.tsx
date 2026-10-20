@@ -226,32 +226,52 @@ export default async function TitlePage({
             </div>
           </section>
 
-          {/* Kişisel hafıza */}
-          <LibraryEditor
-            titleId={title.id}
-            titleName={displayTitle}
-            isSeries={title.kind === "series"}
-            isLoggedIn={Boolean(user)}
-            entry={
-              userEntry
-                ? {
-                    id: userEntry.id,
-                    status: userEntry.status,
-                    rating: userEntry.rating,
-                    watchedAt: userEntry.watchedAt,
-                    watchedPeriod: userEntry.watchedPeriod,
-                    notes: userEntry.notes,
-                    likedAspects: userEntry.likedAspects,
-                    dislikedAspects: userEntry.dislikedAspects,
-                    memorableScenes: userEntry.memorableScenes,
-                    rewatchIntent: userEntry.rewatchIntent,
-                    progressSeason: userEntry.progressSeason,
-                    progressEpisode: userEntry.progressEpisode,
-                    isFavorite: userEntry.isFavorite,
-                  }
-                : null
-            }
-          />
+          {/* Kişisel hafıza + İncelemeler - tek kart (kullanicinin katkisi) */}
+          <section className="surface p-4 lg:col-span-2">
+            <div className="grid gap-5 md:grid-cols-2 md:divide-x md:divide-ink-700">
+              <LibraryEditor
+                inline
+                titleId={title.id}
+                titleName={displayTitle}
+                isSeries={title.kind === "series"}
+                isLoggedIn={Boolean(user)}
+                entry={
+                  userEntry
+                    ? {
+                        id: userEntry.id,
+                        status: userEntry.status,
+                        rating: userEntry.rating,
+                        watchedAt: userEntry.watchedAt,
+                        watchedPeriod: userEntry.watchedPeriod,
+                        notes: userEntry.notes,
+                        likedAspects: userEntry.likedAspects,
+                        dislikedAspects: userEntry.dislikedAspects,
+                        memorableScenes: userEntry.memorableScenes,
+                        rewatchIntent: userEntry.rewatchIntent,
+                        progressSeason: userEntry.progressSeason,
+                        progressEpisode: userEntry.progressEpisode,
+                        isFavorite: userEntry.isFavorite,
+                      }
+                    : null
+                }
+              />
+
+              <ReviewPanel
+                inline
+                titleId={title.id}
+                titleName={displayTitle}
+                isSeries={title.kind === "series"}
+                isLoggedIn={Boolean(user)}
+                viewerId={user?.id ?? null}
+                viewer={{
+                  status: userEntry?.status ?? null,
+                  season: userEntry?.progressSeason ?? null,
+                  episode: userEntry?.progressEpisode ?? null,
+                }}
+                initialReviews={reviews}
+              />
+            </div>
+          </section>
 
           {/* Fragman */}
           {title.trailerUrl ? (
@@ -261,24 +281,9 @@ export default async function TitlePage({
             </section>
           ) : null}
 
-          {/* İncelemeler */}
-          <div className="lg:col-span-2">
-            <ReviewPanel
-              titleId={title.id}
-              titleName={displayTitle}
-              isSeries={title.kind === "series"}
-              isLoggedIn={Boolean(user)}
-              viewerId={user?.id ?? null}
-              viewer={{
-                status: userEntry?.status ?? null,
-                season: userEntry?.progressSeason ?? null,
-                episode: userEntry?.progressEpisode ?? null,
-              }}
-              initialReviews={reviews}
-            />
-          </div>
+          {/* İncelemeler artik yukarida birlestirildi */}
 
-          {/* Dış yorumlar */}
+          {/* İnternet Yorumları */}
           {externalComments.total > 0 ? (
             <ExternalCommentsSection
               local={externalComments.local}

@@ -53,12 +53,15 @@ export function LibraryEditor({
   isSeries,
   entry,
   isLoggedIn,
+  inline = false,
 }: {
   titleId: string;
   titleName: string;
   isSeries: boolean;
   entry: Entry;
   isLoggedIn: boolean;
+  /** true: kart kabugu olmadan render eder (baska bir kart icinde kullanilir) */
+  inline?: boolean;
 }) {
   const router = useRouter();
   const [status, setStatus] = useState<WatchStatus>(entry?.status ?? "watched");
@@ -212,8 +215,9 @@ export function LibraryEditor({
   }
 
   if (!isLoggedIn) {
+    const Wrapper = inline ? "div" : "div";
     return (
-      <div className="surface p-4">
+      <Wrapper className={inline ? "" : "surface p-4"}>
         <h2 className="section-title">Kişisel hafızanız</h2>
         <p className="muted mt-1 text-sm">
           Puan vermek ve izleme durumunuzu kaydetmek için giriş yapın.
@@ -226,7 +230,7 @@ export function LibraryEditor({
             Kayıt ol
           </a>
         </div>
-      </div>
+      </Wrapper>
     );
   }
 
@@ -242,7 +246,7 @@ export function LibraryEditor({
   ].filter(Boolean).length;
 
   return (
-    <section className="surface p-4">
+    <div className={inline ? "" : "surface p-4"}>
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <h2 className="section-title">Kişisel hafızanız</h2>
@@ -582,6 +586,6 @@ export function LibraryEditor({
           {titleName} · yalnızca size görünür
         </span>
       </div>
-    </section>
+    </div>
   );
 }

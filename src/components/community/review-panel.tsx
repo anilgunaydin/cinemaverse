@@ -35,6 +35,7 @@ export function ReviewPanel({
   viewerId,
   viewer,
   initialReviews,
+  inline = false,
 }: {
   titleId: string;
   titleName: string;
@@ -43,6 +44,8 @@ export function ReviewPanel({
   viewerId: string | null;
   viewer: SpoilerViewer;
   initialReviews: ReviewItem[];
+  /** true: kart kabugu olmadan render eder (baska bir kart icinde kullanilir) */
+  inline?: boolean;
 }) {
   const [reviews, setReviews] = useState<ReviewItem[]>(initialReviews);
   const [body, setBody] = useState("");
@@ -99,8 +102,11 @@ export function ReviewPanel({
     }
   }
 
+  const Wrapper = inline ? "div" : "section";
+  const wrapperClass = inline ? "" : "surface p-4 sm:p-5";
+
   return (
-    <section className="surface p-4 sm:p-5">
+    <Wrapper className={wrapperClass}>
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h2 className="section-title">İncelemeler</h2>
         <span className="chip">{reviews.length} inceleme</span>
@@ -255,6 +261,6 @@ export function ReviewPanel({
           })}
         </ul>
       )}
-    </section>
+    </Wrapper>
   );
 }

@@ -8,6 +8,7 @@ import type {
   SeasonSummary,
   TitleDetails,
 } from "./types";
+import { normalizeTitle } from "@/lib/catalog/matching";
 
 const BASE = "https://api.tvmaze.com";
 
@@ -90,9 +91,11 @@ export async function searchTvmaze(
   query: string,
 ): Promise<ProviderSearchOutcome> {
   try {
+    // Normalize query for better matching (Turkish chars -> ASCII)
+    const normalizedQuery = normalizeTitle(query);
     const { data } = await providerFetchJson<TvMazeSearchItem[]>({
       provider: "tvmaze",
-      url: `${BASE}/search/shows?q=${encodeURIComponent(query)}`,
+      url: `${BASE}/search/shows?q=${encodeURIComponent(normalizedQuery)}`,
       cacheTtlSeconds: 60 * 60 * 24,
     });
 

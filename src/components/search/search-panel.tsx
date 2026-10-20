@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useMemo } from "react";
+import { normalizeTitle } from "@/lib/catalog/matching";
 
 type SearchResult = {
   provider: string;
@@ -32,9 +33,32 @@ const KIND_LABEL: Record<string, string> = {
   franchise: "Seri",
 };
 
+function highlightMatch(text: string, query: string): React.ReactNode {
+  if (!query.trim()) return text;
+  const normalizedQuery = normalizeTitle(query);
+  if (!normalizedQuery) return text;
+  
+  const normalizedText = normalizeTitle(text);
+  const regex = new RegExp(`(${normalizedQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+  
+  const parts = text.split(regex);
+  return (
+    <>
+      {parts.map((part, index) => 
+        regex.test(part) ? (
+          <mark key={index} className="bg-gold-500/30 text-gold-200 px-0.5 rounded">{part}</mark>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+}
+
 export function SearchPanel({ autoFocus = false }: { autoFocus?: boolean }) {
   const router = useRouter();
   const [query, setQuery] = useState("");
+  const [normalizedQuery, setNormalizedQuery] = useState("");
   const [kind, setKind] = useState<"all" | "movie" | "series">("all");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [statuses, setStatuses] = useState<ProviderStatus[]>([]);
@@ -94,6 +118,7 @@ export function SearchPanel({ autoFocus = false }: { autoFocus?: boolean }) {
   );
 
   useEffect(() => {
+    setNormalizedQuery(normalizeTitle(query));
     const timer = setTimeout(() => {
       if (query.trim().length >= 2) {
         void runSearch(query, kind);
@@ -101,7 +126,7 @@ export function SearchPanel({ autoFocus = false }: { autoFocus?: boolean }) {
         setResults([]);
         setHasSearched(false);
       }
-    }, 420);
+    }, 300);
     return () => clearTimeout(timer);
   }, [query, kind, runSearch]);
 
@@ -288,16 +313,16 @@ export function SearchPanel({ autoFocus = false }: { autoFocus?: boolean }) {
                   </div>
 
                   <h3 className="mt-1.5 truncate font-medium text-mist-100">
-                    {result.originalTitle}
+                    {highlightMatch(result.originalTitle, query)}
                   </h3>
                   {result.localizedTitle &&
                   result.localizedTitle !== result.originalTitle ? (
-                    <p className="text-xs text-mist-400">{result.localizedTitle}</p>
+                    <p className="text-xs text-mist-400">{highlightMatch(result.localizedTitle, query)}</p>
                   ) : null}
 
                   {result.overview ? (
                     <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-mist-400">
-                      {result.overview}
+                      {highlightMatch(result.overview, query)}
                     </p>
                   ) : (
                     <p className="mt-1 text-xs italic text-mist-500">

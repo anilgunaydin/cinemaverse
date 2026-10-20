@@ -9,6 +9,7 @@ import type {
   TitleDetails,
   TitleKind,
 } from "./types";
+import { normalizeTitle } from "@/lib/catalog/matching";
 
 const SPARQL_ENDPOINT = "https://query.wikidata.org/sparql";
 const API_ENDPOINT = "https://www.wikidata.org/w/api.php";
@@ -85,7 +86,10 @@ export async function searchWikidata(
 ): Promise<ProviderSearchOutcome> {
   const typeQids = KIND_TO_QID[kind];
   const valuesClause = typeQids.map((q) => `wd:${q}`).join(" ");
-  const escaped = escapeSparqlLiteral(query);
+  
+  // Normalize query for better matching (Turkish chars -> ASCII)
+  const normalizedQuery = normalizeTitle(query);
+  const escaped = escapeSparqlLiteral(normalizedQuery);
 
   const sparql = `
 SELECT ?item ?labelEn ?labelTr ?itemDescription ?date ?imdb ?type WHERE {

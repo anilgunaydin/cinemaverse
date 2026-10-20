@@ -1,0 +1,4017 @@
+{
+  "generatedAt": "2026-10-19T15:18:38.154Z",
+  "mode": "apply",
+  "sourceDir": "C:\\Repos\\cinemaverse\\anıl",
+  "targetUser": {
+    "id": "usr_bf242909977947f5899828fc",
+    "email": "anil@cinemaverse.local",
+    "displayName": "Anıl",
+    "role": "user"
+  },
+  "existingLibraryEntries": 139,
+  "providerSearchCalls": 16,
+  "stats": {
+    "total": 149,
+    "matched": 149,
+    "ambiguous": 0,
+    "unmatched": 0,
+    "rated": 62,
+    "likes": 26,
+    "distribution": {
+      "7": 3,
+      "8": 17,
+      "9": 15,
+      "10": 4,
+      "9.5": 5,
+      "8.5": 17,
+      "7.5": 1
+    },
+    "average": 8.57258064516129
+  },
+  "preferences": {
+    "source": "cinemaverse_personal_memory_import.json",
+    "importedAt": "2026-10-19T15:18:38.154Z",
+    "recommendationCourage": "balanced",
+    "cultDiscovery": "some_room_for_cult_and_less_known_titles",
+    "genres": "all_genres_allowed",
+    "coreTasteDimensions": [
+      "character development",
+      "screenplay and plot structure",
+      "mystery and curiosity"
+    ],
+    "engineDimensions": [
+      "characterDevelopment",
+      "screenplay",
+      "plot",
+      "mystery"
+    ],
+    "tempo": "both slow/atmospheric and fast/plot-driven if well executed",
+    "endings": "all types acceptable if well written (twist, emotional, open-ended)",
+    "characterPreferences": "multiple types: transformation, strategy, psychology, relationships; do not infer a single dominant type",
+    "mysteryPreferences": "all types if well delivered",
+    "storyComplexity": "both layered/complex and clear/accessible if well written",
+    "darknessAndViolence": "should serve the story",
+    "spoilers": "none by default; explicit user permission required",
+    "recommendationsOnlyOnRequest": true,
+    "doNotRecommendAlreadyWatched": true,
+    "recommendationOutputFields": [
+      "title",
+      "genre",
+      "why_it_may_fit",
+      "discovery_level",
+      "confidence_about_watched_status"
+    ],
+    "unknownDataPolicy": "Never invent unknown ratings, watch statuses, dates, comments, or reasons for a score. Preserve null/unknown.",
+    "ratingScopePolicy": "TV series scores are overall series scores unless explicitly season-specific; franchises are overall franchise scores unless explicitly scoped; never distribute a franchise score to individual entries; distinct spin-offs remain separate.",
+    "trueDetectiveS1LikedAspects": [
+      "acting",
+      "characters",
+      "dark atmosphere",
+      "mystery",
+      "investigation"
+    ],
+    "trueDetectiveS1Limitation": "User does not remember why rating was not higher; do not invent a shortcoming.",
+    "language": "Turkish",
+    "projectName": "Kişisel Sinema Hafızası / CinemaVerse"
+  },
+  "integrityRules": [
+    "Never overwrite existing user data without backup and preview.",
+    "Perform deduplication by external ID where available; otherwise use normalized title + year + kind and ask/flag ambiguous matches.",
+    "Do not create separate film-level ratings from franchise-level ratings.",
+    "Keep user rating separate from external/public ratings.",
+    "Do not turn explicit liked status into a numerical score unless a scored record already exists.",
+    "Preserve unknown year, rating, status, and scope as null/unknown.",
+    "Do not create records for titles that are only assistant recommendations unless they are explicitly included in this export.",
+    "Import should be idempotent: running it twice must not duplicate records.",
+    "Generate a dry-run report before committing changes.",
+    "After import, verify record counts and rating distribution."
+  ],
+  "rows": [
+    {
+      "title": "Breaking Bad",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 10,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_b184332f2d4f4ea5b9fef054",
+        "label": "Breaking Bad (2008)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Kurtlar Vadisi",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 10,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_723bc13c53e1444e8065b894",
+        "label": "Kurtlar Vadisi (2003)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Game of Thrones",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 10,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_bf826718bbc04a62a68a8cd6",
+        "label": "Game of Thrones (2011)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Gibi",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 10,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_baf9d70e015e4524a586a013",
+        "label": "Gibi (2021)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Better Call Saul",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 9.5,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_abab32bb98864ea9897f857b",
+        "label": "Better Call Saul (2015)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "The Lord of the Rings",
+      "altTitles": [],
+      "year": null,
+      "kind": "film_franchise",
+      "targetKind": "franchise",
+      "rating": 9.5,
+      "scope": "overall_trilogy",
+      "scopeLabel": "Üçleme geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "franchise",
+        "qid": "Q127367",
+        "label": "The Lord of the Rings: The Fellowship of the Ring"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Black Mirror",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 9.5,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_0aafff37acf340b0a9ebb9a8",
+        "label": "Black Mirror (2011)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "The Revenant / Diriliş",
+      "altTitles": [
+        "The Revenant",
+        "Diriliş"
+      ],
+      "year": 2015,
+      "kind": "film",
+      "targetKind": "movie",
+      "rating": 9.5,
+      "scope": "single_film",
+      "scopeLabel": "Tekil film",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_233f1a3d06c843a2ae39377b",
+        "label": "The Revenant (2015)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Prens",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 9.5,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_f1ebb26dcb7c4c868aa548ee",
+        "label": "Prens (2023)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Dexter",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 9,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_5fde6788bcf547ff9aed2a18",
+        "label": "Dexter (2006)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Chernobyl",
+      "altTitles": [],
+      "year": 2019,
+      "kind": "miniseries",
+      "targetKind": "series",
+      "rating": 9,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_89696f72144e476cbd182d84",
+        "label": "Chernobyl (2019)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Behzat Ç.",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 9,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "provider_title",
+        "provider": "wikidata",
+        "providerId": "Q124316356",
+        "label": "Behzat Ç.",
+        "year": null,
+        "score": 1
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Vikings",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 9,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_cb209d07b8a0469097136b21",
+        "label": "Vikings (2013)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Squid Game",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 9,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_d01ec79b0308445580639f9e",
+        "label": "Squid Game (2021)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "House of the Dragon",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 9,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_607b59bd35a9456f9f317676",
+        "label": "House of the Dragon (2022)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "The Matrix",
+      "altTitles": [],
+      "year": null,
+      "kind": "film_franchise",
+      "targetKind": "franchise",
+      "rating": 9,
+      "scope": "overall_franchise",
+      "scopeLabel": "Franchise geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_68eafeffc0d846d898185a5f",
+        "label": "The Matrix (franchise kaydi)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "The Hobbit",
+      "altTitles": [],
+      "year": null,
+      "kind": "film_franchise",
+      "targetKind": "franchise",
+      "rating": 9,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "franchise",
+        "qid": "Q80379",
+        "label": "The Hobbit: An Unexpected Journey"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "How I Met Your Mother",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 8.5,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_6f7de6968f1b43d189e7e946",
+        "label": "How I Met Your Mother (2005)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Shameless (US)",
+      "altTitles": [],
+      "year": 2011,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 8.5,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "provider_title",
+        "provider": "tvmaze",
+        "providerId": "150",
+        "label": "Shameless",
+        "year": 2011,
+        "score": 1
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "The Last of Us",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 8.5,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_3a220a4166c54416bd974b35",
+        "label": "The Last of Us (2023)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "La Casa de Papel",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 8.5,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_4bd8071323cb41f6a4febe16",
+        "label": "La Casa de Papel (2017)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Terminator",
+      "altTitles": [],
+      "year": null,
+      "kind": "film_franchise",
+      "targetKind": "franchise",
+      "rating": 8.5,
+      "scope": "overall_franchise",
+      "scopeLabel": "Franchise geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_b6f6763af1074fc3aa4a93f9",
+        "label": "Terminator (franchise kaydi)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Prison Break",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 8.5,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_b0b53fdb0ca24f999e7324c5",
+        "label": "Prison Break (2005)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Lost",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 8.5,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_4b8a2b4c7a244326a0c1c43d",
+        "label": "Lost (2004)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Narcos",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 8.5,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_0d104e15cc494293b038c853",
+        "label": "Narcos (2015)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Harry Potter",
+      "altTitles": [],
+      "year": null,
+      "kind": "film_franchise",
+      "targetKind": "franchise",
+      "rating": 8.5,
+      "scope": "overall_franchise",
+      "scopeLabel": "Franchise geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "franchise",
+        "qid": "Q102225",
+        "label": "Harry Potter and the Goblet of Fire"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Interstellar",
+      "altTitles": [],
+      "year": 2014,
+      "kind": "film",
+      "targetKind": "movie",
+      "rating": 8,
+      "scope": "single_film",
+      "scopeLabel": "Tekil film",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_bcb9e04e5b5f4c74a4dff00e",
+        "label": "Interstellar (2014)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Shutter Island",
+      "altTitles": [],
+      "year": 2010,
+      "kind": "film",
+      "targetKind": "movie",
+      "rating": 8,
+      "scope": "single_film",
+      "scopeLabel": "Tekil film",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_776c482f990644ca8fa92a5b",
+        "label": "Shutter Island (2010)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "True Detective — Season 1",
+      "altTitles": [],
+      "year": 2014,
+      "kind": "series_season",
+      "targetKind": "season",
+      "rating": 8,
+      "scope": "specific_season",
+      "scopeLabel": "Belirli sezon",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "provider_series_season",
+        "provider": "tvmaze",
+        "providerId": "5",
+        "seriesName": "True Detective",
+        "seasonNumber": 1,
+        "label": "True Detective 1. sezon"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Ozark",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 8,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_8942ba33b4984ed7a5fc6065",
+        "label": "Ozark (2017)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Kardeş Payı",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 8,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_2c85845450c14746a5858e8c",
+        "label": "Kardeş Payı (2014)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "The Originals",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 8,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_f5b9e3a03808465083bc4b7c",
+        "label": "The Originals (2013)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Supernatural",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 8,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_3335b9e382d7426facacba56",
+        "label": "Supernatural (2005)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Cube",
+      "altTitles": [],
+      "year": 1997,
+      "kind": "film",
+      "targetKind": "movie",
+      "rating": 8,
+      "scope": "single_film",
+      "scopeLabel": "Tekil film",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_c8bc4ceaee7547d3bc14c0b5",
+        "label": "Cube (1997)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Leyla ile Mecnun",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 8,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_0f510f227262416bb9f4cd07",
+        "label": "Leyla ile Mecnun (2011)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Pirates of the Caribbean",
+      "altTitles": [],
+      "year": null,
+      "kind": "film_franchise",
+      "targetKind": "franchise",
+      "rating": 8,
+      "scope": "overall_franchise",
+      "scopeLabel": "Franchise geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_3077257dc75846aa9d14def6",
+        "label": "Pirates of the Caribbean (franchise kaydi)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Spartacus: Blood and Sand / Spartacus",
+      "altTitles": [
+        "Spartacus: Blood and Sand",
+        "Spartacus"
+      ],
+      "year": 2010,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 8,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": true,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_0ca5083930a24db583721a04",
+        "label": "Spartacus (2010)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "The Last Kingdom",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 7,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_cb412356a65d4599b266e5ef",
+        "label": "The Last Kingdom (2015)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "The Witcher",
+      "altTitles": [],
+      "year": null,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 7,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_335c679f3e5f409892a1471a",
+        "label": "The Witcher (2019)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "John Wick",
+      "altTitles": [],
+      "year": null,
+      "kind": "film_franchise",
+      "targetKind": "franchise",
+      "rating": 7,
+      "scope": "overall_franchise",
+      "scopeLabel": "Franchise geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_13bb797487bd4b2daefff643",
+        "label": "John Wick (franchise kaydi)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "The Shawshank Redemption / Esaretin Bedeli",
+      "altTitles": [
+        "The Shawshank Redemption",
+        "Esaretin Bedeli"
+      ],
+      "year": 1994,
+      "kind": "film",
+      "targetKind": "movie",
+      "rating": 9,
+      "scope": "single_film",
+      "scopeLabel": "Tekil film",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_130d813be36d43df8112b8b9",
+        "label": "The Shawshank Redemption (1994)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Gladiator / Gladyatör",
+      "altTitles": [
+        "Gladiator",
+        "Gladyatör"
+      ],
+      "year": 2000,
+      "kind": "film",
+      "targetKind": "movie",
+      "rating": 8,
+      "scope": "single_film",
+      "scopeLabel": "Tekil film",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_010ba8f7765044c38ad45cdf",
+        "label": "Gladiator (2000)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Forrest Gump",
+      "altTitles": [],
+      "year": 1994,
+      "kind": "film",
+      "targetKind": "movie",
+      "rating": 8.5,
+      "scope": "single_film",
+      "scopeLabel": "Tekil film",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "provider_title",
+        "provider": "wikidata",
+        "providerId": "Q134773",
+        "label": "Forrest Gump",
+        "year": 1994,
+        "score": 1
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "The Green Mile / Yeşil Yol",
+      "altTitles": [
+        "The Green Mile",
+        "Yeşil Yol"
+      ],
+      "year": 1999,
+      "kind": "film",
+      "targetKind": "movie",
+      "rating": 8.5,
+      "scope": "single_film",
+      "scopeLabel": "Tekil film",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_cff9711f4f9b4efa864e5ff7",
+        "label": "The Green Mile (1999)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Spider-Man",
+      "altTitles": [],
+      "year": null,
+      "kind": "film_franchise",
+      "targetKind": "franchise",
+      "rating": 9,
+      "scope": "overall_franchise",
+      "scopeLabel": "Franchise geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "franchise",
+        "qid": "Q190145",
+        "label": "Spider-Man 2"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "X-Men",
+      "altTitles": [],
+      "year": null,
+      "kind": "film_franchise",
+      "targetKind": "franchise",
+      "rating": 8.5,
+      "scope": "overall_franchise",
+      "scopeLabel": "Franchise geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_82b12cea8c94471ca84d1b83",
+        "label": "X-Men (franchise kaydi)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "The Fast and the Furious",
+      "altTitles": [],
+      "year": null,
+      "kind": "film_franchise",
+      "targetKind": "franchise",
+      "rating": 8.5,
+      "scope": "overall_franchise",
+      "scopeLabel": "Franchise geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_346ffa46d1b04c14824ad893",
+        "label": "The Fast and the Furious (franchise kaydi)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "The Transporter",
+      "altTitles": [],
+      "year": null,
+      "kind": "film_franchise",
+      "targetKind": "franchise",
+      "rating": 8.5,
+      "scope": "overall_franchise",
+      "scopeLabel": "Franchise geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_0b869dbae46c4ba0981ad796",
+        "label": "The Transporter (franchise kaydi)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "The Expendables",
+      "altTitles": [],
+      "year": null,
+      "kind": "film_franchise",
+      "targetKind": "franchise",
+      "rating": 8,
+      "scope": "overall_franchise",
+      "scopeLabel": "Franchise geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_9f56819a4e3944a58aa8db34",
+        "label": "The Expendables (franchise kaydi)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Muhteşem Yüzyıl",
+      "altTitles": [],
+      "year": 2011,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 9,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_159036da99cf4f3ebcc78b5a",
+        "label": "Muhteşem Yüzyıl (2011)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Kuzey Güney",
+      "altTitles": [],
+      "year": 2011,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 9,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_de72d538431d4504869ba0d2",
+        "label": "Kuzey Güney (2011)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Saw / Testere",
+      "altTitles": [
+        "Saw",
+        "Testere"
+      ],
+      "year": 2004,
+      "kind": "film_franchise_or_film",
+      "targetKind": "movie",
+      "rating": 9,
+      "scope": "overall_scope_as_recorded",
+      "scopeLabel": "Kayıttaki kapsam",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_b2af58c4f497436f8e9a072e",
+        "label": "Saw (2003)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Taxi",
+      "altTitles": [],
+      "year": 1998,
+      "kind": "film",
+      "targetKind": "movie",
+      "rating": 8,
+      "scope": "single_film",
+      "scopeLabel": "Tekil film",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "provider_title",
+        "provider": "wikidata",
+        "providerId": "Q726215",
+        "label": "Taxi",
+        "year": 1998,
+        "score": 1
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Titanic",
+      "altTitles": [],
+      "year": 1997,
+      "kind": "film",
+      "targetKind": "movie",
+      "rating": 9,
+      "scope": "single_film",
+      "scopeLabel": "Tekil film",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_e88f5768840c458baa390793",
+        "label": "Titanic (1997)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Avatar",
+      "altTitles": [],
+      "year": 2009,
+      "kind": "film",
+      "targetKind": "movie",
+      "rating": 8.5,
+      "scope": "single_film",
+      "scopeLabel": "Tekil film",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_4e17f9a4170e42f68ba4afe6",
+        "label": "Avatar (2009)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "The Hunger Games",
+      "altTitles": [],
+      "year": null,
+      "kind": "film_franchise",
+      "targetKind": "franchise",
+      "rating": 8.5,
+      "scope": "overall_franchise",
+      "scopeLabel": "Franchise geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_76b72d0d111d4b9b97672a3f",
+        "label": "The Hunger Games (franchise kaydi)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "The Curious Case of Benjamin Button / Benjamin Button'ın Tuhaf Hikâyesi",
+      "altTitles": [
+        "The Curious Case of Benjamin Button",
+        "Benjamin Button'ın Tuhaf Hikâyesi"
+      ],
+      "year": 2008,
+      "kind": "film",
+      "targetKind": "movie",
+      "rating": 8,
+      "scope": "single_film",
+      "scopeLabel": "Tekil film",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_8e23761973034f62a39237a4",
+        "label": "The Curious Case of Benjamin Button (2008)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Dexter: New Blood",
+      "altTitles": [],
+      "year": 2021,
+      "kind": "series",
+      "targetKind": "series",
+      "rating": 8,
+      "scope": "overall_series",
+      "scopeLabel": "Dizi geneli",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_fdab933f6e954318a6e60241",
+        "label": "Dexter: New Blood (2021)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Constantine",
+      "altTitles": [],
+      "year": 2005,
+      "kind": "film",
+      "targetKind": "movie",
+      "rating": 8.5,
+      "scope": "single_film",
+      "scopeLabel": "Tekil film",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_33fda2fc44cd402e8c582084",
+        "label": "Constantine (2005)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "V for Vendetta",
+      "altTitles": [],
+      "year": 2005,
+      "kind": "film",
+      "targetKind": "movie",
+      "rating": 7.5,
+      "scope": "single_film",
+      "scopeLabel": "Tekil film",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "provider_title",
+        "provider": "wikidata",
+        "providerId": "Q5890",
+        "label": "V for Vendetta",
+        "year": 2005,
+        "score": 1
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Lucy",
+      "altTitles": [],
+      "year": 2014,
+      "kind": "film",
+      "targetKind": "movie",
+      "rating": 8,
+      "scope": "single_film",
+      "scopeLabel": "Tekil film",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_01f6cb9720704bbe8a6cea5b",
+        "label": "Lucy (2014)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "The Platform / El Hoyo",
+      "altTitles": [
+        "The Platform",
+        "El Hoyo"
+      ],
+      "year": 2019,
+      "kind": "film",
+      "targetKind": "movie",
+      "rating": 9,
+      "scope": "single_film",
+      "scopeLabel": "Tekil film",
+      "status": "watched",
+      "statusLabel": "İzlenmiş",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_ab66b5e0a91542a3b31da9d5",
+        "label": "The Platform (2019)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:scored_titles",
+        "csv:scored_titles"
+      ]
+    },
+    {
+      "title": "Mindhunter",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_bca9facad3384c3792b5be58",
+        "label": "MINDHUNTER (2017)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Mr. Robot",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_bee3c0968155491a877ed642",
+        "label": "Mr. Robot (2015)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Severance",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_5bf974d557df4f5d95d6ca0f",
+        "label": "Severance (2022)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Silo",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_fe28492bf4214b1995c14fa9",
+        "label": "Silo (2023)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Triangle",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_f82912a8f66c435ebeb3127a",
+        "label": "Triangle (2014)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Invitation",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_c9129004d30544348b499972",
+        "label": "The Invitation (2015)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Beyond the Black Rainbow",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "provider_title",
+        "provider": "wikidata",
+        "providerId": "Q4900081",
+        "label": "Beyond the Black Rainbow",
+        "year": 2010,
+        "score": 1
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Utopia (UK)",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "provider_title",
+        "provider": "tvmaze",
+        "providerId": "64",
+        "label": "Utopia",
+        "year": 2013,
+        "score": 1
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Patriot",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_cb18359dc9d0425ca9b69238",
+        "label": "Patriot (2015)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Mentalist",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_9f6b20852e9e4d12a9221b9b",
+        "label": "The Mentalist (2008)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Hannibal",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_8b2064491b0d4fb8b167cc25",
+        "label": "Hannibal (2013)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Bates Motel",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_a3933c8587304b7d8f800307",
+        "label": "Bates Motel (2013)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Fall",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_d465b61fbad44551ba614a4c",
+        "label": "The Fall (2013)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Luther",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_5a32583cbb90430a91718bde",
+        "label": "Luther (2010)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Night Of",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_e5a924d2ca9a425d937f554b",
+        "label": "The Night Of (2016)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Mare of Easttown",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_fecf7907504e4767a3200c70",
+        "label": "Mare of Easttown (2021)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Fringe",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_24ce39a294824006b5b9181d",
+        "label": "Fringe (2008)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Orphan Black",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_cd9bd1d4786847d592293163",
+        "label": "Orphan Black (2013)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "12 Monkeys",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_8c70d832b15d44c380961858",
+        "label": "12 Monkeys (2015)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Altered Carbon",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_a96b3b7a24004b0981858380",
+        "label": "Altered Carbon (2018)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Travelers",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_01447b61304b400cae7a082b",
+        "label": "Travelers (2016)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The OA",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_5c5dabd3a0294066a4403b13",
+        "label": "The OA (2016)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Legion",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_b4cb70e868134bf6a42ba97f",
+        "label": "Legion (2017)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Dark Matter",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_44b50a94bb8c4a6cbffb3dae",
+        "label": "Dark Matter (2015)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Californication",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_0f096b66496944c783f93fa0",
+        "label": "Californication (2007)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Bear",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_7563fc0e6bd94a7cb8c21b41",
+        "label": "The Bear (2022)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Banshee",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_54d3d05c9bc047e2b86f7b29",
+        "label": "Banshee (2013)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Animal Kingdom",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_cb9cc0b94b834a9cabddc440",
+        "label": "Animal Kingdom (2016)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Americans",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_2d331cf90efc43c19d24133c",
+        "label": "The Americans (2013)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Boardwalk Empire",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_aef554b144254ddca0981235",
+        "label": "Boardwalk Empire (2010)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Borgias",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_97c1b28ebbbe41918468e902",
+        "label": "The Borgias (2011)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Butterfly Effect",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_2a384604abd14f06a1c05a4d",
+        "label": "The Butterfly Effect (2004)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Identity",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_efff3e7e6ab54906aa9b00ed",
+        "label": "Identity (2003)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Machinist",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_8d5d13cb10984e849908149b",
+        "label": "The Machinist (2004)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Law Abiding Citizen",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_a3565fc3e3314eb1bdf2fe0f",
+        "label": "Law Abiding Citizen (2009)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Number 23",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "provider_title",
+        "provider": "wikidata",
+        "providerId": "Q1123479",
+        "label": "The Number 23",
+        "year": 2007,
+        "score": 1
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Source Code",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_3e27e3b5913b49a9add6f082",
+        "label": "Source Code (2011)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Others",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_bc886200f114406d92dda927",
+        "label": "The Others (2001)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Atonement",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_0863d19aad024e55bb225718",
+        "label": "Atonement (2007)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Children of Men",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_f46573408e264535b628a5de",
+        "label": "Children of Men (2006)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "District 9",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "provider_title",
+        "provider": "wikidata",
+        "providerId": "Q201819",
+        "label": "District 9",
+        "year": 2009,
+        "score": 1
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Edge of Tomorrow",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_3b9c38e8b3c245ce88c44eb1",
+        "label": "Edge of Tomorrow (2014)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Django Unchained",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_c485a0d2cb57490188d21d4a",
+        "label": "Django Unchained (2012)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Nightcrawler",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_099891ddd9e840ea81873bdc",
+        "label": "Nightcrawler (2014)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Whiplash",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "provider_title",
+        "provider": "wikidata",
+        "providerId": "Q15648198",
+        "label": "Whiplash",
+        "year": 2014,
+        "score": 1
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Hateful Eight",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_ab2d1669d3de479a81e12b5e",
+        "label": "The Hateful Eight (2015)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Gomorrah",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_c17047f3e80946e889f1c049",
+        "label": "Gomorrah (2008)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "ZeroZeroZero",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_8de7cdd340d343dbbd72fff8",
+        "label": "ZeroZeroZero (2020)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "McMafia",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_3e8b67bc424a4a719427c926",
+        "label": "McMafia (2018)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Top Boy",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_610e9002b1514fd5928394ee",
+        "label": "Top Boy (2011)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Power",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_894f6c32db6c491a8d39a5b8",
+        "label": "Power (1986)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Ray Donovan",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_e453bcfd8db24a9c8f4e5b46",
+        "label": "Ray Donovan (2013)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Mr Inbetween",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_ab9149a74996442690d5af40",
+        "label": "Mr Inbetween (2018)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Sharp Objects",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_ec981b5451f84dffa9cc766a",
+        "label": "Sharp Objects (2018)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Sinner",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_48fb553776df440fa8785672",
+        "label": "The Sinner (2017)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Behind Her Eyes",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_69e00048a01e42209d291b52",
+        "label": "Behind Her Eyes (2021)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Undoing",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_3f7103f537714894b39d88b6",
+        "label": "The Undoing (2020)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Clickbait",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_4fa7fca9a6c8432287ddb4ef",
+        "label": "Clickbait (2021)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Outsider",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_fa407e5b19034665881fe687",
+        "label": "The Outsider (2018)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Archive 81",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_b50f052b08804becb067b99b",
+        "label": "Archive 81 (2022)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Inside No. 9",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_bebfb07c8cde4025b1d38bc0",
+        "label": "Inside No. 9 (2014)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Revolution",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_fb0ca3cd2b4e48efbb94c71d",
+        "label": "Revolution (2012)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Falling Skies",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_d37506dbeb6045bc9b3df510",
+        "label": "Falling Skies (2011)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Expanse",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_846a1e80d2434155b024b3fd",
+        "label": "The Expanse (2015)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Continuum",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_ff91107a2d694d30aada9874",
+        "label": "Continuum (2012)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Defiance",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_5a49aafb77c54e91ab9ef22b",
+        "label": "Defiance (2013)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Strain",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_c3e75f3205ad47fc9c53aff2",
+        "label": "The Strain (2014)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "American Gods",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_19c98449752047e58682f94e",
+        "label": "American Gods (2017)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Requiem for a Dream",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "provider_title",
+        "provider": "wikidata",
+        "providerId": "Q487181",
+        "label": "Requiem for a Dream",
+        "year": 2000,
+        "score": 1
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "American Psycho",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_adb6a36c145142db883ee2e8",
+        "label": "American Psycho (2000)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Donnie Brasco",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_00ba7912f6c0494ea5e7cddc",
+        "label": "Donnie Brasco (1997)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Game",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_59186261171b40fea472515b",
+        "label": "The Game (2014)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Vanilla Sky",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_ce99c783e0854840831783ea",
+        "label": "Vanilla Sky (2001)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Butterfly Effect 2",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "provider_title",
+        "provider": "wikidata",
+        "providerId": "Q933910",
+        "label": "The Butterfly Effect 2",
+        "year": 2006,
+        "score": 1
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Illusionist",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_1a766fdaabf741f5ada29e8f",
+        "label": "The Illusionist (2006)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Wrestler",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_6d4345cfa4d647c0956208b9",
+        "label": "The Wrestler (2008)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "I Saw the Devil",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_5c44ac067409482a8eecacd3",
+        "label": "I Saw the Devil (2010)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Handmaiden",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "provider_title",
+        "provider": "wikidata",
+        "providerId": "Q20444585",
+        "label": "The Handmaiden",
+        "year": 2016,
+        "score": 1
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Memories of Murder",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_0e09d3cec678453a9019f44a",
+        "label": "Memories of Murder (2003)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Secret in Their Eyes",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_29dbf6a1ea504bd9b8d18f48",
+        "label": "The Secret in Their Eyes (2009)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Intouchables",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "provider_title",
+        "provider": "tvmaze",
+        "providerId": "2130",
+        "label": "The Untouchables",
+        "year": 1959,
+        "score": 0.9375
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Slumdog Millionaire",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_9430d89eee67483db1beed94",
+        "label": "Slumdog Millionaire (2008)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Apocalypto",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_c3fa4a1dd6534985a8d3092f",
+        "label": "Apocalypto (2006)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "The Boy in the Striped Pyjamas",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unwatched",
+      "statusLabel": "İzlenmemiş",
+      "watchStatus": "not_watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "provider_title",
+        "provider": "wikidata",
+        "providerId": "Q157556",
+        "label": "The Boy in the Striped Pajamas",
+        "year": 2008,
+        "score": 0.9666666666666667
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:unwatched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Person of Interest",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "partially_watched",
+      "statusLabel": "Yarım bırakılmış",
+      "watchStatus": "watching",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_2a11321a9b0b41059bbdc602",
+        "label": "Person of Interest (2011)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:partially_watched_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "2012",
+      "altTitles": [],
+      "year": 2009,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "watched_unrated",
+      "statusLabel": "İzlenmiş (puansız)",
+      "watchStatus": "watched",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_47bbd15d7c5049e990735df4",
+        "label": "2012 (2009)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:watched_unrated_titles",
+        "csv:watch_statuses"
+      ]
+    },
+    {
+      "title": "Suits",
+      "altTitles": [],
+      "year": null,
+      "kind": "unknown",
+      "targetKind": "unknown",
+      "rating": null,
+      "scope": "unspecified",
+      "scopeLabel": "Belirtilmemiş",
+      "status": "unknown",
+      "statusLabel": "Durum belirsiz",
+      "watchStatus": "unsure",
+      "explicitLike": false,
+      "resolution": {
+        "type": "title",
+        "titleId": "ttl_030a075962404663bf53a9c6",
+        "label": "Suits (2011)",
+        "how": "catalog"
+      },
+      "ambiguous": false,
+      "note": "",
+      "sources": [
+        "json:uncertain_status_titles",
+        "csv:watch_statuses"
+      ]
+    }
+  ]
+}

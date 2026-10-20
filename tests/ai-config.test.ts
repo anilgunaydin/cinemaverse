@@ -1,0 +1,68 @@
+import { describe, expect, it } from "vitest";
+
+import { resolveAiConfig } from "@/lib/ai/config";
+
+describe("resolveAiConfig", () => {
+  it("varsayilan olarak AI kapalidir", () => {
+    const config = resolveAiConfig({});
+    expect(config.provider).toBe("none");
+    expect(config.enabled).toBe(false);
+    expect(config.model).toBeNull();
+    expect(config.reason).toContain("kapalı");
+  });
+
+  it("bilinmeyen saglayici adini 'none' kabul eder", () => {
+    const config = resolveAiConfig({ provider: "chatgpt-9000" });
+    expect(config.provider).toBe("none");
+    expect(config.enabled).toBe(false);
+  });
+
+  it("ollama anahtar gerektirmez ve etkindir", () => {
+    const config = resolveAiConfig({ provider: "ollama" });
+    expect(config.enabled).toBe(true);
+    expect(config.provider).toBe("ollama");
+    expect(config.model).toBe("llama3.2");
+  });
+
+  it("ollama model adi ozellestirilebilir", () => {
+    const config = resolveAiConfig({ provider: "ollama", ollamaModel: "qwen2.5" });
+    expect(config.model).toBe("qwen2.5");
+  });
+
+  it("gemini anahtar yoksa devre disi kalir", () => {
+    const config = resolveAiConfig({ provider: "gemini" });
+    expect(config.enabled).toBe(false);
+    expect(config.reason).toContain("GEMINI_API_KEY");
+  });
+
+  it("gemini anahtar varsa etkin olur", () => {
+    const config = resolveAiConfig({ provider: "gemini", geminiApiKey: "abc" });
+    expect(config.enabled).toBe(true);
+    expect(config.model).toBe("gemini-2.5-flash");
+  });
+
+  it("openai-compatible eksik yapilandirmada devre disi kalir", () => {
+    const config = resolveAiConfig({ provider: "openai-compatible" });
+    expect(config.enabled).toBe(false);
+    expect(config.reason).toContain("OPENAI_COMPAT_BASE_URL");
+  });
+
+  it("yerel openai-compatible adres anahtar istemez", () => {
+    const config = resolveAiConfig({
+      provider: "openai-compatible",
+      openAiCompatBaseUrl: "http://localhost:1234/v1",
+      openAiCompatModel: "local-model",
+    });
+    expect(config.enabled).toBe(true);
+  });
+
+  it("uzak openai-compatible adres anahtar ister", () => {
+    const config = resolveAiConfig({
+      provider: "openai-compatible",
+      openAiCompatBaseUrl: "https://api.example.com/v1",
+      openAiCompatModel: "gpt-x",
+    });
+    expect(config.enabled).toBe(false);
+    expect(config.reason).toContain("OPENAI_COMPAT_API_KEY");
+  });
+});

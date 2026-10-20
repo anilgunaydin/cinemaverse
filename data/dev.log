@@ -1,0 +1,2333 @@
+﻿
+> cinemaverse@0.1.0 dev
+> next dev
+
+Ôû▓ Next.js 16.4.2 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.105:3000
+Ô£ô Ready in 1070ms
+Ô£ô Running next.config.ts took 99ms
+
+Ôùï Compiling / ...
+ GET /api/ai/status 401 in 2.1s (next.js: 948ms, application-code: 1122ms)
+ GET /api/ai/status 401 in 122ms (next.js: 9ms, application-code: 113ms)
+ GET /?genre=science-fiction 200 in 2.7s (next.js: 401ms, application-code: 2.3s)
+Ô£ô Compiled in 108ms
+ GET /?genre=science-fiction 200 in 611ms (next.js: 6ms, application-code: 605ms)
+Ô£ô Compiled in 12ms
+ GET /?genre=science-fiction 200 in 669ms (next.js: 4ms, application-code: 665ms)
+Ô£ô Compiled in 6ms
+ GET /?genre=science-fiction 200 in 440ms (next.js: 3ms, application-code: 437ms)
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 574ms (next.js: 3ms, application-code: 571ms)
+Ô£ô Compiled in 9ms
+ GET /?genre=science-fiction 200 in 223ms (next.js: 3ms, application-code: 220ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 261ms (next.js: 4ms, application-code: 258ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 1211ms (next.js: 3ms, application-code: 1208ms)
+ POST /api/auth/register 201 in 947ms (next.js: 270ms, application-code: 677ms)
+ GET /api/ai/status 200 in 141ms (next.js: 14ms, application-code: 127ms)
+ GET /api/search?q=inception&kind=movie 200 in 668ms (next.js: 414ms, application-code: 253ms)
+ POST /api/catalog/import 200 in 395ms (next.js: 168ms, application-code: 228ms)
+ POST /api/library 201 in 314ms (next.js: 193ms, application-code: 121ms)
+Ô£ô Compiled in 6ms
+ GET /?genre=science-fiction 200 in 1045ms (next.js: 3ms, application-code: 1041ms)
+ POST /api/reviews 201 in 241ms (next.js: 104ms, application-code: 137ms)
+ GET /api/reviews?titleId=ttl_eee9f3768b734aaba03a8164 200 in 146ms (next.js: 28ms, application-code: 118ms)
+ GET /api/reviews 200 in 198ms (next.js: 65ms, application-code: 132ms)
+ POST /api/ai/conversations 201 in 405ms (next.js: 287ms, application-code: 119ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 915ms (next.js: 4ms, application-code: 911ms)
+ POST /api/ai/conversations/cnv_25b684b4b5a54d73af8657f6/messages 409 in 2.3s (next.js: 2.3s, application-code: 24ms)
+Ô£ô Compiled in 901ms
+ GET /?genre=science-fiction 200 in 200ms (next.js: 5ms, application-code: 195ms)
+Ô£ô Compiled in 3ms
+ POST /api/research 200 in 2.1s (next.js: 129ms, application-code: 1981ms)
+ GET /api/research?titleId=ttl_eee9f3768b734aaba03a8164 200 in 396ms (next.js: 112ms, application-code: 284ms)
+ GET /api/data/export?format=json 200 in 232ms (next.js: 107ms, application-code: 125ms)
+ GET /api/data/export?format=csv 200 in 224ms (next.js: 32ms, application-code: 192ms)
+ GET /?genre=science-fiction 200 in 357ms (next.js: 5ms, application-code: 352ms)
+ POST /api/data/import 200 in 387ms (next.js: 151ms, application-code: 237ms)
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 348ms (next.js: 3ms, application-code: 345ms)
+Ô£ô Compiled in 25ms
+ GET /?genre=science-fiction 200 in 286ms (next.js: 3ms, application-code: 283ms)
+Ô£ô Compiled in 5ms
+ GET /?genre=science-fiction 200 in 400ms (next.js: 3ms, application-code: 397ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 731ms (next.js: 2ms, application-code: 728ms)
+Ô£ô Compiled in 5ms
+ GET /?genre=science-fiction 200 in 384ms (next.js: 3ms, application-code: 381ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 676ms (next.js: 3ms, application-code: 673ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 356ms (next.js: 3ms, application-code: 353ms)
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 913ms (next.js: 3ms, application-code: 910ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 250ms (next.js: 5ms, application-code: 245ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 291ms (next.js: 3ms, application-code: 288ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 220ms (next.js: 4ms, application-code: 216ms)
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 321ms (next.js: 4ms, application-code: 317ms)
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 192ms (next.js: 3ms, application-code: 189ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 375ms (next.js: 5ms, application-code: 370ms)
+Ô£ô Compiled in 0ms
+ GET /?genre=science-fiction 200 in 279ms (next.js: 4ms, application-code: 275ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 227ms (next.js: 3ms, application-code: 224ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 262ms (next.js: 6ms, application-code: 256ms)
+Ô£ô Compiled in 5ms
+ GET /?genre=science-fiction 200 in 472ms (next.js: 2ms, application-code: 470ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 319ms (next.js: 2ms, application-code: 317ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 454ms (next.js: 4ms, application-code: 451ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 379ms (next.js: 3ms, application-code: 376ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 238ms (next.js: 3ms, application-code: 235ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 228ms (next.js: 2ms, application-code: 226ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 181ms (next.js: 4ms, application-code: 177ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 334ms (next.js: 4ms, application-code: 329ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 354ms (next.js: 7ms, application-code: 347ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 257ms (next.js: 4ms, application-code: 252ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 239ms (next.js: 3ms, application-code: 237ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 1710ms (next.js: 4ms, application-code: 1706ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 2.9s (next.js: 1308ms, application-code: 1617ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 349ms (next.js: 4ms, application-code: 346ms)
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 222ms (next.js: 3ms, application-code: 220ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 51ms
+ GET /?genre=science-fiction 200 in 327ms (next.js: 3ms, application-code: 325ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 473ms (next.js: 14ms, application-code: 460ms)
+ GET /?genre=science-fiction 200 in 276ms (next.js: 3ms, application-code: 273ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 294ms (next.js: 15ms, application-code: 278ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 265ms (next.js: 2ms, application-code: 262ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 316ms (next.js: 4ms, application-code: 311ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 381ms (next.js: 4ms, application-code: 377ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 965ms (next.js: 14ms, application-code: 950ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 590ms (next.js: 8ms, application-code: 582ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 371ms (next.js: 13ms, application-code: 358ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 301ms (next.js: 6ms, application-code: 295ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 376ms (next.js: 4ms, application-code: 371ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1217ms (next.js: 33ms, application-code: 1184ms)
+ GET /?genre=science-fiction 200 in 642ms (next.js: 24ms, application-code: 618ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 699ms (next.js: 25ms, application-code: 675ms)
+ GET /?genre=science-fiction 200 in 374ms (next.js: 4ms, application-code: 369ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 5ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 859ms (next.js: 33ms, application-code: 826ms)
+ GET /?genre=science-fiction 200 in 589ms (next.js: 3ms, application-code: 585ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 353ms (next.js: 25ms, application-code: 327ms)
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 444ms (next.js: 4ms, application-code: 440ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 584ms (next.js: 15ms, application-code: 569ms)
+ GET /?genre=science-fiction 200 in 289ms (next.js: 4ms, application-code: 285ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 636ms (next.js: 14ms, application-code: 622ms)
+ GET /?genre=science-fiction 200 in 334ms (next.js: 4ms, application-code: 331ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 685ms (next.js: 24ms, application-code: 661ms)
+ GET /?genre=science-fiction 200 in 356ms (next.js: 4ms, application-code: 352ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 863ms (next.js: 23ms, application-code: 840ms)
+ GET /?genre=science-fiction 200 in 532ms (next.js: 5ms, application-code: 528ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 708ms (next.js: 27ms, application-code: 681ms)
+ GET /?genre=science-fiction 200 in 332ms (next.js: 4ms, application-code: 328ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 625ms (next.js: 13ms, application-code: 612ms)
+ GET /?genre=science-fiction 200 in 323ms (next.js: 4ms, application-code: 319ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 299ms (next.js: 15ms, application-code: 284ms)
+ GET /?genre=science-fiction 200 in 298ms (next.js: 3ms, application-code: 295ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 571ms (next.js: 13ms, application-code: 557ms)
+ GET /?genre=science-fiction 200 in 277ms (next.js: 4ms, application-code: 273ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 572ms (next.js: 3ms, application-code: 568ms)
+ GET /?genre=science-fiction 200 in 271ms (next.js: 4ms, application-code: 267ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 326ms (next.js: 13ms, application-code: 313ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 266ms (next.js: 4ms, application-code: 263ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 328ms (next.js: 21ms, application-code: 307ms)
+ GET /?genre=science-fiction 200 in 278ms (next.js: 5ms, application-code: 273ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1091ms (next.js: 5ms, application-code: 1085ms)
+ GET /?genre=science-fiction 200 in 776ms (next.js: 5ms, application-code: 771ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 444ms (next.js: 2ms, application-code: 442ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 732ms (next.js: 3ms, application-code: 729ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 636ms (next.js: 26ms, application-code: 610ms)
+Ô£ô Compiled in 1ms
+ GET / 200 in 274ms (next.js: 4ms, application-code: 269ms)
+ GET /?genre=science-fiction 200 in 364ms (next.js: 4ms, application-code: 359ms)
+Ô£ô Compiled in 1730ms
+ GET /community 200 in 745ms (next.js: 160ms, application-code: 585ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1599ms (next.js: 70ms, application-code: 1529ms)
+Ôùï Compiling /settings/data ...
+ GET /settings/data 307 in 816ms (next.js: 230ms, application-code: 586ms)
+ GET /profile 307 in 1036ms (next.js: 671ms, application-code: 365ms)
+ GET /library 307 in 421ms (next.js: 82ms, application-code: 339ms)
+ GET /recommendations 307 in 593ms (next.js: 175ms, application-code: 418ms)
+Ô£ô Compiled in 6ms
+ GET /?genre=science-fiction 200 in 249ms (next.js: 4ms, application-code: 245ms)
+Ô£ô Compiled in 7ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 319ms (next.js: 29ms, application-code: 290ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 276ms (next.js: 3ms, application-code: 273ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 300ms (next.js: 15ms, application-code: 285ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 319ms (next.js: 4ms, application-code: 315ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 312ms (next.js: 29ms, application-code: 283ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 269ms (next.js: 9ms, application-code: 260ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 785ms (next.js: 6ms, application-code: 779ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 984ms (next.js: 16ms, application-code: 968ms)
+ GET /?genre=science-fiction 200 in 849ms (next.js: 4ms, application-code: 845ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 20ms
+ GET /?genre=science-fiction 200 in 246ms (next.js: 3ms, application-code: 243ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 347ms (next.js: 26ms, application-code: 321ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 302ms (next.js: 5ms, application-code: 296ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 757ms (next.js: 28ms, application-code: 729ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 296ms (next.js: 4ms, application-code: 293ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 2.1s (next.js: 27ms, application-code: 2.0s)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 121ms
+ GET /?genre=science-fiction 200 in 1021ms (next.js: 2.0ms, application-code: 1019ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 347ms (next.js: 22ms, application-code: 325ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 278ms (next.js: 5ms, application-code: 273ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 563ms (next.js: 24ms, application-code: 540ms)
+ GET /?genre=science-fiction 200 in 265ms (next.js: 5ms, application-code: 260ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 577ms (next.js: 32ms, application-code: 546ms)
+ GET /?genre=science-fiction 200 in 266ms (next.js: 4ms, application-code: 263ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 571ms (next.js: 26ms, application-code: 545ms)
+ GET /?genre=science-fiction 200 in 275ms (next.js: 4ms, application-code: 271ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 286ms (next.js: 14ms, application-code: 271ms)
+ GET /?genre=science-fiction 200 in 367ms (next.js: 7ms, application-code: 360ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 237ms (next.js: 2ms, application-code: 235ms)
+ POST /api/auth/register 201 in 427ms (next.js: 62ms, application-code: 365ms)
+ POST /api/auth/register 400 in 23ms (next.js: 5ms, application-code: 18ms)
+ GET /api/search?q=inception&kind=movie 200 in 79ms (next.js: 43ms, application-code: 36ms)
+ POST /api/catalog/import 200 in 136ms (next.js: 4ms, application-code: 132ms)
+ GET /api/library 401 in 30ms (next.js: 4ms, application-code: 26ms)
+ GET /api/library 200 in 69ms (next.js: 18ms, application-code: 51ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 409ms (next.js: 10ms, application-code: 399ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 469ms (next.js: 2ms, application-code: 467ms)
+Ô£ô Compiled in 5ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 592ms (next.js: 11ms, application-code: 581ms)
+ GET /?genre=science-fiction 200 in 380ms (next.js: 2ms, application-code: 377ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 390ms (next.js: 2ms, application-code: 387ms)
+Ô£ô Compiled in 150ms
+ GET /?genre=science-fiction 200 in 1117ms (next.js: 9ms, application-code: 1108ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 964ms (next.js: 23ms, application-code: 941ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 497ms (next.js: 2ms, application-code: 495ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 745ms (next.js: 14ms, application-code: 731ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1932ms (next.js: 18ms, application-code: 1914ms)
+ GET /?genre=science-fiction 200 in 1424ms (next.js: 3ms, application-code: 1421ms)
+Ô£ô Compiled in 5ms
+Ô£ô Compiled in 9ms
+ GET /?genre=science-fiction 200 in 673ms (next.js: 5ms, application-code: 668ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1891ms (next.js: 46ms, application-code: 1845ms)
+Ô£ô Compiled in 4ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 914ms (next.js: 25ms, application-code: 889ms)
+ GET /?genre=science-fiction 200 in 802ms (next.js: 3ms, application-code: 799ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 488ms (next.js: 11ms, application-code: 476ms)
+ GET /?genre=science-fiction 200 in 244ms (next.js: 3ms, application-code: 241ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 616ms (next.js: 26ms, application-code: 590ms)
+ GET /?genre=science-fiction 200 in 297ms (next.js: 6ms, application-code: 292ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 556ms (next.js: 14ms, application-code: 542ms)
+ GET /?genre=science-fiction 200 in 270ms (next.js: 5ms, application-code: 265ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 675ms (next.js: 27ms, application-code: 649ms)
+ GET /?genre=science-fiction 200 in 284ms (next.js: 5ms, application-code: 279ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 530ms (next.js: 13ms, application-code: 518ms)
+ GET /?genre=science-fiction 200 in 272ms (next.js: 4ms, application-code: 268ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 579ms (next.js: 21ms, application-code: 557ms)
+ GET /?genre=science-fiction 200 in 276ms (next.js: 4ms, application-code: 272ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 553ms (next.js: 23ms, application-code: 530ms)
+ GET /?genre=science-fiction 200 in 255ms (next.js: 4ms, application-code: 250ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 573ms (next.js: 24ms, application-code: 548ms)
+ GET /?genre=science-fiction 200 in 272ms (next.js: 4ms, application-code: 268ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 578ms (next.js: 20ms, application-code: 558ms)
+ GET /?genre=science-fiction 200 in 262ms (next.js: 3ms, application-code: 259ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 543ms (next.js: 19ms, application-code: 524ms)
+ GET /?genre=science-fiction 200 in 251ms (next.js: 4ms, application-code: 247ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 663ms (next.js: 23ms, application-code: 641ms)
+ GET /?genre=science-fiction 200 in 357ms (next.js: 4ms, application-code: 353ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 614ms (next.js: 12ms, application-code: 601ms)
+ GET /?genre=science-fiction 200 in 324ms (next.js: 5ms, application-code: 319ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 672ms (next.js: 25ms, application-code: 647ms)
+ GET /?genre=science-fiction 200 in 326ms (next.js: 5ms, application-code: 321ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1010ms (next.js: 23ms, application-code: 987ms)
+ GET /?genre=science-fiction 200 in 715ms (next.js: 101ms, application-code: 614ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 1437ms (next.js: 3ms, application-code: 1434ms)
+Ô£ô Compiled in 0ms
+ GET /?genre=science-fiction 200 in 660ms (next.js: 2ms, application-code: 658ms)
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 992ms (next.js: 11ms, application-code: 982ms)
+Ô£ô Compiled in 0ms
+ GET /?genre=science-fiction 200 in 717ms (next.js: 2ms, application-code: 715ms)
+Ô£ô Compiled in 7ms
+ GET /?genre=science-fiction 200 in 574ms (next.js: 2ms, application-code: 572ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 616ms (next.js: 2ms, application-code: 614ms)
+Ô£ô Compiled in 5ms
+ GET /?genre=science-fiction 200 in 493ms (next.js: 2ms, application-code: 491ms)
+Ô£ô Compiled in 5ms
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 591ms (next.js: 3ms, application-code: 588ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 823ms (next.js: 19ms, application-code: 804ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 527ms (next.js: 3ms, application-code: 524ms)
+Ô£ô Compiled in 23ms
+ GET /?genre=science-fiction 200 in 1089ms (next.js: 107ms, application-code: 981ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 816ms (next.js: 3ms, application-code: 812ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 824ms (next.js: 64ms, application-code: 760ms)
+Ô£ô Compiled in 6ms
+ GET /?genre=science-fiction 200 in 607ms (next.js: 3ms, application-code: 604ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 724ms (next.js: 3ms, application-code: 721ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 1098ms (next.js: 36ms, application-code: 1062ms)
+Ô£ô Compiled in 94ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1364ms (next.js: 14ms, application-code: 1351ms)
+Ô£ô Compiled in 12ms
+ GET /?genre=science-fiction 200 in 696ms (next.js: 2ms, application-code: 694ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 431ms (next.js: 2ms, application-code: 429ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 494ms (next.js: 3ms, application-code: 491ms)
+Ô£ô Compiled in 6ms
+ GET /?genre=science-fiction 200 in 659ms (next.js: 4ms, application-code: 655ms)
+Ô£ô Compiled in 7ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1248ms (next.js: 13ms, application-code: 1235ms)
+ GET /?genre=science-fiction 200 in 1128ms (next.js: 3ms, application-code: 1125ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 717ms (next.js: 3ms, application-code: 714ms)
+Ô£ô Compiled in 0ms
+ GET /?genre=science-fiction 200 in 256ms (next.js: 2ms, application-code: 253ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 374ms (next.js: 24ms, application-code: 349ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 280ms (next.js: 4ms, application-code: 276ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 583ms (next.js: 24ms, application-code: 558ms)
+ GET /?genre=science-fiction 200 in 275ms (next.js: 4ms, application-code: 271ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1622ms (next.js: 4ms, application-code: 1618ms)
+ GET /?genre=science-fiction 200 in 1324ms (next.js: 3ms, application-code: 1320ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 1572ms (next.js: 2ms, application-code: 1570ms)
+Ô£ô Compiled in 17ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 922ms (next.js: 51ms, application-code: 871ms)
+ GET /?genre=science-fiction 200 in 420ms (next.js: 3ms, application-code: 418ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 233ms (next.js: 3ms, application-code: 229ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 342ms (next.js: 22ms, application-code: 320ms)
+Ô£ô Compiled in 0ms
+ GET /?genre=science-fiction 200 in 271ms (next.js: 4ms, application-code: 266ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 304ms (next.js: 14ms, application-code: 290ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 261ms (next.js: 4ms, application-code: 257ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 328ms (next.js: 21ms, application-code: 307ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 251ms (next.js: 3ms, application-code: 248ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 365ms (next.js: 24ms, application-code: 342ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 252ms (next.js: 3ms, application-code: 249ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 390ms (next.js: 5ms, application-code: 386ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 253ms (next.js: 3ms, application-code: 250ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 339ms (next.js: 26ms, application-code: 313ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 240ms (next.js: 3ms, application-code: 237ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 365ms (next.js: 5ms, application-code: 360ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 641ms (next.js: 22ms, application-code: 619ms)
+ GET /?genre=science-fiction 200 in 305ms (next.js: 4ms, application-code: 301ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 569ms (next.js: 15ms, application-code: 555ms)
+ GET /?genre=science-fiction 200 in 268ms (next.js: 5ms, application-code: 264ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 805ms (next.js: 5ms, application-code: 800ms)
+ GET /?genre=science-fiction 200 in 525ms (next.js: 4ms, application-code: 520ms)
+Ô£ô Compiled in 47ms
+ GET /?genre=science-fiction 200 in 278ms (next.js: 4ms, application-code: 274ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1222ms (next.js: 202ms, application-code: 1020ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 209ms (next.js: 3ms, application-code: 206ms)
+Ô£ô Compiled in 9ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 697ms (next.js: 29ms, application-code: 668ms)
+ GET /?genre=science-fiction 200 in 332ms (next.js: 4ms, application-code: 328ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 840ms (next.js: 13ms, application-code: 828ms)
+ GET /?genre=science-fiction 200 in 534ms (next.js: 15ms, application-code: 518ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 5ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1342ms (next.js: 23ms, application-code: 1319ms)
+ GET /?genre=science-fiction 200 in 1317ms (next.js: 5ms, application-code: 1312ms)
+Ô£ô Compiled in 8ms
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 1431ms (next.js: 4ms, application-code: 1427ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1146ms (next.js: 109ms, application-code: 1037ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 246ms (next.js: 5ms, application-code: 242ms)
+Ô£ô Compiled in 8ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 356ms (next.js: 13ms, application-code: 343ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 5ms
+ GET /?genre=science-fiction 200 in 290ms (next.js: 3ms, application-code: 286ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 354ms (next.js: 24ms, application-code: 330ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 285ms (next.js: 3ms, application-code: 283ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 330ms (next.js: 21ms, application-code: 309ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 257ms (next.js: 3ms, application-code: 253ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 360ms (next.js: 27ms, application-code: 333ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 319ms (next.js: 4ms, application-code: 315ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 374ms (next.js: 42ms, application-code: 332ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 250ms (next.js: 3ms, application-code: 247ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 360ms (next.js: 2ms, application-code: 358ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 282ms (next.js: 4ms, application-code: 278ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 359ms (next.js: 30ms, application-code: 329ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 621ms (next.js: 3ms, application-code: 618ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 432ms (next.js: 29ms, application-code: 404ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 257ms (next.js: 3ms, application-code: 255ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 373ms (next.js: 25ms, application-code: 348ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 266ms (next.js: 4ms, application-code: 261ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 407ms (next.js: 26ms, application-code: 382ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 458ms (next.js: 3ms, application-code: 455ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 350ms (next.js: 27ms, application-code: 323ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 347ms (next.js: 3ms, application-code: 344ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 346ms (next.js: 24ms, application-code: 322ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 261ms (next.js: 4ms, application-code: 257ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 761ms (next.js: 3ms, application-code: 758ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 713ms (next.js: 2ms, application-code: 711ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1113ms (next.js: 12ms, application-code: 1101ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 481ms (next.js: 2ms, application-code: 479ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 478ms (next.js: 3ms, application-code: 476ms)
+Ô£ô Compiled in 4ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1815ms (next.js: 14ms, application-code: 1801ms)
+ GET /?genre=science-fiction 200 in 522ms (next.js: 3ms, application-code: 519ms)
+Ô£ô Compiled in 20ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1252ms (next.js: 13ms, application-code: 1238ms)
+ GET /?genre=science-fiction 200 in 583ms (next.js: 3ms, application-code: 580ms)
+Ô£ô Compiled in 5ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 498ms (next.js: 13ms, application-code: 485ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 254ms (next.js: 3ms, application-code: 251ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 354ms (next.js: 24ms, application-code: 330ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 231ms (next.js: 3ms, application-code: 229ms)
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 328ms (next.js: 22ms, application-code: 306ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 256ms (next.js: 2ms, application-code: 254ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 379ms (next.js: 3ms, application-code: 375ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 268ms (next.js: 5ms, application-code: 264ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 328ms (next.js: 21ms, application-code: 307ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 242ms (next.js: 3ms, application-code: 239ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 305ms (next.js: 3ms, application-code: 302ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 308ms (next.js: 3ms, application-code: 305ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1330ms (next.js: 12ms, application-code: 1317ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 503ms (next.js: 3ms, application-code: 500ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 341ms (next.js: 32ms, application-code: 309ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 251ms (next.js: 3ms, application-code: 248ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 312ms (next.js: 5ms, application-code: 307ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 1021ms (next.js: 3ms, application-code: 1019ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 474ms (next.js: 2ms, application-code: 471ms)
+Ô£ô Compiled in 13ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1995ms (next.js: 40ms, application-code: 1955ms)
+ GET /?genre=science-fiction 200 in 1592ms (next.js: 25ms, application-code: 1567ms)
+Ô£ô Compiled in 43ms
+ GET /?genre=science-fiction 200 in 437ms (next.js: 4ms, application-code: 432ms)
+Ô£ô Compiled in 4ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 618ms (next.js: 14ms, application-code: 604ms)
+ GET /?genre=science-fiction 200 in 273ms (next.js: 4ms, application-code: 270ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 755ms (next.js: 3ms, application-code: 752ms)
+ GET /?genre=science-fiction 200 in 656ms (next.js: 4ms, application-code: 651ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 613ms (next.js: 13ms, application-code: 601ms)
+ GET /?genre=science-fiction 200 in 307ms (next.js: 4ms, application-code: 304ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 600ms (next.js: 23ms, application-code: 577ms)
+ GET /?genre=science-fiction 200 in 279ms (next.js: 4ms, application-code: 275ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 606ms (next.js: 3ms, application-code: 603ms)
+ GET /?genre=science-fiction 200 in 351ms (next.js: 5ms, application-code: 346ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 823ms (next.js: 22ms, application-code: 801ms)
+ GET /?genre=science-fiction 200 in 539ms (next.js: 7ms, application-code: 532ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 766ms (next.js: 20ms, application-code: 747ms)
+ GET /?genre=science-fiction 200 in 891ms (next.js: 4ms, application-code: 887ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 6ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 592ms (next.js: 26ms, application-code: 566ms)
+ GET /?genre=science-fiction 200 in 288ms (next.js: 4ms, application-code: 285ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 656ms (next.js: 3ms, application-code: 653ms)
+ GET /?genre=science-fiction 200 in 367ms (next.js: 5ms, application-code: 362ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 901ms (next.js: 16ms, application-code: 885ms)
+ GET /?genre=science-fiction 200 in 491ms (next.js: 4ms, application-code: 487ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 724ms (next.js: 25ms, application-code: 699ms)
+ GET /?genre=science-fiction 200 in 416ms (next.js: 6ms, application-code: 410ms)
+Ô£ô Compiled in 7ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 691ms (next.js: 15ms, application-code: 676ms)
+ GET /?genre=science-fiction 200 in 421ms (next.js: 4ms, application-code: 417ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 560ms (next.js: 13ms, application-code: 547ms)
+ GET /?genre=science-fiction 200 in 285ms (next.js: 4ms, application-code: 281ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 646ms (next.js: 5ms, application-code: 642ms)
+ GET /?genre=science-fiction 200 in 461ms (next.js: 9ms, application-code: 452ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 703ms (next.js: 3ms, application-code: 700ms)
+Ô£ô Compiled in 20ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1040ms (next.js: 15ms, application-code: 1026ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 647ms (next.js: 4ms, application-code: 643ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 16ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 696ms (next.js: 14ms, application-code: 682ms)
+ GET /?genre=science-fiction 200 in 301ms (next.js: 6ms, application-code: 295ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 319ms (next.js: 3ms, application-code: 317ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 582ms (next.js: 14ms, application-code: 568ms)
+ GET /?genre=science-fiction 200 in 300ms (next.js: 5ms, application-code: 295ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 602ms (next.js: 12ms, application-code: 589ms)
+ GET /?genre=science-fiction 200 in 304ms (next.js: 5ms, application-code: 298ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 707ms (next.js: 24ms, application-code: 683ms)
+ GET /?genre=science-fiction 200 in 371ms (next.js: 4ms, application-code: 367ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 815ms (next.js: 14ms, application-code: 802ms)
+ GET /?genre=science-fiction 200 in 559ms (next.js: 5ms, application-code: 554ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 674ms (next.js: 25ms, application-code: 649ms)
+ GET /?genre=science-fiction 200 in 315ms (next.js: 4ms, application-code: 311ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 5ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 625ms (next.js: 13ms, application-code: 612ms)
+ GET /?genre=science-fiction 200 in 326ms (next.js: 4ms, application-code: 322ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1332ms (next.js: 4ms, application-code: 1329ms)
+ GET /?genre=science-fiction 200 in 1084ms (next.js: 4ms, application-code: 1081ms)
+Ô£ô Compiled in 451ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 522ms (next.js: 9ms, application-code: 513ms)
+Ô£ô Compiled in 4ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 598ms (next.js: 26ms, application-code: 572ms)
+ GET /?genre=science-fiction 200 in 298ms (next.js: 4ms, application-code: 295ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 561ms (next.js: 15ms, application-code: 546ms)
+ GET /?genre=science-fiction 200 in 423ms (next.js: 4ms, application-code: 419ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1819ms (next.js: 17ms, application-code: 1802ms)
+ GET /?genre=science-fiction 200 in 1158ms (next.js: 14ms, application-code: 1144ms)
+Ô£ô Compiled in 120ms
+Ô£ô Compiled in 15ms
+ GET /?genre=science-fiction 200 in 661ms (next.js: 7ms, application-code: 654ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1019ms (next.js: 13ms, application-code: 1006ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 470ms (next.js: 3ms, application-code: 467ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 646ms (next.js: 13ms, application-code: 633ms)
+ GET /?genre=science-fiction 200 in 372ms (next.js: 12ms, application-code: 359ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 569ms (next.js: 13ms, application-code: 555ms)
+ GET /?genre=science-fiction 200 in 281ms (next.js: 5ms, application-code: 276ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 788ms (next.js: 21ms, application-code: 767ms)
+ GET /?genre=science-fiction 200 in 498ms (next.js: 3ms, application-code: 494ms)
+Ô£ô Compiled in 10ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1035ms (next.js: 19ms, application-code: 1016ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 0ms
+ GET /?genre=science-fiction 200 in 389ms (next.js: 4ms, application-code: 386ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 327ms (next.js: 13ms, application-code: 314ms)
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 263ms (next.js: 4ms, application-code: 259ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 656ms (next.js: 14ms, application-code: 641ms)
+ GET /?genre=science-fiction 200 in 380ms (next.js: 3ms, application-code: 377ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 5ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 641ms (next.js: 13ms, application-code: 628ms)
+ GET /?genre=science-fiction 200 in 393ms (next.js: 7ms, application-code: 386ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 785ms (next.js: 13ms, application-code: 771ms)
+ GET /?genre=science-fiction 200 in 476ms (next.js: 6ms, application-code: 470ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 342ms (next.js: 19ms, application-code: 323ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 315ms (next.js: 3ms, application-code: 311ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 97ms
+node.exe : Ô¿» TypeError: Cannot read properties of undefined (reading '0')
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Ô¿» TypeError: ...d (reading '0'):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+    at AiDiscussion (src\components\ai\ai-discussion.tsx:57:25)
+  55 |     useState<Conversation[]>(initialConversations);
+  56 |   const [active, setActive] = useState<Conversation | null>(
+> 57 |     initialConversations[0] ?? null,
+     |                         ^
+  58 |   );
+  59 |   const [messages, setMessages] = useState<AiMessageView[]>(initialMessages);
+  60 |   const [spoilerMode, setSpoilerMode] = useState<Conversation["spoilerMode"]>( {
+  digest: '394431851'
+}
+ GET /title/ttl_eee9f3768b734aaba03a8164 500 in 1851ms (next.js: 14ms, application-code: 1837ms)
+ GET /?genre=science-fiction 200 in 521ms (next.js: 18ms, application-code: 503ms)
+Ô£ô Compiled in 4ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 1644ms (next.js: 4ms, application-code: 1640ms)
+Ô¿» TypeError: Cannot read properties of undefined (reading '0')
+    at AiDiscussion (src\components\ai\ai-discussion.tsx:57:25)
+  55 |     useState<Conversation[]>(initialConversations);
+  56 |   const [active, setActive] = useState<Conversation | null>(
+> 57 |     initialConversations[0] ?? null,
+     |                         ^
+  58 |   );
+  59 |   const [messages, setMessages] = useState<AiMessageView[]>(initialMessages);
+  60 |   const [spoilerMode, setSpoilerMode] = useState<Conversation["spoilerMode"]>( {
+  digest: '394431851'
+}
+ GET /title/ttl_eee9f3768b734aaba03a8164 500 in 1456ms (next.js: 186ms, application-code: 1269ms)
+Ô£ô Compiled in 410ms
+Ô£ô Compiled in 9ms
+Ô¿» TypeError: Cannot read properties of undefined (reading '0')
+    at AiDiscussion (src\components\ai\ai-discussion.tsx:57:25)
+  55 |     useState<Conversation[]>(initialConversations);
+  56 |   const [active, setActive] = useState<Conversation | null>(
+> 57 |     initialConversations[0] ?? null,
+     |                         ^
+  58 |   );
+  59 |   const [messages, setMessages] = useState<AiMessageView[]>(initialMessages);
+  60 |   const [spoilerMode, setSpoilerMode] = useState<Conversation["spoilerMode"]>( {
+  digest: '2118594571'
+}
+ GET /?genre=science-fiction 200 in 772ms (next.js: 3ms, application-code: 768ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 500 in 674ms (next.js: 28ms, application-code: 646ms)
+Ô£ô Compiled in 2ms
+Ô¿» TypeError: Cannot read properties of undefined (reading '0')
+    at AiDiscussion (src\components\ai\ai-discussion.tsx:57:25)
+  55 |     useState<Conversation[]>(initialConversations);
+  56 |   const [active, setActive] = useState<Conversation | null>(
+> 57 |     initialConversations[0] ?? null,
+     |                         ^
+  58 |   );
+  59 |   const [messages, setMessages] = useState<AiMessageView[]>(initialMessages);
+  60 |   const [spoilerMode, setSpoilerMode] = useState<Conversation["spoilerMode"]>( {
+  digest: '2118594571'
+}
+ GET /title/ttl_eee9f3768b734aaba03a8164 500 in 706ms (next.js: 14ms, application-code: 693ms)
+ GET /?genre=science-fiction 200 in 340ms (next.js: 6ms, application-code: 335ms)
+Ô£ô Compiled in 2ms
+ÔÜá Fast Refresh had to perform a full reload due to a runtime error.
+ÔÜá Fast Refresh had to perform a full reload due to a runtime error.
+ GET /?genre=science-fiction 200 in 251ms (next.js: 3ms, application-code: 249ms)
+Ô¿» TypeError: Cannot read properties of undefined (reading '0')
+    at AiDiscussion (src\components\ai\ai-discussion.tsx:57:25)
+  55 |     useState<Conversation[]>(initialConversations);
+  56 |   const [active, setActive] = useState<Conversation | null>(
+> 57 |     initialConversations[0] ?? null,
+     |                         ^
+  58 |   );
+  59 |   const [messages, setMessages] = useState<AiMessageView[]>(initialMessages);
+  60 |   const [spoilerMode, setSpoilerMode] = useState<Conversation["spoilerMode"]>( {
+  digest: '2118594571'
+}
+ GET /title/ttl_eee9f3768b734aaba03a8164 500 in 625ms (next.js: 29ms, application-code: 596ms)
+Ô£ô Compiled in 3ms
+ÔÜá Fast Refresh had to perform a full reload due to a runtime error.
+Ô¿» TypeError: Cannot read properties of undefined (reading '0')
+    at AiDiscussion (src\components\ai\ai-discussion.tsx:57:25)
+  55 |     useState<Conversation[]>(initialConversations);
+  56 |   const [active, setActive] = useState<Conversation | null>(
+> 57 |     initialConversations[0] ?? null,
+     |                         ^
+  58 |   );
+  59 |   const [messages, setMessages] = useState<AiMessageView[]>(initialMessages);
+  60 |   const [spoilerMode, setSpoilerMode] = useState<Conversation["spoilerMode"]>( {
+  digest: '2118594571'
+}
+ GET /?genre=science-fiction 200 in 1543ms (next.js: 2ms, application-code: 1541ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 500 in 1329ms (next.js: 25ms, application-code: 1304ms)
+Ô£ô Compiled in 1030ms
+Ô£ô Compiled in 14ms
+ GET /?genre=science-fiction 200 in 717ms (next.js: 13ms, application-code: 704ms)
+Ô¿» TypeError: Cannot read properties of undefined (reading '0')
+    at AiDiscussion (src\components\ai\ai-discussion.tsx:57:25)
+  55 |     useState<Conversation[]>(initialConversations);
+  56 |   const [active, setActive] = useState<Conversation | null>(
+> 57 |     initialConversations[0] ?? null,
+     |                         ^
+  58 |   );
+  59 |   const [messages, setMessages] = useState<AiMessageView[]>(initialMessages);
+  60 |   const [spoilerMode, setSpoilerMode] = useState<Conversation["spoilerMode"]>( {
+  digest: '2806516267'
+}
+ GET /title/ttl_eee9f3768b734aaba03a8164 500 in 1867ms (next.js: 162ms, application-code: 1705ms)
+Ô£ô Compiled in 100ms
+ GET /?genre=science-fiction 200 in 544ms (next.js: 4ms, application-code: 540ms)
+Ô£ô Compiled in 1ms
+Ô¿» TypeError: Cannot read properties of undefined (reading '0')
+    at AiDiscussion (src\components\ai\ai-discussion.tsx:57:25)
+  55 |     useState<Conversation[]>(initialConversations);
+  56 |   const [active, setActive] = useState<Conversation | null>(
+> 57 |     initialConversations[0] ?? null,
+     |                         ^
+  58 |   );
+  59 |   const [messages, setMessages] = useState<AiMessageView[]>(initialMessages);
+  60 |   const [spoilerMode, setSpoilerMode] = useState<Conversation["spoilerMode"]>( {
+  digest: '2806516267'
+}
+ÔÜá Fast Refresh had to perform a full reload due to a runtime error.
+ GET /title/ttl_eee9f3768b734aaba03a8164 500 in 459ms (next.js: 29ms, application-code: 430ms)
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 797ms (next.js: 2ms, application-code: 795ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 603ms (next.js: 3ms, application-code: 600ms)
+Ô¿» TypeError: Cannot read properties of undefined (reading '0')
+    at AiDiscussion (src\components\ai\ai-discussion.tsx:57:25)
+  55 |     useState<Conversation[]>(initialConversations);
+  56 |   const [active, setActive] = useState<Conversation | null>(
+> 57 |     initialConversations[0] ?? null,
+     |                         ^
+  58 |   );
+  59 |   const [messages, setMessages] = useState<AiMessageView[]>(initialMessages);
+  60 |   const [spoilerMode, setSpoilerMode] = useState<Conversation["spoilerMode"]>( {
+  digest: '2806516267'
+}
+ GET /title/ttl_eee9f3768b734aaba03a8164 500 in 438ms (next.js: 26ms, application-code: 412ms)
+Ô£ô Compiled in 125ms
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 425ms (next.js: 3ms, application-code: 423ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 474ms (next.js: 16ms, application-code: 458ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 734ms (next.js: 3ms, application-code: 731ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 961ms (next.js: 47ms, application-code: 914ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 1225ms (next.js: 3ms, application-code: 1222ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1014ms (next.js: 55ms, application-code: 959ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 272ms (next.js: 3ms, application-code: 269ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1299ms (next.js: 12ms, application-code: 1288ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 588ms (next.js: 3ms, application-code: 586ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 289ms (next.js: 15ms, application-code: 275ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 251ms (next.js: 3ms, application-code: 248ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 307ms (next.js: 3ms, application-code: 305ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 298ms (next.js: 4ms, application-code: 294ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 369ms (next.js: 22ms, application-code: 347ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 314ms (next.js: 3ms, application-code: 311ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 292ms (next.js: 15ms, application-code: 277ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 273ms (next.js: 5ms, application-code: 268ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 306ms (next.js: 17ms, application-code: 289ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 285ms (next.js: 2ms, application-code: 282ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 325ms (next.js: 3ms, application-code: 322ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 343ms (next.js: 5ms, application-code: 338ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 333ms (next.js: 25ms, application-code: 308ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 244ms (next.js: 3ms, application-code: 241ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 336ms (next.js: 16ms, application-code: 319ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 306ms (next.js: 3ms, application-code: 304ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 303ms (next.js: 15ms, application-code: 288ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 285ms (next.js: 5ms, application-code: 281ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 741ms (next.js: 4ms, application-code: 738ms)
+ GET /?genre=science-fiction 200 in 416ms (next.js: 4ms, application-code: 412ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1239ms (next.js: 11ms, application-code: 1228ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 864ms (next.js: 3ms, application-code: 862ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 621ms (next.js: 4ms, application-code: 617ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 483ms (next.js: 45ms, application-code: 438ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 268ms (next.js: 4ms, application-code: 264ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 349ms (next.js: 18ms, application-code: 331ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 341ms (next.js: 3ms, application-code: 338ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 323ms (next.js: 23ms, application-code: 300ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 623ms (next.js: 3ms, application-code: 620ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 551ms (next.js: 22ms, application-code: 529ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 521ms (next.js: 3ms, application-code: 518ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 343ms (next.js: 26ms, application-code: 316ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 800ms (next.js: 3ms, application-code: 797ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 757ms (next.js: 34ms, application-code: 723ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 2.0s (next.js: 12ms, application-code: 2.0s)
+ GET /?genre=science-fiction 200 in 547ms (next.js: 2ms, application-code: 545ms)
+Ô£ô Compiled in 5ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 321ms (next.js: 10ms, application-code: 310ms)
+ GET /?genre=science-fiction 200 in 220ms (next.js: 3ms, application-code: 218ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 449ms (next.js: 19ms, application-code: 431ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 252ms (next.js: 2ms, application-code: 250ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 342ms (next.js: 22ms, application-code: 320ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 5ms
+ GET /?genre=science-fiction 200 in 867ms (next.js: 2ms, application-code: 865ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 591ms (next.js: 33ms, application-code: 558ms)
+Ô£ô Compiled in 0ms
+ GET /?genre=science-fiction 200 in 277ms (next.js: 4ms, application-code: 273ms)
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 310ms (next.js: 11ms, application-code: 298ms)
+Ô£ô Compiled in 0ms
+ GET /?genre=science-fiction 200 in 248ms (next.js: 8ms, application-code: 241ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 373ms (next.js: 20ms, application-code: 353ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 256ms (next.js: 2.0ms, application-code: 254ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 530ms (next.js: 10ms, application-code: 520ms)
+ GET /?genre=science-fiction 200 in 279ms (next.js: 4ms, application-code: 274ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 549ms (next.js: 21ms, application-code: 528ms)
+ GET /?genre=science-fiction 200 in 264ms (next.js: 4ms, application-code: 260ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 659ms (next.js: 12ms, application-code: 646ms)
+ GET /?genre=science-fiction 200 in 382ms (next.js: 3ms, application-code: 379ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 568ms (next.js: 11ms, application-code: 557ms)
+ GET /?genre=science-fiction 200 in 285ms (next.js: 4ms, application-code: 282ms)
+Ô£ô Compiled in 5ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 800ms (next.js: 13ms, application-code: 787ms)
+ GET /?genre=science-fiction 200 in 453ms (next.js: 9ms, application-code: 444ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 564ms (next.js: 20ms, application-code: 544ms)
+ GET /?genre=science-fiction 200 in 268ms (next.js: 4ms, application-code: 264ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 582ms (next.js: 16ms, application-code: 566ms)
+ GET /?genre=science-fiction 200 in 272ms (next.js: 5ms, application-code: 267ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 566ms (next.js: 15ms, application-code: 551ms)
+ GET /?genre=science-fiction 200 in 258ms (next.js: 4ms, application-code: 254ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 652ms (next.js: 24ms, application-code: 628ms)
+ GET /?genre=science-fiction 200 in 342ms (next.js: 5ms, application-code: 337ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 664ms (next.js: 31ms, application-code: 634ms)
+ GET /?genre=science-fiction 200 in 305ms (next.js: 4ms, application-code: 301ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 609ms (next.js: 31ms, application-code: 579ms)
+ GET /?genre=science-fiction 200 in 309ms (next.js: 6ms, application-code: 303ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 269ms (next.js: 6ms, application-code: 263ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 330ms (next.js: 18ms, application-code: 312ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 244ms (next.js: 2ms, application-code: 242ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 357ms (next.js: 25ms, application-code: 332ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 260ms (next.js: 4ms, application-code: 255ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 468ms (next.js: 13ms, application-code: 456ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 263ms (next.js: 2ms, application-code: 261ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 330ms (next.js: 27ms, application-code: 303ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 261ms (next.js: 3ms, application-code: 258ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 327ms (next.js: 24ms, application-code: 303ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 259ms (next.js: 4ms, application-code: 255ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 312ms (next.js: 21ms, application-code: 291ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 211ms (next.js: 1.8ms, application-code: 209ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 593ms (next.js: 23ms, application-code: 570ms)
+ GET /?genre=science-fiction 200 in 296ms (next.js: 4ms, application-code: 292ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 611ms (next.js: 24ms, application-code: 586ms)
+ GET /?genre=science-fiction 200 in 286ms (next.js: 6ms, application-code: 280ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 619ms (next.js: 28ms, application-code: 592ms)
+ GET /?genre=science-fiction 200 in 272ms (next.js: 4ms, application-code: 269ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 598ms (next.js: 21ms, application-code: 576ms)
+ GET /?genre=science-fiction 200 in 305ms (next.js: 4ms, application-code: 301ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 592ms (next.js: 12ms, application-code: 580ms)
+ GET /?genre=science-fiction 200 in 316ms (next.js: 6ms, application-code: 310ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 641ms (next.js: 14ms, application-code: 627ms)
+ GET /?genre=science-fiction 200 in 367ms (next.js: 3ms, application-code: 363ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 548ms (next.js: 12ms, application-code: 536ms)
+ GET /?genre=science-fiction 200 in 269ms (next.js: 3ms, application-code: 265ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 610ms (next.js: 23ms, application-code: 586ms)
+ GET /?genre=science-fiction 200 in 295ms (next.js: 5ms, application-code: 290ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 605ms (next.js: 22ms, application-code: 582ms)
+ GET /?genre=science-fiction 200 in 294ms (next.js: 6ms, application-code: 288ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 542ms (next.js: 13ms, application-code: 529ms)
+ GET /?genre=science-fiction 200 in 252ms (next.js: 3ms, application-code: 249ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 644ms (next.js: 14ms, application-code: 630ms)
+ GET /?genre=science-fiction 200 in 357ms (next.js: 4ms, application-code: 353ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 588ms (next.js: 21ms, application-code: 567ms)
+ GET /?genre=science-fiction 200 in 272ms (next.js: 5ms, application-code: 266ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 600ms (next.js: 13ms, application-code: 588ms)
+ GET /?genre=science-fiction 200 in 332ms (next.js: 4ms, application-code: 328ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 311ms (next.js: 14ms, application-code: 298ms)
+ GET /?genre=science-fiction 200 in 272ms (next.js: 4ms, application-code: 268ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 658ms (next.js: 23ms, application-code: 635ms)
+ GET /?genre=science-fiction 200 in 325ms (next.js: 5ms, application-code: 320ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 637ms (next.js: 44ms, application-code: 593ms)
+ GET /?genre=science-fiction 200 in 278ms (next.js: 5ms, application-code: 273ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 589ms (next.js: 15ms, application-code: 574ms)
+ GET /?genre=science-fiction 200 in 290ms (next.js: 4ms, application-code: 285ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 581ms (next.js: 10ms, application-code: 571ms)
+ GET /?genre=science-fiction 200 in 310ms (next.js: 4ms, application-code: 306ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 521ms (next.js: 10ms, application-code: 511ms)
+ GET /?genre=science-fiction 200 in 255ms (next.js: 4ms, application-code: 251ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 320ms (next.js: 25ms, application-code: 295ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 275ms (next.js: 4ms, application-code: 272ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 323ms (next.js: 21ms, application-code: 301ms)
+ GET /?genre=science-fiction 200 in 261ms (next.js: 6ms, application-code: 254ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 551ms (next.js: 11ms, application-code: 540ms)
+ GET /?genre=science-fiction 200 in 268ms (next.js: 5ms, application-code: 263ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 617ms (next.js: 21ms, application-code: 597ms)
+ GET /?genre=science-fiction 200 in 277ms (next.js: 3ms, application-code: 274ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 673ms (next.js: 13ms, application-code: 660ms)
+ GET /?genre=science-fiction 200 in 386ms (next.js: 4ms, application-code: 382ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 688ms (next.js: 25ms, application-code: 663ms)
+ GET /?genre=science-fiction 200 in 398ms (next.js: 4ms, application-code: 394ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 581ms (next.js: 21ms, application-code: 561ms)
+ GET /?genre=science-fiction 200 in 277ms (next.js: 4ms, application-code: 273ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 673ms (next.js: 25ms, application-code: 649ms)
+ GET /?genre=science-fiction 200 in 328ms (next.js: 4ms, application-code: 325ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 585ms (next.js: 13ms, application-code: 572ms)
+ GET /?genre=science-fiction 200 in 294ms (next.js: 5ms, application-code: 289ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 716ms (next.js: 22ms, application-code: 694ms)
+ GET /?genre=science-fiction 200 in 346ms (next.js: 4ms, application-code: 342ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 628ms (next.js: 22ms, application-code: 606ms)
+ GET /?genre=science-fiction 200 in 307ms (next.js: 4ms, application-code: 303ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 594ms (next.js: 12ms, application-code: 583ms)
+ GET /?genre=science-fiction 200 in 334ms (next.js: 5ms, application-code: 329ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 645ms (next.js: 30ms, application-code: 615ms)
+ GET /?genre=science-fiction 200 in 294ms (next.js: 5ms, application-code: 290ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 664ms (next.js: 27ms, application-code: 636ms)
+ GET /?genre=science-fiction 200 in 324ms (next.js: 4ms, application-code: 320ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 608ms (next.js: 12ms, application-code: 596ms)
+ GET /?genre=science-fiction 200 in 316ms (next.js: 4ms, application-code: 311ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 369ms (next.js: 14ms, application-code: 355ms)
+ GET /?genre=science-fiction 200 in 253ms (next.js: 5ms, application-code: 248ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 360ms (next.js: 23ms, application-code: 338ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 293ms (next.js: 3ms, application-code: 289ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 343ms (next.js: 21ms, application-code: 322ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 291ms (next.js: 3ms, application-code: 288ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 387ms (next.js: 18ms, application-code: 369ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 257ms (next.js: 3ms, application-code: 254ms)
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 301ms (next.js: 13ms, application-code: 287ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 260ms (next.js: 3ms, application-code: 257ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 315ms (next.js: 30ms, application-code: 285ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 583ms (next.js: 2ms, application-code: 581ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 434ms (next.js: 26ms, application-code: 408ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 251ms (next.js: 4ms, application-code: 247ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 391ms (next.js: 12ms, application-code: 379ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 490ms (next.js: 3ms, application-code: 488ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 570ms (next.js: 29ms, application-code: 541ms)
+Ô£ô Compiled in 32ms
+ GET /?genre=science-fiction 200 in 559ms (next.js: 2ms, application-code: 557ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 490ms (next.js: 31ms, application-code: 459ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 584ms (next.js: 25ms, application-code: 559ms)
+ GET /?genre=science-fiction 200 in 477ms (next.js: 3ms, application-code: 474ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 560ms (next.js: 10ms, application-code: 549ms)
+ GET /?genre=science-fiction 200 in 467ms (next.js: 3ms, application-code: 464ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 519ms (next.js: 13ms, application-code: 506ms)
+ GET /?genre=science-fiction 200 in 255ms (next.js: 3ms, application-code: 252ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 521ms (next.js: 23ms, application-code: 498ms)
+ GET /?genre=science-fiction 200 in 255ms (next.js: 3ms, application-code: 252ms)
+Ô£ô Compiled in 5ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 508ms (next.js: 28ms, application-code: 480ms)
+ GET /?genre=science-fiction 200 in 233ms (next.js: 3ms, application-code: 230ms)
+Ô£ô Compiled in 5ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 452ms (next.js: 9ms, application-code: 443ms)
+ GET /?genre=science-fiction 200 in 245ms (next.js: 3ms, application-code: 242ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 550ms (next.js: 27ms, application-code: 524ms)
+ GET /?genre=science-fiction 200 in 248ms (next.js: 5ms, application-code: 243ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 381ms (next.js: 8ms, application-code: 373ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 250ms (next.js: 3ms, application-code: 247ms)
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 285ms (next.js: 24ms, application-code: 261ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 236ms (next.js: 4ms, application-code: 232ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 504ms (next.js: 32ms, application-code: 473ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 268ms (next.js: 5ms, application-code: 263ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 210ms (next.js: 19ms, application-code: 191ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 141ms (next.js: 3ms, application-code: 137ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 246ms (next.js: 15ms, application-code: 231ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 266ms (next.js: 3ms, application-code: 263ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 288ms (next.js: 19ms, application-code: 268ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 244ms (next.js: 4ms, application-code: 240ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 290ms (next.js: 21ms, application-code: 269ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 276ms (next.js: 1.8ms, application-code: 275ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 341ms (next.js: 22ms, application-code: 318ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 290ms (next.js: 5ms, application-code: 285ms)
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 216ms (next.js: 8ms, application-code: 207ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 236ms (next.js: 3ms, application-code: 233ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 385ms (next.js: 20ms, application-code: 365ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1263ms
+ GET /?genre=science-fiction 200 in 2.2s (next.js: 2ms, application-code: 2.2s)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1820ms (next.js: 38ms, application-code: 1782ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 985ms (next.js: 17ms, application-code: 968ms)
+Ô£ô Compiled in 92ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 649ms (next.js: 48ms, application-code: 600ms)
+ GET /?genre=science-fiction 200 in 225ms (next.js: 4ms, application-code: 221ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 463ms (next.js: 20ms, application-code: 443ms)
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 232ms (next.js: 2ms, application-code: 230ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 609ms (next.js: 24ms, application-code: 585ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 475ms (next.js: 3ms, application-code: 471ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 593ms (next.js: 13ms, application-code: 580ms)
+ GET /?genre=science-fiction 200 in 322ms (next.js: 3ms, application-code: 318ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 712ms (next.js: 24ms, application-code: 688ms)
+ GET /?genre=science-fiction 200 in 344ms (next.js: 5ms, application-code: 339ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 597ms (next.js: 22ms, application-code: 575ms)
+ GET /?genre=science-fiction 200 in 295ms (next.js: 4ms, application-code: 291ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 667ms (next.js: 24ms, application-code: 644ms)
+ GET /?genre=science-fiction 200 in 311ms (next.js: 5ms, application-code: 306ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 693ms (next.js: 22ms, application-code: 671ms)
+ GET /?genre=science-fiction 200 in 319ms (next.js: 5ms, application-code: 315ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 649ms (next.js: 23ms, application-code: 626ms)
+ GET /?genre=science-fiction 200 in 302ms (next.js: 5ms, application-code: 298ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 663ms (next.js: 22ms, application-code: 641ms)
+ GET /?genre=science-fiction 200 in 340ms (next.js: 5ms, application-code: 336ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 571ms (next.js: 14ms, application-code: 557ms)
+ GET /?genre=science-fiction 200 in 283ms (next.js: 5ms, application-code: 278ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 336ms (next.js: 12ms, application-code: 324ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 272ms (next.js: 3ms, application-code: 268ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 307ms (next.js: 17ms, application-code: 290ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 258ms (next.js: 4ms, application-code: 254ms)
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 339ms (next.js: 22ms, application-code: 317ms)
+Ô£ô Compiled in 0ms
+ GET /?genre=science-fiction 200 in 267ms (next.js: 1.8ms, application-code: 266ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 687ms (next.js: 23ms, application-code: 665ms)
+ GET /?genre=science-fiction 200 in 332ms (next.js: 4ms, application-code: 328ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 646ms (next.js: 16ms, application-code: 630ms)
+ GET /?genre=science-fiction 200 in 303ms (next.js: 6ms, application-code: 296ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 767ms (next.js: 22ms, application-code: 744ms)
+ GET /?genre=science-fiction 200 in 432ms (next.js: 4ms, application-code: 428ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 630ms (next.js: 17ms, application-code: 614ms)
+ GET /?genre=science-fiction 200 in 337ms (next.js: 4ms, application-code: 333ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 542ms (next.js: 14ms, application-code: 528ms)
+ GET /?genre=science-fiction 200 in 257ms (next.js: 3ms, application-code: 253ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 713ms (next.js: 20ms, application-code: 693ms)
+ GET /?genre=science-fiction 200 in 401ms (next.js: 4ms, application-code: 397ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 695ms (next.js: 23ms, application-code: 672ms)
+ GET /?genre=science-fiction 200 in 344ms (next.js: 12ms, application-code: 331ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 606ms (next.js: 12ms, application-code: 594ms)
+ GET /?genre=science-fiction 200 in 293ms (next.js: 4ms, application-code: 289ms)
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 447ms (next.js: 13ms, application-code: 433ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 290ms (next.js: 3ms, application-code: 287ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 483ms (next.js: 17ms, application-code: 466ms)
+Ô£ô Compiled in 20ms
+ GET /?genre=science-fiction 200 in 297ms (next.js: 5ms, application-code: 292ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 656ms (next.js: 20ms, application-code: 635ms)
+ GET /?genre=science-fiction 200 in 304ms (next.js: 9ms, application-code: 295ms)
+Ô£ô Compiled in 38ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 533ms (next.js: 19ms, application-code: 514ms)
+ GET /?genre=science-fiction 200 in 398ms (next.js: 6ms, application-code: 392ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 575ms (next.js: 21ms, application-code: 554ms)
+ GET /?genre=science-fiction 200 in 269ms (next.js: 5ms, application-code: 264ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 601ms (next.js: 20ms, application-code: 581ms)
+ GET /?genre=science-fiction 200 in 270ms (next.js: 3ms, application-code: 267ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 617ms (next.js: 16ms, application-code: 602ms)
+ GET /?genre=science-fiction 200 in 318ms (next.js: 9ms, application-code: 308ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 662ms (next.js: 19ms, application-code: 643ms)
+ GET /?genre=science-fiction 200 in 348ms (next.js: 4ms, application-code: 344ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 647ms (next.js: 20ms, application-code: 627ms)
+ GET /?genre=science-fiction 200 in 315ms (next.js: 4ms, application-code: 310ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 819ms (next.js: 26ms, application-code: 793ms)
+ GET /?genre=science-fiction 200 in 514ms (next.js: 4ms, application-code: 510ms)
+Ô£ô Compiled in 4ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 536ms (next.js: 11ms, application-code: 525ms)
+ GET /?genre=science-fiction 200 in 259ms (next.js: 4ms, application-code: 255ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 476ms (next.js: 12ms, application-code: 464ms)
+ GET /?genre=science-fiction 200 in 919ms (next.js: 6ms, application-code: 913ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 332ms (next.js: 3ms, application-code: 329ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 425ms (next.js: 2ms, application-code: 423ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1221ms (next.js: 34ms, application-code: 1187ms)
+ GET /?genre=science-fiction 200 in 767ms (next.js: 9ms, application-code: 758ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 435ms (next.js: 2ms, application-code: 433ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 6ms
+ GET /?genre=science-fiction 200 in 743ms (next.js: 2ms, application-code: 741ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1041ms (next.js: 138ms, application-code: 902ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 229ms (next.js: 2ms, application-code: 227ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 274ms (next.js: 19ms, application-code: 254ms)
+Ô£ô Compiled in 5ms
+ GET /?genre=science-fiction 200 in 276ms (next.js: 4ms, application-code: 272ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 282ms (next.js: 28ms, application-code: 254ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 267ms (next.js: 5ms, application-code: 263ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 321ms (next.js: 25ms, application-code: 296ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 877ms (next.js: 4ms, application-code: 873ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 767ms (next.js: 32ms, application-code: 736ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 516ms (next.js: 1.9ms, application-code: 514ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 706ms (next.js: 39ms, application-code: 667ms)
+Ô£ô Compiled in 5ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 408ms (next.js: 9ms, application-code: 399ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 408ms (next.js: 11ms, application-code: 397ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 333ms (next.js: 2ms, application-code: 331ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 957ms (next.js: 10ms, application-code: 948ms)
+ GET /?genre=science-fiction 200 in 410ms (next.js: 2ms, application-code: 408ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 380ms (next.js: 10ms, application-code: 371ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 562ms (next.js: 2ms, application-code: 559ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 490ms (next.js: 11ms, application-code: 479ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 418ms (next.js: 2ms, application-code: 416ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 597ms (next.js: 18ms, application-code: 579ms)
+ GET /?genre=science-fiction 200 in 405ms (next.js: 2ms, application-code: 403ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 578ms (next.js: 2ms, application-code: 576ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1306ms (next.js: 20ms, application-code: 1286ms)
+ POST /api/auth/register 201 in 316ms (next.js: 4ms, application-code: 311ms)
+ POST /api/auth/register 400 in 96ms (next.js: 6ms, application-code: 90ms)
+ GET /api/search?q=inception&kind=movie 200 in 43ms (next.js: 6ms, application-code: 37ms)
+ POST /api/catalog/import 200 in 93ms (next.js: 7ms, application-code: 86ms)
+ GET /api/library 401 in 36ms (next.js: 6ms, application-code: 30ms)
+Ô£ô Compiled in 3ms
+ GET /api/library 200 in 47ms (next.js: 3ms, application-code: 44ms)
+Ô£ô Compiled in 1ms
+ POST /api/auth/register 201 in 799ms (next.js: 38ms, application-code: 760ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1280ms (next.js: 21ms, application-code: 1259ms)
+ GET /?genre=science-fiction 200 in 787ms (next.js: 83ms, application-code: 704ms)
+ GET /api/ai/status 200 in 59ms (next.js: 6ms, application-code: 54ms)
+ GET /api/search?q=inception&kind=movie 200 in 45ms (next.js: 6ms, application-code: 40ms)
+ POST /api/catalog/import 200 in 129ms (next.js: 3ms, application-code: 126ms)
+ POST /api/library 201 in 55ms (next.js: 10ms, application-code: 45ms)
+ POST /api/reviews 201 in 36ms (next.js: 4ms, application-code: 31ms)
+ GET /api/reviews?titleId=ttl_eee9f3768b734aaba03a8164 200 in 54ms (next.js: 4ms, application-code: 51ms)
+ GET /api/reviews 200 in 34ms (next.js: 6ms, application-code: 28ms)
+Ô£ô Compiled in 2ms
+ POST /api/ai/conversations 201 in 39ms (next.js: 6ms, application-code: 33ms)
+ POST /api/ai/conversations/cnv_bad1622763f04c2080c3551a/messages 409 in 82ms (next.js: 32ms, application-code: 50ms)
+Ô£ô Compiled in 5ms
+ POST /api/research 200 in 355ms (next.js: 15ms, application-code: 340ms)
+ GET /api/research?titleId=ttl_eee9f3768b734aaba03a8164 200 in 34ms (next.js: 4ms, application-code: 30ms)
+ GET /api/data/export?format=json 200 in 199ms (next.js: 6ms, application-code: 193ms)
+ GET /api/data/export?format=csv 200 in 179ms (next.js: 5ms, application-code: 174ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 755ms (next.js: 21ms, application-code: 734ms)
+ GET /?genre=science-fiction 200 in 431ms (next.js: 5ms, application-code: 427ms)
+ POST /api/data/import 200 in 77ms (next.js: 8ms, application-code: 69ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 5ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 852ms (next.js: 28ms, application-code: 823ms)
+ GET /?genre=science-fiction 200 in 475ms (next.js: 3ms, application-code: 472ms)
+Ô£ô Compiled in 76ms
+ GET /?genre=science-fiction 200 in 249ms (next.js: 2ms, application-code: 247ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 393ms (next.js: 21ms, application-code: 372ms)
+Ô£ô Compiled in 26ms
+ GET /?genre=science-fiction 200 in 288ms (next.js: 4ms, application-code: 284ms)
+Ô£ô Compiled in 29ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 512ms (next.js: 21ms, application-code: 491ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 245ms (next.js: 3ms, application-code: 242ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 2.3s (next.js: 20ms, application-code: 2.3s)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 552ms (next.js: 22ms, application-code: 530ms)
+ GET /?genre=science-fiction 200 in 304ms (next.js: 4ms, application-code: 300ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 520ms (next.js: 14ms, application-code: 507ms)
+ GET /?genre=science-fiction 200 in 263ms (next.js: 4ms, application-code: 259ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 639ms (next.js: 15ms, application-code: 624ms)
+ GET /?genre=science-fiction 200 in 342ms (next.js: 4ms, application-code: 337ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 600ms (next.js: 10ms, application-code: 589ms)
+ GET /?genre=science-fiction 200 in 649ms (next.js: 53ms, application-code: 595ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 0ms
+ GET /?genre=science-fiction 200 in 566ms (next.js: 2ms, application-code: 563ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 735ms (next.js: 50ms, application-code: 685ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 744ms (next.js: 10ms, application-code: 734ms)
+ GET /?genre=science-fiction 200 in 348ms (next.js: 2ms, application-code: 345ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 829ms (next.js: 11ms, application-code: 818ms)
+ GET /?genre=science-fiction 200 in 657ms (next.js: 1.8ms, application-code: 656ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1001ms (next.js: 13ms, application-code: 988ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 369ms (next.js: 2ms, application-code: 367ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 775ms (next.js: 10ms, application-code: 765ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 477ms (next.js: 1.9ms, application-code: 475ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 278ms (next.js: 14ms, application-code: 264ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 276ms (next.js: 3ms, application-code: 273ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 415ms (next.js: 6ms, application-code: 410ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 237ms (next.js: 2ms, application-code: 235ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 259ms (next.js: 19ms, application-code: 240ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 224ms (next.js: 3ms, application-code: 222ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 434ms (next.js: 26ms, application-code: 408ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 11ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 558ms (next.js: 11ms, application-code: 547ms)
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 393ms (next.js: 17ms, application-code: 376ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 370ms (next.js: 52ms, application-code: 319ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 508ms (next.js: 11ms, application-code: 497ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 279ms (next.js: 2ms, application-code: 277ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 393ms (next.js: 26ms, application-code: 367ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 812ms (next.js: 9ms, application-code: 803ms)
+ GET /?genre=science-fiction 200 in 308ms (next.js: 8ms, application-code: 300ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 578ms (next.js: 12ms, application-code: 566ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 681ms (next.js: 1.9ms, application-code: 679ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 621ms (next.js: 16ms, application-code: 605ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 263ms (next.js: 12ms, application-code: 251ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 286ms (next.js: 3ms, application-code: 283ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 305ms (next.js: 15ms, application-code: 291ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 229ms (next.js: 2ms, application-code: 227ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 340ms (next.js: 13ms, application-code: 327ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 230ms (next.js: 2ms, application-code: 227ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 340ms (next.js: 23ms, application-code: 317ms)
+Ô£ô Compiled in 5ms
+ GET /?genre=science-fiction 200 in 403ms (next.js: 3ms, application-code: 400ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 262ms (next.js: 10ms, application-code: 252ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 275ms (next.js: 3ms, application-code: 273ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 603ms (next.js: 18ms, application-code: 585ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 238ms (next.js: 4ms, application-code: 234ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 11ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 776ms (next.js: 11ms, application-code: 765ms)
+ GET /?genre=science-fiction 200 in 310ms (next.js: 3ms, application-code: 308ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 394ms (next.js: 2ms, application-code: 392ms)
+Ô£ô Compiled in 7ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 276ms (next.js: 12ms, application-code: 263ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 250ms (next.js: 4ms, application-code: 246ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 378ms (next.js: 23ms, application-code: 354ms)
+Ô£ô Compiled in 0ms
+ GET /?genre=science-fiction 200 in 256ms (next.js: 3ms, application-code: 253ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 359ms (next.js: 10ms, application-code: 349ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 220ms (next.js: 2ms, application-code: 218ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 511ms (next.js: 12ms, application-code: 499ms)
+ GET /?genre=science-fiction 200 in 217ms (next.js: 1.7ms, application-code: 215ms)
+Ô£ô Compiled in 4ms
+Ô£ô Compiled in 6ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 376ms (next.js: 11ms, application-code: 366ms)
+ GET /?genre=science-fiction 200 in 331ms (next.js: 6ms, application-code: 325ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 987ms (next.js: 70ms, application-code: 917ms)
+ GET /?genre=science-fiction 200 in 246ms (next.js: 7ms, application-code: 240ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 614ms (next.js: 10ms, application-code: 603ms)
+ GET /?genre=science-fiction 200 in 301ms (next.js: 3ms, application-code: 298ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 319ms (next.js: 10ms, application-code: 308ms)
+ GET /?genre=science-fiction 200 in 208ms (next.js: 3ms, application-code: 206ms)
+Ô£ô Compiled in 27ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 626ms (next.js: 11ms, application-code: 615ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 239ms (next.js: 1.9ms, application-code: 237ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 681ms (next.js: 14ms, application-code: 667ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 877ms (next.js: 1.9ms, application-code: 875ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 752ms (next.js: 47ms, application-code: 705ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 955ms (next.js: 1.9ms, application-code: 953ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 426ms (next.js: 45ms, application-code: 381ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 505ms (next.js: 2ms, application-code: 503ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 482ms (next.js: 22ms, application-code: 460ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 652ms (next.js: 11ms, application-code: 641ms)
+ GET /?genre=science-fiction 200 in 351ms (next.js: 5ms, application-code: 346ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 898ms (next.js: 57ms, application-code: 841ms)
+ GET /?genre=science-fiction 200 in 321ms (next.js: 5ms, application-code: 317ms)
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 1159ms (next.js: 1.9ms, application-code: 1157ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1104ms (next.js: 22ms, application-code: 1082ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 249ms (next.js: 3ms, application-code: 246ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 482ms (next.js: 29ms, application-code: 452ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 483ms (next.js: 1.9ms, application-code: 481ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 470ms (next.js: 60ms, application-code: 410ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 835ms (next.js: 39ms, application-code: 797ms)
+ GET /?genre=science-fiction 200 in 449ms (next.js: 45ms, application-code: 404ms)
+Ô£ô Compiled in 8ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 997ms (next.js: 23ms, application-code: 974ms)
+ GET /?genre=science-fiction 200 in 644ms (next.js: 4ms, application-code: 640ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 870ms (next.js: 12ms, application-code: 858ms)
+ GET /?genre=science-fiction 200 in 347ms (next.js: 5ms, application-code: 341ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 694ms (next.js: 12ms, application-code: 682ms)
+ GET /?genre=science-fiction 200 in 491ms (next.js: 4ms, application-code: 488ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 692ms (next.js: 15ms, application-code: 677ms)
+ GET /?genre=science-fiction 200 in 603ms (next.js: 6ms, application-code: 597ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 26ms
+ GET /?genre=science-fiction 200 in 535ms (next.js: 2ms, application-code: 532ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 676ms (next.js: 22ms, application-code: 654ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 206ms (next.js: 2.0ms, application-code: 204ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 633ms (next.js: 38ms, application-code: 595ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 297ms (next.js: 4ms, application-code: 293ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 368ms (next.js: 34ms, application-code: 334ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 277ms (next.js: 3ms, application-code: 274ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 620ms (next.js: 32ms, application-code: 588ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 244ms (next.js: 4ms, application-code: 240ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 266ms (next.js: 17ms, application-code: 249ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 228ms (next.js: 2ms, application-code: 226ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 325ms (next.js: 18ms, application-code: 307ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 243ms (next.js: 4ms, application-code: 239ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 422ms (next.js: 24ms, application-code: 398ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 222ms (next.js: 2ms, application-code: 220ms)
+Ô£ô Compiled in 6ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 368ms (next.js: 10ms, application-code: 358ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 257ms (next.js: 1.9ms, application-code: 255ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 6ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 536ms (next.js: 11ms, application-code: 524ms)
+ GET /?genre=science-fiction 200 in 260ms (next.js: 11ms, application-code: 249ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 621ms (next.js: 3ms, application-code: 618ms)
+ GET /?genre=science-fiction 200 in 287ms (next.js: 3ms, application-code: 285ms)
+Ô£ô Compiled in 4ms
+Ô£ô Compiled in 10ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1238ms (next.js: 10ms, application-code: 1228ms)
+ GET /?genre=science-fiction 200 in 412ms (next.js: 4ms, application-code: 409ms)
+Ô£ô Compiled in 8ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1002ms (next.js: 25ms, application-code: 977ms)
+ GET /?genre=science-fiction 200 in 331ms (next.js: 6ms, application-code: 325ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1065ms (next.js: 21ms, application-code: 1043ms)
+ GET /?genre=science-fiction 200 in 866ms (next.js: 3ms, application-code: 863ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 496ms (next.js: 3ms, application-code: 493ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 713ms (next.js: 23ms, application-code: 690ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 248ms (next.js: 2ms, application-code: 246ms)
+Ô£ô Compiled in 8ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 288ms (next.js: 11ms, application-code: 277ms)
+Ô£ô Compiled in 0ms
+ GET /?genre=science-fiction 200 in 319ms (next.js: 18ms, application-code: 302ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 748ms (next.js: 21ms, application-code: 727ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 819ms (next.js: 3ms, application-code: 816ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 679ms (next.js: 60ms, application-code: 619ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 5ms
+ GET /?genre=science-fiction 200 in 564ms (next.js: 2ms, application-code: 562ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 351ms (next.js: 30ms, application-code: 321ms)
+Ô£ô Compiled in 5ms
+ GET /?genre=science-fiction 200 in 225ms (next.js: 2ms, application-code: 222ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 260ms (next.js: 2ms, application-code: 258ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 626ms (next.js: 14ms, application-code: 612ms)
+ GET /?genre=science-fiction 200 in 342ms (next.js: 9ms, application-code: 333ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 641ms (next.js: 1.9ms, application-code: 640ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 558ms (next.js: 23ms, application-code: 535ms)
+Ô£ô Compiled in 0ms
+ GET /?genre=science-fiction 200 in 202ms (next.js: 2ms, application-code: 200ms)
+Ô£ô Compiled in 21ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 712ms (next.js: 15ms, application-code: 697ms)
+ GET /?genre=science-fiction 200 in 383ms (next.js: 4ms, application-code: 379ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 6ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 738ms (next.js: 18ms, application-code: 721ms)
+ GET /?genre=science-fiction 200 in 398ms (next.js: 4ms, application-code: 394ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 646ms (next.js: 22ms, application-code: 623ms)
+ GET /?genre=science-fiction 200 in 417ms (next.js: 4ms, application-code: 413ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 442ms (next.js: 6ms, application-code: 436ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 403ms (next.js: 10ms, application-code: 393ms)
+ GET /?genre=science-fiction 200 in 580ms (next.js: 3ms, application-code: 577ms)
+Ô£ô Compiled in 106ms
+ GET /?genre=science-fiction 200 in 400ms (next.js: 3ms, application-code: 397ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 611ms (next.js: 139ms, application-code: 472ms)
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 231ms (next.js: 2ms, application-code: 229ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 272ms (next.js: 10ms, application-code: 262ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 281ms (next.js: 3ms, application-code: 277ms)
+Ô£ô Compiled in 6ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 276ms (next.js: 11ms, application-code: 265ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 356ms (next.js: 4ms, application-code: 353ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 335ms (next.js: 20ms, application-code: 315ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 286ms (next.js: 2ms, application-code: 284ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 303ms (next.js: 13ms, application-code: 289ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 223ms (next.js: 1.9ms, application-code: 221ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 584ms (next.js: 21ms, application-code: 563ms)
+ GET /?genre=science-fiction 200 in 299ms (next.js: 4ms, application-code: 295ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 635ms (next.js: 25ms, application-code: 611ms)
+ GET /?genre=science-fiction 200 in 440ms (next.js: 6ms, application-code: 434ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 753ms (next.js: 25ms, application-code: 728ms)
+ GET /?genre=science-fiction 200 in 602ms (next.js: 4ms, application-code: 598ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 360ms (next.js: 2ms, application-code: 358ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 353ms (next.js: 24ms, application-code: 329ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 278ms (next.js: 3ms, application-code: 275ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 349ms (next.js: 42ms, application-code: 307ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 258ms (next.js: 4ms, application-code: 255ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 282ms (next.js: 22ms, application-code: 260ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 660ms (next.js: 2ms, application-code: 657ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 476ms (next.js: 4ms, application-code: 472ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 534ms (next.js: 45ms, application-code: 489ms)
+Ô£ô Compiled in 11ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 619ms (next.js: 10ms, application-code: 609ms)
+ GET /?genre=science-fiction 200 in 349ms (next.js: 4ms, application-code: 345ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 883ms (next.js: 28ms, application-code: 855ms)
+ GET /?genre=science-fiction 200 in 533ms (next.js: 4ms, application-code: 530ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 535ms (next.js: 12ms, application-code: 522ms)
+ GET /?genre=science-fiction 200 in 284ms (next.js: 4ms, application-code: 281ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 585ms (next.js: 12ms, application-code: 573ms)
+ GET /?genre=science-fiction 200 in 325ms (next.js: 3ms, application-code: 321ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1359ms (next.js: 13ms, application-code: 1346ms)
+ GET /?genre=science-fiction 200 in 1090ms (next.js: 3ms, application-code: 1087ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 200ms (next.js: 3ms, application-code: 196ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 266ms (next.js: 18ms, application-code: 247ms)
+Ô£ô Compiled in 0ms
+ GET /?genre=science-fiction 200 in 188ms (next.js: 3ms, application-code: 186ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 333ms (next.js: 13ms, application-code: 320ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 373ms (next.js: 1.7ms, application-code: 372ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 349ms (next.js: 22ms, application-code: 327ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 237ms (next.js: 1.8ms, application-code: 236ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1159ms (next.js: 21ms, application-code: 1138ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 302ms (next.js: 3ms, application-code: 299ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 688ms (next.js: 22ms, application-code: 666ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 211ms (next.js: 1.8ms, application-code: 209ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 303ms (next.js: 14ms, application-code: 289ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 262ms (next.js: 3ms, application-code: 259ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 496ms (next.js: 4ms, application-code: 492ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 981ms (next.js: 10ms, application-code: 970ms)
+ GET /?genre=science-fiction 200 in 727ms (next.js: 4ms, application-code: 723ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 755ms (next.js: 13ms, application-code: 742ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 12ms
+ GET /?genre=science-fiction 200 in 257ms (next.js: 2ms, application-code: 255ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 617ms (next.js: 10ms, application-code: 607ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 881ms (next.js: 1.7ms, application-code: 879ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 338ms (next.js: 26ms, application-code: 311ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 672ms (next.js: 7ms, application-code: 665ms)
+ GET /?genre=science-fiction 200 in 545ms (next.js: 4ms, application-code: 540ms)
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 690ms (next.js: 2.0ms, application-code: 688ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 510ms (next.js: 17ms, application-code: 493ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 325ms (next.js: 1.9ms, application-code: 323ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 281ms (next.js: 4ms, application-code: 277ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 435ms (next.js: 4ms, application-code: 431ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 291ms (next.js: 10ms, application-code: 281ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 321ms (next.js: 4ms, application-code: 317ms)
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 622ms (next.js: 22ms, application-code: 601ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 317ms (next.js: 4ms, application-code: 313ms)
+Ô£ô Compiled in 5ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 335ms (next.js: 10ms, application-code: 325ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 829ms (next.js: 2ms, application-code: 827ms)
+ GET /?genre=science-fiction 200 in 596ms (next.js: 7ms, application-code: 589ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 518ms (next.js: 11ms, application-code: 507ms)
+Ô£ô Compiled in 9ms
+ GET /?genre=science-fiction 200 in 411ms (next.js: 4ms, application-code: 407ms)
+Ô£ô Compiled in 8ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 317ms (next.js: 10ms, application-code: 307ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 244ms (next.js: 2ms, application-code: 242ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 424ms (next.js: 4ms, application-code: 419ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 287ms (next.js: 13ms, application-code: 274ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 878ms (next.js: 3ms, application-code: 875ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 607ms (next.js: 58ms, application-code: 549ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 448ms (next.js: 2ms, application-code: 446ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 292ms (next.js: 29ms, application-code: 263ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 823ms (next.js: 2ms, application-code: 821ms)
+ GET /?genre=science-fiction 200 in 301ms (next.js: 5ms, application-code: 296ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 356ms (next.js: 21ms, application-code: 335ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 252ms (next.js: 2ms, application-code: 249ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 337ms (next.js: 13ms, application-code: 324ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 17ms
+ GET /?genre=science-fiction 200 in 359ms (next.js: 2ms, application-code: 357ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 399ms (next.js: 10ms, application-code: 389ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 787ms (next.js: 98ms, application-code: 689ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 462ms (next.js: 6ms, application-code: 456ms)
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1089ms (next.js: 43ms, application-code: 1046ms)
+Ô£ô Compiled in 5ms
+ GET /?genre=science-fiction 200 in 228ms (next.js: 3ms, application-code: 226ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 308ms (next.js: 23ms, application-code: 285ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 5ms
+ GET /?genre=science-fiction 200 in 1051ms (next.js: 4ms, application-code: 1047ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 850ms (next.js: 30ms, application-code: 821ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 8ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 634ms (next.js: 11ms, application-code: 623ms)
+ GET /?genre=science-fiction 200 in 349ms (next.js: 4ms, application-code: 345ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 710ms (next.js: 25ms, application-code: 685ms)
+ GET /?genre=science-fiction 200 in 329ms (next.js: 7ms, application-code: 321ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 662ms (next.js: 27ms, application-code: 634ms)
+ GET /?genre=science-fiction 200 in 348ms (next.js: 4ms, application-code: 344ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 767ms (next.js: 14ms, application-code: 752ms)
+ GET /?genre=science-fiction 200 in 482ms (next.js: 3ms, application-code: 479ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 343ms (next.js: 25ms, application-code: 318ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 278ms (next.js: 4ms, application-code: 273ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 704ms (next.js: 10ms, application-code: 694ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 386ms (next.js: 22ms, application-code: 363ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 391ms (next.js: 12ms, application-code: 379ms)
+Ô£ô Compiled in 4ms
+Ô£ô Compiled in 6ms
+ GET /?genre=science-fiction 200 in 292ms (next.js: 1.9ms, application-code: 290ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 469ms (next.js: 32ms, application-code: 437ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1054ms (next.js: 74ms, application-code: 980ms)
+ GET /?genre=science-fiction 200 in 552ms (next.js: 5ms, application-code: 547ms)
+Ô£ô Compiled in 5ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 461ms (next.js: 10ms, application-code: 451ms)
+ GET /?genre=science-fiction 200 in 364ms (next.js: 4ms, application-code: 360ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1240ms (next.js: 10ms, application-code: 1230ms)
+ GET /?genre=science-fiction 200 in 1029ms (next.js: 5ms, application-code: 1024ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 230ms (next.js: 3ms, application-code: 228ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 482ms (next.js: 39ms, application-code: 444ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 229ms (next.js: 3ms, application-code: 226ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 319ms (next.js: 21ms, application-code: 298ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 21ms
+ GET /?genre=science-fiction 200 in 370ms (next.js: 1.9ms, application-code: 368ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 301ms (next.js: 23ms, application-code: 278ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 536ms (next.js: 1.9ms, application-code: 534ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 562ms (next.js: 24ms, application-code: 538ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 374ms (next.js: 3ms, application-code: 371ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 846ms (next.js: 20ms, application-code: 826ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 721ms (next.js: 4ms, application-code: 717ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 338ms (next.js: 9ms, application-code: 329ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 254ms (next.js: 3ms, application-code: 251ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 467ms (next.js: 24ms, application-code: 443ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 490ms (next.js: 3ms, application-code: 487ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 310ms (next.js: 26ms, application-code: 285ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 318ms (next.js: 1.8ms, application-code: 316ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 716ms (next.js: 24ms, application-code: 692ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 444ms (next.js: 6ms, application-code: 438ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 6ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 883ms (next.js: 11ms, application-code: 872ms)
+ GET /?genre=science-fiction 200 in 566ms (next.js: 6ms, application-code: 560ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 807ms (next.js: 21ms, application-code: 786ms)
+ GET /?genre=science-fiction 200 in 456ms (next.js: 4ms, application-code: 452ms)
+Ô£ô Compiled in 16ms
+Ô£ô Compiled in 18ms
+ GET /?genre=science-fiction 200 in 745ms (next.js: 3ms, application-code: 741ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 415ms (next.js: 31ms, application-code: 384ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 347ms (next.js: 1.8ms, application-code: 345ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 301ms (next.js: 24ms, application-code: 277ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 268ms (next.js: 1.8ms, application-code: 266ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 323ms (next.js: 23ms, application-code: 300ms)
+Ô£ô Compiled in 7ms
+ GET /?genre=science-fiction 200 in 637ms (next.js: 1.7ms, application-code: 635ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 400ms (next.js: 27ms, application-code: 374ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 248ms (next.js: 1.9ms, application-code: 246ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 488ms (next.js: 39ms, application-code: 450ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 271ms (next.js: 8ms, application-code: 263ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 417ms (next.js: 22ms, application-code: 395ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 328ms (next.js: 3ms, application-code: 325ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 313ms (next.js: 23ms, application-code: 290ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 701ms (next.js: 3ms, application-code: 698ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 455ms (next.js: 26ms, application-code: 429ms)
+Ô£ô Compiled in 30ms
+ GET /?genre=science-fiction 200 in 731ms (next.js: 8ms, application-code: 722ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 607ms (next.js: 34ms, application-code: 573ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 695ms (next.js: 3ms, application-code: 692ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 513ms (next.js: 43ms, application-code: 470ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 310ms (next.js: 4ms, application-code: 306ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 396ms (next.js: 25ms, application-code: 371ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 5ms
+ GET /?genre=science-fiction 200 in 317ms (next.js: 4ms, application-code: 313ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 633ms (next.js: 48ms, application-code: 585ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 324ms (next.js: 5ms, application-code: 319ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 497ms (next.js: 33ms, application-code: 464ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 592ms (next.js: 14ms, application-code: 578ms)
+ GET /?genre=science-fiction 200 in 298ms (next.js: 5ms, application-code: 293ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 384ms (next.js: 28ms, application-code: 357ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 326ms (next.js: 3ms, application-code: 323ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 433ms (next.js: 35ms, application-code: 398ms)
+Ô£ô Compiled in 0ms
+ GET /?genre=science-fiction 200 in 2.0s (next.js: 4ms, application-code: 2.0s)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1842ms (next.js: 29ms, application-code: 1813ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 934ms (next.js: 10ms, application-code: 924ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 5ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 714ms (next.js: 10ms, application-code: 704ms)
+ GET /?genre=science-fiction 200 in 434ms (next.js: 8ms, application-code: 426ms)
+Ô£ô Compiled in 6ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 800ms (next.js: 13ms, application-code: 786ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 293ms (next.js: 15ms, application-code: 278ms)
+ GET /?genre=science-fiction 200 in 291ms (next.js: 3ms, application-code: 287ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 400ms (next.js: 35ms, application-code: 365ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 287ms (next.js: 3ms, application-code: 284ms)
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 354ms (next.js: 13ms, application-code: 341ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 281ms (next.js: 3ms, application-code: 279ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 477ms (next.js: 28ms, application-code: 449ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 353ms (next.js: 5ms, application-code: 347ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 358ms (next.js: 22ms, application-code: 336ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 266ms (next.js: 4ms, application-code: 262ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 237ms (next.js: 15ms, application-code: 222ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 422ms (next.js: 3ms, application-code: 419ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 374ms (next.js: 27ms, application-code: 347ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 669ms (next.js: 3ms, application-code: 666ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 449ms (next.js: 30ms, application-code: 419ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 727ms (next.js: 5ms, application-code: 722ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 590ms (next.js: 24ms, application-code: 566ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 726ms (next.js: 22ms, application-code: 704ms)
+ GET /?genre=science-fiction 200 in 325ms (next.js: 8ms, application-code: 317ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 862ms (next.js: 23ms, application-code: 839ms)
+ GET /?genre=science-fiction 200 in 382ms (next.js: 7ms, application-code: 374ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 733ms (next.js: 13ms, application-code: 720ms)
+ GET /?genre=science-fiction 200 in 371ms (next.js: 10ms, application-code: 361ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 399ms (next.js: 41ms, application-code: 358ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 278ms (next.js: 4ms, application-code: 274ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 691ms (next.js: 22ms, application-code: 670ms)
+ GET /?genre=science-fiction 200 in 350ms (next.js: 6ms, application-code: 344ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 7ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 687ms (next.js: 11ms, application-code: 676ms)
+ GET /?genre=science-fiction 200 in 383ms (next.js: 5ms, application-code: 378ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 5ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 760ms (next.js: 28ms, application-code: 733ms)
+ GET /?genre=science-fiction 200 in 378ms (next.js: 9ms, application-code: 369ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 312ms (next.js: 16ms, application-code: 296ms)
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 308ms (next.js: 4ms, application-code: 304ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 449ms (next.js: 32ms, application-code: 417ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 264ms (next.js: 6ms, application-code: 258ms)
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 287ms (next.js: 14ms, application-code: 273ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 348ms (next.js: 4ms, application-code: 344ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 355ms (next.js: 20ms, application-code: 335ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 504ms (next.js: 4ms, application-code: 500ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 385ms (next.js: 22ms, application-code: 363ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 330ms (next.js: 4ms, application-code: 326ms)
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 283ms (next.js: 10ms, application-code: 273ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 323ms (next.js: 3ms, application-code: 320ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 498ms (next.js: 27ms, application-code: 471ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 284ms (next.js: 3ms, application-code: 282ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 379ms (next.js: 21ms, application-code: 358ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 552ms (next.js: 4ms, application-code: 549ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 393ms (next.js: 23ms, application-code: 370ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 714ms (next.js: 4ms, application-code: 710ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 386ms (next.js: 41ms, application-code: 345ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 673ms (next.js: 5ms, application-code: 668ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 381ms (next.js: 31ms, application-code: 350ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /?genre=science-fiction 200 in 485ms (next.js: 3ms, application-code: 482ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 431ms (next.js: 40ms, application-code: 391ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 733ms (next.js: 15ms, application-code: 717ms)
+ GET /?genre=science-fiction 200 in 414ms (next.js: 7ms, application-code: 407ms)
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 396ms (next.js: 31ms, application-code: 365ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 267ms (next.js: 4ms, application-code: 263ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 289ms (next.js: 13ms, application-code: 275ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 310ms (next.js: 3ms, application-code: 307ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 397ms (next.js: 25ms, application-code: 372ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 241ms (next.js: 3ms, application-code: 238ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 382ms (next.js: 24ms, application-code: 358ms)
+Ô£ô Compiled in 3ms
+ GET /?genre=science-fiction 200 in 239ms (next.js: 3ms, application-code: 236ms)
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 347ms (next.js: 22ms, application-code: 325ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 277ms (next.js: 3ms, application-code: 274ms)
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 317ms (next.js: 24ms, application-code: 293ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 275ms (next.js: 4ms, application-code: 271ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 496ms (next.js: 16ms, application-code: 480ms)
+ GET /?genre=science-fiction 200 in 429ms (next.js: 4ms, application-code: 425ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 545ms (next.js: 17ms, application-code: 528ms)
+ GET /?genre=science-fiction 200 in 282ms (next.js: 4ms, application-code: 279ms)
+Ô£ô Compiled in 0ms
+Ô£ô Compiled in 1ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 542ms (next.js: 21ms, application-code: 521ms)
+ GET /?genre=science-fiction 200 in 250ms (next.js: 4ms, application-code: 246ms)
+Ô£ô Compiled in 2ms
+Ô£ô Compiled in 5ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 640ms (next.js: 24ms, application-code: 617ms)
+ GET /?genre=science-fiction 200 in 293ms (next.js: 4ms, application-code: 289ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 578ms (next.js: 11ms, application-code: 567ms)
+ GET /?genre=science-fiction 200 in 302ms (next.js: 4ms, application-code: 298ms)
+Ô£ô Compiled in 1ms
+Ô£ô Compiled in 4ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1335ms (next.js: 21ms, application-code: 1314ms)
+ GET /?genre=science-fiction 200 in 1251ms (next.js: 18ms, application-code: 1233ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 320ms (next.js: 4ms, application-code: 316ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 7ms
+ GET /?genre=science-fiction 200 in 435ms (next.js: 3ms, application-code: 433ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1172ms (next.js: 43ms, application-code: 1129ms)
+Ô£ô Compiled in 3ms
+Ô£ô Compiled in 7ms
+ GET /?genre=science-fiction 200 in 258ms (next.js: 2.0ms, application-code: 256ms)
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 449ms (next.js: 14ms, application-code: 434ms)
+Ô£ô Compiled in 3ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 1190ms (next.js: 60ms, application-code: 1129ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 250ms (next.js: 3ms, application-code: 247ms)
+Ô£ô Compiled in 2ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 304ms (next.js: 16ms, application-code: 288ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 318ms (next.js: 3ms, application-code: 315ms)
+Ô£ô Compiled in 0ms
+ GET /title/ttl_eee9f3768b734aaba03a8164 200 in 536ms (next.js: 11ms, application-code: 525ms)
+Ô£ô Compiled in 2ms
+ GET /?genre=science-fiction 200 in 1031ms (next.js: 4ms, application-code: 1027ms)
+Ô£ô Compiled in 1ms
+ GET /?genre=science-fiction 200 in 1909ms (next.js: 8ms, application-code: 1901ms)
+[?25h

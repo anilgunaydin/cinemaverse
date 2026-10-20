@@ -1,0 +1,315 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink-950: #07080c;
+  --color-ink-900: #0b0d13;
+  --color-ink-850: #10131b;
+  --color-ink-800: #151924;
+  --color-ink-700: #1d2231;
+  --color-ink-600: #2a3040;
+  --color-ink-500: #3b4356;
+
+  --color-mist-100: #f4f5f8;
+  --color-mist-200: #dfe3ec;
+  --color-mist-300: #b9c0d0;
+  --color-mist-400: #8d95a8;
+  --color-mist-500: #6b7387;
+
+  --color-gold-300: #f2d9a0;
+  --color-gold-400: #e7c377;
+  --color-gold-500: #d4a94f;
+  --color-gold-600: #b98c33;
+
+  --color-jade-400: #5fd0a6;
+  --color-jade-500: #33b184;
+
+  --color-rose-400: #f2778c;
+  --color-rose-500: #e05670;
+
+  --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+    serif;
+
+  --radius-card: 18px;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-ink-700);
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background:
+      radial-gradient(
+        1100px 620px at 12% -8%,
+        rgba(212, 169, 79, 0.11),
+        transparent 62%
+      ),
+      radial-gradient(
+        900px 520px at 88% 0%,
+        rgba(51, 177, 132, 0.08),
+        transparent 58%
+      ),
+      var(--color-ink-950);
+    color: var(--color-mist-200);
+    font-family: var(--font-sans);
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--color-mist-100);
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background: rgba(212, 169, 79, 0.28);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-400);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  input,
+  textarea,
+  select {
+    color-scheme: dark;
+  }
+}
+
+@layer components {
+  .surface {
+    background: linear-gradient(
+      180deg,
+      rgba(21, 25, 36, 0.92),
+      rgba(11, 13, 19, 0.92)
+    );
+    border: 1px solid rgba(42, 48, 64, 0.9);
+    border-radius: var(--radius-card);
+    backdrop-filter: blur(8px);
+  }
+
+  .surface-flat {
+    background: var(--color-ink-850);
+    border: 1px solid var(--color-ink-700);
+    border-radius: 14px;
+  }
+
+  .field {
+    width: 100%;
+    background: var(--color-ink-900);
+    border: 1px solid var(--color-ink-600);
+    border-radius: 10px;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.9rem;
+    color: var(--color-mist-100);
+    transition: border-color 140ms ease, box-shadow 140ms ease;
+  }
+
+  .field::placeholder {
+    color: var(--color-mist-500);
+  }
+
+  .field:focus {
+    border-color: var(--color-gold-500);
+    box-shadow: 0 0 0 3px rgba(212, 169, 79, 0.14);
+    outline: none;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border-radius: 10px;
+    padding: 0.55rem 0.95rem;
+    font-size: 0.86rem;
+    font-weight: 600;
+    line-height: 1.2;
+    transition:
+      transform 120ms ease,
+      background-color 140ms ease,
+      border-color 140ms ease,
+      opacity 140ms ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+
+  .btn:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-primary {
+    background: linear-gradient(
+      180deg,
+      var(--color-gold-400),
+      var(--color-gold-600)
+    );
+    color: #17130a;
+    border-color: rgba(242, 217, 160, 0.4);
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background: linear-gradient(
+      180deg,
+      var(--color-gold-300),
+      var(--color-gold-500)
+    );
+  }
+
+  .btn-ghost {
+    background: rgba(29, 34, 49, 0.6);
+    border-color: var(--color-ink-600);
+    color: var(--color-mist-200);
+  }
+
+  .btn-ghost:hover:not(:disabled) {
+    background: rgba(42, 48, 64, 0.85);
+    border-color: var(--color-ink-500);
+  }
+
+  .btn-danger {
+    background: rgba(224, 86, 112, 0.12);
+    border-color: rgba(224, 86, 112, 0.4);
+    color: var(--color-rose-400);
+  }
+
+  .btn-danger:hover:not(:disabled) {
+    background: rgba(224, 86, 112, 0.2);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-ink-600);
+    background: rgba(29, 34, 49, 0.55);
+    padding: 0.18rem 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--color-mist-300);
+    white-space: nowrap;
+  }
+
+  .chip-gold {
+    border-color: rgba(212, 169, 79, 0.42);
+    background: rgba(212, 169, 79, 0.1);
+    color: var(--color-gold-300);
+  }
+
+  .chip-jade {
+    border-color: rgba(51, 177, 132, 0.4);
+    background: rgba(51, 177, 132, 0.1);
+    color: var(--color-jade-400);
+  }
+
+  .chip-rose {
+    border-color: rgba(224, 86, 112, 0.4);
+    background: rgba(224, 86, 112, 0.1);
+    color: var(--color-rose-400);
+  }
+
+  .label {
+    display: block;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-mist-400);
+    margin-bottom: 0.35rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-mist-100);
+  }
+
+  .muted {
+    color: var(--color-mist-400);
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-ink-600),
+      transparent
+    );
+  }
+
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--color-ink-800) 25%,
+      var(--color-ink-700) 50%,
+      var(--color-ink-800) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+    border-radius: 8px;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 260ms ease both;
+}
+
+/* Ince kaydirma cubugu */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ink-600) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--color-ink-600);
+  border-radius: 999px;
+}

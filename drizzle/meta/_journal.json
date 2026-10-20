@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1792398362685,
+      "tag": "0000_init",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1792412855802,
+      "tag": "0001_glossy_night_thrasher",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1792415717962,
+      "tag": "0002_glamorous_jigsaw",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1792493144925,
+      "tag": "0003_old_prodigy",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1792493702687,
+      "tag": "0004_hesitant_the_leader",
+      "breakpoints": true
+    }
+  ]
+}

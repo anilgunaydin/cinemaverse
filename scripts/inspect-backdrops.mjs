@@ -1,0 +1,10 @@
+import Database from "better-sqlite3";
+const db = new Database("data/cinemaverse.db", { readonly: true });
+const q = (sql) => db.prepare(sql).get().c;
+console.log("backdrop'li (movie+series):", q("SELECT COUNT(*) c FROM titles WHERE kind IN ('movie','series') AND backdrop_url IS NOT NULL AND backdrop_url<>''"));
+console.log("toplam (movie+series):", q("SELECT COUNT(*) c FROM titles WHERE kind IN ('movie','series')"));
+console.log("dizi backdrop:", q("SELECT COUNT(*) c FROM titles WHERE kind='series' AND backdrop_url IS NOT NULL AND backdrop_url<>''"));
+console.log("dizi toplam:", q("SELECT COUNT(*) c FROM titles WHERE kind='series'"));
+console.log("film backdrop:", q("SELECT COUNT(*) c FROM titles WHERE kind='movie' AND backdrop_url IS NOT NULL AND backdrop_url<>''"));
+console.log("film toplam:", q("SELECT COUNT(*) c FROM titles WHERE kind='movie'"));
+db.close();

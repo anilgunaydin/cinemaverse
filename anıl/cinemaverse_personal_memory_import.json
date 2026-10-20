@@ -1,0 +1,1095 @@
+{
+  "schema_version": "1.0",
+  "export_title": "CinemaVerse Personal Cinema Memory Import",
+  "target_user": {
+    "username": "Anıl",
+    "matching_rule": "Use the existing user account whose username/display name is Anıl; do not create a duplicate account or change authentication credentials."
+  },
+  "scored_titles": [
+    {
+      "title": "Breaking Bad",
+      "year": null,
+      "kind": "series",
+      "rating": 10,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": "Kullanıcının favori çekirdeğinde; diğer çekirdek favorilerle sıralanmamış."
+    },
+    {
+      "title": "Kurtlar Vadisi",
+      "year": null,
+      "kind": "series",
+      "rating": 10,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": "Kullanıcının favori çekirdeğinde; diğer çekirdek favorilerle sıralanmamış."
+    },
+    {
+      "title": "Game of Thrones",
+      "year": null,
+      "kind": "series",
+      "rating": 10,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": "Kullanıcının favori çekirdeğinde; diğer çekirdek favorilerle sıralanmamış."
+    },
+    {
+      "title": "Gibi",
+      "year": null,
+      "kind": "series",
+      "rating": 10,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Better Call Saul",
+      "year": null,
+      "kind": "series",
+      "rating": 9.5,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "The Lord of the Rings",
+      "year": null,
+      "kind": "film_franchise",
+      "rating": 9.5,
+      "rating_scope": "overall_trilogy",
+      "status": "watched",
+      "notes": "Puan üçlemenin geneline aittir; tek tek filmlere dağıtma."
+    },
+    {
+      "title": "Black Mirror",
+      "year": null,
+      "kind": "series",
+      "rating": 9.5,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "The Revenant / Diriliş",
+      "year": 2015,
+      "kind": "film",
+      "rating": 9.5,
+      "rating_scope": "single_film",
+      "status": "watched",
+      "notes": "2015 Leonardo DiCaprio filmi."
+    },
+    {
+      "title": "Prens",
+      "year": null,
+      "kind": "series",
+      "rating": 9.5,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Dexter",
+      "year": null,
+      "kind": "series",
+      "rating": 9,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": "Dexter: New Blood kaydından ayrı tutulmalı."
+    },
+    {
+      "title": "Chernobyl",
+      "year": 2019,
+      "kind": "miniseries",
+      "rating": 9,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Behzat Ç.",
+      "year": null,
+      "kind": "series",
+      "rating": 9,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Vikings",
+      "year": null,
+      "kind": "series",
+      "rating": 9,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Squid Game",
+      "year": null,
+      "kind": "series",
+      "rating": 9,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "House of the Dragon",
+      "year": null,
+      "kind": "series",
+      "rating": 9,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "The Matrix",
+      "year": null,
+      "kind": "film_franchise",
+      "rating": 9,
+      "rating_scope": "overall_franchise",
+      "status": "watched",
+      "notes": "Puan franchise geneline aittir; tek tek filmlere dağıtma."
+    },
+    {
+      "title": "The Hobbit",
+      "year": null,
+      "kind": "film_franchise",
+      "rating": 9,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": "Hobbit film serisinin geneli."
+    },
+    {
+      "title": "How I Met Your Mother",
+      "year": null,
+      "kind": "series",
+      "rating": 8.5,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Shameless (US)",
+      "year": 2011,
+      "kind": "series",
+      "rating": 8.5,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": "ABD versiyonu; UK versiyonu için kayıt oluşturma."
+    },
+    {
+      "title": "The Last of Us",
+      "year": null,
+      "kind": "series",
+      "rating": 8.5,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "La Casa de Papel",
+      "year": null,
+      "kind": "series",
+      "rating": 8.5,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Terminator",
+      "year": null,
+      "kind": "film_franchise",
+      "rating": 8.5,
+      "rating_scope": "overall_franchise",
+      "status": "watched",
+      "notes": "Puan franchise geneline aittir; tek tek filmlere dağıtma."
+    },
+    {
+      "title": "Prison Break",
+      "year": null,
+      "kind": "series",
+      "rating": 8.5,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Lost",
+      "year": null,
+      "kind": "series",
+      "rating": 8.5,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Narcos",
+      "year": null,
+      "kind": "series",
+      "rating": 8.5,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Harry Potter",
+      "year": null,
+      "kind": "film_franchise",
+      "rating": 8.5,
+      "rating_scope": "overall_franchise",
+      "status": "watched",
+      "notes": "Puan film serisinin geneline aittir; tek tek filmlere dağıtma."
+    },
+    {
+      "title": "Interstellar",
+      "year": 2014,
+      "kind": "film",
+      "rating": 8,
+      "rating_scope": "single_film",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Shutter Island",
+      "year": 2010,
+      "kind": "film",
+      "rating": 8,
+      "rating_scope": "single_film",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "True Detective — Season 1",
+      "year": 2014,
+      "kind": "series_season",
+      "rating": 8,
+      "rating_scope": "specific_season",
+      "status": "watched",
+      "notes": "Çok beğenildi. Sevilen yönler: oyunculuk, karakterler, karanlık atmosfer, gizem ve soruşturma. Puanın neden daha yüksek olmadığı hatırlanmıyor; eksiklik uydurma."
+    },
+    {
+      "title": "Ozark",
+      "year": null,
+      "kind": "series",
+      "rating": 8,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Kardeş Payı",
+      "year": null,
+      "kind": "series",
+      "rating": 8,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "The Originals",
+      "year": null,
+      "kind": "series",
+      "rating": 8,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Supernatural",
+      "year": null,
+      "kind": "series",
+      "rating": 8,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Cube",
+      "year": 1997,
+      "kind": "film",
+      "rating": 8,
+      "rating_scope": "single_film",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Leyla ile Mecnun",
+      "year": null,
+      "kind": "series",
+      "rating": 8,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Pirates of the Caribbean",
+      "year": null,
+      "kind": "film_franchise",
+      "rating": 8,
+      "rating_scope": "overall_franchise",
+      "status": "watched",
+      "notes": "Puan franchise geneline aittir; tek tek filmlere dağıtma."
+    },
+    {
+      "title": "Spartacus: Blood and Sand / Spartacus",
+      "year": 2010,
+      "kind": "series",
+      "rating": 8,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": "2010'da başlayan Spartacus dizisi."
+    },
+    {
+      "title": "The Last Kingdom",
+      "year": null,
+      "kind": "series",
+      "rating": 7,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "The Witcher",
+      "year": null,
+      "kind": "series",
+      "rating": 7,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "John Wick",
+      "year": null,
+      "kind": "film_franchise",
+      "rating": 7,
+      "rating_scope": "overall_franchise",
+      "status": "watched",
+      "notes": "Puan franchise geneline aittir; tek tek filmlere dağıtma."
+    },
+    {
+      "title": "The Shawshank Redemption / Esaretin Bedeli",
+      "year": 1994,
+      "kind": "film",
+      "rating": 9,
+      "rating_scope": "single_film",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Gladiator / Gladyatör",
+      "year": 2000,
+      "kind": "film",
+      "rating": 8,
+      "rating_scope": "single_film",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Forrest Gump",
+      "year": 1994,
+      "kind": "film",
+      "rating": 8.5,
+      "rating_scope": "single_film",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "The Green Mile / Yeşil Yol",
+      "year": 1999,
+      "kind": "film",
+      "rating": 8.5,
+      "rating_scope": "single_film",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Spider-Man",
+      "year": null,
+      "kind": "film_franchise",
+      "rating": 9,
+      "rating_scope": "overall_franchise",
+      "status": "watched",
+      "notes": "Puan franchise geneline aittir."
+    },
+    {
+      "title": "X-Men",
+      "year": null,
+      "kind": "film_franchise",
+      "rating": 8.5,
+      "rating_scope": "overall_franchise",
+      "status": "watched",
+      "notes": "Puan franchise geneline aittir."
+    },
+    {
+      "title": "The Fast and the Furious",
+      "year": null,
+      "kind": "film_franchise",
+      "rating": 8.5,
+      "rating_scope": "overall_franchise",
+      "status": "watched",
+      "notes": "Puan franchise geneline aittir."
+    },
+    {
+      "title": "The Transporter",
+      "year": null,
+      "kind": "film_franchise",
+      "rating": 8.5,
+      "rating_scope": "overall_franchise",
+      "status": "watched",
+      "notes": "Puan franchise geneline aittir."
+    },
+    {
+      "title": "The Expendables",
+      "year": null,
+      "kind": "film_franchise",
+      "rating": 8,
+      "rating_scope": "overall_franchise",
+      "status": "watched",
+      "notes": "Puan franchise geneline aittir."
+    },
+    {
+      "title": "Muhteşem Yüzyıl",
+      "year": 2011,
+      "kind": "series",
+      "rating": 9,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": "Aynı puanla iki kez gönderilmişti; tek kayıt tutulmalı."
+    },
+    {
+      "title": "Kuzey Güney",
+      "year": 2011,
+      "kind": "series",
+      "rating": 9,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Saw / Testere",
+      "year": 2004,
+      "kind": "film_franchise_or_film",
+      "rating": 9,
+      "rating_scope": "overall_scope_as_recorded",
+      "status": "watched",
+      "notes": "Kullanıcı Testere adını verdi ve 9 puan belirtti; tekil film mi franchise geneli mi olduğu kesinleştirilmeden kapsamı değiştirme."
+    },
+    {
+      "title": "Taxi",
+      "year": 1998,
+      "kind": "film",
+      "rating": 8,
+      "rating_scope": "single_film",
+      "status": "watched",
+      "notes": "1998 yapımı Taxi."
+    },
+    {
+      "title": "Titanic",
+      "year": 1997,
+      "kind": "film",
+      "rating": 9,
+      "rating_scope": "single_film",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Avatar",
+      "year": 2009,
+      "kind": "film",
+      "rating": 8.5,
+      "rating_scope": "single_film",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "The Hunger Games",
+      "year": null,
+      "kind": "film_franchise",
+      "rating": 8.5,
+      "rating_scope": "overall_franchise",
+      "status": "watched",
+      "notes": "Kullanıcının izlediği film serisinin genel puanı; tek tek filmlere puan dağıtma."
+    },
+    {
+      "title": "The Curious Case of Benjamin Button / Benjamin Button'ın Tuhaf Hikâyesi",
+      "year": 2008,
+      "kind": "film",
+      "rating": 8,
+      "rating_scope": "single_film",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Dexter: New Blood",
+      "year": 2021,
+      "kind": "series",
+      "rating": 8,
+      "rating_scope": "overall_series",
+      "status": "watched",
+      "notes": "Dexter ana dizisinden ayrı kayıt."
+    },
+    {
+      "title": "Constantine",
+      "year": 2005,
+      "kind": "film",
+      "rating": 8.5,
+      "rating_scope": "single_film",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "V for Vendetta",
+      "year": 2005,
+      "kind": "film",
+      "rating": 7.5,
+      "rating_scope": "single_film",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "Lucy",
+      "year": 2014,
+      "kind": "film",
+      "rating": 8,
+      "rating_scope": "single_film",
+      "status": "watched",
+      "notes": ""
+    },
+    {
+      "title": "The Platform / El Hoyo",
+      "year": 2019,
+      "kind": "film",
+      "rating": 9,
+      "rating_scope": "single_film",
+      "status": "watched",
+      "notes": ""
+    }
+  ],
+  "explicit_likes_without_extra_rating_implications": [
+    "Kurtlar Vadisi",
+    "Breaking Bad",
+    "Interstellar",
+    "Dexter",
+    "Game of Thrones",
+    "Better Call Saul",
+    "Chernobyl",
+    "Black Mirror",
+    "The Lord of the Rings",
+    "Shutter Island",
+    "How I Met Your Mother",
+    "Shameless",
+    "The Last of Us",
+    "Ozark",
+    "Behzat Ç.",
+    "Kardeş Payı",
+    "Diriliş (film)",
+    "The Originals",
+    "Vikings",
+    "Spartacus",
+    "Supernatural",
+    "La Casa de Papel",
+    "Squid Game",
+    "Terminator",
+    "Cube",
+    "True Detective (Season 1)"
+  ],
+  "unwatched_titles": [
+    {
+      "title": "Mindhunter",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Mr. Robot",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Severance",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Silo",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Triangle",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Invitation",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Beyond the Black Rainbow",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Utopia (UK)",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Patriot",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Mentalist",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Hannibal",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Bates Motel",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Fall",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Luther",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Night Of",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Mare of Easttown",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Fringe",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Orphan Black",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "12 Monkeys",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Altered Carbon",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Travelers",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The OA",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Legion",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Dark Matter",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Californication",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Bear",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Banshee",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Animal Kingdom",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Americans",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Boardwalk Empire",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Borgias",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Butterfly Effect",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Identity",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Machinist",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Law Abiding Citizen",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Number 23",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Source Code",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Others",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Atonement",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Children of Men",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "District 9",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Edge of Tomorrow",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Django Unchained",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Nightcrawler",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Whiplash",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Hateful Eight",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Gomorrah",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "ZeroZeroZero",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "McMafia",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Top Boy",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Power",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Ray Donovan",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Mr Inbetween",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Sharp Objects",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Sinner",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Behind Her Eyes",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Undoing",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Clickbait",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Outsider",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Archive 81",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Inside No. 9",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Revolution",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Falling Skies",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Expanse",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Continuum",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Defiance",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Strain",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "American Gods",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Requiem for a Dream",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "American Psycho",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Donnie Brasco",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Game",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Vanilla Sky",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Butterfly Effect 2",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Illusionist",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Wrestler",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "I Saw the Devil",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Handmaiden",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Memories of Murder",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Secret in Their Eyes",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Intouchables",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Slumdog Millionaire",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "Apocalypto",
+      "status": "unwatched",
+      "rating": null
+    },
+    {
+      "title": "The Boy in the Striped Pyjamas",
+      "status": "unwatched",
+      "rating": null
+    }
+  ],
+  "partially_watched_titles": [
+    {
+      "title": "Person of Interest",
+      "status": "partially_watched",
+      "rating": null,
+      "notes": "İzlenmeye başlanmış ancak tamamlanmamış; puan verilmemiş."
+    }
+  ],
+  "watched_unrated_titles": [
+    {
+      "title": "2012",
+      "year": 2009,
+      "status": "watched_unrated",
+      "rating": null,
+      "notes": "İzlendiği doğrulandı; puan verilmemiş."
+    }
+  ],
+  "uncertain_status_titles": [
+    {
+      "title": "Suits",
+      "status": "unknown",
+      "rating": null,
+      "notes": "Önceki hafıza turunda izleme durumu belirsiz olarak işaretlendi; kesinleştirme."
+    }
+  ],
+  "preferences_and_rules": {
+    "project_name": "Kişisel Sinema Hafızası / CinemaVerse",
+    "language": "Turkish",
+    "recommendation_courage": "balanced",
+    "cult_discovery": "some_room_for_cult_and_less_known_titles",
+    "genres": "all_genres_allowed",
+    "core_taste_dimensions": [
+      "character development",
+      "screenplay and plot structure",
+      "mystery and curiosity"
+    ],
+    "tempo": "both slow/atmospheric and fast/plot-driven if well executed",
+    "endings": "all types acceptable if well written (twist, emotional, open-ended)",
+    "character_preferences": "multiple types: transformation, strategy, psychology, relationships; do not infer a single dominant type",
+    "mystery_preferences": "all types if well delivered",
+    "story_complexity": "both layered/complex and clear/accessible if well written",
+    "darkness_and_violence": "should serve the story",
+    "spoilers": "none by default; explicit user permission required",
+    "recommendations_only_on_request": true,
+    "do_not_recommend_already_watched": true,
+    "recommendation_output_fields": [
+      "title",
+      "genre",
+      "why_it_may_fit",
+      "discovery_level",
+      "confidence_about_watched_status"
+    ],
+    "unknown_data_policy": "Never invent unknown ratings, watch statuses, dates, comments, or reasons for a score. Preserve null/unknown.",
+    "rating_scope_policy": "TV series scores are overall series scores unless explicitly season-specific; franchises are overall franchise scores unless explicitly scoped; never distribute a franchise score to individual entries; distinct spin-offs remain separate.",
+    "true_detective_s1_liked_aspects": [
+      "acting",
+      "characters",
+      "dark atmosphere",
+      "mystery",
+      "investigation"
+    ],
+    "true_detective_s1_limitation": "User does not remember why rating was not higher; do not invent a shortcoming.",
+    "preferred_storage_method": "master memory text in conversation; this import is for the CinemaVerse app",
+    "external_sheet_status": "Google Sheet was shared previously, but no confirmed write/update was performed"
+  },
+  "data_integrity_rules": [
+    "Never overwrite existing user data without backup and preview.",
+    "Perform deduplication by external ID where available; otherwise use normalized title + year + kind and ask/flag ambiguous matches.",
+    "Do not create separate film-level ratings from franchise-level ratings.",
+    "Keep user rating separate from external/public ratings.",
+    "Do not turn explicit liked status into a numerical score unless a scored record already exists.",
+    "Preserve unknown year, rating, status, and scope as null/unknown.",
+    "Do not create records for titles that are only assistant recommendations unless they are explicitly included in this export.",
+    "Import should be idempotent: running it twice must not duplicate records.",
+    "Generate a dry-run report before committing changes.",
+    "After import, verify record counts and rating distribution."
+  ]
+}

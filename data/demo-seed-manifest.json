@@ -1,0 +1,68 @@
+{
+ "createdAt": "2026-10-20T10:22:02.758Z",
+ "note": "seed-demo.mjs cikisi; --clean ile siler",
+ "tables": {
+  "users": [
+   "usr_cc5c3141395f466ba1fe491a",
+   "usr_468d94a0142c4b3ab8339f0a"
+  ],
+  "library_entries": [
+   "lib_ff884ce81391499f962fe751",
+   "lib_36d0b2ec7d104b0387ee025f",
+   "lib_108513dfe06a40baa9b71982",
+   "lib_15025ee595ea48e7b4aec320",
+   "lib_72d768208971423982c74758",
+   "lib_f1ae929f903141f0b92d1eb8",
+   "lib_b7f996bb1c27468897b60a76",
+   "lib_9a99128292c5403184d611a7",
+   "lib_d23d6771ef274ebb81006e24",
+   "lib_40021d4571a540c6a3f331a7",
+   "lib_653d3a4cea8b40ba9a34fccb"
+  ],
+  "reviews": [
+   "rev_a5269253c2ac401ca7c1e1aa",
+   "rev_4b3e1d293bad4099bd1aca0e",
+   "rev_825d89bda6704bf7a34c3d61",
+   "rev_179bcc21b8f74c128c74fc61",
+   "rev_2f0e76b855524845a482c3b4",
+   "rev_488718d9932e43ca91d2c2cd"
+  ],
+  "review_replies": [
+   "rep_21772c9ef0f34b99a1f24d30"
+  ],
+  "likes": [
+   "rev_a5269253c2ac401ca7c1e1aa"
+  ],
+  "discussion_threads": [
+   "thr_5b02b41ee0e241558e28cba0",
+   "thr_52807d1494b1448eaf649037"
+  ],
+  "discussion_posts": [
+   "post_233fefd5c03c4b71abb5b5eb",
+   "post_4260c92490e64ffeb007ad3b"
+  ],
+  "user_lists": [
+   "lst_e40c5525a5e14a09b2fe676b",
+   "lst_226320662e254d64a941f937",
+   "lst_59a381b9617d4743aa4e0aae"
+  ],
+  "user_list_items": [
+   "ttl_b184332f2d4f4ea5b9fef054",
+   "ttl_54d3d05c9bc047e2b86f7b29",
+   "ttl_e453bcfd8db24a9c8f4e5b46",
+   "ttl_5fde6788bcf547ff9aed2a18",
+   "ttl_b0b53fdb0ca24f999e7324c5",
+   "ttl_bf826718bbc04a62a68a8cd6",
+   "ttl_00ba7912f6c0494ea5e7cddc",
+   "ttl_010ba8f7765044c38ad45cdf",
+   "ttl_54d3d05c9bc047e2b86f7b29",
+   "ttl_e453bcfd8db24a9c8f4e5b46",
+   "ttl_5fde6788bcf547ff9aed2a18",
+   "ttl_b0b53fdb0ca24f999e7324c5"
+  ],
+  "reports": [
+   "rep_7f3ab84a05564ff9bb921a1c"
+  ],
+  "franchise_titles": []
+ }
+}

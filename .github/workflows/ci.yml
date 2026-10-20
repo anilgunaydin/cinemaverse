@@ -33,6 +33,15 @@ jobs:
       - name: ESLint (if configured)
         run: npx eslint . --ext .ts,.tsx --max-warnings 0 || true
 
+      - name: PWA asset check
+        run: |
+          test -f public/manifest.json
+          test -f public/sw.js
+          test -f public/icons/icon-512.png
+          test -f public/icons/maskable-512.png
+          test -f public/screenshots/keşfet-wide.png
+          echo "PWA assets OK"
+
   unit-tests:
     name: Unit Tests (Vitest)
     runs-on: ubuntu-latest

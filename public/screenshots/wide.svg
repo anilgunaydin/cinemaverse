@@ -1,0 +1,37 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#0f0f12"/>
+  <rect x="0" y="0" width="1280" height="64" fill="#15151a"/>
+  <text x="40" y="42" font-family="Georgia, serif" font-size="26" fill="#d4a94f">CinemaVerse</text>
+  <text x="760" y="40" font-family="Arial" font-size="16" fill="#8b8b96">Keşfet</text>
+  <text x="850" y="40" font-family="Arial" font-size="16" fill="#8b8b96">Kütüphanem</text>
+  <text x="960" y="40" font-family="Arial" font-size="16" fill="#8b8b96">Öneriler</text>
+  <text x="1060" y="40" font-family="Arial" font-size="16" fill="#8b8b96">Topluluk</text>
+  <text x="40" y="130" font-family="Georgia, serif" font-size="38" fill="#f5f5f7">Keşfet</text>
+  <text x="40" y="164" font-family="Arial" font-size="17" fill="#8b8b96">Yeni yapımları keşfedin, izlediklerinizi hatırlayın</text>
+  <rect x="40" y="210" width="184" height="104" rx="8" fill="#1e1e25"/>
+              <rect x="40" y="322" width="120" height="10" rx="4" fill="#2a2a33"/>
+              <rect x="40" y="340" width="60" height="8" rx="4" fill="#232330"/><rect x="240" y="210" width="184" height="104" rx="8" fill="#1e1e25"/>
+              <rect x="240" y="322" width="120" height="10" rx="4" fill="#2a2a33"/>
+              <rect x="240" y="340" width="60" height="8" rx="4" fill="#232330"/><rect x="440" y="210" width="184" height="104" rx="8" fill="#1e1e25"/>
+              <rect x="440" y="322" width="120" height="10" rx="4" fill="#2a2a33"/>
+              <rect x="440" y="340" width="60" height="8" rx="4" fill="#232330"/><rect x="640" y="210" width="184" height="104" rx="8" fill="#1e1e25"/>
+              <rect x="640" y="322" width="120" height="10" rx="4" fill="#2a2a33"/>
+              <rect x="640" y="340" width="60" height="8" rx="4" fill="#232330"/><rect x="840" y="210" width="184" height="104" rx="8" fill="#1e1e25"/>
+              <rect x="840" y="322" width="120" height="10" rx="4" fill="#2a2a33"/>
+              <rect x="840" y="340" width="60" height="8" rx="4" fill="#232330"/><rect x="1040" y="210" width="184" height="104" rx="8" fill="#1e1e25"/>
+              <rect x="1040" y="322" width="120" height="10" rx="4" fill="#2a2a33"/>
+              <rect x="1040" y="340" width="60" height="8" rx="4" fill="#232330"/><rect x="40" y="390" width="184" height="104" rx="8" fill="#1e1e25"/>
+              <rect x="40" y="502" width="120" height="10" rx="4" fill="#2a2a33"/>
+              <rect x="40" y="520" width="60" height="8" rx="4" fill="#232330"/><rect x="240" y="390" width="184" height="104" rx="8" fill="#1e1e25"/>
+              <rect x="240" y="502" width="120" height="10" rx="4" fill="#2a2a33"/>
+              <rect x="240" y="520" width="60" height="8" rx="4" fill="#232330"/><rect x="440" y="390" width="184" height="104" rx="8" fill="#1e1e25"/>
+              <rect x="440" y="502" width="120" height="10" rx="4" fill="#2a2a33"/>
+              <rect x="440" y="520" width="60" height="8" rx="4" fill="#232330"/><rect x="640" y="390" width="184" height="104" rx="8" fill="#1e1e25"/>
+              <rect x="640" y="502" width="120" height="10" rx="4" fill="#2a2a33"/>
+              <rect x="640" y="520" width="60" height="8" rx="4" fill="#232330"/><rect x="840" y="390" width="184" height="104" rx="8" fill="#1e1e25"/>
+              <rect x="840" y="502" width="120" height="10" rx="4" fill="#2a2a33"/>
+              <rect x="840" y="520" width="60" height="8" rx="4" fill="#232330"/><rect x="1040" y="390" width="184" height="104" rx="8" fill="#1e1e25"/>
+              <rect x="1040" y="502" width="120" height="10" rx="4" fill="#2a2a33"/>
+              <rect x="1040" y="520" width="60" height="8" rx="4" fill="#232330"/>
+</svg>

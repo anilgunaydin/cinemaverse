@@ -1,0 +1,32 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1280">
+  <rect width="720" height="1280" fill="#0f0f12"/>
+  <rect x="0" y="0" width="720" height="64" fill="#15151a"/>
+  <text x="28" y="42" font-family="Georgia, serif" font-size="24" fill="#d4a94f">CinemaVerse</text>
+  <text x="28" y="130" font-family="Georgia, serif" font-size="34" fill="#f5f5f7">Kütüphanem</text>
+  <rect x="28" y="180" width="180" height="100" rx="8" fill="#1e1e25"/>
+              <rect x="224" y="192" width="180" height="12" rx="5" fill="#2a2a33"/>
+              <rect x="224" y="216" width="110" height="9" rx="4" fill="#232330"/>
+              <rect x="224" y="240" width="50" height="9" rx="4" fill="#3a2f1a"/><rect x="28" y="310" width="180" height="100" rx="8" fill="#1e1e25"/>
+              <rect x="224" y="322" width="180" height="12" rx="5" fill="#2a2a33"/>
+              <rect x="224" y="346" width="110" height="9" rx="4" fill="#232330"/>
+              <rect x="224" y="370" width="50" height="9" rx="4" fill="#3a2f1a"/><rect x="28" y="440" width="180" height="100" rx="8" fill="#1e1e25"/>
+              <rect x="224" y="452" width="180" height="12" rx="5" fill="#2a2a33"/>
+              <rect x="224" y="476" width="110" height="9" rx="4" fill="#232330"/>
+              <rect x="224" y="500" width="50" height="9" rx="4" fill="#3a2f1a"/><rect x="28" y="570" width="180" height="100" rx="8" fill="#1e1e25"/>
+              <rect x="224" y="582" width="180" height="12" rx="5" fill="#2a2a33"/>
+              <rect x="224" y="606" width="110" height="9" rx="4" fill="#232330"/>
+              <rect x="224" y="630" width="50" height="9" rx="4" fill="#3a2f1a"/><rect x="28" y="700" width="180" height="100" rx="8" fill="#1e1e25"/>
+              <rect x="224" y="712" width="180" height="12" rx="5" fill="#2a2a33"/>
+              <rect x="224" y="736" width="110" height="9" rx="4" fill="#232330"/>
+              <rect x="224" y="760" width="50" height="9" rx="4" fill="#3a2f1a"/><rect x="28" y="830" width="180" height="100" rx="8" fill="#1e1e25"/>
+              <rect x="224" y="842" width="180" height="12" rx="5" fill="#2a2a33"/>
+              <rect x="224" y="866" width="110" height="9" rx="4" fill="#232330"/>
+              <rect x="224" y="890" width="50" height="9" rx="4" fill="#3a2f1a"/><rect x="28" y="960" width="180" height="100" rx="8" fill="#1e1e25"/>
+              <rect x="224" y="972" width="180" height="12" rx="5" fill="#2a2a33"/>
+              <rect x="224" y="996" width="110" height="9" rx="4" fill="#232330"/>
+              <rect x="224" y="1020" width="50" height="9" rx="4" fill="#3a2f1a"/><rect x="28" y="1090" width="180" height="100" rx="8" fill="#1e1e25"/>
+              <rect x="224" y="1102" width="180" height="12" rx="5" fill="#2a2a33"/>
+              <rect x="224" y="1126" width="110" height="9" rx="4" fill="#232330"/>
+              <rect x="224" y="1150" width="50" height="9" rx="4" fill="#3a2f1a"/>
+</svg>

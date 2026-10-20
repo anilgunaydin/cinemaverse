@@ -19,6 +19,7 @@ export default function KarakterPage() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     fetch("/api/karakter")
@@ -32,6 +33,24 @@ export default function KarakterPage() {
         setLoading(false);
       });
   }, []);
+
+  async function handleShare() {
+    const shareUrl = `${window.location.origin}/karakter`;
+    const ogUrl = `${window.location.origin}/api/og/karakter`;
+    const text = "Sinema karakterim: CinemaVerse'da kütüphanemden yola çıkarak çıkarılan profilim";
+
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: "Sinema Karakterim", text, url: shareUrl });
+        return;
+      }
+      await navigator.clipboard.writeText(`${text}\n${shareUrl}\n${ogUrl}`);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      // Paylasim iptal edildi
+    }
+  }
 
   if (loading) {
     return (
@@ -75,6 +94,19 @@ export default function KarakterPage() {
       <header className="mb-10 text-center">
         <h1 className="font-display text-4xl font-bold text-mist-100 mb-2">Sinema Karakterin</h1>
         <p className="text-mist-400">Kütüphanenden yola çıkarak AI'nın çizdiği profilin.</p>
+        <button
+          onClick={handleShare}
+          className="btn btn-outline mt-4 inline-flex items-center gap-2"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+            <circle cx="18" cy="5" r="3" />
+            <circle cx="6" cy="12" r="3" />
+            <circle cx="18" cy="19" r="3" />
+            <line x1="8.6" y1="10.5" x2="15.4" y2="6.5" />
+            <line x1="8.6" y1="13.5" x2="15.4" y2="17.5" />
+          </svg>
+          {copied ? "Bağlantı kopyalandı ✓" : "Paylaş"}
+        </button>
       </header>
       <div className="space-y-6">
         {/* Arketip + Motto */}

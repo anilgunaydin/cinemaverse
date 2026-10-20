@@ -295,7 +295,7 @@ export function EvaluationCard({
   ].filter(Boolean).length;
 
   return (
-    <section className="surface p-4 lg:col-span-2">
+    <section className="surface p-4">
       {/* ---------------------------------------------- Baslik */}
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
@@ -341,66 +341,65 @@ export function EvaluationCard({
         </div>
       </div>
 
-      {/* ---------------------------------------------- Durum + puan */}
-      <div className="mt-3 grid gap-3 md:grid-cols-[1.25fr_1fr]">
-        <div>
-          <span className="label">İzleme durumu</span>
-          <div className="mt-1 flex flex-wrap gap-1">
-            {STATUS_ORDER.map((value) => (
-              <button
-                key={value}
-                type="button"
-                onClick={() => setStatus(value)}
-                aria-pressed={status === value}
-                className={`rounded-md border px-2 py-1 text-[0.7rem] font-medium transition-colors ${
-                  status === value
-                    ? "border-gold-500/50 bg-gold-500/15 text-gold-300"
-                    : "border-ink-600 bg-ink-900 text-mist-400 hover:border-ink-500"
-                }`}
-              >
-                {STATUS_SHORT[value]}
-              </button>
-            ))}
-          </div>
+      {/* ---------------------------------------------- Durum */}
+      <div className="mt-3">
+        <span className="label">İzleme durumu</span>
+        <div className="mt-1 flex flex-wrap gap-1">
+          {STATUS_ORDER.map((value) => (
+            <button
+              key={value}
+              type="button"
+              onClick={() => setStatus(value)}
+              aria-pressed={status === value}
+              className={`rounded-md border px-2 py-1 text-[0.7rem] font-medium transition-colors ${
+                status === value
+                  ? "border-gold-500/50 bg-gold-500/15 text-gold-300"
+                  : "border-ink-600 bg-ink-900 text-mist-400 hover:border-ink-500"
+              }`}
+            >
+              {STATUS_SHORT[value]}
+            </button>
+          ))}
         </div>
+      </div>
 
-        <div>
-          <span className="label">
-            Puanınız {rating ? `· ${rating}/10` : "· verilmedi"}
-          </span>
-          <div className="mt-1 flex flex-wrap gap-0.5">
-            {Array.from({ length: 10 }, (_, i) => i + 1).map((value) => (
-              <button
-                key={value}
-                type="button"
-                onClick={() => setRating(rating === value ? null : value)}
-                aria-pressed={rating === value}
-                aria-label={`${value} puan`}
-                className={`h-6 w-6 rounded-md border text-[0.68rem] font-semibold transition-colors ${
-                  rating !== null && value <= rating
-                    ? "border-gold-500/60 bg-gold-500/25 text-gold-200"
-                    : "border-ink-600 bg-ink-900 text-mist-500 hover:border-ink-500"
-                }`}
-              >
-                {value}
-              </button>
-            ))}
-          </div>
+      {/* ---------------------------------------------- Puan */}
+      <div className="mt-3">
+        <span className="label">
+          Puanınız {rating ? `· ${rating}/10` : "· verilmedi"}
+        </span>
+        <div className="mt-1 flex flex-wrap gap-0.5">
+          {Array.from({ length: 10 }, (_, i) => i + 1).map((value) => (
+            <button
+              key={value}
+              type="button"
+              onClick={() => setRating(rating === value ? null : value)}
+              aria-pressed={rating === value}
+              aria-label={`${value} puan`}
+              className={`h-6 w-6 rounded-md border text-[0.68rem] font-semibold transition-colors ${
+                rating !== null && value <= rating
+                  ? "border-gold-500/60 bg-gold-500/25 text-gold-200"
+                  : "border-ink-600 bg-ink-900 text-mist-500 hover:border-ink-500"
+              }`}
+            >
+              {value}
+            </button>
+          ))}
         </div>
       </div>
 
       {/* ---------------------------------------------- Not + inceleme */}
-      <div className="mt-4 grid gap-4 md:grid-cols-2 md:divide-x md:divide-ink-700">
+      <div className="mt-3 grid gap-3 2xl:grid-cols-2 2xl:divide-x 2xl:divide-ink-700">
         {/* Kişisel not (özel) */}
-        <div className="md:pr-4">
+        <div className="2xl:pr-3">
           <p className="label">Kişisel notun (yalnızca sana görünür)</p>
           <textarea
             id="notes"
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            rows={4}
+            rows={2}
             maxLength={5000}
-            className="field mt-1 resize-y"
+            className="field mt-1 resize-y text-sm"
             placeholder={`${titleName} hakkında kişisel düşüncelerin…`}
           />
 
@@ -555,15 +554,15 @@ export function EvaluationCard({
         </div>
 
         {/* Herkese açık inceleme */}
-        <div className="md:pl-4">
+        <div className="2xl:pl-3">
           <p className="label">Herkese açık incelemen</p>
           <textarea
             id="review-body"
             value={reviewBody}
             onChange={(e) => setReviewBody(e.target.value)}
-            rows={4}
+            rows={2}
             maxLength={10000}
-            className="field mt-1 resize-y"
+            className="field mt-1 resize-y text-sm"
             placeholder={`${titleName} hakkında ne düşündün? (isteğe bağlı)`}
           />
           <div className="mt-2 flex flex-wrap items-center gap-3">
@@ -672,7 +671,7 @@ export function EvaluationCard({
             yazmakla başlayabilirsin.
           </p>
         ) : (
-          <ul className="mt-3 flex max-h-[380px] flex-col divide-y divide-ink-700 overflow-y-auto pr-1">
+          <ul className="mt-3 flex max-h-[240px] flex-col divide-y divide-ink-700 overflow-y-auto pr-1">
             {communityReviews.map((review) => (
               <li key={review.id} className="py-3">
                 <div className="flex flex-wrap items-center gap-2 text-xs text-mist-500">

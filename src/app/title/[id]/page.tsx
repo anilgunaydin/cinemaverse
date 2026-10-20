@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { AppHeader } from "@/components/layout/app-header";
 import { EvaluationCard } from "@/components/catalog/evaluation-card";
+import { InlineNameList } from "@/components/catalog/inline-name-list";
 import { ResearchPanel } from "@/components/research/research-panel";
 import { AiDiscussion } from "@/components/ai/ai-discussion";
 import { ThreadList } from "@/components/community/thread-list";
@@ -156,74 +157,67 @@ export default async function TitlePage({
           franchiseNames={titleFranchises.map((franchise) => franchise.name)}
         />
 
-        {/* Bento grid: tum bolumler ayni anda gorunur */}
-        <div className="mt-4 grid content-start items-start gap-4 lg:grid-cols-2 xl:grid-cols-3">
-          {/* Konu + Ekip - ayni kartta, iki kolon */}
-          <section className="surface p-4 lg:col-span-2">
-            <div className="grid gap-5 md:grid-cols-[1.4fr_1fr]">
-              <div>
-                <h2 className="section-title">Konu</h2>
-                {title.overview ? (
-                  <p className="mt-2 text-sm leading-relaxed text-mist-300">
-                    {title.overview}
-                  </p>
-                ) : (
-                  <p className="muted mt-2 text-sm italic">
-                    Kaynakta açıklama bulunmuyor.
-                  </p>
-                )}
+        {/* Ust blok: Konu | Ekip | Degerlendirmen - yan yana */}
+        <div className="grid content-start items-start gap-4 lg:grid-cols-3">
+          {/* Konu */}
+          <section className="surface p-4">
+            <h2 className="section-title">Konu</h2>
+            {title.overview ? (
+              <p className="mt-2 line-clamp-8 text-sm leading-relaxed text-mist-300">
+                {title.overview}
+              </p>
+            ) : (
+              <p className="muted mt-2 text-sm italic">
+                Kaynakta açıklama bulunmuyor.
+              </p>
+            )}
 
-                {seasons.length > 0 ? (
-                  <div className="mt-4 border-t border-ink-700 pt-3">
-                    <h3 className="label">Sezonlar</h3>
-                    <ul className="mt-2 flex flex-wrap gap-1.5">
-                      {seasons.map((season) => (
-                        <li key={season.id}>
-                          <Link
-                            href={`/title/${season.id}`}
-                            className="flex items-center gap-1.5 rounded-lg border border-ink-700 bg-ink-900 px-2.5 py-1 text-xs text-mist-300 transition-colors hover:border-gold-500/40 hover:text-gold-300"
-                          >
-                            <span className="font-semibold">
-                              {season.seasonNumber}. Sezon
-                            </span>
-                            <span className="text-mist-500">
-                              {season.releaseYear ?? "—"}
-                            </span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : null}
+            {seasons.length > 0 ? (
+              <div className="mt-3 border-t border-ink-700 pt-2.5">
+                <h3 className="label">Sezonlar</h3>
+                <ul className="mt-1.5 flex flex-wrap gap-1.5">
+                  {seasons.map((season) => (
+                    <li key={season.id}>
+                      <Link
+                        href={`/title/${season.id}`}
+                        className="flex items-center gap-1.5 rounded-lg border border-ink-700 bg-ink-900 px-2 py-0.5 text-[0.7rem] text-mist-300 transition-colors hover:border-gold-500/40 hover:text-gold-300"
+                      >
+                        <span className="font-semibold">
+                          {season.seasonNumber}. Sezon
+                        </span>
+                        <span className="text-mist-500">
+                          {season.releaseYear ?? "—"}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
-
-              {credits.length > 0 ? (
-                <div className="border-t border-ink-700 pt-4 md:border-l md:border-t-0 md:pl-5 md:pt-0">
-                  <h2 className="section-title">Ekip</h2>
-                  <div className="mt-2.5 flex flex-col gap-2.5">
-                    {(
-                      ["director", "creator", "writer", "actor", "composer"] as const
-                    ).map((role) =>
-                      groupedCredits[role]?.length ? (
-                        <div key={role}>
-                          <p className="label">{ROLE_LABELS[role]}</p>
-                          <p className="text-sm leading-snug text-mist-300">
-                            {groupedCredits[role]
-                              .slice(0, 8)
-                              .map((credit) => credit.personName)
-                              .join(", ")}
-                            {groupedCredits[role].length > 8
-                              ? ` ve ${groupedCredits[role].length - 8} kişi daha`
-                              : ""}
-                          </p>
-                        </div>
-                      ) : null
-                    )}
-                  </div>
-                </div>
-              ) : null}
-            </div>
+            ) : null}
           </section>
+
+          {/* Ekip - isimler tek satir, fazlasi hover'da */}
+          {credits.length > 0 ? (
+            <section className="surface p-4">
+              <h2 className="section-title">Ekip</h2>
+              <div className="mt-2.5 flex flex-col gap-2.5">
+                {(
+                  ["director", "creator", "writer", "actor", "composer"] as const
+                ).map((role) =>
+                  groupedCredits[role]?.length ? (
+                    <div key={role}>
+                      <p className="label">{ROLE_LABELS[role]}</p>
+                      <InlineNameList
+                        label={ROLE_LABELS[role]}
+                        names={groupedCredits[role].map((credit) => credit.personName)}
+                        maxChars={role === "actor" ? 60 : 110}
+                      />
+                    </div>
+                  ) : null
+                )}
+              </div>
+            </section>
+          ) : null}
 
           {/* Değerlendirmen: kişisel hafıza + incelemen + topluluk incelemeleri */}
           <EvaluationCard
@@ -257,6 +251,10 @@ export default async function TitlePage({
             }}
             initialReviews={reviews}
           />
+        </div>
+
+        {/* Alt blok */}
+        <div className="mt-4 grid content-start items-start gap-4 lg:grid-cols-2 xl:grid-cols-3">
 
           {/* Fragman */}
           {title.trailerUrl ? (

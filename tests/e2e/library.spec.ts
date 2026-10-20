@@ -37,7 +37,9 @@ test.describe("Kütüphane - Değerlendirme Kartı", () => {
     await expect(card.locator("#review-visibility")).toBeVisible();
 
     // Topluluk incelemeleri aynı kart içinde
-    await expect(card.locator('h3:has-text("Topluluk incelemeleri")')).toBeVisible();
+    await expect(
+      card.locator('h3:has-text("Topluluk incelemeleri")')
+    ).toBeVisible();
 
     // Detaylar gizli başlar
     await expect(card.locator("#liked")).toBeHidden();
@@ -55,6 +57,11 @@ test.describe("Kütüphane - Değerlendirme Kartı", () => {
 
   test("Kaydet hem hafızayı hem incelemeyi yazar", async ({ page }) => {
     const card = evalCard(page);
+    const titleId = page.url().split("/title/")[1]?.split("?")[0] ?? "";
+
+    // Gercek DB'yi kirletmemek icin onceki degerleri sakla
+    const originalNotes = await card.locator("#notes").inputValue();
+    const originalReview = await card.locator("#review-body").inputValue();
 
     // Not yaz
     await card.locator("#notes").fill("Otomatik test notu.");
@@ -64,9 +71,37 @@ test.describe("Kütüphane - Değerlendirme Kartı", () => {
     await card.locator('button[aria-label="8 puan"]').click();
 
     // Kaydet
-    await card.locator('button:has-text("Kaydet"), button:has-text("Kütüphaneye ekle")').first().click();
+    await card
+      .locator('button:has-text("Kaydet"), button:has-text("Kütüphaneye ekle")')
+      .first()
+      .click();
 
     await expect(card.locator("text=Kaydedildi")).toBeVisible({ timeout: 15000 });
+
+    // Test verisini geri al (gercek kutuphane bozulmasin)
+    await card.locator("#notes").fill(originalNotes);
+    await card.locator("#review-body").fill(originalReview);
+    await card
+      .locator('button:has-text("Kaydet"), button:has-text("Kütüphaneye ekle")')
+      .first()
+      .click();
+    await page.waitForTimeout(800);
+
+    // Once inceleme yoktuysa olusturulan incelemeyi API ile sil
+    if (!originalReview.trim()) {
+      const after = await page.request.get(
+        `/api/reviews?titleId=${encodeURIComponent(titleId)}`
+      );
+      const afterData = after.ok() ? await after.json() : {};
+      const testReview = (afterData.items ?? []).find((r: any) =>
+        r.body?.includes("Otomatik test")
+      );
+      if (testReview) {
+        await page.request.delete(
+          `/api/reviews?reviewId=${encodeURIComponent(testReview.id)}`
+        );
+      }
+    }
   });
 
   test("Detaylar açılıp kapatılabilir", async ({ page }) => {

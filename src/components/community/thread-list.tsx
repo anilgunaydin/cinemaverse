@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import { DetailCard } from "@/components/catalog/detail-card";
 import { spoilerState, type SpoilerViewer } from "@/lib/spoilers/rules";
 
 export type ThreadListItem = {
@@ -38,6 +39,7 @@ export function ThreadList({
   titleId = null,
   titleName = null,
   showCreate = true,
+  className = "",
 }: {
   threads: ThreadListItem[];
   viewer: SpoilerViewer;
@@ -46,6 +48,7 @@ export function ThreadList({
   titleId?: string | null;
   titleName?: string | null;
   showCreate?: boolean;
+  className?: string;
 }) {
   const [threads, setThreads] = useState<ThreadListItem[]>(initialThreads);
   const [heading, setHeading] = useState("");
@@ -56,6 +59,7 @@ export function ThreadList({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [revealed, setRevealed] = useState<Set<string>>(new Set());
+  const [composing, setComposing] = useState(false);
 
   async function refresh() {
     const query = titleId ? `?titleId=${encodeURIComponent(titleId)}` : "";
@@ -91,6 +95,7 @@ export function ThreadList({
       setHeading("");
       setBody("");
       setContainsSpoiler(false);
+      setComposing(false);
     } catch {
       setError("Ağ hatası: tartışma açılamadı.");
     } finally {
@@ -98,101 +103,134 @@ export function ThreadList({
     }
   }
 
-  return (
-    <section className="surface p-4 sm:p-5">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <h2 className="section-title">Tartışmalar</h2>
-        <span className="chip">{threads.length} konu</span>
-      </div>
+  const canCreate = showCreate && isLoggedIn;
 
-      {showCreate ? (
-        isLoggedIn ? (
-          <div className="mt-3 flex flex-col gap-2 rounded-lg border border-ink-700 bg-ink-900/60 p-3">
-            <label className="label" htmlFor="thread-heading">
-              Yeni konu başlığı
-            </label>
-            <input
-              id="thread-heading"
-              className="field"
-              value={heading}
-              maxLength={200}
-              placeholder={
-                titleName
-                  ? `${titleName} hakkında bir tartışma başlatın`
-                  : "Bir film veya dizi hakkında tartışma başlatın"
-              }
-              onChange={(event) => setHeading(event.target.value)}
-            />
-            <textarea
-              id="thread-body"
-              className="field min-h-[90px]"
-              value={body}
-              maxLength={20000}
-              placeholder="Düşüncenizi yazın…"
-              onChange={(event) => setBody(event.target.value)}
-            />
-            <div className="flex flex-wrap items-end gap-3">
-              <div>
-                <label className="label" htmlFor="thread-visibility">
-                  Görünürlük
-                </label>
-                <select
-                  id="thread-visibility"
-                  className="field"
-                  value={visibility}
-                  onChange={(event) =>
-                    setVisibility(
-                      event.target.value as ThreadListItem["visibility"],
-                    )
-                  }
-                >
-                  {VISIBILITY_OPTIONS.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <label className="flex items-center gap-2 pb-2 text-xs text-mist-400">
-                <input
-                  type="checkbox"
-                  checked={containsSpoiler}
-                  onChange={(event) => setContainsSpoiler(event.target.checked)}
-                />
-                Spoiler içeriyor
+  return (
+    <DetailCard
+      icon="thread"
+      title="Tartışmalar"
+      meta={`${threads.length} konu`}
+      className={className}
+      action={
+        canCreate ? (
+          <button
+            type="button"
+            onClick={() => setComposing((value) => !value)}
+            aria-expanded={composing}
+            className={`chip transition-colors ${
+              composing
+                ? "chip-gold"
+                : "hover:border-gold-500/40 hover:text-gold-300"
+            }`}
+          >
+            {composing ? "Vazgeç" : "+ Yeni konu"}
+          </button>
+        ) : null
+      }
+    >
+      {showCreate && !isLoggedIn ? (
+        <p className="mb-2 text-xs text-mist-400">
+          Tartışma açmak için giriş yapın.
+        </p>
+      ) : null}
+
+      {canCreate && composing ? (
+        <div className="mb-3 flex shrink-0 flex-col gap-2 rounded-xl border border-ink-700 bg-ink-900/60 p-3">
+          <label className="sr-only" htmlFor="thread-heading">
+            Yeni konu başlığı
+          </label>
+          <input
+            id="thread-heading"
+            className="field"
+            value={heading}
+            maxLength={200}
+            placeholder={
+              titleName
+                ? `${titleName} hakkında bir tartışma başlatın`
+                : "Bir film veya dizi hakkında tartışma başlatın"
+            }
+            onChange={(event) => setHeading(event.target.value)}
+          />
+          <label className="sr-only" htmlFor="thread-body">
+            Konu metni
+          </label>
+          <textarea
+            id="thread-body"
+            className="field min-h-[76px]"
+            value={body}
+            maxLength={20000}
+            placeholder="Düşüncenizi yazın…"
+            onChange={(event) => setBody(event.target.value)}
+          />
+          <div className="flex flex-wrap items-end gap-2">
+            <div className="min-w-0">
+              <label className="label" htmlFor="thread-visibility">
+                Görünürlük
               </label>
+              <select
+                id="thread-visibility"
+                className="field w-auto text-sm"
+                value={visibility}
+                onChange={(event) =>
+                  setVisibility(
+                    event.target.value as ThreadListItem["visibility"]
+                  )
+                }
+              >
+                {VISIBILITY_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
             </div>
-            <p className="text-[0.7rem] text-mist-500">
-              &ldquo;Takipçilerim&rdquo; görünürlüğü, takip sistemi eklenene kadar
-              kullanılamaz.
-            </p>
+            <label className="flex items-center gap-1.5 pb-2 text-xs text-mist-400">
+              <input
+                type="checkbox"
+                checked={containsSpoiler}
+                onChange={(event) => setContainsSpoiler(event.target.checked)}
+                className="accent-gold-500"
+              />
+              Spoiler
+            </label>
             <button
               type="button"
-              className="btn btn-primary self-start"
+              className="btn btn-primary ml-auto text-xs"
               onClick={submit}
-              disabled={busy || heading.trim().length < 3 || body.trim().length === 0}
+              disabled={
+                busy || heading.trim().length < 3 || body.trim().length === 0
+              }
             >
-              {busy ? "Açılıyor…" : "Tartışma aç"}
+              {busy ? "Açılıyor…" : "Aç"}
             </button>
-            {error ? (
-              <p className="rounded-lg border border-rose-500/40 bg-rose-500/10 px-3 py-2 text-xs text-rose-400">
-                {error}
-              </p>
-            ) : null}
           </div>
-        ) : (
-          <p className="muted mt-2">Tartışma açmak için giriş yapın.</p>
-        )
+          {error ? (
+            <p className="rounded-lg border border-rose-500/40 bg-rose-500/10 px-3 py-2 text-xs text-rose-400">
+              {error}
+            </p>
+          ) : null}
+        </div>
       ) : null}
 
       {threads.length === 0 ? (
-        <p className="muted mt-4">
-          {titleName
-            ? `Bu yapım için henüz tartışma yok. İlk konuyu siz açabilirsiniz.`
-            : "Henüz tartışma yok. İlk konuyu siz açabilirsiniz."}
-        </p>
+        <div className="flex min-h-[120px] flex-1 flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-ink-700 px-4 py-6 text-center">
+          <p className="text-sm text-mist-400">
+            {titleName
+              ? "Bu yapım için henüz tartışma yok."
+              : "Henüz tartışma yok."}
+          </p>
+          {canCreate && !composing ? (
+            <button
+              type="button"
+              onClick={() => setComposing(true)}
+              className="btn btn-ghost text-xs"
+            >
+              + İlk konuyu aç
+            </button>
+          ) : null}
+        </div>
       ) : (
-        <ul className="mt-4 flex flex-col divide-y divide-ink-700">
+        <ul className="min-h-0 flex-1 divide-y divide-ink-700/70 overflow-y-auto pr-1">
           {threads.map((thread) => {
             const state = spoilerState(viewer, {
               containsSpoiler: thread.containsSpoiler,
@@ -200,18 +238,20 @@ export function ThreadList({
             });
             const isOpen = state === "visible" || revealed.has(thread.id);
             return (
-              <li key={thread.id} className="py-3">
-                <div className="flex flex-wrap items-center gap-2 text-xs text-mist-500">
+              <li key={thread.id} className="py-2.5 first:pt-0">
+                <div className="flex flex-wrap items-center gap-1.5 text-[0.68rem] text-mist-500">
                   <span className="font-medium text-mist-200">
                     {thread.authorName}
                   </span>
                   {thread.titleId ? (
                     <Link
                       href={`/title/${thread.titleId}`}
-                      className="text-gold-400 hover:underline"
+                      className="truncate text-gold-400 hover:underline"
                     >
                       {thread.titleName}
-                      {thread.titleReleaseYear ? ` (${thread.titleReleaseYear})` : ""}
+                      {thread.titleReleaseYear
+                        ? ` (${thread.titleReleaseYear})`
+                        : ""}
                     </Link>
                   ) : (
                     <span className="chip">Genel</span>
@@ -227,32 +267,34 @@ export function ThreadList({
                   {thread.containsSpoiler ? (
                     <span className="chip chip-rose">Spoiler</span>
                   ) : null}
-                  <span>
+                  <span className="ml-auto shrink-0">
                     {new Date(thread.lastActivityAt).toLocaleDateString("tr-TR")}
                   </span>
                 </div>
 
                 <Link
                   href={`/discussions/${thread.id}`}
-                  className="mt-1.5 block font-display text-base font-semibold text-mist-100 hover:text-gold-300"
+                  className="mt-1 block truncate font-display text-[0.95rem] font-semibold text-mist-100 hover:text-gold-300"
                 >
                   {thread.heading}
                 </Link>
 
                 {isOpen ? (
-                  <p className="mt-1 line-clamp-3 whitespace-pre-wrap text-sm leading-relaxed text-mist-400">
+                  <p className="mt-0.5 line-clamp-2 whitespace-pre-wrap text-[0.8rem] leading-relaxed text-mist-400">
                     {thread.body}
                   </p>
                 ) : (
-                  <div className="mt-1.5 rounded-lg border border-rose-500/30 bg-rose-500/5 px-3 py-2">
+                  <div className="mt-1 rounded-lg border border-rose-500/30 bg-rose-500/5 px-3 py-1.5">
                     <p className="text-xs text-rose-400">
                       Bu konu spoiler içeriyor ve gizlendi.
                     </p>
                     <button
                       type="button"
-                      className="mt-1 text-xs text-gold-400 hover:underline"
+                      className="text-xs text-gold-400 hover:underline"
                       onClick={() =>
-                        setRevealed((previous) => new Set(previous).add(thread.id))
+                        setRevealed((previous) =>
+                          new Set(previous).add(thread.id)
+                        )
                       }
                     >
                       Yine de göster
@@ -260,13 +302,15 @@ export function ThreadList({
                   </div>
                 )}
                 {viewerId === thread.authorId ? (
-                  <p className="mt-1 text-[0.7rem] text-mist-500">Sizin konunuz</p>
+                  <p className="mt-0.5 text-[0.68rem] text-mist-500">
+                    Sizin konunuz
+                  </p>
                 ) : null}
               </li>
             );
           })}
         </ul>
       )}
-    </section>
+    </DetailCard>
   );
 }

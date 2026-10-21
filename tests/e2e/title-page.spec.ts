@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Yapım Sayfası - Bento Grid", () => {
+test.describe("Yapım Sayfası - Yerleşim", () => {
   test.use({ viewport: { width: 1440, height: 900 } });
 
   test.beforeEach(async ({ page }) => {
@@ -45,7 +45,7 @@ test.describe("Yapım Sayfası - Bento Grid", () => {
     }
   });
 
-  test("Bento grid - ilk ekranda birden fazla kart", async ({ page }) => {
+  test("İlk ekranda birden fazla kart görünür", async ({ page }) => {
     const cards = page.locator("main .surface");
     await expect(cards.first()).toBeVisible();
 
@@ -56,6 +56,48 @@ test.describe("Yapım Sayfası - Bento Grid", () => {
       ).length;
     });
     expect(visibleInFold).toBeGreaterThanOrEqual(3);
+  });
+
+  test("Kart yerleşimi: Konu tam genişlik, Ekip + Değerlendirmen yan yana", async ({
+    page,
+  }) => {
+    const boxOf = async (name: string) => {
+      const loc = page.locator(`section:has(h2:text-is("${name}"))`).first();
+      if ((await loc.count()) === 0) return null;
+      const box = await loc.boundingBox();
+      expect(box).not.toBeNull();
+      return box!;
+    };
+
+    const main = await page.locator("main").boundingBox();
+    expect(main).not.toBeNull();
+
+    // Konu: değişken uzunlukta olduğu için tam genişlikte tek satır kart
+    const konu = await boxOf("Konu");
+    expect(konu).not.toBeNull();
+    expect(konu!.width).toBeGreaterThan(main!.width * 0.85);
+
+    // Ekip ve Değerlendirmen aynı satırda, eşit yükseklikte
+    const ekip = await boxOf("Ekip");
+    const degerlendirmen = await boxOf("Değerlendirmen");
+    expect(degerlendirmen).not.toBeNull();
+    if (ekip) {
+      expect(Math.abs(ekip.y - degerlendirmen!.y)).toBeLessThan(4);
+      expect(Math.abs(ekip.height - degerlendirmen!.height)).toBeLessThan(4);
+      expect(ekip.x + ekip.width).toBeLessThanOrEqual(degerlendirmen!.x + 1);
+    }
+
+    // Yatay taşma yok
+    const overflowX = await page.evaluate(
+      () => document.documentElement.scrollWidth > window.innerWidth + 1
+    );
+    expect(overflowX).toBe(false);
+
+    // Kartlar içeriğe göre şişip sayfayı uzatmamalı
+    const pageHeight = await page.evaluate(
+      () => document.documentElement.scrollHeight
+    );
+    expect(pageHeight).toBeLessThan(3200);
   });
 
   test("Uzun listeler kart içinde kaydırılır", async ({ page }) => {

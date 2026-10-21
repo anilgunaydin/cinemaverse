@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import type { WatchStatus } from "@/lib/db/schema";
 import { useOfflineQueue } from "@/hooks/useBackgroundSync";
 import { ReportButton } from "@/components/community/report-button";
+import { DetailCard } from "@/components/catalog/detail-card";
 
 type Entry = {
   id: string;
@@ -86,6 +87,7 @@ export function EvaluationCard({
   entry,
   viewer,
   initialReviews,
+  className = "",
 }: {
   titleId: string;
   titleName: string;
@@ -93,6 +95,7 @@ export function EvaluationCard({
   entry: Entry;
   viewer: SpoilerViewer;
   initialReviews: ReviewItem[];
+  className?: string;
 }) {
   const router = useRouter();
   const { addLibraryEntry, updateLibraryEntry, deleteLibraryEntry } =
@@ -295,29 +298,26 @@ export function EvaluationCard({
   ].filter(Boolean).length;
 
   return (
-    <section className="surface p-4">
-      {/* ---------------------------------------------- Baslik */}
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <h2 className="section-title">Değerlendirmen</h2>
-          <p className="muted mt-0.5 text-xs">
-            {entry
-              ? "Kayıtlı — puanın hem hafızanda hem incelemende geçerlidir."
-              : "Bu yapımı değerlendirin — hafızanıza ekleyin."}
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
+    <DetailCard
+      icon="rating"
+      title="Değerlendirmen"
+      className={className}
+      bodyClassName="overflow-y-auto"
+      action={
+        <>
           <button
             type="button"
             onClick={() => setIsFavorite((v) => !v)}
             aria-pressed={isFavorite}
             aria-label={isFavorite ? "Favorilerden çıkar" : "Favorilere ekle"}
-            className={`btn px-2 ${isFavorite ? "btn-primary" : "btn-ghost"}`}
+            className={`btn px-2 py-1.5 ${
+              isFavorite ? "btn-primary" : "btn-ghost"
+            }`}
             title={isFavorite ? "Favorilerden çıkar" : "Favorilere ekle"}
           >
             <svg
-              width="16"
-              height="16"
+              width="15"
+              height="15"
               viewBox="0 0 24 24"
               fill={isFavorite ? "currentColor" : "none"}
               aria-hidden="true"
@@ -333,79 +333,96 @@ export function EvaluationCard({
           <button
             type="button"
             onClick={() => setExpanded((v) => !v)}
-            className="btn btn-ghost"
+            className="btn btn-ghost px-2.5 py-1.5 text-[0.72rem]"
             aria-expanded={expanded}
           >
             {expanded ? "Detayları gizle" : "Detay ekle"}
           </button>
-        </div>
-      </div>
+        </>
+      }
+    >
+      <div className="grid min-h-0 flex-1 gap-4 lg:grid-cols-2">
+        {/* ------------------------------------------------ Sol: kişisel hafıza */}
+        <div className="flex min-w-0 flex-col">
+          <p className="text-[0.7rem] leading-relaxed text-mist-500">
+            {entry
+              ? "Kayıtlı — puanın hem hafızanda hem incelemende geçerlidir."
+              : "Bu yapımı değerlendir — hafızana ekle, istersen toplulukla paylaş."}
+          </p>
 
-      {/* ---------------------------------------------- Durum */}
-      <div className="mt-3">
-        <span className="label">İzleme durumu</span>
-        <div className="mt-1 flex flex-wrap gap-1">
-          {STATUS_ORDER.map((value) => (
-            <button
-              key={value}
-              type="button"
-              onClick={() => setStatus(value)}
-              aria-pressed={status === value}
-              className={`rounded-md border px-2 py-1 text-[0.7rem] font-medium transition-colors ${
-                status === value
-                  ? "border-gold-500/50 bg-gold-500/15 text-gold-300"
-                  : "border-ink-600 bg-ink-900 text-mist-400 hover:border-ink-500"
-              }`}
-            >
-              {STATUS_SHORT[value]}
-            </button>
-          ))}
-        </div>
-      </div>
+          {/* Durum */}
+          <div className="mt-2.5">
+            <span className="label">İzleme durumu</span>
+            <div className="grid grid-cols-3 gap-1 sm:grid-cols-6 lg:grid-cols-3">
+              {STATUS_ORDER.map((value) => (
+                <button
+                  key={value}
+                  type="button"
+                  onClick={() => setStatus(value)}
+                  aria-pressed={status === value}
+                  className={`rounded-md border px-1.5 py-1 text-[0.7rem] font-medium transition-colors ${
+                    status === value
+                      ? "border-gold-500/50 bg-gold-500/15 text-gold-300"
+                      : "border-ink-600 bg-ink-900 text-mist-400 hover:border-ink-500"
+                  }`}
+                >
+                  {STATUS_SHORT[value]}
+                </button>
+              ))}
+            </div>
+          </div>
 
-      {/* ---------------------------------------------- Puan */}
-      <div className="mt-3">
-        <span className="label">
-          Puanınız {rating ? `· ${rating}/10` : "· verilmedi"}
-        </span>
-        <div className="mt-1 flex flex-wrap gap-0.5">
-          {Array.from({ length: 10 }, (_, i) => i + 1).map((value) => (
-            <button
-              key={value}
-              type="button"
-              onClick={() => setRating(rating === value ? null : value)}
-              aria-pressed={rating === value}
-              aria-label={`${value} puan`}
-              className={`h-6 w-6 rounded-md border text-[0.68rem] font-semibold transition-colors ${
-                rating !== null && value <= rating
-                  ? "border-gold-500/60 bg-gold-500/25 text-gold-200"
-                  : "border-ink-600 bg-ink-900 text-mist-500 hover:border-ink-500"
-              }`}
-            >
-              {value}
-            </button>
-          ))}
-        </div>
-      </div>
+          {/* Puan */}
+          <div className="mt-2.5">
+            <div className="flex items-baseline justify-between gap-2">
+              <span className="label mb-0">Puanın</span>
+              <span
+                className={`text-[0.7rem] font-semibold ${
+                  rating ? "text-gold-300" : "text-mist-500"
+                }`}
+              >
+                {rating ? `${rating}/10` : "verilmedi"}
+              </span>
+            </div>
+            <div className="mt-1 grid grid-cols-10 gap-0.5">
+              {Array.from({ length: 10 }, (_, i) => i + 1).map((value) => (
+                <button
+                  key={value}
+                  type="button"
+                  onClick={() => setRating(rating === value ? null : value)}
+                  aria-pressed={rating === value}
+                  aria-label={`${value} puan`}
+                  className={`h-6 rounded-md border text-[0.66rem] font-semibold transition-colors ${
+                    rating !== null && value <= rating
+                      ? "border-gold-500/60 bg-gold-500/25 text-gold-200"
+                      : "border-ink-600 bg-ink-900 text-mist-500 hover:border-ink-500"
+                  }`}
+                >
+                  {value}
+                </button>
+              ))}
+            </div>
+          </div>
 
-      {/* ---------------------------------------------- Not + inceleme */}
-      <div className="mt-3 grid gap-3 2xl:grid-cols-2 2xl:divide-x 2xl:divide-ink-700">
-        {/* Kişisel not (özel) */}
-        <div className="2xl:pr-3">
-          <p className="label">Kişisel notun (yalnızca sana görünür)</p>
-          <textarea
-            id="notes"
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            rows={2}
-            maxLength={5000}
-            className="field mt-1 resize-y text-sm"
-            placeholder={`${titleName} hakkında kişisel düşüncelerin…`}
-          />
+          {/* Kişisel not */}
+          <div className="mt-2.5 flex min-h-0 flex-1 flex-col">
+            <label htmlFor="notes" className="label">
+              Kişisel notun (yalnızca sana görünür)
+            </label>
+            <textarea
+              id="notes"
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              rows={2}
+              maxLength={5000}
+              className="field min-h-[84px] flex-1 resize-y text-sm"
+              placeholder={`${titleName} hakkında kişisel düşüncelerin…`}
+            />
+          </div>
 
           {expanded ? (
-            <div className="mt-3 flex flex-col gap-3">
-              <div className="grid gap-3 sm:grid-cols-2">
+            <div className="mt-2.5 flex flex-col gap-2.5 rounded-xl border border-ink-700 bg-ink-900/40 p-2.5">
+              <div className="grid grid-cols-2 gap-2">
                 <div>
                   <label htmlFor="watchedPeriod" className="label">
                     İzleme dönemi
@@ -416,7 +433,7 @@ export function EvaluationCard({
                     value={watchedPeriod}
                     onChange={(e) => setWatchedPeriod(e.target.value)}
                     placeholder="Örn. 2023 yazı"
-                    className="field"
+                    className="field text-sm"
                   />
                 </div>
                 <div>
@@ -429,7 +446,7 @@ export function EvaluationCard({
                     onChange={(e) =>
                       setRewatchIntent(e.target.value as "yes" | "maybe" | "no" | "")
                     }
-                    className="field"
+                    className="field text-sm"
                   >
                     <option value="">Belirtilmedi</option>
                     <option value="yes">Evet</option>
@@ -440,7 +457,7 @@ export function EvaluationCard({
               </div>
 
               {isSeries ? (
-                <div className="grid gap-3 sm:grid-cols-2">
+                <div className="grid grid-cols-2 gap-2">
                   <div>
                     <label htmlFor="progressSeason" className="label">
                       Son sezon
@@ -456,7 +473,7 @@ export function EvaluationCard({
                           e.target.value === "" ? "" : Number(e.target.value)
                         )
                       }
-                      className="field"
+                      className="field text-sm"
                     />
                   </div>
                   <div>
@@ -474,7 +491,7 @@ export function EvaluationCard({
                           e.target.value === "" ? "" : Number(e.target.value)
                         )
                       }
-                      className="field"
+                      className="field text-sm"
                     />
                   </div>
                 </div>
@@ -490,7 +507,7 @@ export function EvaluationCard({
                   value={likedAspects}
                   onChange={(e) => setLikedAspects(e.target.value)}
                   placeholder="Örn. atmosfer, diyaloglar"
-                  className="field"
+                  className="field text-sm"
                 />
               </div>
               <div>
@@ -503,7 +520,7 @@ export function EvaluationCard({
                   value={dislikedAspects}
                   onChange={(e) => setDislikedAspects(e.target.value)}
                   placeholder="Örn. tempo, final"
-                  className="field"
+                  className="field text-sm"
                 />
               </div>
               <div>
@@ -516,7 +533,7 @@ export function EvaluationCard({
                   onChange={(e) => setMemorableScenes(e.target.value)}
                   rows={2}
                   maxLength={2000}
-                  className="field resize-y"
+                  className="field resize-y text-sm"
                 />
               </div>
             </div>
@@ -533,9 +550,7 @@ export function EvaluationCard({
               {isSeries && progressSeason != null && (
                 <span className="chip text-[0.65rem]">
                   {progressSeason}. sezon
-                  {progressEpisode != null
-                    ? ` · ${progressEpisode}. bölüm`
-                    : ""}
+                  {progressEpisode != null ? ` · ${progressEpisode}. bölüm` : ""}
                 </span>
               )}
               {likedAspects && (
@@ -545,158 +560,159 @@ export function EvaluationCard({
                 <span className="chip text-[0.65rem]">✕ {dislikedAspects}</span>
               )}
               {memorableScenes && (
-                <span className="chip text-[0.65rem]">
-                  ★ {memorableScenes}
-                </span>
+                <span className="chip text-[0.65rem]">★ {memorableScenes}</span>
               )}
             </div>
           ) : null}
         </div>
 
-        {/* Herkese açık inceleme */}
-        <div className="2xl:pl-3">
-          <p className="label">Herkese açık incelemen</p>
-          <textarea
-            id="review-body"
-            value={reviewBody}
-            onChange={(e) => setReviewBody(e.target.value)}
-            rows={2}
-            maxLength={10000}
-            className="field mt-1 resize-y text-sm"
-            placeholder={`${titleName} hakkında ne düşündün? (isteğe bağlı)`}
-          />
-          <div className="mt-2 flex flex-wrap items-center gap-3">
-            <select
-              id="review-visibility"
-              value={visibility}
-              onChange={(e) =>
-                setVisibility(
-                  e.target.value as "public" | "followers" | "private"
-                )
-              }
-              className="field w-auto text-sm"
-            >
-              <option value="public">Herkese açık</option>
-              <option value="followers">Takipçiler</option>
-              <option value="private">Gizli</option>
-            </select>
-            <label className="flex items-center gap-1.5 text-xs text-mist-400">
-              <input
-                type="checkbox"
-                checked={containsSpoiler}
-                onChange={(e) => setContainsSpoiler(e.target.checked)}
-                className="accent-gold-500"
-              />
-              Spoiler içeriyor
+        {/* ------------------------------------------------ Sağ: incelemen + topluluk */}
+        <div className="flex min-w-0 flex-col border-t border-ink-700/70 pt-3 lg:border-l lg:border-t-0 lg:pl-4 lg:pt-0">
+          <div>
+            <label htmlFor="review-body" className="label">
+              Herkese açık incelemen
             </label>
-            {containsSpoiler && isSeries ? (
-              <input
-                type="number"
-                min={0}
-                max={100}
-                value={scopeSeason}
-                onChange={(e) => setScopeSeason(e.target.value)}
-                placeholder="Sezon no"
-                className="field w-24 text-sm"
-                aria-label="Spoiler sezonu"
-              />
+            <textarea
+              id="review-body"
+              value={reviewBody}
+              onChange={(e) => setReviewBody(e.target.value)}
+              rows={3}
+              maxLength={10000}
+              className="field resize-y text-sm"
+              placeholder={`${titleName} hakkında ne düşündün? (isteğe bağlı)`}
+            />
+            <div className="mt-1.5 flex flex-wrap items-center gap-2">
+              <select
+                id="review-visibility"
+                value={visibility}
+                onChange={(e) =>
+                  setVisibility(
+                    e.target.value as "public" | "followers" | "private"
+                  )
+                }
+                className="field w-auto py-1.5 text-xs"
+                aria-label="İnceleme görünürlüğü"
+              >
+                <option value="public">Herkese açık</option>
+                <option value="followers">Takipçiler</option>
+                <option value="private">Gizli</option>
+              </select>
+              <label className="flex items-center gap-1.5 text-[0.7rem] text-mist-400">
+                <input
+                  type="checkbox"
+                  checked={containsSpoiler}
+                  onChange={(e) => setContainsSpoiler(e.target.checked)}
+                  className="accent-gold-500"
+                />
+                Spoiler içeriyor
+              </label>
+              {containsSpoiler && isSeries ? (
+                <input
+                  type="number"
+                  min={0}
+                  max={100}
+                  value={scopeSeason}
+                  onChange={(e) => setScopeSeason(e.target.value)}
+                  placeholder="Sezon"
+                  className="field w-20 py-1.5 text-xs"
+                  aria-label="Spoiler sezonu"
+                />
+              ) : null}
+              <span className="text-[0.65rem] text-mist-500">
+                Puan yukarıdan paylaşılır.
+              </span>
+            </div>
+          </div>
+
+          {/* Aksiyonlar */}
+          <div className="mt-2.5 flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={handleSave}
+              disabled={saving}
+              className="btn btn-primary text-xs"
+            >
+              {saving ? "Kaydediliyor…" : entry ? "Kaydet" : "Kütüphaneye ekle"}
+            </button>
+            {entry ? (
+              <button
+                type="button"
+                onClick={handleDelete}
+                disabled={saving}
+                className="btn btn-ghost text-xs text-rose-400 hover:bg-rose-500/10"
+              >
+                Kaldır
+              </button>
             ) : null}
           </div>
-          <p className="mt-1.5 text-[0.65rem] text-mist-500">
-            Puanın yukarıdan paylaşılır — hem hafızan hem incelemen aynı
-            puanı kullanır.
-          </p>
+
+          {!online && (
+            <p className="mt-2 rounded-lg border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-xs text-amber-300">
+              Çevrimdışısınız — değişiklikler online olduğunda senklenecek.
+            </p>
+          )}
+          {error && (
+            <p
+              role="alert"
+              className="mt-2 rounded-lg border border-rose-500/40 bg-rose-500/10 px-3 py-2 text-xs text-rose-400"
+            >
+              {error}
+            </p>
+          )}
+          {message && (
+            <p
+              role="status"
+              className="mt-2 rounded-lg border border-jade-500/40 bg-jade-500/10 px-3 py-2 text-xs text-jade-400"
+            >
+              {message}
+            </p>
+          )}
+
+          {/* Topluluk incelemeleri */}
+          <div className="mt-3 flex min-h-0 flex-1 flex-col border-t border-ink-700/70 pt-3">
+            <div className="flex shrink-0 items-center justify-between gap-2">
+              <h3 className="font-display text-[0.92rem] font-semibold text-mist-100">
+                Topluluk incelemeleri
+              </h3>
+              <span className="chip">{communityReviews.length} inceleme</span>
+            </div>
+
+            {communityReviews.length === 0 ? (
+              <p className="flex flex-1 items-center justify-center rounded-lg border border-dashed border-ink-700/70 px-3 py-4 text-center text-[0.78rem] text-mist-400">
+                Başka kullanıcılar henüz inceleme yazmamış. İlk incelemeyi sen
+                yazabilirsin.
+              </p>
+            ) : (
+              <ul className="mt-2 max-h-[220px] divide-y divide-ink-700/70 overflow-y-auto pr-1">
+                {communityReviews.map((review) => (
+                  <li key={review.id} className="py-2">
+                    <div className="flex flex-wrap items-center gap-1.5 text-[0.66rem] text-mist-500">
+                      <span className="font-medium text-mist-200">
+                        {review.authorName}
+                      </span>
+                      {review.rating ? (
+                        <span className="chip chip-gold">{review.rating}/10</span>
+                      ) : null}
+                      <span className="chip">
+                        {VISIBILITY_LABELS[review.visibility]}
+                      </span>
+                      <span>
+                        {new Date(review.createdAt).toLocaleDateString("tr-TR")}
+                      </span>
+                      <span className="ml-auto">
+                        <ReportButton targetType="review" targetId={review.id} />
+                      </span>
+                    </div>
+                    <p className="mt-1 whitespace-pre-wrap text-[0.8rem] leading-relaxed text-mist-300">
+                      {review.body}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
-
-      {/* ---------------------------------------------- Aksiyonlar */}
-      <div className="mt-4 flex flex-wrap items-center gap-2">
-        <button
-          type="button"
-          onClick={handleSave}
-          disabled={saving}
-          className="btn btn-primary"
-        >
-          {saving ? "Kaydediliyor…" : entry ? "Kaydet" : "Kütüphaneye ekle"}
-        </button>
-        {entry ? (
-          <button
-            type="button"
-            onClick={handleDelete}
-            disabled={saving}
-            className="btn btn-ghost text-rose-400 hover:bg-rose-500/10"
-          >
-            Kaldır
-          </button>
-        ) : null}
-        <span className="ml-auto text-[0.65rem] text-mist-500">
-          {titleName} · kişisel notlar yalnızca size görünür
-        </span>
-      </div>
-
-      {!online && (
-        <p className="mt-2 rounded-lg border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-xs text-amber-300">
-          Çevrimdışısınız — değişiklikler online olduğunda senklenecek.
-        </p>
-      )}
-      {error && (
-        <p
-          role="alert"
-          className="mt-2 rounded-lg border border-rose-500/40 bg-rose-500/10 px-3 py-2 text-sm text-rose-400"
-        >
-          {error}
-        </p>
-      )}
-      {message && (
-        <p
-          role="status"
-          className="mt-2 rounded-lg border border-jade-500/40 bg-jade-500/10 px-3 py-2 text-sm text-jade-400"
-        >
-          {message}
-        </p>
-      )}
-
-      {/* ---------------------------------------------- Topluluk incelemeleri */}
-      <div className="mt-5 border-t border-ink-700 pt-4">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <h3 className="font-semibold text-mist-100">
-            Topluluk incelemeleri
-          </h3>
-          <span className="chip">{communityReviews.length} inceleme</span>
-        </div>
-
-        {communityReviews.length === 0 ? (
-          <p className="muted mt-2 text-sm">
-            Başka kullanıcılar henüz inceleme yazmamış. Senin incelemeni
-            yazmakla başlayabilirsin.
-          </p>
-        ) : (
-          <ul className="mt-3 flex max-h-[240px] flex-col divide-y divide-ink-700 overflow-y-auto pr-1">
-            {communityReviews.map((review) => (
-              <li key={review.id} className="py-3">
-                <div className="flex flex-wrap items-center gap-2 text-xs text-mist-500">
-                  <span className="font-medium text-mist-200">
-                    {review.authorName}
-                  </span>
-                  {review.rating ? (
-                    <span className="chip chip-gold">{review.rating}/10</span>
-                  ) : null}
-                  <span className="chip">
-                    {VISIBILITY_LABELS[review.visibility]}
-                  </span>
-                  <span>
-                    {new Date(review.createdAt).toLocaleDateString("tr-TR")}
-                  </span>
-                  <ReportButton targetType="review" targetId={review.id} />
-                </div>
-                <p className="mt-1.5 whitespace-pre-wrap text-sm text-mist-300">
-                  {review.body}
-                </p>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </section>
+    </DetailCard>
   );
 }

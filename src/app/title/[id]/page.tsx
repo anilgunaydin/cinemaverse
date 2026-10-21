@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { AppHeader } from "@/components/layout/app-header";
 import { EvaluationCard } from "@/components/catalog/evaluation-card";
 import { InlineNameList } from "@/components/catalog/inline-name-list";
+import { DetailCard } from "@/components/catalog/detail-card";
 import { ResearchPanel } from "@/components/research/research-panel";
 import { AiDiscussion } from "@/components/ai/ai-discussion";
 import { ThreadList } from "@/components/community/thread-list";
@@ -56,7 +57,15 @@ export default async function TitlePage({
 
   if (!data) notFound();
 
-  const { title, genres, credits, seasons, communityRating, userEntry } = data;
+  const {
+    title,
+    genres,
+    credits,
+    aliases,
+    seasons,
+    communityRating,
+    userEntry,
+  } = data;
   const displayTitle = title.localizedTitle ?? title.originalTitle;
 
   const [reviews, externalComments, threads, titleFranchises, providers] =
@@ -107,24 +116,44 @@ export default async function TitlePage({
     {}
   );
 
+  const otherNames = Array.from(
+    new Set(
+      aliases
+        .map((alias) => alias.name?.trim())
+        .filter(
+          (name): name is string =>
+            Boolean(name) &&
+            name !== displayTitle &&
+            name !== title.originalTitle
+        )
+    )
+  ).slice(0, 10);
+
   return (
     <>
       <AppHeader />
-      <main className="mx-auto w-full max-w-6xl px-3 py-4 sm:px-6 sm:py-6">
+      <main className="mx-auto w-full max-w-6xl px-3 pb-12 pt-3 sm:px-6 sm:pt-5">
         {/* Breadcrumb */}
-        <nav className="mb-3 flex items-center gap-2 text-xs text-mist-500">
-          <Link href="/" className="hover:text-mist-300">
+        <nav
+          aria-label="Sayfa yolu"
+          className="mb-2.5 flex min-w-0 items-center gap-2 text-xs text-mist-500"
+        >
+          <Link href="/" className="shrink-0 hover:text-mist-300">
             Keşfet
           </Link>
-          <span aria-hidden>/</span>
-          <Link href="/search" className="hover:text-mist-300">
+          <span aria-hidden className="text-mist-600">
+            /
+          </span>
+          <Link href="/search" className="shrink-0 hover:text-mist-300">
             Arama
           </Link>
-          <span aria-hidden>/</span>
-          <span className="truncate text-mist-400">{displayTitle}</span>
+          <span aria-hidden className="text-mist-600">
+            /
+          </span>
+          <span className="truncate text-mist-300">{displayTitle}</span>
         </nav>
 
-        {/* Kompakt hero */}
+        {/* Hero */}
         <TitleHero
           title={{
             id: title.id,
@@ -155,75 +184,156 @@ export default async function TitlePage({
           userRating={userEntry?.rating ?? null}
           userId={user?.id ?? null}
           franchiseNames={titleFranchises.map((franchise) => franchise.name)}
+          hasTrailer={Boolean(title.trailerUrl)}
         />
 
-        {/* Ust blok: Konu | Ekip | Degerlendirmen - yan yana */}
-        <div className="grid content-start items-start gap-4 lg:grid-cols-3">
-          {/* Konu */}
-          <section className="surface p-4">
-            <h2 className="section-title">Konu</h2>
-            {title.overview ? (
-              <p className="mt-2 line-clamp-8 text-sm leading-relaxed text-mist-300">
-                {title.overview}
-              </p>
-            ) : (
-              <p className="muted mt-2 text-sm italic">
-                Kaynakta açıklama bulunmuyor.
-              </p>
-            )}
+        {/* 1. satır — konu: değişken uzunlukta olduğu için tam genişlik */}
+        <div
+          className="mt-3 animate-fade-up sm:mt-4"
+          style={{ animationDelay: "40ms" }}
+        >
+          <DetailCard
+            icon="plot"
+            title="Konu"
+            meta={
+              seasons.length > 0 ? `${seasons.length} sezon` : undefined
+            }
+          >
+            <div className="flex flex-col gap-3">
+              {title.overview ? (
+                <p className="max-w-[85ch] text-sm leading-relaxed text-mist-300">
+                  {title.overview}
+                </p>
+              ) : (
+                <p className="text-sm italic text-mist-500">
+                  Kaynakta açıklama bulunmuyor.
+                </p>
+              )}
 
-            {seasons.length > 0 ? (
-              <div className="mt-3 border-t border-ink-700 pt-2.5">
-                <h3 className="label">Sezonlar</h3>
-                <ul className="mt-1.5 flex flex-wrap gap-1.5">
-                  {seasons.map((season) => (
-                    <li key={season.id}>
-                      <Link
-                        href={`/title/${season.id}`}
-                        className="flex items-center gap-1.5 rounded-lg border border-ink-700 bg-ink-900 px-2 py-0.5 text-[0.7rem] text-mist-300 transition-colors hover:border-gold-500/40 hover:text-gold-300"
-                      >
-                        <span className="font-semibold">
-                          {season.seasonNumber}. Sezon
-                        </span>
-                        <span className="text-mist-500">
-                          {season.releaseYear ?? "—"}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-          </section>
-
-          {/* Ekip - isimler tek satir, fazlasi hover'da */}
-          {credits.length > 0 ? (
-            <section className="surface p-4">
-              <h2 className="section-title">Ekip</h2>
-              <div className="mt-2.5 flex flex-col gap-2.5">
-                {(
-                  ["director", "creator", "writer", "actor", "composer"] as const
-                ).map((role) =>
-                  groupedCredits[role]?.length ? (
-                    <div key={role}>
-                      <p className="label">{ROLE_LABELS[role]}</p>
-                      <InlineNameList
-                        label={ROLE_LABELS[role]}
-                        names={groupedCredits[role].map((credit) => credit.personName)}
-                        maxChars={role === "actor" ? 60 : 110}
-                      />
+              {seasons.length > 0 || otherNames.length > 0 ? (
+                <div className="flex flex-wrap items-start gap-x-8 gap-y-3 border-t border-ink-700/60 pt-2.5">
+                  {seasons.length > 0 ? (
+                    <div>
+                      <p className="label">Sezonlar</p>
+                      <ul className="flex flex-wrap gap-1.5">
+                        {seasons.map((season) => (
+                          <li key={season.id}>
+                            <Link
+                              href={`/title/${season.id}`}
+                              className="flex items-center gap-1.5 rounded-lg border border-ink-700 bg-ink-900 px-2 py-0.5 text-[0.7rem] text-mist-300 transition-colors hover:border-gold-500/40 hover:text-gold-300"
+                            >
+                              <span className="font-semibold">
+                                {season.seasonNumber}. Sezon
+                              </span>
+                              <span className="text-mist-500">
+                                {season.releaseYear ?? "—"}
+                              </span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  ) : null
-                )}
+                  ) : null}
+
+                  {otherNames.length > 0 ? (
+                    <div className="min-w-0">
+                      <p className="label">Diğer adlar</p>
+                      <ul className="flex flex-wrap gap-1.5">
+                        {otherNames.map((name) => (
+                          <li
+                            key={name}
+                            className="max-w-full truncate rounded-md border border-ink-700 bg-ink-900/70 px-1.5 py-0.5 text-[0.7rem] text-mist-400"
+                            title={name}
+                          >
+                            {name}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
+            </div>
+          </DetailCard>
+        </div>
+
+        {/* 2. satır — ekip + değerlendirmen */}
+        <div
+          className="mt-3 grid animate-fade-up items-stretch gap-3 sm:mt-4 sm:gap-4 lg:h-[620px] lg:grid-cols-12"
+          style={{ animationDelay: "80ms" }}
+        >
+          {/* Ekip */}
+          {credits.length > 0 ? (
+            <DetailCard
+              icon="cast"
+              title="Ekip"
+              meta={`${credits.length} kişi`}
+              className="lg:col-span-5"
+              bodyClassName="p-0"
+            >
+              <div className="flex min-h-0 flex-1 flex-col p-4 pr-2">
+                <div className="flex flex-col gap-2.5">
+                  {(
+                    ["director", "creator", "writer", "composer"] as const
+                  ).map((role) =>
+                    groupedCredits[role]?.length ? (
+                      <div key={role}>
+                        <p className="label">{ROLE_LABELS[role]}</p>
+                        <InlineNameList
+                          label={ROLE_LABELS[role]}
+                          names={groupedCredits[role].map(
+                            (credit) => credit.personName
+                          )}
+                          maxChars={80}
+                        />
+                      </div>
+                    ) : null
+                  )}
+                </div>
+
+                {groupedCredits.actor?.length ? (
+                  <div className="mt-2.5 flex min-h-0 flex-1 flex-col border-t border-ink-700/70 pt-2.5">
+                    <p className="label">
+                      Oyuncular{" "}
+                      <span className="font-normal normal-case tracking-normal text-mist-500">
+                        ({groupedCredits.actor.length})
+                      </span>
+                    </p>
+                    <ul className="min-h-0 flex-1 overflow-y-auto pr-1">
+                      {groupedCredits.actor.map((credit) => (
+                        <li
+                          key={`${credit.personId}-${credit.characterName}`}
+                          className="flex items-baseline gap-2 border-b border-ink-800/70 py-1 last:border-0"
+                        >
+                          <span
+                            className="min-w-0 flex-1 truncate text-[0.82rem] text-mist-300"
+                            title={credit.personName}
+                          >
+                            {credit.personName}
+                          </span>
+                          {credit.characterName ? (
+                            <span
+                              className="max-w-[48%] shrink-0 truncate text-[0.68rem] text-mist-500"
+                              title={credit.characterName}
+                            >
+                              {credit.characterName}
+                            </span>
+                          ) : null}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
               </div>
-            </section>
+            </DetailCard>
           ) : null}
 
-          {/* Değerlendirmen: kişisel hafıza + incelemen + topluluk incelemeleri */}
+          {/* Değerlendirmen: hafıza + incelemen + topluluk */}
           <EvaluationCard
             titleId={title.id}
             titleName={displayTitle}
             isSeries={title.kind === "series"}
+            className={credits.length > 0 ? "lg:col-span-7" : "lg:col-span-12"}
             entry={
               userEntry
                 ? {
@@ -253,29 +363,56 @@ export default async function TitlePage({
           />
         </div>
 
-        {/* Alt blok */}
-        <div className="mt-4 grid content-start items-start gap-4 lg:grid-cols-2 xl:grid-cols-3">
-
-          {/* Fragman */}
+        {/* 3. satır — medya ve dış yorumlar */}
+        <div
+          className="mt-3 grid animate-fade-up items-stretch gap-3 sm:mt-4 sm:gap-4 lg:grid-cols-12"
+          style={{ animationDelay: "100ms" }}
+        >
           {title.trailerUrl ? (
-            <section className="surface overflow-hidden p-4">
-              <h2 className="section-title mb-3">Fragman</h2>
-              <TrailerSection trailerUrl={title.trailerUrl} />
-            </section>
+            <DetailCard
+              id="fragman"
+              icon="play"
+              title="Fragman"
+              className="lg:col-span-6 lg:max-h-[420px]"
+              bodyClassName="justify-center"
+              action={
+                <a
+                  href={title.trailerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[0.7rem] text-gold-400 transition-colors hover:text-gold-300"
+                >
+                  YouTube ↗
+                </a>
+              }
+            >
+              <TrailerSection trailerUrl={title.trailerUrl} showLink={false} />
+              <p className="mt-2 text-[0.68rem] text-mist-500">
+                Fragman YouTube üzerinden oynatılır — reklam ve altyazı
+                seçenekleri YouTube&apos;a aittir.
+              </p>
+            </DetailCard>
           ) : null}
 
-          {/* İncelemeler artik yukarida birlestirildi */}
-
-          {/* İnternet Yorumları */}
           {externalComments.total > 0 ? (
             <ExternalCommentsSection
               local={externalComments.local}
               foreign={externalComments.foreign}
               total={externalComments.total}
+              className={
+                title.trailerUrl
+                  ? "lg:col-span-6 lg:max-h-[420px]"
+                  : "lg:col-span-12 lg:max-h-[420px]"
+              }
             />
           ) : null}
+        </div>
 
-          {/* Tartışmalar */}
+        {/* 4. satır — topluluk ve AI */}
+        <div
+          className="mt-3 grid animate-fade-up items-stretch gap-3 sm:mt-4 sm:gap-4 lg:grid-cols-3"
+          style={{ animationDelay: "160ms" }}
+        >
           <ThreadList
             threads={threads}
             viewer={{
@@ -287,25 +424,26 @@ export default async function TitlePage({
             isLoggedIn={Boolean(user)}
             titleId={title.id}
             titleName={displayTitle}
+            className="lg:max-h-[540px]"
           />
 
-          {/* AI & Araştırma */}
-          <div className="flex flex-col gap-4">
-            <ResearchPanel
-              titleId={title.id}
-              isLoggedIn={Boolean(user)}
-              aiEnabled={aiStatus.enabled}
-              initialSessions={researchSessions}
-            />
-            <AiDiscussion
-              titleId={title.id}
-              isLoggedIn={Boolean(user)}
-              defaultSeason={userEntry?.progressSeason ?? null}
-              status={aiStatusView}
-              initialConversations={aiConversations}
-              initialMessages={aiMessages}
-            />
-          </div>
+          <ResearchPanel
+            titleId={title.id}
+            isLoggedIn={Boolean(user)}
+            aiEnabled={aiStatus.enabled}
+            initialSessions={researchSessions}
+            className="lg:max-h-[540px]"
+          />
+
+          <AiDiscussion
+            titleId={title.id}
+            isLoggedIn={Boolean(user)}
+            defaultSeason={userEntry?.progressSeason ?? null}
+            status={aiStatusView}
+            initialConversations={aiConversations}
+            initialMessages={aiMessages}
+            className="lg:max-h-[540px]"
+          />
         </div>
       </main>
     </>

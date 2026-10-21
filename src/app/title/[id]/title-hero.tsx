@@ -38,6 +38,7 @@ export function TitleHero({
   userRating,
   userId,
   franchiseNames,
+  hasTrailer = false,
 }: {
   title: HeroTitle;
   genres: HeroGenre[];
@@ -46,6 +47,7 @@ export function TitleHero({
   userRating: number | null;
   userId: string | null;
   franchiseNames: string[];
+  hasTrailer?: boolean;
 }) {
   const displayTitle = title.localizedTitle ?? title.originalTitle;
   const showOriginal =
@@ -68,7 +70,12 @@ export function TitleHero({
   });
 
   return (
-    <section className="relative overflow-hidden rounded-2xl border border-ink-700 bg-ink-900">
+    <section className="surface relative isolate overflow-hidden">
+      {/* Ust ince isik cizgisi */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-gold-500/70 to-transparent"
+      />
       {/* Arka plan: backdrop bulanik + karartma */}
       {title.backdropUrl && (
         <>
@@ -88,15 +95,15 @@ export function TitleHero({
 
       <div className="relative flex gap-4 p-4 sm:gap-5 sm:p-5">
         {/* Poster */}
-        <div className="w-24 shrink-0 sm:w-32">
-          <div className="relative aspect-[2/3] w-full overflow-hidden rounded-lg border border-ink-600 bg-ink-800 shadow-xl">
+        <div className="group w-24 shrink-0 sm:w-32">
+          <div className="relative aspect-[2/3] w-full overflow-hidden rounded-xl border border-ink-600 bg-ink-800 shadow-2xl shadow-black/50 ring-1 ring-white/5">
             {title.posterUrl ? (
               <Image
                 src={title.posterUrl}
                 alt={`${displayTitle} posteri`}
                 fill
                 sizes="128px"
-                className="object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                 priority
                 unoptimized
               />
@@ -248,6 +255,24 @@ export function TitleHero({
           <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[0.68rem] text-mist-500">
             <AddToListButton titleId={title.id} userId={userId} />
 
+            {hasTrailer ? (
+              <a
+                href="#fragman"
+                className="inline-flex items-center gap-1 rounded-lg border border-gold-500/30 bg-gold-500/10 px-2 py-1 text-[0.72rem] font-medium text-gold-300 transition-colors hover:border-gold-500/50 hover:bg-gold-500/15"
+              >
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M8 5.5v13l10.5-6.5z" />
+                </svg>
+                Fragman
+              </a>
+            ) : null}
+
             {title.metadataProvider && (
               <span>
                 Kaynak:{" "}
@@ -297,22 +322,24 @@ function StatBlock({
 }) {
   return (
     <div
-      className={`rounded-lg border px-2.5 py-2 ${
+      className={`rounded-xl border px-2.5 py-1.5 backdrop-blur-sm ${
         highlight
           ? "border-gold-500/40 bg-gold-500/10"
-          : "border-ink-700 bg-ink-850/70"
+          : "border-ink-700/80 bg-ink-950/40"
       }`}
     >
-      <p className="truncate text-[0.6rem] uppercase tracking-wide text-mist-500">
+      <p className="truncate text-[0.58rem] uppercase tracking-[0.08em] text-mist-500">
         {label}
       </p>
       <p
-        className={`font-display text-lg font-bold leading-tight ${
+        className={`font-display text-xl font-bold leading-tight ${
           highlight ? "text-gold-300" : "text-mist-100"
         }`}
       >
         {value}
-        <span className="text-xs font-normal text-mist-500">{suffix}</span>
+        <span className="ml-0.5 text-[0.65rem] font-normal text-mist-500">
+          {suffix}
+        </span>
       </p>
       {note && <p className="truncate text-[0.6rem] text-mist-500">{note}</p>}
     </div>

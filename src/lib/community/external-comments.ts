@@ -12,6 +12,8 @@ export type ExternalComment = {
   section: string | null;
   language: "tr" | "en" | "other";
   body: string;
+  /** Daha once uretilmis Turkce ceviri (varsa). */
+  translationTr: string | null;
 };
 
 /**
@@ -31,6 +33,7 @@ export async function listExternalComments(
       section: externalComments.section,
       language: externalComments.language,
       body: externalComments.body,
+      translationTr: externalComments.bodyTr,
     })
     .from(externalComments)
     .where(eq(externalComments.titleId, titleId))
@@ -59,6 +62,7 @@ function toView(row: {
   section: string | null;
   language: "tr" | "en" | "other";
   body: string;
+  translationTr: string | null;
 }): ExternalComment {
   return {
     id: row.id,
@@ -67,5 +71,6 @@ function toView(row: {
     section: row.section,
     language: row.language,
     body: row.body,
+    translationTr: row.translationTr,
   };
 }

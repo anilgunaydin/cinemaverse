@@ -381,6 +381,12 @@ export const externalComments = sqliteTable(
       .notNull()
       .default("en"),
     body: text("body").notNull(),
+    /** Turkce ceviri (yerel AI ile uretilir; yalnizca yabanci yorumlarda). */
+    bodyTr: text("body_tr"),
+    /** Cevirinin uretildigi zaman; null ise henuz cevrilmemis. */
+    translatedAt: text("translated_at"),
+    /** Ceviriyi ureten model (izlenebilirlik: or. llama3.2). */
+    translationModel: text("translation_model"),
     /** Ayni makaleden ayni metnin tekrar eklenmesini onleyen ozet. */
     contentHash: text("content_hash").notNull(),
     createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),

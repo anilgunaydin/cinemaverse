@@ -248,12 +248,65 @@ function formatWikidataTime(time: string): string | null {
   return `${year}-${month}-${day}`;
 }
 
+type EntityLabelSet = {
+  en: string | null;
+  local: string | null;
+  /**
+   * en/tr etiketi yoksa kullanilacak yedek: once enwiki/trwiki basligi,
+   * sonra herhangi bir dildeki etiket. Ikisi de yoksa null.
+   */
+  fallback: string | null;
+};
+
+/**
+ * en/tr etiketi bulunmayan kayitlar icin yedek ad cozumu.
+ * (Or. yalnizca baska dillerde etiketi olan oyuncular; bunlar daha once
+ *  ekrana "Q131285" gibi ham kimlik olarak dusuyordu.)
+ */
+async function fetchFallbackLabels(
+  ids: string[],
+  language: string,
+): Promise<Map<string, EntityLabelSet>> {
+  const result = new Map<string, EntityLabelSet>();
+  if (ids.length === 0) return result;
+
+  const url =
+    `${API_ENDPOINT}?action=wbgetentities&format=json` +
+    `&props=labels|sitelinks&sitefilter=enwiki|${language}wiki` +
+    `&ids=${ids.join("|")}`;
+  try {
+    const { data } = await providerFetchJson<{
+      entities: Record<string, WikidataEntity>;
+    }>({
+      provider: "wikidata",
+      url,
+      cacheTtlSeconds: 60 * 60 * 24 * 7,
+    });
+    for (const [id, entity] of Object.entries(data.entities ?? {})) {
+      const sitelink =
+        entity.sitelinks?.[`${language}wiki`]?.title ??
+        entity.sitelinks?.enwiki?.title ??
+        null;
+      const anyLabel =
+        Object.values(entity.labels ?? {}).find(
+          (entry) =>
+            typeof entry?.value === "string" && entry.value.trim().length > 0,
+        )?.value ?? null;
+      const fallback = sitelink ?? anyLabel;
+      if (fallback) result.set(id, { en: null, local: null, fallback });
+    }
+  } catch {
+    // Yedek cozum de basarisiz olursa kimlik ile devam edilir.
+  }
+  return result;
+}
+
 async function fetchEntityLabels(
   ids: string[],
   language: string,
-): Promise<Map<string, { en: string | null; local: string | null }>> {
+): Promise<Map<string, EntityLabelSet>> {
   const unique = [...new Set(ids)].filter(Boolean);
-  const result = new Map<string, { en: string | null; local: string | null }>();
+  const result = new Map<string, EntityLabelSet>();
   if (unique.length === 0) return result;
 
   // API en fazla 50 kimlik kabul eder.
@@ -274,10 +327,17 @@ async function fetchEntityLabels(
         url,
         cacheTtlSeconds: 60 * 60 * 24 * 7,
       });
+      const missing: string[] = [];
       for (const [id, entity] of Object.entries(data.entities ?? {})) {
         const en = entity.labels?.en?.value ?? null;
         const local = entity.labels?.[language]?.value ?? null;
-        if (en || local) result.set(id, { en, local });
+        if (en || local) result.set(id, { en, local, fallback: null });
+        else missing.push(id);
+      }
+
+      if (missing.length > 0) {
+        const resolved = await fetchFallbackLabels(missing, language);
+        for (const [id, entry] of resolved) result.set(id, entry);
       }
     } catch {
       // Etiket cozulemezse kimlik ile devam edilir.
@@ -334,9 +394,15 @@ export async function getWikidataDetails(
   );
   // Ekip/tur uluslararasi okunabilirlik icin Ingilizce etiketle gosterilir.
   const label = (id: string) =>
-    labelMap.get(id)?.en ?? labelMap.get(id)?.local ?? id;
+    labelMap.get(id)?.en ??
+    labelMap.get(id)?.local ??
+    labelMap.get(id)?.fallback ??
+    id;
   const localLabel = (id: string) =>
-    labelMap.get(id)?.local ?? labelMap.get(id)?.en ?? id;
+    labelMap.get(id)?.local ??
+    labelMap.get(id)?.en ??
+    labelMap.get(id)?.fallback ??
+    id;
 
   const credits: CreditItem[] = [];
   const addCredits = (

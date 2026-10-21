@@ -262,6 +262,7 @@ export default async function TitlePage({
               local={externalComments.local}
               foreign={externalComments.foreign}
               total={externalComments.total}
+              translationEnabled={aiStatus.enabled}
               className={
                 title.trailerUrl
                   ? "lg:col-span-6 lg:max-h-[420px]"

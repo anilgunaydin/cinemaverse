@@ -1,48 +1,23 @@
 import { DetailCard } from "@/components/catalog/detail-card";
+import { ExternalCommentItem } from "@/components/community/external-comment-item";
 import type { ExternalComment } from "@/lib/community/external-comments";
-
-function CommentItem({ item }: { item: ExternalComment }) {
-  const sourceLabel =
-    item.source === "wikipedia-tr" ? "Wikipedia (TR)" : "Wikipedia (EN)";
-  return (
-    <li
-      id={`ext-${item.id}`}
-      className="border-b border-ink-700/70 py-2.5 last:border-b-0"
-    >
-      <p className="text-sm leading-relaxed text-mist-200">{item.body}</p>
-      <div className="mt-1.5 flex flex-wrap items-center gap-2 text-[11px] text-mist-500">
-        <span className="rounded-full border border-ink-600 px-2 py-0.5">
-          {sourceLabel}
-        </span>
-        {item.section ? <span>{item.section}</span> : null}
-        {item.sourceUrl ? (
-          <a
-            href={item.sourceUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gold-400 hover:underline"
-          >
-            kaynak ↗
-          </a>
-        ) : null}
-      </div>
-    </li>
-  );
-}
 
 /**
  * Wikipedia makalelerinden derlenen (CC BY-SA, kaynaklia) yorumlar.
- * Yerli (TR) ve yabanci (EN) olarak iki gruba ayrilir.
+ * Yerli (TR) ve yabanci (EN) olarak iki gruba ayrilir; yabanci olanlar
+ * tek tikla Turkceye cevrilebilir (yerel AI, ceviri DB'de saklanir).
  */
 export default function ExternalCommentsSection({
   local,
   foreign,
   total,
+  translationEnabled,
   className = "",
 }: {
   local: ExternalComment[];
   foreign: ExternalComment[];
   total: number;
+  translationEnabled: boolean;
   className?: string;
 }) {
   if (total === 0) return null;
@@ -72,7 +47,11 @@ export default function ExternalCommentsSection({
             </h3>
             <ul>
               {local.map((item) => (
-                <CommentItem key={item.id} item={item} />
+                <ExternalCommentItem
+                  key={item.id}
+                  item={item}
+                  translationEnabled={translationEnabled}
+                />
               ))}
             </ul>
           </div>
@@ -80,13 +59,22 @@ export default function ExternalCommentsSection({
 
         {foreign.length > 0 ? (
           <div>
-            <h3 className="mb-1 text-sm font-medium text-gold-300">
+            <h3 className="mb-1 flex flex-wrap items-center gap-2 text-sm font-medium text-gold-300">
               Yabancı yorumlar{" "}
               <span className="text-mist-500">({foreign.length})</span>
+              {translationEnabled ? (
+                <span className="text-[0.68rem] font-normal text-mist-500">
+                  çeviri: yerel AI (taslak)
+                </span>
+              ) : null}
             </h3>
             <ul>
               {foreign.map((item) => (
-                <CommentItem key={item.id} item={item} />
+                <ExternalCommentItem
+                  key={item.id}
+                  item={item}
+                  translationEnabled={translationEnabled}
+                />
               ))}
             </ul>
           </div>

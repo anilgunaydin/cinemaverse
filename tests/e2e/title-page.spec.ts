@@ -138,6 +138,17 @@ test.describe("Yapım Sayfası - Yerleşim", () => {
     ).toBeFalsy();
   });
 
+  test("Yabancı yorumlar Türkçeye çevrilebilir", async ({ page }) => {
+    const foreign = page.locator(
+      'section:has(h2:text-is("İnternet Yorumları")) li:has(button:text-is("Türkçeye çevir"))',
+    );
+    const count = await foreign.count();
+    test.skip(count === 0, "Bu yapımda yabancı yorum yok.");
+
+    // Düğme görünür ve tıklanabilir olmalı
+    await expect(foreign.first().locator("button")).toBeEnabled();
+  });
+
   test("Kişisel hafıza kompakt - detaylar gizli başlar", async ({ page }) => {
     const panel = page
       .locator('section:has(h2:text-is("Değerlendirmen"))')

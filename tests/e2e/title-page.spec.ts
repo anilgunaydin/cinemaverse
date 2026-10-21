@@ -45,47 +45,58 @@ test.describe("Yapım Sayfası - Yerleşim", () => {
     }
   });
 
-  test("İlk ekranda birden fazla kart görünür", async ({ page }) => {
+  test("İlk ekranda etkileşim kartı görünür", async ({ page }) => {
     const cards = page.locator("main .surface");
     await expect(cards.first()).toBeVisible();
 
-    // İlk ekranda en az 3 kart görünmeli
+    // Değerlendirmen hero'nun hemen altında başlamalı
+    const evaluation = await page
+      .locator('section:has(h2:text-is("Değerlendirmen"))')
+      .first()
+      .boundingBox();
+    expect(evaluation).not.toBeNull();
+    expect(evaluation!.y).toBeLessThan(900);
+
     const visibleInFold = await page.evaluate(() => {
       return [...document.querySelectorAll("main .surface")].filter(
         (el) => el.getBoundingClientRect().top < window.innerHeight
       ).length;
     });
-    expect(visibleInFold).toBeGreaterThanOrEqual(3);
+    expect(visibleInFold).toBeGreaterThanOrEqual(2);
   });
 
-  test("Kart yerleşimi: Konu tam genişlik, Ekip + Değerlendirmen yan yana", async ({
+  test("Kart yerleşimi: Değerlendirmen önde, Konu + Ekip tek Künye kartında", async ({
     page,
   }) => {
-    const boxOf = async (name: string) => {
-      const loc = page.locator(`section:has(h2:text-is("${name}"))`).first();
-      if ((await loc.count()) === 0) return null;
-      const box = await loc.boundingBox();
-      expect(box).not.toBeNull();
-      return box!;
-    };
-
     const main = await page.locator("main").boundingBox();
     expect(main).not.toBeNull();
 
-    // Konu: değişken uzunlukta olduğu için tam genişlikte tek satır kart
-    const konu = await boxOf("Konu");
-    expect(konu).not.toBeNull();
-    expect(konu!.width).toBeGreaterThan(main!.width * 0.85);
-
-    // Ekip ve Değerlendirmen aynı satırda, eşit yükseklikte
-    const ekip = await boxOf("Ekip");
-    const degerlendirmen = await boxOf("Değerlendirmen");
+    // Değerlendirmen: tam genişlik, hero'nun hemen altında (etkileşim önce)
+    const degerlendirmen = await page
+      .locator('section:has(h2:text-is("Değerlendirmen"))')
+      .first()
+      .boundingBox();
     expect(degerlendirmen).not.toBeNull();
-    if (ekip) {
-      expect(Math.abs(ekip.y - degerlendirmen!.y)).toBeLessThan(4);
-      expect(Math.abs(ekip.height - degerlendirmen!.height)).toBeLessThan(4);
-      expect(ekip.x + ekip.width).toBeLessThanOrEqual(degerlendirmen!.x + 1);
-    }
+    expect(degerlendirmen!.width).toBeGreaterThan(main!.width * 0.85);
+    expect(degerlendirmen!.y).toBeLessThan(900);
+
+    // Konu ve Ekip tek "Künye" kartı içinde
+    const kunye = page.locator('section:has(h2:text-is("Künye"))').first();
+    await expect(kunye).toBeVisible();
+    const kunyeBox = await kunye.boundingBox();
+    expect(kunyeBox).not.toBeNull();
+    expect(kunyeBox!.width).toBeGreaterThan(main!.width * 0.85);
+    expect(kunyeBox!.y).toBeGreaterThan(degerlendirmen!.y);
+
+    await expect(kunye.locator('h3:text-is("Konu")')).toBeVisible();
+    await expect(kunye.locator('h3:text-is("Ekip")')).toBeVisible();
+
+    // Konu/Ekip için ayrı kart kalmadı
+    await expect(page.locator('section:has(h2:text-is("Konu"))')).toHaveCount(0);
+    await expect(page.locator('section:has(h2:text-is("Ekip"))')).toHaveCount(0);
+
+    // Künye kompakt kalmalı (referans bilgisi sayfayı domine etmemeli)
+    expect(kunyeBox!.height).toBeLessThan(460);
 
     // Yatay taşma yok
     const overflowX = await page.evaluate(
@@ -97,7 +108,7 @@ test.describe("Yapım Sayfası - Yerleşim", () => {
     const pageHeight = await page.evaluate(
       () => document.documentElement.scrollHeight
     );
-    expect(pageHeight).toBeLessThan(3200);
+    expect(pageHeight).toBeLessThan(2800);
   });
 
   test("Uzun listeler kart içinde kaydırılır", async ({ page }) => {

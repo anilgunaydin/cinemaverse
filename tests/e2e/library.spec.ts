@@ -1,8 +1,24 @@
 import { test, expect } from "@playwright/test";
 
-/** "Değerlendirmen" birlestirilmis karti */
-const evalCard = (page: any) =>
-  page.locator('section:has(h2:text-is("Değerlendirmen"))').first();
+/** Hero'dan acilan "Değerlendirmen" penceresi */
+const openEvaluation = async (page: any) => {
+  const trigger = page
+    .locator(
+      'button[aria-haspopup="dialog"][aria-label="Puanını hızlıca değerlendir"]',
+    )
+    .first();
+  await trigger.click();
+
+  const quick = page.locator(
+    '[role="dialog"][aria-label="Hızlı değerlendirme"]',
+  );
+  await expect(quick).toBeVisible();
+  await quick.locator('button:has-text("Detaylı değerlendirme")').click();
+
+  const card = page.locator('[role="dialog"][aria-label="Değerlendirmen"]');
+  await expect(card).toBeVisible({ timeout: 5000 });
+  return card;
+};
 
 test.describe("Kütüphane - Değerlendirme Kartı", () => {
   test.beforeEach(async ({ page }) => {
@@ -21,7 +37,7 @@ test.describe("Kütüphane - Değerlendirme Kartı", () => {
   test("Kart üç bölümü birleştirir: hafıza + inceleme + topluluk", async ({
     page,
   }) => {
-    const card = evalCard(page);
+    const card = await openEvaluation(page);
     await expect(card).toBeVisible();
 
     // Kişisel hafıza parçaları
@@ -46,7 +62,7 @@ test.describe("Kütüphane - Değerlendirme Kartı", () => {
   });
 
   test("Puan tek yerden yönetilir (hafıza + inceleme)", async ({ page }) => {
-    const card = evalCard(page);
+    const card = await openEvaluation(page);
     const r9 = card.locator('button[aria-label="9 puan"]');
     const before = await r9.getAttribute("aria-pressed");
     await r9.click();
@@ -56,19 +72,32 @@ test.describe("Kütüphane - Değerlendirme Kartı", () => {
   });
 
   test("Kaydet hem hafızayı hem incelemeyi yazar", async ({ page }) => {
-    const card = evalCard(page);
+    const card = await openEvaluation(page);
     const titleId = page.url().split("/title/")[1]?.split("?")[0] ?? "";
 
     // Gercek DB'yi kirletmemek icin onceki degerleri sakla
     const originalNotes = await card.locator("#notes").inputValue();
     const originalReview = await card.locator("#review-body").inputValue();
+    const pressedRating = card.locator(
+      'button[aria-pressed="true"][aria-label$="puan"]',
+    );
+    const originalRatingValue = (await pressedRating.count())
+      ? Number(
+          (await pressedRating.first().getAttribute("aria-label"))?.replace(
+            " puan",
+            "",
+          ),
+        )
+      : null;
+    // Ayni degere tiklamak puani kaldirir; farkli bir deger sec
+    const targetRating = originalRatingValue === 8 ? 7 : 8;
 
     // Not yaz
     await card.locator("#notes").fill("Otomatik test notu.");
     // İnceleme yaz
     await card.locator("#review-body").fill("Otomatik test incelemesi.");
     // Puan ver
-    await card.locator('button[aria-label="8 puan"]').click();
+    await card.locator(`button[aria-label="${targetRating} puan"]`).click();
 
     // Kaydet
     await card
@@ -81,11 +110,21 @@ test.describe("Kütüphane - Değerlendirme Kartı", () => {
     // Test verisini geri al (gercek kutuphane bozulmasin)
     await card.locator("#notes").fill(originalNotes);
     await card.locator("#review-body").fill(originalReview);
+    if (originalRatingValue === null) {
+      await card
+        .locator('button[aria-pressed="true"][aria-label$="puan"]')
+        .first()
+        .click();
+    } else {
+      await card
+        .locator(`button[aria-label="${originalRatingValue} puan"]`)
+        .click();
+    }
     await card
       .locator('button:has-text("Kaydet"), button:has-text("Kütüphaneye ekle")')
       .first()
       .click();
-    await page.waitForTimeout(800);
+    await page.waitForTimeout(1500);
 
     // Once inceleme yoktuysa olusturulan incelemeyi API ile sil
     if (!originalReview.trim()) {
@@ -105,7 +144,7 @@ test.describe("Kütüphane - Değerlendirme Kartı", () => {
   });
 
   test("Detaylar açılıp kapatılabilir", async ({ page }) => {
-    const card = evalCard(page);
+    const card = await openEvaluation(page);
     const liked = card.locator("#liked");
     await expect(liked).toBeHidden();
 

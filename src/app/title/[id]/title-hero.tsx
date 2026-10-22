@@ -3,6 +3,10 @@ import Link from "next/link";
 
 import { AddToListButton } from "@/components/library/add-to-list-button";
 import { QuickRating } from "@/components/catalog/quick-rating";
+import type {
+  EvaluationEntry,
+  EvaluationReview,
+} from "@/components/catalog/evaluation-card";
 import type { WatchStatus } from "@/lib/db/schema";
 import {
   MONETIZATION_LABELS,
@@ -42,6 +46,8 @@ export function TitleHero({
   userId,
   franchiseNames,
   hasTrailer = false,
+  entry,
+  reviews,
 }: {
   title: HeroTitle;
   genres: HeroGenre[];
@@ -52,6 +58,8 @@ export function TitleHero({
   userId: string | null;
   franchiseNames: string[];
   hasTrailer?: boolean;
+  entry: EvaluationEntry;
+  reviews: EvaluationReview[];
 }) {
   const displayTitle = title.localizedTitle ?? title.originalTitle;
   const showOriginal =
@@ -172,9 +180,14 @@ export function TitleHero({
           <div className="mt-3 grid grid-cols-3 gap-2 sm:max-w-lg">
             <QuickRating
               titleId={title.id}
+              titleName={displayTitle}
+              isSeries={title.kind === "series"}
+              userId={userId}
               isLoggedIn={userId != null}
               initialStatus={userStatus}
               initialRating={userRating}
+              entry={entry}
+              initialReviews={reviews}
             />
             <StatBlock
               label="CinemaVerse ort."

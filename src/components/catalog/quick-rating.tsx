@@ -5,6 +5,15 @@ import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
+import {
+  EvaluationDialog,
+} from "@/components/catalog/evaluation-dialog";
+import type {
+  EvaluationEntry,
+  EvaluationReview,
+  EvaluationViewer,
+} from "@/components/catalog/evaluation-card";
+
 type Status =
   | "watched"
   | "watching"
@@ -22,26 +31,35 @@ const STATUS_LABELS: { value: Status; label: string }[] = [
   { value: "unsure", label: "Emin değilim" },
 ];
 
-const EVALUATION_ANCHOR = "degerlendirmen";
-
 /**
  * Hero'daki "Sizin puanınız" kutusu.
  * Uzerine gelince (veya dokununca) kucuk bir "Degerlendirmen" penceresi acilir:
- * durum + puan + kaydet. Tam kart icin "Detayli degerlendirme" baglantisi var.
+ * durum + puan + kaydet. "Not ve inceleme ekle" tam degerlendirme penceresini
+ * acar (notlar, detaylar, herkese acik inceleme, topluluk incelemeleri).
  *
  * Pencere portal ile body'ye tasinir; cunku hero `overflow-hidden` ve pencere
  * hero'nun disina tasabiliyor.
  */
 export function QuickRating({
   titleId,
+  titleName,
+  isSeries,
+  userId,
   isLoggedIn,
   initialStatus,
   initialRating,
+  entry,
+  initialReviews,
 }: {
   titleId: string;
+  titleName: string;
+  isSeries: boolean;
+  userId: string | null;
   isLoggedIn: boolean;
   initialStatus: Status | null;
   initialRating: number | null;
+  entry: EvaluationEntry;
+  initialReviews: EvaluationReview[];
 }) {
   const router = useRouter();
   const triggerRef = useRef<HTMLButtonElement | null>(null);
@@ -50,6 +68,7 @@ export function QuickRating({
   const pinnedRef = useRef(false);
 
   const [open, setOpen] = useState(false);
+  const [detailsOpen, setDetailsOpen] = useState(false);
   const [rect, setRect] = useState<{ left: number; top: number; bottom: number } | null>(
     null,
   );
@@ -166,6 +185,10 @@ export function QuickRating({
       });
       const data = (await response.json()) as { error?: string };
       if (!response.ok) throw new Error(data.error ?? "Kaydedilemedi.");
+      // Kaydettigimiz degerleri "sunucu gercegi" olarak isaretle: bu sirada
+      // devam eden router.refresh() eski degeri getirse bile kullanicinin
+      // yeni secimini ezmesin.
+      serverSnapshot.current = { status, rating };
       setMessage("Kaydedildi.");
       router.refresh();
     } catch (saveError) {
@@ -175,11 +198,16 @@ export function QuickRating({
     }
   };
 
-  const gotoCards = () => {
+  const openDetails = () => {
     close();
-    document
-      .getElementById(EVALUATION_ANCHOR)
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setDetailsOpen(true);
+  };
+
+  const viewer: EvaluationViewer = {
+    userId: userId ?? "",
+    status: initialStatus,
+    season: entry?.progressSeason ?? null,
+    episode: entry?.progressEpisode ?? null,
   };
 
   const highlight = rating != null;
@@ -218,7 +246,7 @@ export function QuickRating({
           </span>
         </p>
         <p className="truncate text-[0.6rem] text-mist-500">
-          {isLoggedIn ? "hızlı değerlendir" : "giriş yap"}
+          {isLoggedIn ? "puanla · not ekle" : "giriş yap"}
         </p>
       </button>
 
@@ -328,10 +356,10 @@ export function QuickRating({
                     </button>
                     <button
                       type="button"
-                      onClick={gotoCards}
+                      onClick={openDetails}
                       className="text-[0.7rem] text-gold-400 hover:text-gold-300"
                     >
-                      Detaylı değerlendirme ↓
+                      Detaylı değerlendirme →
                     </button>
                   </div>
 
@@ -351,6 +379,17 @@ export function QuickRating({
             document.body,
           )
         : null}
+
+      <EvaluationDialog
+        open={detailsOpen}
+        onClose={() => setDetailsOpen(false)}
+        titleId={titleId}
+        titleName={titleName}
+        isSeries={isSeries}
+        entry={entry}
+        viewer={viewer}
+        initialReviews={initialReviews}
+      />
     </>
   );
 }

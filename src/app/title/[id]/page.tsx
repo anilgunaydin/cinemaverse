@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { AppHeader } from "@/components/layout/app-header";
-import { EvaluationCard } from "@/components/catalog/evaluation-card";
 import { InlineNameList } from "@/components/catalog/inline-name-list";
 import { DetailCard } from "@/components/catalog/detail-card";
 import { ExpandableText } from "@/components/catalog/expandable-text";
@@ -23,6 +22,7 @@ import { getWatchProviders } from "@/lib/watch-providers/service";
 import { TitleHero } from "./title-hero";
 import ExternalCommentsSection from "./external-comments-section";
 import TrailerSection from "./trailer-section";
+import type { EvaluationEntry } from "@/components/catalog/evaluation-card";
 
 const ROLE_LABELS: Record<string, string> = {
   director: "Yönetmen",
@@ -130,6 +130,24 @@ export default async function TitlePage({
     )
   ).slice(0, 10);
 
+  const evaluationEntry: EvaluationEntry = userEntry
+    ? {
+        id: userEntry.id,
+        status: userEntry.status,
+        rating: userEntry.rating,
+        watchedAt: userEntry.watchedAt,
+        watchedPeriod: userEntry.watchedPeriod,
+        notes: userEntry.notes,
+        likedAspects: userEntry.likedAspects,
+        dislikedAspects: userEntry.dislikedAspects,
+        memorableScenes: userEntry.memorableScenes,
+        rewatchIntent: userEntry.rewatchIntent,
+        progressSeason: userEntry.progressSeason,
+        progressEpisode: userEntry.progressEpisode,
+        isFavorite: userEntry.isFavorite,
+      }
+    : null;
+
   return (
     <>
       <AppHeader />
@@ -187,46 +205,9 @@ export default async function TitlePage({
           userId={user?.id ?? null}
           franchiseNames={titleFranchises.map((franchise) => franchise.name)}
           hasTrailer={Boolean(title.trailerUrl)}
+          entry={evaluationEntry}
+          reviews={reviews}
         />
-
-        {/* 1. satır — değerlendirmen: sayfanın ana etkileşimi */}
-        <div
-          id="degerlendirmen"
-          className="mt-3 scroll-mt-24 animate-fade-up sm:mt-4"
-          style={{ animationDelay: "40ms" }}
-        >
-          <EvaluationCard
-            titleId={title.id}
-            titleName={displayTitle}
-            isSeries={title.kind === "series"}
-            entry={
-              userEntry
-                ? {
-                    id: userEntry.id,
-                    status: userEntry.status,
-                    rating: userEntry.rating,
-                    watchedAt: userEntry.watchedAt,
-                    watchedPeriod: userEntry.watchedPeriod,
-                    notes: userEntry.notes,
-                    likedAspects: userEntry.likedAspects,
-                    dislikedAspects: userEntry.dislikedAspects,
-                    memorableScenes: userEntry.memorableScenes,
-                    rewatchIntent: userEntry.rewatchIntent,
-                    progressSeason: userEntry.progressSeason,
-                    progressEpisode: userEntry.progressEpisode,
-                    isFavorite: userEntry.isFavorite,
-                  }
-                : null
-            }
-            viewer={{
-              userId: user?.id ?? "",
-              status: userEntry?.status ?? null,
-              season: userEntry?.progressSeason ?? null,
-              episode: userEntry?.progressEpisode ?? null,
-            }}
-            initialReviews={reviews}
-          />
-        </div>
 
         {/* 2. satır — medya ve dış yorumlar */}
         <div

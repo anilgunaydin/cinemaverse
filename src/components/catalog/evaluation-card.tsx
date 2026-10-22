@@ -8,7 +8,7 @@ import { useOfflineQueue } from "@/hooks/useBackgroundSync";
 import { ReportButton } from "@/components/community/report-button";
 import { DetailCard } from "@/components/catalog/detail-card";
 
-type Entry = {
+export type EvaluationEntry = {
   id: string;
   status: WatchStatus;
   rating: number | null;
@@ -24,7 +24,7 @@ type Entry = {
   isFavorite: boolean;
 } | null;
 
-type ReviewItem = {
+export type EvaluationReview = {
   id: string;
   authorId: string;
   authorName: string;
@@ -36,7 +36,7 @@ type ReviewItem = {
   createdAt: string;
 };
 
-type SpoilerViewer = {
+export type EvaluationViewer = {
   userId: string;
   status: WatchStatus | null;
   season: number | null;
@@ -87,14 +87,16 @@ export function EvaluationCard({
   entry,
   viewer,
   initialReviews,
+  onClose,
   className = "",
 }: {
   titleId: string;
   titleName: string;
   isSeries: boolean;
-  entry: Entry;
-  viewer: SpoilerViewer;
-  initialReviews: ReviewItem[];
+  entry: EvaluationEntry;
+  viewer: EvaluationViewer;
+  initialReviews: EvaluationReview[];
+  onClose?: () => void;
   className?: string;
 }) {
   const router = useRouter();
@@ -136,7 +138,7 @@ export function EvaluationCard({
     myReview?.spoilerScopeSeason != null ? String(myReview.spoilerScopeSeason) : ""
   );
 
-  const [reviews, setReviews] = useState<ReviewItem[]>(initialReviews);
+  const [reviews, setReviews] = useState<EvaluationReview[]>(initialReviews);
   const [expanded, setExpanded] = useState(false);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -246,7 +248,7 @@ export function EvaluationCard({
       `/api/reviews?titleId=${encodeURIComponent(titleId)}`
     );
     if (listResponse.ok) {
-      const list = (await listResponse.json()) as { items?: ReviewItem[] };
+      const list = (await listResponse.json()) as { items?: EvaluationReview[] };
       if (list.items) setReviews(list.items);
     }
   }, [titleId, reviewBody, rating, containsSpoiler, isSeries, scopeSeason, visibility]);
@@ -362,6 +364,16 @@ export function EvaluationCard({
           >
             {expanded ? "Detayları gizle" : "Detay ekle"}
           </button>
+          {onClose ? (
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Kapat"
+              className="grid h-7 w-7 place-items-center rounded-lg text-mist-500 transition-colors hover:bg-ink-800 hover:text-mist-200"
+            >
+              ✕
+            </button>
+          ) : null}
         </>
       }
     >

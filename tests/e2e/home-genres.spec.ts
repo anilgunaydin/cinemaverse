@@ -44,6 +44,13 @@ test.describe("Keşfet - Tür satırları", () => {
     });
     expect(layout.fullyVisible).toBe(5);
     expect(layout.cardWidth).toBeGreaterThan(200);
+
+    // Aynı yapım birden fazla tür satırında tekrarlanmaz.
+    const hrefs = await page
+      .locator('section[id^="tur-"] a[href^="/title/"]')
+      .evaluateAll((links) => links.map((link) => link.getAttribute("href")));
+    expect(hrefs.length).toBeGreaterThan(0);
+    expect(new Set(hrefs).size).toBe(hrefs.length);
   });
 
   test("Film/dizi ayrımı rozetlerle görünür ve filtrelenebilir", async ({
@@ -82,10 +89,10 @@ test.describe("Keşfet - Tür satırları", () => {
     await expect(left).toBeDisabled();
     await expect(right).toBeEnabled();
 
-    // Oklar seritle orantili buyuklukte (en az 44px)
+    // Oklar seritle orantili buyuklukte (yuzde 50 buyutuldu: >= 66px)
     const arrowBox = await right.boundingBox();
     expect(arrowBox).not.toBeNull();
-    expect(arrowBox!.width).toBeGreaterThanOrEqual(44);
+    expect(arrowBox!.width).toBeGreaterThanOrEqual(66);
 
     await right.click();
     await expect
@@ -115,6 +122,18 @@ test.describe("Keşfet - Tür satırları", () => {
     for (const name of names) {
       expect(name.trim()).not.toMatch(/^Q\d+$/);
     }
+  });
+
+  test("Arama büyük/küçük harf ve Türkçe karakterden bağımsız çalışır", async ({
+    page,
+  }) => {
+    await page.goto("/?q=inception");
+    const results = page.locator('section[id^="tur-"] a[href^="/title/"]');
+    await expect(results).toHaveCount(1, { timeout: 15000 });
+    await expect(results.first()).toHaveAttribute("href", /\/title\//);
+
+    await page.goto("/?q=INCEPTION");
+    await expect(results).toHaveCount(1, { timeout: 15000 });
   });
 
   test("Sayfada yatay taşma yok", async ({ page }) => {

@@ -31,6 +31,7 @@ export function GenreRow({
   items: GenreRowItem[];
 }) {
   const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const animationRef = useRef<number | null>(null);
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(false);
 
@@ -59,11 +60,116 @@ export function GenreRow({
   const scrollByPage = (direction: 1 | -1) => {
     const element = scrollerRef.current;
     if (!element) return;
-    // Bilincli olarak anlik kaydirma: CSS smooth bazi ortamlarda (arka plan
-    // sekmesi, otomasyon) hic ilerlemiyor; snap noktalari zaten yumusak
-    // hissi veriyor.
-    element.scrollLeft += direction * element.clientWidth * 0.85;
+
+    const maxScroll = element.scrollWidth - element.clientWidth;
+    const start = element.scrollLeft;
+    const naturalTarget = Math.max(
+      0,
+      Math.min(
+        maxScroll,
+        element.scrollLeft + direction * element.clientWidth * 0.85,
+      ),
+    );
+
+    // Bir sonraki karta hizala: animasyon bitince snap geri acildiginda
+    // kucuk bir sicrama olmasin.
+    const scrollerRect = element.getBoundingClientRect();
+    const snapTargets = [
+      0,
+      ...[...element.children].map((child) => {
+        const rect = child.getBoundingClientRect();
+        return rect.left - scrollerRect.left + element.scrollLeft;
+      }),
+    ];
+    const snapped =
+      snapTargets.length > 0
+        ? Math.max(
+            0,
+            Math.min(
+              maxScroll,
+              snapTargets.reduce((best, value) =>
+                Math.abs(value - naturalTarget) < Math.abs(best - naturalTarget)
+                  ? value
+                  : best,
+              ),
+            ),
+          )
+        : naturalTarget;
+    // Snap noktasi geride kaldiysa ters yone kacmasin.
+    const target =
+      direction === -1 ? Math.min(snapped, start) : Math.max(snapped, start);
+    const distance = target - start;
+    if (Math.abs(distance) < 2) return;
+
+    if (animationRef.current !== null) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
+    }
+
+    // Hareket azaltma tercihine saygi: anlik gecis.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      element.scrollLeft = target;
+      return;
+    }
+
+    // yumusak, ivmeli kaydirma (CSS smooth bazi ortamlarda calismiyor).
+    // Animasyon sirasinda snap'i kapatip sonunda geri aciyoruz; aksi halde
+    // tarayici her adimda kart sinirina geri cekiyor.
+    const duration = Math.min(720, 420 + Math.abs(distance) * 0.22);
+    const startedAt = performance.now();
+    element.style.scrollSnapType = "none";
+
+    const step = (now: number) => {
+      const progress = Math.min(1, (now - startedAt) / duration);
+      const eased =
+        progress < 0.5
+          ? 4 * progress * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+      element.scrollLeft = start + distance * eased;
+
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(step);
+      } else {
+        animationRef.current = null;
+        // CSS sinifindaki snap-mandatory'yi geri ver.
+        element.style.scrollSnapType = "";
+      }
+    };
+
+    animationRef.current = requestAnimationFrame(step);
   };
+
+  // Kullanici tekerlekle/dokunarak mudahale ederse animasyonu durdur.
+  useEffect(() => {
+    const element = scrollerRef.current;
+    if (!element) return;
+    const cancel = () => {
+      if (animationRef.current !== null) {
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = null;
+      }
+      element.style.scrollSnapType = "";
+    };
+    element.addEventListener("wheel", cancel, { passive: true });
+    element.addEventListener("touchstart", cancel, { passive: true });
+    element.addEventListener("pointerdown", cancel);
+    return () => {
+      element.removeEventListener("wheel", cancel);
+      element.removeEventListener("touchstart", cancel);
+      element.removeEventListener("pointerdown", cancel);
+    };
+  }, []);
+
+  useEffect(
+    () => () => {
+      if (animationRef.current !== null) {
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = null;
+      }
+    },
+    [],
+  );
 
   return (
     <section
@@ -159,21 +265,21 @@ function RowArrow({
       aria-label={label}
       className={`absolute ${
         side === "left" ? "left-0.5" : "right-0.5"
-      } top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-ink-950/85 text-mist-100 shadow-[0_8px_24px_-10px_rgba(0,0,0,0.9)] backdrop-blur transition-all duration-200 hover:border-gold-500/50 hover:bg-ink-900 hover:text-gold-300 focus-visible:opacity-100 disabled:pointer-events-none disabled:opacity-0 sm:grid lg:h-12 lg:w-12 ${
+      } top-1/2 z-10 hidden h-[66px] w-[66px] -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-ink-950/85 text-mist-100 shadow-[0_8px_24px_-10px_rgba(0,0,0,0.9)] backdrop-blur transition-all duration-200 hover:border-gold-500/50 hover:bg-ink-900 hover:text-gold-300 focus-visible:opacity-100 disabled:pointer-events-none disabled:opacity-0 sm:grid lg:h-[72px] lg:w-[72px] ${
         disabled ? "" : "opacity-0 group-hover/row:opacity-100"
       }`}
     >
       <svg
-        width="20"
-        height="20"
+        width="30"
+        height="30"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
-        className="lg:h-[22px] lg:w-[22px]"
+        className="lg:h-[33px] lg:w-[33px]"
       >
         <path d={direction === -1 ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7"} />
       </svg>

@@ -6,6 +6,7 @@ import { GenreRow } from "@/components/catalog/genre-row";
 import { getCurrentUser } from "@/lib/auth/current-user";
 import { listGenres, listTitlesWithGenres } from "@/lib/catalog/service";
 import { groupByGenre } from "@/lib/catalog/genre-groups";
+import { normalizeTitle } from "@/lib/catalog/matching";
 
 export const metadata: Metadata = { title: "Keşfet" };
 
@@ -24,12 +25,12 @@ export default async function HomePage({
     listGenres(),
   ]);
 
-  const needle = q?.trim().toLocaleLowerCase("tr");
+  const needle = q ? normalizeTitle(q) : "";
   const searchFiltered = needle
     ? catalogTitles.filter(
         (item) =>
-          item.originalTitle.toLocaleLowerCase("tr").includes(needle) ||
-          (item.localizedTitle ?? "").toLocaleLowerCase("tr").includes(needle),
+          normalizeTitle(item.originalTitle).includes(needle) ||
+          normalizeTitle(item.localizedTitle ?? "").includes(needle),
       )
     : catalogTitles;
 
@@ -44,8 +45,9 @@ export default async function HomePage({
     ? searchFiltered.filter((item) => item.kind === kind)
     : searchFiltered;
 
-  const total = catalogTitles.length;
-  const genreGroups = groupByGenre(filtered, { minItems: 5 });
+  // Arama sonucunda tek bir yapım bile görünsün: eşiği düşür. Normal
+  // keşfette tek tük türler sayfayı yüzlerce satıra çevirmesin.
+  const genreGroups = groupByGenre(filtered, { minItems: needle ? 1 : 5 });
   const slugByName = new Map(genres.map((entry) => [entry.nameTr, entry.slug]));
 
   const kindHref = (value?: "movie" | "series") => {
@@ -105,16 +107,18 @@ export default async function HomePage({
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
               <h2 className="font-display text-xl font-semibold">
-                Kütüphanenizdeki yapımlar
+                Türlere göre keşfet
               </h2>
               <p className="muted mt-0.5">
-                {total > 0
+                {searchFiltered.length > 0
                   ? kind
                     ? `${filtered.length} ${
                         kind === "movie" ? "film" : "dizi"
-                      } · ${genreGroups.length} tür satırında.`
-                    : `${total} yapım · ${movieCount} film · ${seriesCount} dizi — her tür kendi satırında.`
-                  : "Henüz yapım eklemediniz."}
+                      } · ${genreGroups.length} tür satırında, her yapım bir kez.`
+                    : `${searchFiltered.length} yapım · ${movieCount} film · ${seriesCount} dizi — her yapım tek bir tür satırında.`
+                  : q
+                    ? "Aramanızla eşleşen yapım yok."
+                    : "Katalogda henüz yapım yok."}
               </p>
             </div>
             <div
@@ -149,7 +153,6 @@ export default async function HomePage({
             <div className="mt-3 flex flex-wrap items-center gap-1.5">
               {genreGroups
                 .filter((group) => slugByName.has(group.name))
-                .slice(0, 10)
                 .map((group) => (
                   <a
                     key={group.name}
@@ -157,6 +160,9 @@ export default async function HomePage({
                     className="chip transition-colors hover:border-gold-500/40 hover:text-gold-300"
                   >
                     {group.name}
+                    <span className="ml-1 text-[0.62rem] text-mist-500">
+                      {group.items.length}
+                    </span>
                   </a>
                 ))}
             </div>
@@ -165,15 +171,28 @@ export default async function HomePage({
           {filtered.length === 0 ? (
             <div className="surface-flat mt-4 px-5 py-10 text-center">
               <p className="font-medium text-mist-200">
-                {q ? "Aramanızla eşleşen yapım yok" : "Katalogda henüz yapım yok"}
+                {q
+                  ? "Aramanızla eşleşen yapım yok"
+                  : kind
+                    ? "Bu filtrede yapım yok"
+                    : "Katalogda henüz yapım yok"}
               </p>
               <p className="muted mx-auto mt-1 max-w-md">
                 {q
                   ? "Farklı bir kelime deneyin veya aramayı temizleyin."
-                  : "Arama sayfasından bir film veya dizi ekleyerek başlayın. Eklenen yapımlar gerçek kaynaklardan (Wikidata, TVmaze) alınır."}
+                  : kind
+                    ? "Tüm yapımlara dönüp farklı bir tür seçebilirsiniz."
+                    : "Arama sayfasından bir film veya dizi ekleyerek başlayın. Eklenen yapımlar gerçek kaynaklardan (Wikidata, TVmaze) alınır."}
               </p>
-              <Link href={q ? "/" : "/search"} className="btn btn-primary mt-4">
-                {q ? "Aramayı temizle" : "Aramaya başla"}
+              <Link
+                href={q || kind ? "/" : "/search"}
+                className="btn btn-primary mt-4"
+              >
+                {q
+                  ? "Aramayı temizle"
+                  : kind
+                    ? "Tüm yapımları göster"
+                    : "Aramaya başla"}
               </Link>
             </div>
           ) : (

@@ -46,7 +46,7 @@ if not exist ".env" (
 
 REM ---------------------------------------------------------------- AI
 REM Yerel Ollama destegi kaldirildi. AI saglayicisi .env icindeki
-REM AI_PROVIDER (gemini | openai-compatible | none) ile belirlenir.
+REM AI_PROVIDER (gemini | deepseek | openai-compatible | none) ile belirlenir.
 echo  [BILGI] AI: .env -> AI_PROVIDER (varsayilan: none / kapali)
 
 REM ---------------------------------------------------------------- migrations

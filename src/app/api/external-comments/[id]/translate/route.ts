@@ -4,7 +4,7 @@ import { jsonError, jsonOk, rateLimit } from "@/lib/http";
 
 /**
  * POST /api/external-comments/[id]/translate
- * Yabanci bir internet yorumunu yerel AI ile Turkceye cevirir ve saklar.
+ * Yabanci bir internet yorumunu yapay zeka saglayicisi ile Turkceye cevirir ve saklar.
  */
 export async function POST(
   _request: Request,

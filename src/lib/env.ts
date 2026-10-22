@@ -69,6 +69,12 @@ export const env = {
   get geminiModel() {
     return optional("GEMINI_MODEL") ?? "gemini-2.5-flash";
   },
+  get deepseekApiKey() {
+    return optional("DEEPSEEK_API_KEY");
+  },
+  get deepseekModel() {
+    return optional("DEEPSEEK_MODEL") ?? "deepseek-chat";
+  },
   get openAiCompatBaseUrl() {
     return optional("OPENAI_COMPAT_BASE_URL");
   },

@@ -37,6 +37,22 @@ describe("resolveAiConfig", () => {
     expect(config.model).toBe("gemini-2.5-flash");
   });
 
+  it("deepseek anahtar yoksa devre disi kalir", () => {
+    const config = resolveAiConfig({ provider: "deepseek" });
+    expect(config.enabled).toBe(false);
+    expect(config.reason).toContain("DEEPSEEK_API_KEY");
+  });
+
+  it("deepseek anahtar varsa etkin olur", () => {
+    const config = resolveAiConfig({
+      provider: "deepseek",
+      deepseekApiKey: "abc",
+    });
+    expect(config.enabled).toBe(true);
+    expect(config.provider).toBe("deepseek");
+    expect(config.model).toBe("deepseek-chat");
+  });
+
   it("openai-compatible eksik yapilandirmada devre disi kalir", () => {
     const config = resolveAiConfig({ provider: "openai-compatible" });
     expect(config.enabled).toBe(false);

@@ -90,7 +90,7 @@ export function ExternalCommentItem({
               Türkçe çeviri
             </span>
             <span className="normal-case tracking-normal">
-              taslak · yerel AI
+              taslak · AI
             </span>
           </p>
           <p className="text-sm leading-relaxed text-mist-200">{translation}</p>

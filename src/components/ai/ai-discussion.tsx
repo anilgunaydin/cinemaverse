@@ -38,6 +38,12 @@ const SPOILER_OPTIONS: { value: Conversation["spoilerMode"]; label: string }[] =
   { value: "all", label: "Her şeyi tartışabiliriz" },
 ];
 
+const PROVIDER_LABELS: Record<string, string> = {
+  gemini: "Gemini",
+  deepseek: "DeepSeek",
+  "openai-compatible": "OpenAI uyumlu",
+};
+
 export function AiDiscussion({
   titleId,
   isLoggedIn,
@@ -161,7 +167,7 @@ export function AiDiscussion({
       meta={
         status?.enabled ? (
           <span className="chip chip-jade">
-            {status.provider}
+            {PROVIDER_LABELS[status.provider] ?? status.provider}
             {status.model ? ` · ${status.model}` : ""}
           </span>
         ) : (

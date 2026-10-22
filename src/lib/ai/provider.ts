@@ -38,6 +38,8 @@ export function getAiStatus(): ResolvedAiConfig {
     provider: env.aiProvider,
     geminiApiKey: env.geminiApiKey,
     geminiModel: env.geminiModel,
+    deepseekApiKey: env.deepseekApiKey,
+    deepseekModel: env.deepseekModel,
     openAiCompatBaseUrl: env.openAiCompatBaseUrl,
     openAiCompatApiKey: env.openAiCompatApiKey,
     openAiCompatModel: env.openAiCompatModel,
@@ -181,6 +183,14 @@ export async function chat(
     if (status.provider === "gemini") {
       content = await callGemini(
         env.geminiApiKey ?? "",
+        status.model,
+        messages,
+        options,
+      );
+    } else if (status.provider === "deepseek") {
+      content = await callOpenAiCompatible(
+        "https://api.deepseek.com/v1",
+        env.deepseekApiKey ?? null,
         status.model,
         messages,
         options,

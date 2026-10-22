@@ -74,6 +74,7 @@ record(
   "AI saglayici durumu tutarli",
   aiEnabled
     ? aiStatus.json?.provider === "gemini" ||
+        aiStatus.json?.provider === "deepseek" ||
         aiStatus.json?.provider === "openai-compatible"
     : aiStatus.json?.provider === "none",
   `provider=${aiStatus.json?.provider}`,

@@ -5,7 +5,7 @@ import type { ExternalComment } from "@/lib/community/external-comments";
 /**
  * Wikipedia makalelerinden derlenen (CC BY-SA, kaynaklia) yorumlar.
  * Yerli (TR) ve yabanci (EN) olarak iki gruba ayrilir; yabanci olanlar
- * tek tikla Turkceye cevrilebilir (yerel AI, ceviri DB'de saklanir).
+ * tek tikla Turkceye cevrilebilir (bulut AI; ceviri DB'de saklanir).
  */
 export default function ExternalCommentsSection({
   local,
@@ -64,7 +64,7 @@ export default function ExternalCommentsSection({
               <span className="text-mist-500">({foreign.length})</span>
               {translationEnabled ? (
                 <span className="text-[0.68rem] font-normal text-mist-500">
-                  çeviri: yerel AI (taslak)
+                  çeviri: AI (taslak)
                 </span>
               ) : null}
             </h3>

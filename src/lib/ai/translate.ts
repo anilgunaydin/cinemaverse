@@ -32,8 +32,8 @@ const SYSTEM_PROMPT = [
 ].join("\n");
 
 /**
- * Kucuk yerel modeller sifir ornekle Ingilizce kelime birakmaya egilimli;
- * film elestirisi alanindan 3 ornek ciktiyi belirgin sekilde iyilestiriyor.
+ * Sifir ornekle Ingilizce kelime birakma egilimi olabiliyor; film elestirisi
+ * alanindan 3 ornek ciktiyi belirgin sekilde iyilestiriyor.
  */
 const FEW_SHOT: { user: string; assistant: string }[] = [
   {

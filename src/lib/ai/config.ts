@@ -12,12 +12,18 @@
  * tukettigi icin uygulama artik Ollama'ya baglanmaz.
  */
 
-export type AiProviderName = "none" | "gemini" | "openai-compatible";
+export type AiProviderName =
+  | "none"
+  | "gemini"
+  | "deepseek"
+  | "openai-compatible";
 
 export type AiConfigInput = {
   provider?: string | null;
   geminiApiKey?: string | null;
   geminiModel?: string | null;
+  deepseekApiKey?: string | null;
+  deepseekModel?: string | null;
   openAiCompatBaseUrl?: string | null;
   openAiCompatApiKey?: string | null;
   openAiCompatModel?: string | null;
@@ -35,14 +41,15 @@ export type ResolvedAiConfig = {
 const KNOWN_PROVIDERS: AiProviderName[] = [
   "none",
   "gemini",
+  "deepseek",
   "openai-compatible",
 ];
 
 const OLLAMA_REMOVED_REASON =
   "Yerel Ollama desteği kaldırıldı (bilgisayarı yorduğu için uygulama artık " +
   "Ollama'ya bağlanmıyor). AI özellikleri için .env dosyasında " +
-  "AI_PROVIDER=gemini ve GEMINI_API_KEY tanımlayın; kullanmayacaksanız " +
-  "AI_PROVIDER=none bırakın.";
+  "AI_PROVIDER=gemini + GEMINI_API_KEY veya AI_PROVIDER=deepseek + " +
+  "DEEPSEEK_API_KEY tanımlayın; kullanmayacaksanız AI_PROVIDER=none bırakın.";
 
 function clean(value: string | null | undefined): string | null {
   const trimmed = value?.trim();
@@ -81,8 +88,9 @@ export function resolveAiConfig(input: AiConfigInput): ResolvedAiConfig {
       enabled: false,
       reason:
         "Yapay zekâ destekli özellikler şu anda kapalı (AI_PROVIDER=none). " +
-        "Bu özellik isteğe bağlıdır; açmak için .env dosyasında Gemini " +
-        "anahtarını tanımlamanız gerekir.",
+        "Bu özellik isteğe bağlıdır; açmak için .env dosyasında " +
+        "AI_PROVIDER=gemini + GEMINI_API_KEY veya AI_PROVIDER=deepseek + " +
+        "DEEPSEEK_API_KEY tanımlayın.",
     };
   }
 
@@ -103,6 +111,26 @@ export function resolveAiConfig(input: AiConfigInput): ResolvedAiConfig {
       model,
       enabled: true,
       reason: `Google Gemini sağlayıcısı etkin (model: ${model}).`,
+    };
+  }
+
+  if (provider === "deepseek") {
+    const model = clean(input.deepseekModel) ?? "deepseek-chat";
+    if (!clean(input.deepseekApiKey)) {
+      return {
+        provider: "deepseek",
+        model: null,
+        enabled: false,
+        reason:
+          "AI_PROVIDER=deepseek seçildi ancak DEEPSEEK_API_KEY tanımlı değil. " +
+          "Anahtar olmadan istek gönderilmez.",
+      };
+    }
+    return {
+      provider: "deepseek",
+      model,
+      enabled: true,
+      reason: `DeepSeek sağlayıcısı etkin (model: ${model}).`,
     };
   }
 

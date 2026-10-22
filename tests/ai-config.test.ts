@@ -8,7 +8,7 @@ describe("resolveAiConfig", () => {
     expect(config.provider).toBe("none");
     expect(config.enabled).toBe(false);
     expect(config.model).toBeNull();
-    expect(config.reason).toContain("kapalı");
+    expect(config.reason).toContain("kapalÄ±");
   });
 
   it("bilinmeyen saglayici adini 'none' kabul eder", () => {
@@ -34,7 +34,7 @@ describe("resolveAiConfig", () => {
   it("gemini anahtar varsa etkin olur", () => {
     const config = resolveAiConfig({ provider: "gemini", geminiApiKey: "abc" });
     expect(config.enabled).toBe(true);
-    expect(config.model).toBe("gemini-2.5-flash");
+    expect(config.model).toBe("gemini-3.6-flash");
   });
 
   it("deepseek anahtar yoksa devre disi kalir", () => {

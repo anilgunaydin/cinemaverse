@@ -6,7 +6,7 @@ import HoverTrailer from "./hover-trailer";
 /**
  * Netflix-stili yatay (16:9) yapim karti:
  * - Gorsel tercihi backdropUrl (yatay sahne), yoksa poster (cover kirpma).
- * - hover'da trailer yuzen onizleme paneli (HoverTrailer) acilir.
+ * - hover'da fragman kartin icinde (HoverTrailer) oynar; kart buyumez.
  */
 export function PosterCard({
   href,
@@ -35,25 +35,17 @@ export function PosterCard({
   return (
     <Link
       href={href}
-      className="group flex flex-col overflow-hidden rounded-xl border border-ink-700 bg-ink-850 transition-all hover:-translate-y-0.5 hover:border-gold-500/40 hover:shadow-[0_10px_30px_-14px_rgba(212,169,79,0.35)]"
+      className="group flex flex-col overflow-hidden rounded-xl border border-ink-700 bg-ink-850 transition-colors hover:border-gold-500/40"
     >
       <div className="relative aspect-video w-full overflow-hidden bg-ink-800">
-        {trailerUrl ? (
-          <HoverTrailer
-            trailerUrl={trailerUrl}
-            linkHref={href}
-            metaTitle={title}
-            metaSubtitle={subtitle}
-            metaRating={rating}
-          />
-        ) : null}
+        {trailerUrl ? <HoverTrailer trailerUrl={trailerUrl} /> : null}
         {imageUrl ? (
           <Image
             src={imageUrl}
             alt={`${title} görseli`}
             fill
-            sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 260px"
-            className={`object-cover transition-transform duration-300 group-hover:scale-[1.03] ${
+            sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 400px"
+            className={`object-cover ${
               backdropUrl ? "" : backdropUrl === null ? "object-[center_25%]" : ""
             }`}
             unoptimized

@@ -312,19 +312,7 @@ export function FranchiseDetail({
               >
                 <div className="relative aspect-video w-full overflow-hidden rounded-t-xl">
                   {title.trailerUrl ? (
-                    <HoverTrailer
-                      trailerUrl={title.trailerUrl}
-                      linkHref={`/title/${title.titleId}`}
-                      metaTitle={title.titleName}
-                      metaSubtitle={
-                        [
-                          title.releaseYear?.toString(),
-                          KIND_LABELS[title.kind] ?? title.kind,
-                        ]
-                          .filter(Boolean)
-                          .join(" · ") || null
-                      }
-                    />
+                    <HoverTrailer trailerUrl={title.trailerUrl} />
                   ) : null}
                   {(title.backdropUrl ?? title.posterUrl) ? (
                     <Image

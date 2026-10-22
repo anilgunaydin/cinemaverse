@@ -46,10 +46,10 @@ const KNOWN_PROVIDERS: AiProviderName[] = [
 ];
 
 const OLLAMA_REMOVED_REASON =
-  "Yerel Ollama desteği kaldırıldı (bilgisayarı yorduğu için uygulama artık " +
-  "Ollama'ya bağlanmıyor). AI özellikleri için .env dosyasında " +
+  "Yerel Ollama desteÄŸi kaldÄ±rÄ±ldÄ± (bilgisayarÄ± yorduÄŸu iÃ§in uygulama artÄ±k " +
+  "Ollama'ya baÄŸlanmÄ±yor). AI Ã¶zellikleri iÃ§in .env dosyasÄ±nda " +
   "AI_PROVIDER=gemini + GEMINI_API_KEY veya AI_PROVIDER=deepseek + " +
-  "DEEPSEEK_API_KEY tanımlayın; kullanmayacaksanız AI_PROVIDER=none bırakın.";
+  "DEEPSEEK_API_KEY tanÄ±mlayÄ±n; kullanmayacaksanÄ±z AI_PROVIDER=none bÄ±rakÄ±n.";
 
 function clean(value: string | null | undefined): string | null {
   const trimmed = value?.trim();
@@ -87,30 +87,30 @@ export function resolveAiConfig(input: AiConfigInput): ResolvedAiConfig {
       model: null,
       enabled: false,
       reason:
-        "Yapay zekâ destekli özellikler şu anda kapalı (AI_PROVIDER=none). " +
-        "Bu özellik isteğe bağlıdır; açmak için .env dosyasında " +
+        "Yapay zekÃ¢ destekli Ã¶zellikler ÅŸu anda kapalÄ± (AI_PROVIDER=none). " +
+        "Bu Ã¶zellik isteÄŸe baÄŸlÄ±dÄ±r; aÃ§mak iÃ§in .env dosyasÄ±nda " +
         "AI_PROVIDER=gemini + GEMINI_API_KEY veya AI_PROVIDER=deepseek + " +
-        "DEEPSEEK_API_KEY tanımlayın.",
+        "DEEPSEEK_API_KEY tanÄ±mlayÄ±n.",
     };
   }
 
   if (provider === "gemini") {
-    const model = clean(input.geminiModel) ?? "gemini-2.5-flash";
+    const model = clean(input.geminiModel) ?? "gemini-3.6-flash";
     if (!clean(input.geminiApiKey)) {
       return {
         provider: "gemini",
         model: null,
         enabled: false,
         reason:
-          "AI_PROVIDER=gemini seçildi ancak GEMINI_API_KEY tanımlı değil. " +
-          "Anahtar olmadan istek gönderilmez.",
+          "AI_PROVIDER=gemini seÃ§ildi ancak GEMINI_API_KEY tanÄ±mlÄ± deÄŸil. " +
+          "Anahtar olmadan istek gÃ¶nderilmez.",
       };
     }
     return {
       provider: "gemini",
       model,
       enabled: true,
-      reason: `Google Gemini sağlayıcısı etkin (model: ${model}).`,
+      reason: `Google Gemini saÄŸlayÄ±cÄ±sÄ± etkin (model: ${model}).`,
     };
   }
 
@@ -122,15 +122,15 @@ export function resolveAiConfig(input: AiConfigInput): ResolvedAiConfig {
         model: null,
         enabled: false,
         reason:
-          "AI_PROVIDER=deepseek seçildi ancak DEEPSEEK_API_KEY tanımlı değil. " +
-          "Anahtar olmadan istek gönderilmez.",
+          "AI_PROVIDER=deepseek seÃ§ildi ancak DEEPSEEK_API_KEY tanÄ±mlÄ± deÄŸil. " +
+          "Anahtar olmadan istek gÃ¶nderilmez.",
       };
     }
     return {
       provider: "deepseek",
       model,
       enabled: true,
-      reason: `DeepSeek sağlayıcısı etkin (model: ${model}).`,
+      reason: `DeepSeek saÄŸlayÄ±cÄ±sÄ± etkin (model: ${model}).`,
     };
   }
 
@@ -143,9 +143,9 @@ export function resolveAiConfig(input: AiConfigInput): ResolvedAiConfig {
       model: null,
       enabled: false,
       reason:
-        "AI_PROVIDER=openai-compatible seçildi ancak OPENAI_COMPAT_BASE_URL " +
-        "ve OPENAI_COMPAT_MODEL tanımlı değil. Eksik yapılandırmayla istek " +
-        "gönderilmez.",
+        "AI_PROVIDER=openai-compatible seÃ§ildi ancak OPENAI_COMPAT_BASE_URL " +
+        "ve OPENAI_COMPAT_MODEL tanÄ±mlÄ± deÄŸil. Eksik yapÄ±landÄ±rmayla istek " +
+        "gÃ¶nderilmez.",
     };
   }
   const needsKey = !/localhost|127\.0\.0\.1/i.test(baseUrl);
@@ -155,14 +155,14 @@ export function resolveAiConfig(input: AiConfigInput): ResolvedAiConfig {
       model: null,
       enabled: false,
       reason:
-        "Uzak OpenAI uyumlu sağlayıcı için OPENAI_COMPAT_API_KEY gerekli " +
-        "ancak tanımlı değil.",
+        "Uzak OpenAI uyumlu saÄŸlayÄ±cÄ± iÃ§in OPENAI_COMPAT_API_KEY gerekli " +
+        "ancak tanÄ±mlÄ± deÄŸil.",
     };
   }
   return {
     provider: "openai-compatible",
     model,
     enabled: true,
-    reason: `OpenAI uyumlu sağlayıcı etkin (model: ${model}).`,
+    reason: `OpenAI uyumlu saÄŸlayÄ±cÄ± etkin (model: ${model}).`,
   };
 }

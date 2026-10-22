@@ -144,8 +144,17 @@ test.describe("Yapım Sayfası - Yerleşim", () => {
     const count = await foreign.count();
     test.skip(count === 0, "Bu yapımda yabancı yorum yok.");
 
-    // Düğme görünür ve tıklanabilir olmalı
-    await expect(foreign.first().locator("button")).toBeEnabled();
+    // Düğme görünür ve tıklanabilir olmalı (AI sağlayıcısı açıksa)
+    const button = foreign.first().locator("button");
+    const status = await page.request.get("/api/ai/status");
+    const ai = (await status.json()) as { enabled?: boolean };
+    if (!ai.enabled) {
+      // Ollama kaldırıldı; sağlayıcı yoksa düğme bilinçli olarak kapalıdır.
+      await expect(button).toBeDisabled();
+      await expect(button).toHaveAttribute("title", /yapay zekâ sağlayıcısı kapalı/i);
+      return;
+    }
+    await expect(button).toBeEnabled();
   });
 
   test("Kişisel hafıza kompakt - detaylar gizli başlar", async ({ page }) => {

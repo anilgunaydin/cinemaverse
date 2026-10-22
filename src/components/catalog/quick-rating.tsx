@@ -229,7 +229,7 @@ export function QuickRating({
         className={`w-full rounded-xl border px-2.5 py-1.5 text-left backdrop-blur-sm transition-colors ${
           highlight
             ? "border-gold-500/40 bg-gold-500/10 hover:border-gold-500/60"
-            : "border-ink-700/80 bg-ink-950/40 hover:border-ink-500"
+            : "border-gold-500/25 bg-gold-500/5 hover:border-gold-500/50 hover:bg-gold-500/10"
         }`}
       >
         <p className="truncate text-[0.58rem] uppercase tracking-[0.08em] text-mist-500">
@@ -245,8 +245,18 @@ export function QuickRating({
             {rating != null ? "/10" : ""}
           </span>
         </p>
-        <p className="truncate text-[0.6rem] text-mist-500">
-          {isLoggedIn ? "puanla · not ekle" : "giriş yap"}
+        <p
+          className={`truncate text-[0.6rem] ${
+            !isLoggedIn || rating == null
+              ? "font-semibold text-gold-300"
+              : "text-mist-500"
+          }`}
+        >
+          {!isLoggedIn
+            ? "Giriş yap ve puanla →"
+            : rating == null
+              ? "Buradan puanla →"
+              : "puanla · not ekle"}
         </p>
       </button>
 

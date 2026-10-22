@@ -183,6 +183,7 @@ export default async function TitlePage({
           providers={providers}
           communityRating={communityRating}
           userRating={userEntry?.rating ?? null}
+          userStatus={userEntry?.status ?? null}
           userId={user?.id ?? null}
           franchiseNames={titleFranchises.map((franchise) => franchise.name)}
           hasTrailer={Boolean(title.trailerUrl)}
@@ -190,7 +191,8 @@ export default async function TitlePage({
 
         {/* 1. satır — değerlendirmen: sayfanın ana etkileşimi */}
         <div
-          className="mt-3 animate-fade-up sm:mt-4"
+          id="degerlendirmen"
+          className="mt-3 scroll-mt-24 animate-fade-up sm:mt-4"
           style={{ animationDelay: "40ms" }}
         >
           <EvaluationCard

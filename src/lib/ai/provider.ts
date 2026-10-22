@@ -71,6 +71,7 @@ async function callOllama(
   model: string,
   messages: ChatMessage[],
   options: ChatOptions,
+  keepAlive: string,
 ): Promise<string> {
   const base = baseUrl.replace(/\/+$/, "");
   const response = await withTimeout(options.timeoutMs ?? 60_000, (signal) =>
@@ -81,6 +82,8 @@ async function callOllama(
         model,
         messages,
         stream: false,
+        // "0" verilirse model yanit sonrasi bellekten dusurulur (PC'yi yormaz).
+        keep_alive: keepAlive,
         options: {
           temperature: options.temperature ?? 0.7,
           num_predict: options.maxTokens ?? 800,
@@ -217,7 +220,13 @@ export async function chat(
   try {
     let content: string;
     if (status.provider === "ollama") {
-      content = await callOllama(env.ollamaBaseUrl, status.model, messages, options);
+      content = await callOllama(
+        env.ollamaBaseUrl,
+        status.model,
+        messages,
+        options,
+        env.ollamaKeepAlive,
+      );
     } else if (status.provider === "gemini") {
       content = await callGemini(
         env.geminiApiKey ?? "",

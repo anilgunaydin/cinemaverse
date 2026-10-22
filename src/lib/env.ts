@@ -69,6 +69,14 @@ export const env = {
   get ollamaModel() {
     return optional("OLLAMA_MODEL") ?? "llama3.2";
   },
+  /**
+   * Modelin bellekte kalma suresi (Ollama `keep_alive`).
+   * "0" model yanit verir vermez bellekten dusurulur; boylece model arka planda
+   * RAM/CPU tutmaz. Varsayilan 5m (Ollama'nin kendi varsayilani).
+   */
+  get ollamaKeepAlive() {
+    return optional("OLLAMA_KEEP_ALIVE") ?? "5m";
+  },
   get geminiApiKey() {
     return optional("GEMINI_API_KEY");
   },

@@ -317,6 +317,16 @@
   scrollbar-color: var(--color-ink-600) transparent;
 }
 
+/* Yatay tur satirlari: cubuk gizli, kartlar snap ile hizalanir */
+.row-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.row-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 *::-webkit-scrollbar {
   width: 9px;
   height: 9px;

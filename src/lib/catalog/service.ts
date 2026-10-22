@@ -615,6 +615,49 @@ export async function listGenres() {
   return db.select().from(genresTable).orderBy(genresTable.nameTr);
 }
 
+export type CatalogTitleWithGenres = TitleRow & { genres: string[] };
+
+/**
+ * Ana sayfadaki tur satirlari icin: yapimlar + tur adlari.
+ * `listTitles` tur bilgisi dondurmedigi icin ayri bir sorgu kullanilir.
+ */
+export async function listTitlesWithGenres(
+  limit = 200,
+): Promise<CatalogTitleWithGenres[]> {
+  const db = getDb();
+  const rows = await db
+    .select()
+    .from(titles)
+    .where(inArray(titles.kind, ["movie", "series"]))
+    .orderBy(desc(titles.updatedAt))
+    .limit(Math.min(Math.max(limit, 1), 400));
+
+  if (rows.length === 0) return [];
+
+  const genreRows = await db.all<{ title_id: string; name_tr: string }>(
+    sql`select tg.title_id as title_id, g.name_tr as name_tr
+        from title_genres tg
+        join genres g on g.id = tg.genre_id
+        where tg.title_id in (${sql.join(
+          rows.map((row) => sql`${row.id}`),
+          sql`, `,
+        )})
+        order by g.name_tr`,
+  );
+
+  const genreMap = new Map<string, string[]>();
+  for (const row of genreRows) {
+    const list = genreMap.get(row.title_id) ?? [];
+    list.push(row.name_tr);
+    genreMap.set(row.title_id, list);
+  }
+
+  return rows.map((row) => ({
+    ...row,
+    genres: genreMap.get(row.id) ?? [],
+  }));
+}
+
 /** Katalogda kayitli ilk N yapim (oneriler icin aday havuzu). */
 export async function listCandidateTitles(limit = 500): Promise<TitleRow[]> {
   const db = getDb();

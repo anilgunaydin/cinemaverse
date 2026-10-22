@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 
 import type { WatchStatus } from "@/lib/db/schema";
@@ -154,6 +154,30 @@ export function EvaluationCard({
       window.removeEventListener("offline", off);
     };
   }, []);
+
+  /*
+   * Hero'daki hızlı değerlendirme (QuickRating) puanı/durumu değiştirip
+   * router.refresh() çağırıyor. Kart yeniden mount edilmediği için state'i
+   * sunucudan gelen yeni değerlerle eşitliyoruz — yalnızca sunucu değeri
+   * gerçekten değiştiyse (kullanıcının kaydedilmemiş düzenlemesi korunur).
+   */
+  const serverSnapshot = useRef({
+    rating: entry?.rating ?? null,
+    status: entry?.status ?? "watched",
+  });
+
+  useEffect(() => {
+    const nextRating = entry?.rating ?? null;
+    const nextStatus = entry?.status ?? "watched";
+    if (serverSnapshot.current.rating !== nextRating) {
+      serverSnapshot.current.rating = nextRating;
+      setRating(nextRating);
+    }
+    if (serverSnapshot.current.status !== nextStatus) {
+      serverSnapshot.current.status = nextStatus;
+      setStatus(nextStatus);
+    }
+  }, [entry?.rating, entry?.status]);
 
   /* ------------------------------------------------------ Kaydet */
 

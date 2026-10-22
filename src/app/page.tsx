@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { AppHeader } from "@/components/layout/app-header";
-import { PosterCard } from "@/components/catalog/poster-card";
+import { GenreRow } from "@/components/catalog/genre-row";
 import { getCurrentUser } from "@/lib/auth/current-user";
-import { listGenres, listTitles } from "@/lib/catalog/service";
+import { listGenres, listTitlesWithGenres } from "@/lib/catalog/service";
+import { groupByGenre } from "@/lib/catalog/genre-groups";
 
 export const metadata: Metadata = { title: "Keşfet" };
 
@@ -14,12 +15,26 @@ export default async function HomePage({
   searchParams: Promise<{ genre?: string; q?: string }>;
 }) {
   const user = await getCurrentUser();
-  const { genre, q } = await searchParams;
+  const { q } = await searchParams;
 
-  const [{ items, total }, genres] = await Promise.all([
-    listTitles({ limit: 24, sort: "recent", query: q }),
+  const [catalogTitles, genres] = await Promise.all([
+    listTitlesWithGenres(400),
     listGenres(),
   ]);
+
+  const filtered = q
+    ? catalogTitles.filter((item) => {
+        const needle = q.trim().toLocaleLowerCase("tr");
+        return (
+          item.originalTitle.toLocaleLowerCase("tr").includes(needle) ||
+          (item.localizedTitle ?? "").toLocaleLowerCase("tr").includes(needle)
+        );
+      })
+    : catalogTitles;
+
+  const total = catalogTitles.length;
+  const genreGroups = groupByGenre(filtered, { minItems: 5 });
+  const slugByName = new Map(genres.map((entry) => [entry.nameTr, entry.slug]));
 
   return (
     <>
@@ -64,57 +79,63 @@ export default async function HomePage({
               </h2>
               <p className="muted mt-0.5">
                 {total > 0
-                  ? `${total} yapım kayıtlı.`
+                  ? `${total} yapım, ${genreGroups.length} tür satırında. Sağa kaydırın.`
                   : "Henüz yapım eklemediniz."}
               </p>
             </div>
-            {genres.length > 0 ? (
+            {genreGroups.length > 0 ? (
               <div className="flex flex-wrap gap-1.5">
-                {genres.slice(0, 8).map((g) => (
-                  <Link
-                    key={g.id}
-                    href={`/?genre=${g.slug}`}
-                    className={`chip ${
-                      genre === g.slug ? "chip-gold" : ""
-                    }`}
-                  >
-                    {g.nameTr}
-                  </Link>
-                ))}
+                {genreGroups
+                  .filter((group) => slugByName.has(group.name))
+                  .slice(0, 8)
+                  .map((group) => (
+                    <a
+                      key={group.name}
+                      href={`#tur-${slugByName.get(group.name)}`}
+                      className="chip transition-colors hover:border-gold-500/40 hover:text-gold-300"
+                    >
+                      {group.name}
+                    </a>
+                  ))}
               </div>
             ) : null}
           </div>
 
-          {items.length === 0 ? (
+          {filtered.length === 0 ? (
             <div className="surface-flat mt-4 px-5 py-10 text-center">
               <p className="font-medium text-mist-200">
-                Katalogda henüz yapım yok
+                {q ? "Aramanızla eşleşen yapım yok" : "Katalogda henüz yapım yok"}
               </p>
               <p className="muted mx-auto mt-1 max-w-md">
-                Arama sayfasından bir film veya dizi ekleyerek başlayın. Eklenen
-                yapımlar gerçek kaynaklardan (Wikidata, TVmaze) alınır.
+                {q
+                  ? "Farklı bir kelime deneyin veya aramayı temizleyin."
+                  : "Arama sayfasından bir film veya dizi ekleyerek başlayın. Eklenen yapımlar gerçek kaynaklardan (Wikidata, TVmaze) alınır."}
               </p>
-              <Link href="/search" className="btn btn-primary mt-4">
-                Aramaya başla
+              <Link href={q ? "/" : "/search"} className="btn btn-primary mt-4">
+                {q ? "Aramayı temizle" : "Aramaya başla"}
               </Link>
             </div>
           ) : (
-            <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-              {items.map((item) => (
-                <PosterCard
-                  key={item.id}
-                  href={`/title/${item.id}`}
-                  title={item.localizedTitle ?? item.originalTitle}
-                  subtitle={[
-                    item.releaseYear?.toString(),
-                    item.kind === "series" ? "Dizi" : "Film",
-                  ]
-                    .filter(Boolean)
-                    .join(" · ")}
-                  posterUrl={item.posterUrl}
-                  backdropUrl={item.backdropUrl}
-                  trailerUrl={item.trailerUrl}
-                  rating={item.externalRating}
+            <div className="mt-3">
+              {genreGroups.map((group) => (
+                <GenreRow
+                  key={group.name}
+                  name={group.name}
+                  slug={slugByName.get(group.name) ?? null}
+                  items={group.items.map((item) => ({
+                    id: item.id,
+                    title: item.localizedTitle ?? item.originalTitle,
+                    subtitle: [
+                      item.releaseYear?.toString(),
+                      item.kind === "series" ? "Dizi" : "Film",
+                    ]
+                      .filter(Boolean)
+                      .join(" · "),
+                    posterUrl: item.posterUrl,
+                    backdropUrl: item.backdropUrl,
+                    trailerUrl: item.trailerUrl,
+                    rating: item.externalRating,
+                  }))}
                 />
               ))}
             </div>

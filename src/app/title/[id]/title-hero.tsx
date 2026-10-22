@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { AddToListButton } from "@/components/library/add-to-list-button";
+import { QuickRating } from "@/components/catalog/quick-rating";
+import type { WatchStatus } from "@/lib/db/schema";
 import {
   MONETIZATION_LABELS,
   type WatchProviderEntry,
@@ -36,6 +38,7 @@ export function TitleHero({
   providers,
   communityRating,
   userRating,
+  userStatus,
   userId,
   franchiseNames,
   hasTrailer = false,
@@ -45,6 +48,7 @@ export function TitleHero({
   providers: WatchProviderEntry[];
   communityRating: { average: number | null; count: number };
   userRating: number | null;
+  userStatus: WatchStatus | null;
   userId: string | null;
   franchiseNames: string[];
   hasTrailer?: boolean;
@@ -166,11 +170,11 @@ export function TitleHero({
 
           {/* Özet istatistikler */}
           <div className="mt-3 grid grid-cols-3 gap-2 sm:max-w-lg">
-            <StatBlock
-              label="Sizin puanınız"
-              value={userRating != null ? `${userRating}` : "—"}
-              suffix={userRating != null ? "/10" : ""}
-              highlight={userRating != null}
+            <QuickRating
+              titleId={title.id}
+              isLoggedIn={userId != null}
+              initialStatus={userStatus}
+              initialRating={userRating}
             />
             <StatBlock
               label="CinemaVerse ort."

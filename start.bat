@@ -44,19 +44,10 @@ if not exist ".env" (
   echo  [UYARI] .env olusturuldu. Lutfen API anahtarlarini .env icine girin.
 )
 
-REM ---------------------------------------------------------------- Ollama
-set OLLAMA_FOUND=0
-where ollama >nul 2>&1 && set OLLAMA_FOUND=1
-if exist "%LOCALAPPDATA%\Programs\Ollama\ollama.exe" (
-  set "PATH=%PATH%;%LOCALAPPDATA%\Programs\Ollama"
-  set OLLAMA_FOUND=1
-)
-if "%OLLAMA_FOUND%"=="1" (
-  echo  [OK] Ollama bulundu - AI ozellikleri aktif
-) else (
-  echo  [BILGI] Ollama bulunamadi - AI ozellikleri kapali kalir
-  echo         https://ollama.com adresinden kurabilirsiniz
-)
+REM ---------------------------------------------------------------- AI
+REM Yerel Ollama destegi kaldirildi. AI saglayicisi .env icindeki
+REM AI_PROVIDER (gemini | openai-compatible | none) ile belirlenir.
+echo  [BILGI] AI: .env -> AI_PROVIDER (varsayilan: none / kapali)
 
 REM ---------------------------------------------------------------- migrations
 echo  [BILGI] Veritabani migrasyonlari uygulaniyor...

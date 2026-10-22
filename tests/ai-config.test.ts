@@ -17,16 +17,12 @@ describe("resolveAiConfig", () => {
     expect(config.enabled).toBe(false);
   });
 
-  it("ollama anahtar gerektirmez ve etkindir", () => {
+  it("ollama artik desteklenmez; istek gonderilmez", () => {
     const config = resolveAiConfig({ provider: "ollama" });
-    expect(config.enabled).toBe(true);
-    expect(config.provider).toBe("ollama");
-    expect(config.model).toBe("llama3.2");
-  });
-
-  it("ollama model adi ozellestirilebilir", () => {
-    const config = resolveAiConfig({ provider: "ollama", ollamaModel: "qwen2.5" });
-    expect(config.model).toBe("qwen2.5");
+    expect(config.provider).toBe("none");
+    expect(config.enabled).toBe(false);
+    expect(config.model).toBeNull();
+    expect(config.reason).toContain("Ollama");
   });
 
   it("gemini anahtar yoksa devre disi kalir", () => {

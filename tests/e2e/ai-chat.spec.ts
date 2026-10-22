@@ -24,7 +24,9 @@ test.describe("AI Sohbet", () => {
     const status = await page.request.get("/api/ai/status");
     const data = await status.json();
     const chip = data.enabled
-      ? page.locator('.chip:has-text("ollama")').first()
+      ? page
+          .locator('.chip:has-text("gemini"), .chip:has-text("openai")')
+          .first()
       : page.locator('.chip:has-text("Kapalı")').first();
     await expect(chip).toBeVisible({ timeout: 5000 });
   });
@@ -33,8 +35,8 @@ test.describe("AI Sohbet", () => {
     const response = await page.request.get("/api/ai/status");
     expect(response.ok()).toBeTruthy();
     const data = await response.json();
-    // AI ortamda varsa ollama, yoksa none olmali (ve enabled baytagi tutarli).
-    expect(["ollama", "gemini", "openai-compatible", "none"]).toContain(
+    // AI ortamda varsa bulut saglayicisi, yoksa none olmali (enabled tutarli).
+    expect(["gemini", "openai-compatible", "none"]).toContain(
       data.provider
     );
     if (data.provider === "none") {

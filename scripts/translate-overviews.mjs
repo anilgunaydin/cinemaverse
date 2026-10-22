@@ -1,13 +1,18 @@
 /**
- * Titles.overview (EN) -> TR'ye çevirir (Ollama llama3.2)
- * SADECE overview'i olmayan veya zaten TR olanlar atlanır.
+ * Titles.overview (EN) -> TR'ye çevirir (Google Gemini).
+ * Yerel model çalıştırmaz; GEMINI_API_KEY gerekir.
  *   node --env-file=.env scripts/translate-overviews.mjs --apply
  */
 import Database from "better-sqlite3";
 
 const APPLY = process.argv.includes("--apply");
-const OLLAMA_URL = process.env.OLLAMA_BASE_URL || "http://127.0.0.1:11434";
-const OLLAMA_MODEL = process.env.OLLAMA_MODEL || "llama3.2";
+const GEMINI_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+
+if (!GEMINI_KEY) {
+  console.error("GEMINI_API_KEY tanimli degil. .env dosyasina ekleyin.");
+  process.exit(1);
+}
 
 const db = new Database("data/cinemaverse.db");
 db.pragma("journal_mode = WAL");
@@ -43,19 +48,25 @@ for (const t of candidates) {
   const prompt = `Translate this movie/series overview to Turkish. Keep it natural, fluent Turkish. No extra commentary, just the translation.\n\nOverview: ${t.overview}`;
 
   try {
-    const res = await fetch(`${OLLAMA_URL}/api/generate`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: OLLAMA_MODEL,
-        prompt,
-        stream: false,
-        options: { temperature: 0.2, top_p: 0.9 },
-      }),
-    });
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/` +
+        `${encodeURIComponent(GEMINI_MODEL)}:generateContent?key=` +
+        `${encodeURIComponent(GEMINI_KEY)}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ role: "user", parts: [{ text: prompt }] }],
+          generationConfig: { temperature: 0.2, maxOutputTokens: 1024 },
+        }),
+      },
+    );
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    const tr = (data.response ?? "").trim();
+    const tr = (data.candidates?.[0]?.content?.parts ?? [])
+      .map((part) => part.text ?? "")
+      .join("")
+      .trim();
     if (tr && tr.length > 10 && !looksTurkish(t.overview)) {
       console.log(" +", (t.localized_title ?? t.original_title ?? "?").slice(0, 38));
       if (APPLY) upd.run(tr, nowIso(), t.id);
@@ -67,7 +78,7 @@ for (const t of candidates) {
     console.log(" ! hata:", e.message);
     failed += 1;
   }
-  await new Promise((r) => setTimeout(r, 500)); // Ollama yavaşlamasin
+  await new Promise((r) => setTimeout(r, 1200)); // ucretsiz kota icin nazik bekleme
 }
 
 console.log(

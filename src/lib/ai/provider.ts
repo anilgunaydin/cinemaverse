@@ -36,8 +36,6 @@ export type ChatOptions = {
 export function getAiStatus(): ResolvedAiConfig {
   return resolveAiConfig({
     provider: env.aiProvider,
-    ollamaBaseUrl: env.ollamaBaseUrl,
-    ollamaModel: env.ollamaModel,
     geminiApiKey: env.geminiApiKey,
     geminiModel: env.geminiModel,
     openAiCompatBaseUrl: env.openAiCompatBaseUrl,
@@ -64,45 +62,6 @@ function describeError(error: unknown): string {
     return "AI sağlayıcısı zaman aşımına uğradı.";
   }
   return error instanceof Error ? error.message : "Bilinmeyen AI hatası.";
-}
-
-async function callOllama(
-  baseUrl: string,
-  model: string,
-  messages: ChatMessage[],
-  options: ChatOptions,
-  keepAlive: string,
-): Promise<string> {
-  const base = baseUrl.replace(/\/+$/, "");
-  const response = await withTimeout(options.timeoutMs ?? 60_000, (signal) =>
-    fetch(`${base}/api/chat`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model,
-        messages,
-        stream: false,
-        // "0" verilirse model yanit sonrasi bellekten dusurulur (PC'yi yormaz).
-        keep_alive: keepAlive,
-        options: {
-          temperature: options.temperature ?? 0.7,
-          num_predict: options.maxTokens ?? 800,
-        },
-      }),
-      signal,
-      cache: "no-store",
-    }),
-  );
-
-  if (!response.ok) {
-    throw new Error(`Ollama ${response.status} döndürdü.`);
-  }
-  const data = (await response.json()) as {
-    message?: { content?: string };
-  };
-  const content = data.message?.content?.trim();
-  if (!content) throw new Error("Ollama boş yanıt döndürdü.");
-  return content;
 }
 
 async function callGemini(
@@ -219,15 +178,7 @@ export async function chat(
 
   try {
     let content: string;
-    if (status.provider === "ollama") {
-      content = await callOllama(
-        env.ollamaBaseUrl,
-        status.model,
-        messages,
-        options,
-        env.ollamaKeepAlive,
-      );
-    } else if (status.provider === "gemini") {
+    if (status.provider === "gemini") {
       content = await callGemini(
         env.geminiApiKey ?? "",
         status.model,

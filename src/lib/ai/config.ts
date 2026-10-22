@@ -7,14 +7,15 @@
  *
  * Tasarim ilkesi: varsayilan olarak AI KAPALIDIR. Kullanici acikca bir
  * saglayici secmedikce hicbir dis AI servisine istek gonderilmez.
+ *
+ * Not: Yerel Ollama destegi tamamen kaldirildi. Model bilgisayarda CPU/RAM
+ * tukettigi icin uygulama artik Ollama'ya baglanmaz.
  */
 
-export type AiProviderName = "none" | "ollama" | "gemini" | "openai-compatible";
+export type AiProviderName = "none" | "gemini" | "openai-compatible";
 
 export type AiConfigInput = {
   provider?: string | null;
-  ollamaBaseUrl?: string | null;
-  ollamaModel?: string | null;
   geminiApiKey?: string | null;
   geminiModel?: string | null;
   openAiCompatBaseUrl?: string | null;
@@ -33,10 +34,15 @@ export type ResolvedAiConfig = {
 
 const KNOWN_PROVIDERS: AiProviderName[] = [
   "none",
-  "ollama",
   "gemini",
   "openai-compatible",
 ];
+
+const OLLAMA_REMOVED_REASON =
+  "Yerel Ollama desteği kaldırıldı (bilgisayarı yorduğu için uygulama artık " +
+  "Ollama'ya bağlanmıyor). AI özellikleri için .env dosyasında " +
+  "AI_PROVIDER=gemini ve GEMINI_API_KEY tanımlayın; kullanmayacaksanız " +
+  "AI_PROVIDER=none bırakın.";
 
 function clean(value: string | null | undefined): string | null {
   const trimmed = value?.trim();
@@ -52,7 +58,21 @@ function normalizeProvider(value: string | null | undefined): AiProviderName {
 }
 
 export function resolveAiConfig(input: AiConfigInput): ResolvedAiConfig {
-  const provider = normalizeProvider(input.provider);
+  const raw = clean(input.provider)?.toLowerCase();
+
+  // Eski .env dosyalarinda kalan AI_PROVIDER=ollama sessizce yok sayilmaz;
+  // acik bir mesajla kapali kalir. Boylece hicbir zaman yerel modele istek
+  // gitmez.
+  if (raw === "ollama") {
+    return {
+      provider: "none",
+      model: null,
+      enabled: false,
+      reason: OLLAMA_REMOVED_REASON,
+    };
+  }
+
+  const provider = normalizeProvider(raw);
 
   if (provider === "none") {
     return {
@@ -60,19 +80,9 @@ export function resolveAiConfig(input: AiConfigInput): ResolvedAiConfig {
       model: null,
       enabled: false,
       reason:
-        "Yapay zekâ destekli tartışma şu anda kapalı (AI_PROVIDER=none). " +
-        "Bu özellik tamamen isteğe bağlıdır; açmak için .env dosyasında bir " +
-        "sağlayıcı tanımlamanız gerekir.",
-    };
-  }
-
-  if (provider === "ollama") {
-    const model = clean(input.ollamaModel) ?? "llama3.2";
-    return {
-      provider: "ollama",
-      model,
-      enabled: true,
-      reason: `Yerel Ollama sağlayıcısı etkin (model: ${model}).`,
+        "Yapay zekâ destekli özellikler şu anda kapalı (AI_PROVIDER=none). " +
+        "Bu özellik isteğe bağlıdır; açmak için .env dosyasında Gemini " +
+        "anahtarını tanımlamanız gerekir.",
     };
   }
 

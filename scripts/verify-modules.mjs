@@ -68,11 +68,13 @@ record(
   aiStatus.status === 200 && typeof aiStatus.json?.enabled === "boolean",
   `provider=${aiStatus.json?.provider}, enabled=${aiStatus.json?.enabled}`,
 );
-// Ollama ortamda yoksa AI kapalı olmalı; varsa etkin ve ollama olmalı.
+// AI kapaliysa provider "none" olmali; aciksa bulut saglayici olmali.
+// Yerel Ollama desteklenmedigi icin provider asla "ollama" olamaz.
 record(
   "AI saglayici durumu tutarli",
   aiEnabled
-    ? aiStatus.json?.provider === "ollama"
+    ? aiStatus.json?.provider === "gemini" ||
+        aiStatus.json?.provider === "openai-compatible"
     : aiStatus.json?.provider === "none",
   `provider=${aiStatus.json?.provider}`,
 );

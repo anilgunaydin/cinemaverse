@@ -56,26 +56,12 @@ export const env = {
   get omdbApiKey() {
     return optional("OMDB_API_KEY");
   },
-  get aiProvider() {
-    const raw = (optional("AI_PROVIDER") ?? "none").toLowerCase();
-    if (["ollama", "gemini", "openai-compatible"].includes(raw)) {
-      return raw as "ollama" | "gemini" | "openai-compatible";
-    }
-    return "none" as const;
-  },
-  get ollamaBaseUrl() {
-    return optional("OLLAMA_BASE_URL") ?? "http://127.0.0.1:11434";
-  },
-  get ollamaModel() {
-    return optional("OLLAMA_MODEL") ?? "llama3.2";
-  },
   /**
-   * Modelin bellekte kalma suresi (Ollama `keep_alive`).
-   * "0" model yanit verir vermez bellekten dusurulur; boylece model arka planda
-   * RAM/CPU tutmaz. Varsayilan 5m (Ollama'nin kendi varsayilani).
+   * AI saglayicisi. Yerel Ollama destegi kaldirildi; eski .env dosyalarinda
+   * `AI_PROVIDER=ollama` kalsa bile cozumleyici bunu kapali kabul eder.
    */
-  get ollamaKeepAlive() {
-    return optional("OLLAMA_KEEP_ALIVE") ?? "5m";
+  get aiProvider() {
+    return (optional("AI_PROVIDER") ?? "none").toLowerCase();
   },
   get geminiApiKey() {
     return optional("GEMINI_API_KEY");

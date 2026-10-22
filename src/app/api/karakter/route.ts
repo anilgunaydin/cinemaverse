@@ -4,6 +4,7 @@ import { getDb } from "@/lib/db";
 import { eq, and } from "drizzle-orm";
 import { libraryEntries, titles, titleGenres, genres } from "@/lib/db/schema";
 import { getFullProfile } from "@/lib/preference/engine";
+import { chat, getAiStatus } from "@/lib/ai/provider";
 
 /* -------------------------------------------------------------------------- */
 /* Tahmin oranlari                                                            */
@@ -174,34 +175,21 @@ Görev: SADECE şu JSON formatında cevap ver. Başka hiçbir metin, açıklama 
 }`;
 }
 
-async function callOllama(prompt: string) {
-  const url = process.env.OLLAMA_BASE_URL || "http://127.0.0.1:11434";
-  const model = process.env.OLLAMA_MODEL || "llama3.2";
-
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 70000);
-
-  try {
-    const res = await fetch(`${url}/api/generate`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model,
-        prompt,
-        stream: false,
-        options: { temperature: 0.2, top_p: 0.8, num_predict: 200, num_ctx: 1024, keep_alive: "10m" },
-      }),
-      signal: controller.signal,
-    });
-    clearTimeout(timeout);
-    if (!res.ok) throw new Error(`Ollama HTTP ${res.status}`);
-    const data = await res.json();
-    return data.response?.trim() ?? "";
-  } catch (e: any) {
-    clearTimeout(timeout);
-    if (e.name === "AbortError") throw new Error("Ollama timeout (70sn)");
-    throw e;
-  }
+async function callAi(prompt: string) {
+  const result = await chat(
+    [
+      {
+        role: "system",
+        content:
+          "Sen bir sinema zevk analistisin. Yalnızca istenen JSON'u üret; " +
+          "açıklama, selamlama veya kod bloğu yazma.",
+      },
+      { role: "user", content: prompt },
+    ],
+    { temperature: 0.2, maxTokens: 400, timeoutMs: 45_000 },
+  );
+  if (!result.ok) throw new Error(result.message);
+  return result.content;
 }
 
 function extractJson(text: string): string {
@@ -310,9 +298,11 @@ export async function GET(req: NextRequest) {
 
   /* AI'yi arka planda dene (sonuç cache'e yazılır, sonraki istekte gelir) */
   setTimeout(async () => {
+    // AI kapalıysa hiçbir sağlayıcıya (yerel dahil) istek gönderme.
+    if (!getAiStatus().enabled) return;
     try {
       const prompt = buildPrompt(rows);
-      const raw = await callOllama(prompt);
+      const raw = await callAi(prompt);
       const jsonStr = extractJson(raw);
       const profile = tryParse(jsonStr);
       if (profile && !profile.hata) {

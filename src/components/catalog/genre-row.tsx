@@ -90,7 +90,7 @@ export function GenreRow({
           {items.map((item) => (
             <div
               key={item.id}
-              className="w-[168px] shrink-0 snap-start sm:w-[204px]"
+              className="w-[calc((100%-0.75rem)/2)] shrink-0 snap-start sm:w-[calc((100%-1.5rem)/3)] lg:w-[calc((100%-3rem)/5)]"
             >
               <PosterCard
                 href={`/title/${item.id}`}
@@ -108,13 +108,13 @@ export function GenreRow({
 
         <div
           aria-hidden="true"
-          className={`pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-ink-950 via-ink-950/70 to-transparent transition-opacity duration-200 sm:w-16 ${
+          className={`pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-ink-950 via-ink-950/70 to-transparent transition-opacity duration-200 sm:w-20 ${
             canLeft ? "opacity-100" : "opacity-0"
           }`}
         />
         <div
           aria-hidden="true"
-          className={`pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-ink-950 via-ink-950/70 to-transparent transition-opacity duration-200 sm:w-16 ${
+          className={`pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-ink-950 via-ink-950/70 to-transparent transition-opacity duration-200 sm:w-20 ${
             canRight ? "opacity-100" : "opacity-0"
           }`}
         />
@@ -158,14 +158,14 @@ function RowArrow({
       disabled={disabled}
       aria-label={label}
       className={`absolute ${
-        side === "left" ? "left-0" : "right-0"
-      } top-1/2 z-10 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-ink-950/85 text-mist-100 shadow-[0_8px_24px_-10px_rgba(0,0,0,0.9)] backdrop-blur transition-all duration-200 hover:border-gold-500/50 hover:bg-ink-900 hover:text-gold-300 focus-visible:opacity-100 disabled:pointer-events-none disabled:opacity-0 sm:grid ${
+        side === "left" ? "left-0.5" : "right-0.5"
+      } top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-ink-950/85 text-mist-100 shadow-[0_8px_24px_-10px_rgba(0,0,0,0.9)] backdrop-blur transition-all duration-200 hover:border-gold-500/50 hover:bg-ink-900 hover:text-gold-300 focus-visible:opacity-100 disabled:pointer-events-none disabled:opacity-0 sm:grid lg:h-12 lg:w-12 ${
         disabled ? "" : "opacity-0 group-hover/row:opacity-100"
       }`}
     >
       <svg
-        width="16"
-        height="16"
+        width="20"
+        height="20"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -173,6 +173,7 @@ function RowArrow({
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
+        className="lg:h-[22px] lg:w-[22px]"
       >
         <path d={direction === -1 ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7"} />
       </svg>

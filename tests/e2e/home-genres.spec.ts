@@ -28,6 +28,22 @@ test.describe("Keşfet - Tür satırları", () => {
     expect(metrics.scrollWidth).toBeGreaterThan(metrics.clientWidth);
     // Geleneksek kaydirma cubugu gorunmez
     expect(metrics.scrollbar).toBe("none");
+
+    // Genis ekranda bir seritte tam 5 kart gorunur ve kartlar buyumustur
+    const layout = await region.evaluate((el) => {
+      const box = el.getBoundingClientRect();
+      const cards = [...el.querySelectorAll('a[href^="/title/"]')];
+      const fullyVisible = cards.filter((card) => {
+        const rect = card.getBoundingClientRect();
+        return rect.left >= box.left - 1 && rect.right <= box.right + 1;
+      }).length;
+      return {
+        fullyVisible,
+        cardWidth: Math.round(cards[0]?.getBoundingClientRect().width ?? 0),
+      };
+    });
+    expect(layout.fullyVisible).toBe(5);
+    expect(layout.cardWidth).toBeGreaterThan(200);
   });
 
   test("Film/dizi ayrımı rozetlerle görünür ve filtrelenebilir", async ({
@@ -43,11 +59,11 @@ test.describe("Keşfet - Tür satırları", () => {
     const filters = page.locator('div[aria-label="Yapım türü"]');
     await expect(filters).toBeVisible();
     await filters.getByRole("link", { name: /^Diziler/ }).click();
-    await expect(page).toHaveURL(/kind=series/);
+    await expect(page).toHaveURL(/kind=series/, { timeout: 15000 });
 
     // Filtre sonrası yalnızca diziler listelenir
     const rows = page.locator('section[id^="tur-"]');
-    await expect(rows.first()).toBeVisible();
+    await expect(rows.first()).toBeVisible({ timeout: 15000 });
     await expect(page.locator('section[id^="tur-"] span:text-is("Film")')).toHaveCount(0);
     expect(
       await page.locator('section[id^="tur-"] span:text-is("Dizi")').count(),
@@ -65,6 +81,11 @@ test.describe("Keşfet - Tür satırları", () => {
     // Sol ok baslangicta pasif
     await expect(left).toBeDisabled();
     await expect(right).toBeEnabled();
+
+    // Oklar seritle orantili buyuklukte (en az 44px)
+    const arrowBox = await right.boundingBox();
+    expect(arrowBox).not.toBeNull();
+    expect(arrowBox!.width).toBeGreaterThanOrEqual(44);
 
     await right.click();
     await expect

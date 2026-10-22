@@ -29,7 +29,7 @@ test.describe("Keşfet - Tür satırları", () => {
     // Geleneksek kaydirma cubugu gorunmez
     expect(metrics.scrollbar).toBe("none");
 
-    // Genis ekranda bir seritte tam 5 kart gorunur ve kartlar buyumustur
+    // Genis ekranda bir seritte tam 3 kart gorunur ve kartlar buyumustur
     const layout = await region.evaluate((el) => {
       const box = el.getBoundingClientRect();
       const cards = [...el.querySelectorAll('a[href^="/title/"]')];
@@ -42,8 +42,8 @@ test.describe("Keşfet - Tür satırları", () => {
         cardWidth: Math.round(cards[0]?.getBoundingClientRect().width ?? 0),
       };
     });
-    expect(layout.fullyVisible).toBe(5);
-    expect(layout.cardWidth).toBeGreaterThan(200);
+    expect(layout.fullyVisible).toBe(3);
+    expect(layout.cardWidth).toBeGreaterThan(300);
 
     // Aynı yapım birden fazla tür satırında tekrarlanmaz.
     const hrefs = await page
@@ -94,23 +94,36 @@ test.describe("Keşfet - Tür satırları", () => {
     expect(arrowBox).not.toBeNull();
     expect(arrowBox!.width).toBeGreaterThanOrEqual(66);
 
-    await right.click();
-    await expect
-      .poll(async () => region.evaluate((el) => Math.round(el.scrollLeft)), {
-        timeout: 5000,
-      })
-      .toBeGreaterThan(0);
+    // Ilk tam gorunen kartin indeksi
+    const visibleIndex = () =>
+      region.evaluate((el) => {
+        const box = el.getBoundingClientRect();
+        const cards = [...el.querySelectorAll('a[href^="/title/"]')];
+        return cards.findIndex((card) => {
+          const rect = card.getBoundingClientRect();
+          return rect.left >= box.left - 2;
+        });
+      });
 
-    await expect(left).toBeEnabled();
+    const beforeIndex = await visibleIndex();
+    expect(beforeIndex).toBe(0);
+
+    await right.click();
+    await page.waitForTimeout(1200);
+
     const afterRight = await region.evaluate((el) =>
       Math.round(el.scrollLeft),
     );
+    expect(afterRight).toBeGreaterThan(0);
+    // Bir tikta tam 2 yapim kayar.
+    expect(await visibleIndex()).toBe(beforeIndex + 2);
+    await expect(left).toBeEnabled();
+
     await left.click();
-    await expect
-      .poll(async () => region.evaluate((el) => Math.round(el.scrollLeft)), {
-        timeout: 5000,
-      })
-      .toBeLessThan(afterRight);
+    await page.waitForTimeout(1200);
+    const afterLeft = await region.evaluate((el) => Math.round(el.scrollLeft));
+    expect(afterLeft).toBeLessThan(afterRight);
+    expect(await visibleIndex()).toBe(beforeIndex);
   });
 
   test("Tür adları ham Wikidata kimliği değil", async ({ page }) => {

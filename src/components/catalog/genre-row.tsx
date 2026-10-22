@@ -63,12 +63,21 @@ export function GenreRow({
 
     const maxScroll = element.scrollWidth - element.clientWidth;
     const start = element.scrollLeft;
+
+    // Bir tik = iki yapim. Kart adimini gercek yerlesimden olcuyoruz ki
+    // mobil (2 kart) ve masaustu (3 kart) ayni kuralla calissin.
+    const children = [...element.children] as HTMLElement[];
+    const measuredStep =
+      children.length > 1
+        ? Math.abs(
+            children[1].getBoundingClientRect().left -
+              children[0].getBoundingClientRect().left,
+          )
+        : 0;
+    const cardStep = measuredStep > 1 ? measuredStep : element.clientWidth;
     const naturalTarget = Math.max(
       0,
-      Math.min(
-        maxScroll,
-        element.scrollLeft + direction * element.clientWidth * 0.85,
-      ),
+      Math.min(maxScroll, start + direction * cardStep * 2),
     );
 
     // Bir sonraki karta hizala: animasyon bitince snap geri acildiginda
@@ -196,7 +205,7 @@ export function GenreRow({
           {items.map((item) => (
             <div
               key={item.id}
-              className="w-[calc((100%-0.75rem)/2)] shrink-0 snap-start sm:w-[calc((100%-1.5rem)/3)] lg:w-[calc((100%-3rem)/5)]"
+              className="w-[calc((100%-0.75rem)/2)] shrink-0 snap-start sm:w-[calc((100%-1.5rem)/3)]"
             >
               <PosterCard
                 href={`/title/${item.id}`}

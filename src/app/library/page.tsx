@@ -127,6 +127,7 @@ export default async function LibraryPage({
                   trailerUrl={item.trailerUrl}
                   rating={item.rating}
                   badge={item.isFavorite ? "★" : null}
+                  kind={item.kind === "series" ? "series" : "movie"}
                 />
               </div>
             ))}

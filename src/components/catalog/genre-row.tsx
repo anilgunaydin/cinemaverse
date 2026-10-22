@@ -12,11 +12,14 @@ export type GenreRowItem = {
   backdropUrl: string | null;
   trailerUrl: string | null;
   rating: number | null;
+  kind: "movie" | "series";
 };
 
 /**
- * Tek bir tur satiri: saga dogru kayan (scroll-snap) kart seridi + ok dugmeleri.
- * Ok dugmeleri ucta devre disi kalir; kaydirma klavye ve dokunmayla da calisir.
+ * Tek bir tur satiri: saga dogru kayan (scroll-snap) kart seridi.
+ * Kaydirma cubugu gizlidir; satir ustune gelince kenarlarda beliren yuvarlak
+ * oklar ve kenar solmalari "devami var" hissini verir. Klavye ve dokunmayla
+ * da kaydirilabilir.
  */
 export function GenreRow({
   name,
@@ -65,7 +68,7 @@ export function GenreRow({
   return (
     <section
       id={slug ? `tur-${slug}` : undefined}
-      className="mt-6 scroll-mt-24"
+      className="group/row mt-6 scroll-mt-24"
     >
       <div className="mb-2 flex items-center justify-between gap-2">
         <h3 className="flex min-w-0 items-baseline gap-1.5 font-display text-base font-semibold text-mist-100">
@@ -74,76 +77,105 @@ export function GenreRow({
             {items.length}
           </span>
         </h3>
-        <div className="flex shrink-0 gap-1">
-          <button
-            type="button"
-            onClick={() => scrollByPage(-1)}
-            disabled={!canLeft}
-            aria-label={`${name} satırını sola kaydır`}
-            className="grid h-7 w-7 place-items-center rounded-lg border border-ink-600 bg-ink-900 text-mist-300 transition-colors hover:border-gold-500/40 hover:text-gold-300 disabled:cursor-default disabled:opacity-30"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M15 5l-7 7 7 7" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            onClick={() => scrollByPage(1)}
-            disabled={!canRight}
-            aria-label={`${name} satırını sağa kaydır`}
-            className="grid h-7 w-7 place-items-center rounded-lg border border-ink-600 bg-ink-900 text-mist-300 transition-colors hover:border-gold-500/40 hover:text-gold-300 disabled:cursor-default disabled:opacity-30"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
       </div>
 
-      <div
-        ref={scrollerRef}
-        role="region"
-        aria-label={`${name} yapımları`}
-        tabIndex={0}
-        className="row-scroll flex snap-x snap-mandatory gap-3 overflow-x-auto pb-1 outline-none focus-visible:ring-1 focus-visible:ring-gold-500/40"
-      >
-        {items.map((item) => (
-          <div
-            key={item.id}
-            className="w-[168px] shrink-0 snap-start sm:w-[204px]"
-          >
-            <PosterCard
-              href={`/title/${item.id}`}
-              title={item.title}
-              subtitle={item.subtitle}
-              posterUrl={item.posterUrl}
-              backdropUrl={item.backdropUrl}
-              trailerUrl={item.trailerUrl}
-              rating={item.rating}
-            />
-          </div>
-        ))}
+      <div className="relative -mx-1">
+        <div
+          ref={scrollerRef}
+          role="region"
+          aria-label={`${name} yapımları`}
+          tabIndex={0}
+          className="row-scroll flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 py-1.5 outline-none focus-visible:ring-1 focus-visible:ring-gold-500/40"
+        >
+          {items.map((item) => (
+            <div
+              key={item.id}
+              className="w-[168px] shrink-0 snap-start sm:w-[204px]"
+            >
+              <PosterCard
+                href={`/title/${item.id}`}
+                title={item.title}
+                subtitle={item.subtitle}
+                posterUrl={item.posterUrl}
+                backdropUrl={item.backdropUrl}
+                trailerUrl={item.trailerUrl}
+                rating={item.rating}
+                kind={item.kind}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-ink-950 via-ink-950/70 to-transparent transition-opacity duration-200 sm:w-16 ${
+            canLeft ? "opacity-100" : "opacity-0"
+          }`}
+        />
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-ink-950 via-ink-950/70 to-transparent transition-opacity duration-200 sm:w-16 ${
+            canRight ? "opacity-100" : "opacity-0"
+          }`}
+        />
+
+        <RowArrow
+          side="left"
+          direction={-1}
+          label={`${name} satırını sola kaydır`}
+          disabled={!canLeft}
+          onClick={() => scrollByPage(-1)}
+        />
+        <RowArrow
+          side="right"
+          direction={1}
+          label={`${name} satırını sağa kaydır`}
+          disabled={!canRight}
+          onClick={() => scrollByPage(1)}
+        />
       </div>
     </section>
+  );
+}
+
+function RowArrow({
+  side,
+  direction,
+  label,
+  disabled,
+  onClick,
+}: {
+  side: "left" | "right";
+  direction: 1 | -1;
+  label: string;
+  disabled: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={label}
+      className={`absolute ${
+        side === "left" ? "left-0" : "right-0"
+      } top-1/2 z-10 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-ink-950/85 text-mist-100 shadow-[0_8px_24px_-10px_rgba(0,0,0,0.9)] backdrop-blur transition-all duration-200 hover:border-gold-500/50 hover:bg-ink-900 hover:text-gold-300 focus-visible:opacity-100 disabled:pointer-events-none disabled:opacity-0 sm:grid ${
+        disabled ? "" : "opacity-0 group-hover/row:opacity-100"
+      }`}
+    >
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d={direction === -1 ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7"} />
+      </svg>
+    </button>
   );
 }

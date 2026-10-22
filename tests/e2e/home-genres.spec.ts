@@ -22,9 +22,36 @@ test.describe("Keşfet - Tür satırları", () => {
       scrollWidth: el.scrollWidth,
       clientWidth: el.clientWidth,
       cards: el.querySelectorAll('a[href^="/title/"]').length,
+      scrollbar: getComputedStyle(el).scrollbarWidth,
     }));
     expect(metrics.cards).toBeGreaterThan(0);
     expect(metrics.scrollWidth).toBeGreaterThan(metrics.clientWidth);
+    // Geleneksek kaydirma cubugu gorunmez
+    expect(metrics.scrollbar).toBe("none");
+  });
+
+  test("Film/dizi ayrımı rozetlerle görünür ve filtrelenebilir", async ({
+    page,
+  }) => {
+    await page.goto("/");
+
+    const badges = page.locator(
+      'section[id^="tur-"] a[href^="/title/"] span:text-is("Dizi"), section[id^="tur-"] a[href^="/title/"] span:text-is("Film")',
+    );
+    expect(await badges.count()).toBeGreaterThan(0);
+
+    const filters = page.locator('div[aria-label="Yapım türü"]');
+    await expect(filters).toBeVisible();
+    await filters.getByRole("link", { name: /^Diziler/ }).click();
+    await expect(page).toHaveURL(/kind=series/);
+
+    // Filtre sonrası yalnızca diziler listelenir
+    const rows = page.locator('section[id^="tur-"]');
+    await expect(rows.first()).toBeVisible();
+    await expect(page.locator('section[id^="tur-"] span:text-is("Film")')).toHaveCount(0);
+    expect(
+      await page.locator('section[id^="tur-"] span:text-is("Dizi")').count(),
+    ).toBeGreaterThan(0);
   });
 
   test("Ok düğmeleri satırı sağa/sola kaydırır", async ({ page }) => {

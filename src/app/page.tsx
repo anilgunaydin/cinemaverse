@@ -12,29 +12,59 @@ export const metadata: Metadata = { title: "Keşfet" };
 export default async function HomePage({
   searchParams,
 }: {
-  searchParams: Promise<{ genre?: string; q?: string }>;
+  searchParams: Promise<{ genre?: string; q?: string; kind?: string }>;
 }) {
   const user = await getCurrentUser();
-  const { q } = await searchParams;
+  const { q, kind: kindParam } = await searchParams;
+  const kind =
+    kindParam === "movie" || kindParam === "series" ? kindParam : undefined;
 
   const [catalogTitles, genres] = await Promise.all([
     listTitlesWithGenres(400),
     listGenres(),
   ]);
 
-  const filtered = q
-    ? catalogTitles.filter((item) => {
-        const needle = q.trim().toLocaleLowerCase("tr");
-        return (
+  const needle = q?.trim().toLocaleLowerCase("tr");
+  const searchFiltered = needle
+    ? catalogTitles.filter(
+        (item) =>
           item.originalTitle.toLocaleLowerCase("tr").includes(needle) ||
-          (item.localizedTitle ?? "").toLocaleLowerCase("tr").includes(needle)
-        );
-      })
+          (item.localizedTitle ?? "").toLocaleLowerCase("tr").includes(needle),
+      )
     : catalogTitles;
+
+  const movieCount = searchFiltered.filter(
+    (item) => item.kind === "movie",
+  ).length;
+  const seriesCount = searchFiltered.filter(
+    (item) => item.kind === "series",
+  ).length;
+
+  const filtered = kind
+    ? searchFiltered.filter((item) => item.kind === kind)
+    : searchFiltered;
 
   const total = catalogTitles.length;
   const genreGroups = groupByGenre(filtered, { minItems: 5 });
   const slugByName = new Map(genres.map((entry) => [entry.nameTr, entry.slug]));
+
+  const kindHref = (value?: "movie" | "series") => {
+    const params = new URLSearchParams();
+    if (q) params.set("q", q);
+    if (value) params.set("kind", value);
+    const query = params.toString();
+    return query ? `/?${query}` : "/";
+  };
+
+  const kindFilters: {
+    value?: "movie" | "series";
+    label: string;
+    count: number;
+  }[] = [
+    { label: "Tümü", count: searchFiltered.length },
+    { value: "movie", label: "Filmler", count: movieCount },
+    { value: "series", label: "Diziler", count: seriesCount },
+  ];
 
   return (
     <>
@@ -72,34 +102,65 @@ export default async function HomePage({
         </section>
 
         <section className="mt-8">
-          <div className="flex flex-wrap items-end justify-between gap-2">
+          <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
               <h2 className="font-display text-xl font-semibold">
                 Kütüphanenizdeki yapımlar
               </h2>
               <p className="muted mt-0.5">
                 {total > 0
-                  ? `${total} yapım, ${genreGroups.length} tür satırında. Sağa kaydırın.`
+                  ? kind
+                    ? `${filtered.length} ${
+                        kind === "movie" ? "film" : "dizi"
+                      } · ${genreGroups.length} tür satırında.`
+                    : `${total} yapım · ${movieCount} film · ${seriesCount} dizi — her tür kendi satırında.`
                   : "Henüz yapım eklemediniz."}
               </p>
             </div>
-            {genreGroups.length > 0 ? (
-              <div className="flex flex-wrap gap-1.5">
-                {genreGroups
-                  .filter((group) => slugByName.has(group.name))
-                  .slice(0, 8)
-                  .map((group) => (
-                    <a
-                      key={group.name}
-                      href={`#tur-${slugByName.get(group.name)}`}
-                      className="chip transition-colors hover:border-gold-500/40 hover:text-gold-300"
-                    >
-                      {group.name}
-                    </a>
-                  ))}
-              </div>
-            ) : null}
+            <div
+              role="group"
+              aria-label="Yapım türü"
+              className="inline-flex rounded-xl border border-ink-700 bg-ink-900/80 p-0.5"
+            >
+              {kindFilters.map((filter) => {
+                const active = kind === filter.value;
+                return (
+                  <Link
+                    key={filter.label}
+                    href={kindHref(filter.value)}
+                    aria-current={active ? "page" : undefined}
+                    className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+                      active
+                        ? "bg-gold-500/15 text-gold-300"
+                        : "text-mist-400 hover:text-mist-100"
+                    }`}
+                  >
+                    {filter.label}
+                    <span className="text-[0.65rem] text-mist-500">
+                      {filter.count}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
+
+          {genreGroups.length > 0 ? (
+            <div className="mt-3 flex flex-wrap items-center gap-1.5">
+              {genreGroups
+                .filter((group) => slugByName.has(group.name))
+                .slice(0, 10)
+                .map((group) => (
+                  <a
+                    key={group.name}
+                    href={`#tur-${slugByName.get(group.name)}`}
+                    className="chip transition-colors hover:border-gold-500/40 hover:text-gold-300"
+                  >
+                    {group.name}
+                  </a>
+                ))}
+            </div>
+          ) : null}
 
           {filtered.length === 0 ? (
             <div className="surface-flat mt-4 px-5 py-10 text-center">
@@ -125,16 +186,12 @@ export default async function HomePage({
                   items={group.items.map((item) => ({
                     id: item.id,
                     title: item.localizedTitle ?? item.originalTitle,
-                    subtitle: [
-                      item.releaseYear?.toString(),
-                      item.kind === "series" ? "Dizi" : "Film",
-                    ]
-                      .filter(Boolean)
-                      .join(" · "),
+                    subtitle: item.releaseYear?.toString() ?? null,
                     posterUrl: item.posterUrl,
                     backdropUrl: item.backdropUrl,
                     trailerUrl: item.trailerUrl,
                     rating: item.externalRating,
+                    kind: item.kind === "series" ? "series" : "movie",
                   }))}
                 />
               ))}
